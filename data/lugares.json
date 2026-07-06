@@ -935,6 +935,111 @@
       "sitio_web": "https://www.conaf.cl/parques/parque-nacional-cabo-de-hornos/"
     },
     {
+      "id": "desierto-florido",
+      "nombre": "Parque Nacional Desierto Florido",
+      "tipo": "parque_nacional",
+      "region": "Atacama",
+      "coordenadas": [-27.8167, -70.5333],
+      "superficie_ha": 57107,
+      "creado": 2023,
+      "altitud_m": "300-1000",
+      "descripcion": "Creado en 2023 para proteger el fenómeno del 'desierto florido', cuando las lluvias transforman el desierto de Atacama en un manto de más de 200 especies de flores. Protege también al guanaco del norte y al tuco-tuco de Atacama.",
+      "evaluacion": { "puntaje": 4.5, "fuente": "Reseñas de visitantes", "mejor_epoca": "Sep-Oct en años lluviosos (florecimiento)", "dificultad_acceso": "Media" },
+      "senderos": [
+        { "nombre": "Sendero interpretativo del florecimiento", "distancia_km": 3, "duracion": "1 h 30 min", "dificultad": "Baja", "tipo": "Circuito" }
+      ],
+      "actividades": ["Desierto florido", "Fotografía", "Observación de flora y fauna"],
+      "pueblos_cercanos": [
+        { "nombre": "Copiapó", "distancia_km": 40, "tiempo_estimado": "45 min en auto", "tours_disponibles": true, "tours_estimados": 6, "descripcion": "Capital regional y base para visitar el parque en años de florecimiento." },
+        { "nombre": "Vallenar", "distancia_km": 100, "tiempo_estimado": "1 h 30 min en auto", "tours_disponibles": true, "tours_estimados": 3, "descripcion": "Alternativa por el sur del sector de floración." }
+      ],
+      "entrada_pagada": true,
+      "sitio_web": "https://www.conaf.cl/parques/parque-nacional-desierto-florido/"
+    },
+    {
+      "id": "isla-guamblin",
+      "nombre": "Parque Nacional Isla Guamblin",
+      "tipo": "parque_nacional",
+      "region": "Aysén",
+      "coordenadas": [-44.8333, -75.1],
+      "superficie_ha": 10625,
+      "creado": 1967,
+      "altitud_m": "0-150",
+      "descripcion": "Isla oceánica en el archipiélago de los Chonos, a 90 millas náuticas al noroeste de Puerto Aguirre, expuesta a mar abierto. Protege loberías y colonias de fardelas; uno de los parques menos visitados del país por su difícil acceso.",
+      "evaluacion": { "puntaje": 4.2, "fuente": "Reseñas de visitantes", "mejor_epoca": "Diciembre a Febrero", "dificultad_acceso": "Muy alta (avioneta; desembarco casi imposible)" },
+      "senderos": [],
+      "actividades": ["Avistamiento de fauna marina", "Investigación", "Fotografía aérea"],
+      "pueblos_cercanos": [
+        { "nombre": "Puerto Aguirre", "distancia_km": 165, "tiempo_estimado": "Navegación / avioneta", "tours_disponibles": false, "tours_estimados": 0, "descripcion": "Localidad más cercana; no hay tours regulares al parque." },
+        { "nombre": "Puerto Chacabuco", "distancia_km": 0, "tiempo_estimado": "Solo expediciones", "tours_disponibles": false, "tours_estimados": 0, "descripcion": "Puerto de salida de eventuales expediciones científicas." }
+      ],
+      "entrada_pagada": false,
+      "sitio_web": "https://www.conaf.cl/parques/parque-nacional-isla-guamblin/"
+    },
+    {
+      "id": "cabo-froward",
+      "nombre": "Parque Nacional Cabo Froward",
+      "tipo": "parque_nacional",
+      "region": "Magallanes y de la Antártica Chilena",
+      "coordenadas": [-53.8833, -71.3],
+      "superficie_ha": 121625,
+      "creado": 2024,
+      "altitud_m": "0-800",
+      "descripcion": "El parque nacional continental más austral, en el extremo sur de la península de Brunswick, donde el continente americano termina. Bosque subantártico, turberas y el último hábitat continental del huemul. Incluye el mítico Cabo Froward y su Cruz de los Mares.",
+      "evaluacion": { "puntaje": 4.6, "fuente": "Reseñas de visitantes", "mejor_epoca": "Diciembre a Marzo", "dificultad_acceso": "Alta (trekking de varios días)" },
+      "senderos": [
+        { "nombre": "Travesía a Cabo Froward (Cruz de los Mares)", "distancia_km": 60, "duracion": "4-5 días", "dificultad": "Alta", "tipo": "Travesía (ida y vuelta)" }
+      ],
+      "actividades": ["Trekking de varios días", "Fin del continente", "Avistamiento de huemul", "Fotografía"],
+      "pueblos_cercanos": [
+        { "nombre": "Punta Arenas", "distancia_km": 80, "tiempo_estimado": "1 h 30 min en auto hasta el inicio del sendero", "tours_disponibles": true, "tours_estimados": 4, "descripcion": "Base logística; el trekking parte desde el sector de San Juan / río Batchelor." }
+      ],
+      "entrada_pagada": false,
+      "sitio_web": "https://www.conaf.cl/parques/parque-nacional-cabo-froward/"
+    },
+    {
+      "id": "glaciares-de-santiago",
+      "nombre": "Parque Nacional Glaciares de Santiago",
+      "tipo": "parque_nacional",
+      "region": "Metropolitana",
+      "coordenadas": [-33.45, -70.05],
+      "superficie_ha": 75114,
+      "creado": 2023,
+      "altitud_m": "1800-6000",
+      "descripcion": "Creado en 2023 en las cuencas altas de los ríos Olivares y Colorado, comuna de San José de Maipo. Protege 368 glaciares (unas 20.850 ha de hielo), reservas estratégicas de agua para la capital. Alta montaña de acceso restringido, orientada a la investigación y el turismo de intereses especiales.",
+      "evaluacion": { "puntaje": 4.5, "fuente": "Reseñas de visitantes", "mejor_epoca": "Diciembre a Marzo", "dificultad_acceso": "Muy alta (alta montaña, acceso regulado)" },
+      "senderos": [],
+      "actividades": ["Montañismo", "Glaciología", "Turismo de intereses especiales"],
+      "pueblos_cercanos": [
+        { "nombre": "San José de Maipo", "distancia_km": 60, "tiempo_estimado": "2 h en auto + acceso restringido", "tours_disponibles": false, "tours_estimados": 0, "descripcion": "Comuna del Cajón del Maipo; puerta de entrada al valle (acceso al parque regulado)." },
+        { "nombre": "Santiago", "distancia_km": 90, "tiempo_estimado": "2 h 30 min en auto", "tours_disponibles": true, "tours_estimados": 2, "descripcion": "Capital; expediciones de montaña organizadas." }
+      ],
+      "entrada_pagada": false,
+      "sitio_web": "https://www.conaf.cl/parques/parque-nacional-glaciares-de-santiago/"
+    },
+    {
+      "id": "palmas-de-cocalan",
+      "nombre": "Parque Nacional Las Palmas de Cocalán",
+      "tipo": "parque_nacional",
+      "region": "O'Higgins",
+      "coordenadas": [-34.2833, -71.3333],
+      "superficie_ha": 3709,
+      "creado": 1972,
+      "altitud_m": "200-1150",
+      "descripcion": "Uno de los tres últimos bosques milenarios de palma chilena (Jubaea chilensis), con unos 3.500 ejemplares, en la comuna de Las Cabras. Parque nacional de propiedad privada; el acceso es restringido y se realiza solo con guías locales autorizados.",
+      "evaluacion": { "puntaje": 4.3, "fuente": "Reseñas de visitantes", "mejor_epoca": "Septiembre a Abril", "dificultad_acceso": "Media (acceso solo con guía autorizado)" },
+      "senderos": [
+        { "nombre": "Sendero guiado del Palmar", "distancia_km": 5, "duracion": "2 h 30 min", "dificultad": "Media", "tipo": "Circuito (con guía)" }
+      ],
+      "actividades": ["Palma chilena", "Senderismo guiado", "Observación de aves"],
+      "pueblos_cercanos": [
+        { "nombre": "Las Cabras", "distancia_km": 20, "tiempo_estimado": "30 min en auto", "tours_disponibles": true, "tours_estimados": 2, "descripcion": "Comuna de acceso; visitas coordinadas con guías locales." },
+        { "nombre": "Rancagua", "distancia_km": 70, "tiempo_estimado": "1 h 20 min en auto", "tours_disponibles": true, "tours_estimados": 2, "descripcion": "Ciudad base de la región de O'Higgins." }
+      ],
+      "entrada_pagada": true,
+      "sitio_web": "https://www.conaf.cl/parques/parque-nacional-las-palmas-de-cocalan/"
+    },
+    {
       "id": "los-flamencos",
       "nombre": "Reserva Nacional Los Flamencos",
       "tipo": "reserva_nacional",
