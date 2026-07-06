@@ -2,6 +2,7 @@
 
 Aplicación web que muestra en un **mapa interactivo** los parques nacionales y reservas naturales de Chile, con información práctica para planificar un viaje:
 
+- 🧭 **Mi pasaporte**: marca los lugares que vas visitando y lleva la cuenta con una barra de progreso ("visitaste 12 de 47 parques"). Se guarda en tu navegador, sin cuenta ni servidor.
 - 🥾 **Senderos** de cada área: distancia, duración, dificultad y tipo (ida y vuelta / circuito / travesía).
 - ⭐ **Evaluación** (puntaje), mejor época para visitar y dificultad de acceso.
 - 🏘️ **Pueblos cercanos** (puertas de entrada): distancia, tiempo estimado de viaje y **cantidad estimada de tours** disponibles desde cada pueblo.
@@ -80,8 +81,9 @@ Guarda y recarga la página: el marcador, la ficha y el buscador se generan auto
 
 ## ✨ Funcionalidades
 
+- **Pasaporte de viajes**: marca visitados (✓ en la tarjeta, en la ficha o en el mapa), barra de progreso por tipo, y filtro Todos / Pendientes / Visitados. Persistente en `localStorage`.
 - Buscador por nombre, región, descripción o pueblo (insensible a tildes).
-- Filtros por tipo de área (parque / reserva) con leyenda de colores.
+- Filtros por tipo de área (parque / reserva / monumento) con leyenda de colores.
 - Panel lateral con ficha completa al hacer clic en un marcador o en la lista.
 - Diseño responsive (móvil y escritorio).
 

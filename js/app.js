@@ -9,9 +9,42 @@
     tiposActivos: new Set(),
     markers: new Map(), // id -> Leaflet marker
     seleccionado: null,
+    visitados: new Set(), // ids de lugares marcados como visitados
+    filtroEstado: "todos", // todos | pendientes | visitados
   };
 
+  const LS_KEY = "turismo_chile_visitados_v1";
+
   let map;
+
+  /* ---------- Pasaporte: lugares visitados (localStorage) ---------- */
+  function cargarVisitados() {
+    try {
+      const raw = localStorage.getItem(LS_KEY);
+      if (raw) JSON.parse(raw).forEach((id) => state.visitados.add(id));
+    } catch (e) {
+      /* localStorage no disponible: se ignora */
+    }
+  }
+  function guardarVisitados() {
+    try {
+      localStorage.setItem(LS_KEY, JSON.stringify([...state.visitados]));
+    } catch (e) {
+      /* se ignora */
+    }
+  }
+  function esVisitado(id) {
+    return state.visitados.has(id);
+  }
+  function toggleVisitado(id) {
+    if (state.visitados.has(id)) state.visitados.delete(id);
+    else state.visitados.add(id);
+    guardarVisitados();
+  }
+  function refrescarTodo() {
+    renderMarkers();
+    render();
+  }
 
   /* ---------- Inicialización ---------- */
   init();
@@ -34,7 +67,9 @@
       return;
     }
 
+    cargarVisitados();
     renderFiltros();
+    renderEstadoFilter();
     renderMarkers();
     render();
     wireEvents();
@@ -100,11 +135,37 @@
     });
   }
 
+  /* ---------- Filtro por estado (pasaporte) ---------- */
+  function renderEstadoFilter() {
+    const cont = document.getElementById("estadoFilter");
+    if (!cont) return;
+    const opciones = [
+      ["todos", "Todos"],
+      ["pendientes", "Pendientes"],
+      ["visitados", "Visitados"],
+    ];
+    cont.innerHTML = "";
+    opciones.forEach(([clave, etiqueta]) => {
+      const b = document.createElement("button");
+      b.className = "estado-chip";
+      b.setAttribute("aria-pressed", state.filtroEstado === clave ? "true" : "false");
+      b.textContent = etiqueta;
+      b.addEventListener("click", () => {
+        state.filtroEstado = clave;
+        renderEstadoFilter();
+        refrescarTodo();
+      });
+      cont.appendChild(b);
+    });
+  }
+
   /* ---------- Filtrado ---------- */
   function lugaresFiltrados() {
     const t = state.filtroTexto;
     return state.lugares.filter((l) => {
       if (!state.tiposActivos.has(l.tipo)) return false;
+      if (state.filtroEstado === "visitados" && !esVisitado(l.id)) return false;
+      if (state.filtroEstado === "pendientes" && esVisitado(l.id)) return false;
       if (!t) return true;
       const pueblos = (l.pueblos_cercanos || []).map((p) => p.nombre).join(" ");
       const heno = normaliza([l.nombre, l.region, l.descripcion, pueblos].join(" "));
@@ -121,9 +182,17 @@
     const visibles = lugaresFiltrados();
     visibles.forEach((l) => {
       const color = (state.tipos[l.tipo] && state.tipos[l.tipo].color) || "#2e7d32";
+      const vis = esVisitado(l.id);
       const icon = L.divIcon({
         className: "",
-        html: '<div class="marker-pin" style="background:' + color + '"></div>',
+        html:
+          '<div class="marker-pin' +
+          (vis ? " marker-pin--visited" : "") +
+          '" style="background:' +
+          color +
+          '">' +
+          (vis ? '<span class="marker-check">✓</span>' : "") +
+          "</div>",
         iconSize: [22, 22],
         iconAnchor: [11, 22],
         popupAnchor: [0, -20],
@@ -163,13 +232,24 @@
       .sort((a, b) => a.nombre.localeCompare(b.nombre, "es"))
       .forEach((l) => {
         const color = (state.tipos[l.tipo] && state.tipos[l.tipo].color) || "#2e7d32";
+        const vis = esVisitado(l.id);
         const li = document.createElement("li");
-        li.className = "place-card" + (state.seleccionado === l.id ? " active" : "");
+        li.className =
+          "place-card" +
+          (state.seleccionado === l.id ? " active" : "") +
+          (vis ? " visitado" : "");
         li.style.borderLeftColor = color;
         li.innerHTML =
+          '<div class="place-card__top">' +
           '<p class="place-card__name">' +
           escapeHtml(l.nombre) +
           "</p>" +
+          '<button class="visit-btn' +
+          (vis ? " on" : "") +
+          '" title="' +
+          (vis ? "Marcado como visitado" : "Marcar como visitado") +
+          '" aria-label="Marcar como visitado">✓</button>' +
+          "</div>" +
           '<div class="place-card__meta">' +
           "<span>" +
           escapeHtml(l.region) +
@@ -196,6 +276,25 @@
           }
           abrirDetalle(l.id);
         });
+        const vb = li.querySelector(".visit-btn");
+        if (vb) {
+          vb.addEventListener("click", (e) => {
+            e.stopPropagation();
+            toggleVisitado(l.id);
+            if (state.filtroEstado === "todos") {
+              // actualización en el sitio: no reconstruye la lista (mantiene el scroll)
+              const on = esVisitado(l.id);
+              li.classList.toggle("visitado", on);
+              vb.classList.toggle("on", on);
+              vb.title = on ? "Marcado como visitado" : "Marcar como visitado";
+              renderMarkers();
+              renderProgress();
+            } else {
+              // con filtro Visitados/Pendientes el ítem puede salir de la vista
+              refrescarTodo();
+            }
+          });
+        }
         lista.appendChild(li);
       });
 
@@ -208,6 +307,58 @@
       (monumentos ? "<span>🗿 " + monumentos + " monumentos</span>" : "");
     document.getElementById("footerCount").textContent =
       visibles.length + " lugares mostrados";
+
+    renderProgress();
+  }
+
+  /* ---------- Barra de progreso (pasaporte) ---------- */
+  function renderProgress() {
+    const cont = document.getElementById("progress");
+    if (!cont) return;
+    const total = state.lugares.length;
+    const visitadosTotal = state.lugares.filter((l) => esVisitado(l.id)).length;
+    const pct = total ? Math.round((visitadosTotal / total) * 100) : 0;
+
+    const porTipo = (tipo) => {
+      const list = state.lugares.filter((l) => l.tipo === tipo);
+      const v = list.filter((l) => esVisitado(l.id)).length;
+      return v + "/" + list.length;
+    };
+
+    cont.innerHTML =
+      '<div class="progress__head">' +
+      '<span class="progress__title">🧭 Mi pasaporte</span>' +
+      '<span class="progress__count">' +
+      visitadosTotal +
+      " de " +
+      total +
+      " (" +
+      pct +
+      "%)" +
+      (visitadosTotal
+        ? ' · <button class="progress__reset" id="progressReset">reiniciar</button>'
+        : "") +
+      "</span>" +
+      "</div>" +
+      '<div class="progress__bar"><div class="progress__fill" style="width:' +
+      pct +
+      '%"></div></div>' +
+      '<div class="progress__types">' +
+      "<span>🌲 " + porTipo("parque_nacional") + " parques</span>" +
+      "<span>💧 " + porTipo("reserva_nacional") + " reservas</span>" +
+      "<span>🗿 " + porTipo("monumento_natural") + " monumentos</span>" +
+      "</div>";
+
+    const reset = document.getElementById("progressReset");
+    if (reset) {
+      reset.addEventListener("click", () => {
+        if (confirm("¿Borrar todos los lugares marcados como visitados?")) {
+          state.visitados.clear();
+          guardarVisitados();
+          refrescarTodo();
+        }
+      });
+    }
   }
 
   /* ---------- Panel de detalle ---------- */
@@ -277,6 +428,11 @@
       "</div>" +
       '<h2 class="detail__title">' + escapeHtml(l.nombre) + "</h2>" +
       '<div class="detail__region">📍 ' + escapeHtml(l.region) + "</div>" +
+      '<button id="visitToggle" class="visit-toggle' +
+      (esVisitado(l.id) ? " is-visited" : "") +
+      '">' +
+      (esVisitado(l.id) ? "✓ Visitado" : "+ Marcar como visitado") +
+      "</button>" +
       "</div>" +
       '<div class="detail__body">' +
       '<p class="detail__desc">' + escapeHtml(l.descripcion) + "</p>" +
@@ -316,6 +472,18 @@
     const detail = document.getElementById("detail");
     detail.hidden = false;
     detail.scrollTop = 0;
+
+    const vt = document.getElementById("visitToggle");
+    if (vt) {
+      vt.addEventListener("click", () => {
+        toggleVisitado(l.id);
+        const on = esVisitado(l.id);
+        vt.classList.toggle("is-visited", on);
+        vt.textContent = on ? "✓ Visitado" : "+ Marcar como visitado";
+        refrescarTodo(); // actualiza tarjetas, marcadores y progreso
+      });
+    }
+
     render(); // refresca "active" en la lista
   }
 
