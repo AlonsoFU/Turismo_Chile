@@ -1521,6 +1521,263 @@
       ],
       "entrada_pagada": true,
       "sitio_web": "https://www.conaf.cl/parques/reserva-nacional-los-huemules-de-niblinto/"
+    },
+    {
+      "id": "ralco",
+      "nombre": "Reserva Nacional Ralco",
+      "tipo": "reserva_nacional",
+      "region": "Biobío",
+      "coordenadas": [-38.0, -71.4],
+      "superficie_ha": 12421,
+      "creado": 1987,
+      "altitud_m": "700-2500",
+      "descripcion": "Bosques de araucaria y lenga en la cordillera del Alto Biobío, territorio pehuenche, cerca del volcán Callaqui y el embalse Ralco. Paisajes de montaña y ríos de origen glaciar.",
+      "evaluacion": { "puntaje": 4.2, "fuente": "Reseñas de visitantes", "mejor_epoca": "Diciembre a Marzo", "dificultad_acceso": "Alta (ripio)" },
+      "senderos": [
+        { "nombre": "Sendero Laguna El Barco", "distancia_km": 6, "duracion": "3 h", "dificultad": "Media", "tipo": "Ida y vuelta" }
+      ],
+      "actividades": ["Araucarias", "Trekking", "Cultura pehuenche"],
+      "pueblos_cercanos": [
+        { "nombre": "Ralco (Alto Biobío)", "distancia_km": 30, "tiempo_estimado": "50 min en auto", "tours_disponibles": false, "tours_estimados": 0, "descripcion": "Comuna pehuenche de acceso." },
+        { "nombre": "Los Ángeles", "distancia_km": 120, "tiempo_estimado": "2 h 30 min en auto", "tours_disponibles": true, "tours_estimados": 2, "descripcion": "Ciudad base de la región." }
+      ],
+      "entrada_pagada": true,
+      "sitio_web": "https://www.conaf.cl/parques/reserva-nacional-ralco/"
+    },
+    {
+      "id": "isla-mocha",
+      "nombre": "Reserva Nacional Isla Mocha",
+      "tipo": "reserva_nacional",
+      "region": "Biobío",
+      "coordenadas": [-38.35, -73.9],
+      "superficie_ha": 2368,
+      "creado": 1988,
+      "altitud_m": "0-390",
+      "descripcion": "Protege la mitad boscosa de la Isla Mocha, frente a la costa de Tirúa. Selva valdiviana costera y una gran colonia de fardela blanca. La isla inspiró la ballena de 'Moby Dick'.",
+      "evaluacion": { "puntaje": 4.4, "fuente": "Reseñas de visitantes", "mejor_epoca": "Diciembre a Marzo", "dificultad_acceso": "Alta (avioneta o lancha)" },
+      "senderos": [
+        { "nombre": "Sendero La Hería (travesía de la isla)", "distancia_km": 8, "duracion": "4 h", "dificultad": "Media", "tipo": "Travesía" }
+      ],
+      "actividades": ["Aves marinas", "Bosque nativo", "Playa", "Historia ballenera"],
+      "pueblos_cercanos": [
+        { "nombre": "Tirúa", "distancia_km": 35, "tiempo_estimado": "Avioneta 15 min / lancha", "tours_disponibles": true, "tours_estimados": 2, "descripcion": "Puerto continental de acceso a la isla." }
+      ],
+      "entrada_pagada": true,
+      "sitio_web": "https://www.conaf.cl/parques/reserva-nacional-isla-mocha/"
+    },
+    {
+      "id": "alto-biobio",
+      "nombre": "Reserva Nacional Alto Biobío",
+      "tipo": "reserva_nacional",
+      "region": "Biobío",
+      "coordenadas": [-38.35, -71.3],
+      "superficie_ha": 35000,
+      "creado": 1912,
+      "altitud_m": "1200-2800",
+      "descripcion": "Bosques de araucaria en la cordillera del Alto Biobío, cerca del volcán Lonquimay y el paso Pino Hachado. Territorio ancestral pehuenche con lagunas y estepa andina.",
+      "evaluacion": { "puntaje": 4.1, "fuente": "Reseñas de visitantes", "mejor_epoca": "Diciembre a Marzo", "dificultad_acceso": "Alta (remoto, ripio)" },
+      "senderos": [
+        { "nombre": "Sendero de las araucarias", "distancia_km": 5, "duracion": "2 h 30 min", "dificultad": "Media", "tipo": "Ida y vuelta" }
+      ],
+      "actividades": ["Araucarias", "Trekking", "Cultura pehuenche"],
+      "pueblos_cercanos": [
+        { "nombre": "Lonquimay", "distancia_km": 40, "tiempo_estimado": "1 h en auto", "tours_disponibles": false, "tours_estimados": 0, "descripcion": "Pueblo cordillerano de acceso." }
+      ],
+      "entrada_pagada": true,
+      "sitio_web": "https://www.conaf.cl/parques/reserva-nacional-alto-biobio/"
+    },
+    {
+      "id": "malleco",
+      "nombre": "Reserva Nacional Malleco",
+      "tipo": "reserva_nacional",
+      "region": "Araucanía",
+      "coordenadas": [-37.85, -71.9],
+      "superficie_ha": 16625,
+      "creado": 1907,
+      "altitud_m": "600-1800",
+      "descripcion": "La primera área silvestre protegida de Chile y de Sudamérica (1907). Bosques de araucaria, roble y coigüe en la cordillera de Nahuelbuta interior, cerca de Collipulli, con el Salto Malleco.",
+      "evaluacion": { "puntaje": 4.3, "fuente": "Reseñas de visitantes", "mejor_epoca": "Diciembre a Marzo", "dificultad_acceso": "Media" },
+      "senderos": [
+        { "nombre": "Sendero Salto Malleco", "distancia_km": 3, "duracion": "1 h 30 min", "dificultad": "Media", "tipo": "Ida y vuelta" }
+      ],
+      "actividades": ["Historia de la conservación", "Araucarias", "Saltos de agua", "Trekking"],
+      "pueblos_cercanos": [
+        { "nombre": "Collipulli", "distancia_km": 35, "tiempo_estimado": "1 h en auto", "tours_disponibles": false, "tours_estimados": 0, "descripcion": "Ciudad de acceso a la reserva." }
+      ],
+      "entrada_pagada": true,
+      "sitio_web": "https://www.conaf.cl/parques/reserva-nacional-malleco/"
+    },
+    {
+      "id": "nalcas",
+      "nombre": "Reserva Nacional Nalcas",
+      "tipo": "reserva_nacional",
+      "region": "Araucanía",
+      "coordenadas": [-38.4, -71.5],
+      "superficie_ha": 13775,
+      "creado": 1967,
+      "altitud_m": "1000-2865",
+      "descripcion": "Contigua a Malalcahuello, a los pies del volcán Lonquimay. Paisajes volcánicos del cráter Navidad, araucarias y estepa de altura. Popular para ciclismo de montaña y trekking.",
+      "evaluacion": { "puntaje": 4.3, "fuente": "Reseñas de visitantes", "mejor_epoca": "Diciembre a Marzo", "dificultad_acceso": "Media" },
+      "senderos": [
+        { "nombre": "Sendero Piedra Santa", "distancia_km": 7, "duracion": "3 h", "dificultad": "Media", "tipo": "Ida y vuelta" }
+      ],
+      "actividades": ["Trekking", "Ciclismo de montaña", "Araucarias", "Volcanismo"],
+      "pueblos_cercanos": [
+        { "nombre": "Malalcahuello", "distancia_km": 10, "tiempo_estimado": "15 min en auto", "tours_disponibles": true, "tours_estimados": 3, "descripcion": "Pueblo turístico compartido con la reserva Malalcahuello." },
+        { "nombre": "Lonquimay", "distancia_km": 25, "tiempo_estimado": "35 min en auto", "tours_disponibles": false, "tours_estimados": 0, "descripcion": "Acceso alternativo por el este." }
+      ],
+      "entrada_pagada": true,
+      "sitio_web": "https://www.conaf.cl/parques/reserva-nacional-nalcas/"
+    },
+    {
+      "id": "villarrica-reserva",
+      "nombre": "Reserva Nacional Villarrica",
+      "tipo": "reserva_nacional",
+      "region": "Araucanía",
+      "coordenadas": [-39.5, -71.8],
+      "superficie_ha": 61000,
+      "creado": 1912,
+      "altitud_m": "600-2800",
+      "descripcion": "Complementa al Parque Villarrica protegiendo bosques de araucaria y coigüe entre los volcanes Villarrica, Quetrupillán y Lanín. Termas, lagos y senderos cerca de Coñaripe y Lican Ray.",
+      "evaluacion": { "puntaje": 4.3, "fuente": "Reseñas de visitantes", "mejor_epoca": "Noviembre a Abril", "dificultad_acceso": "Media" },
+      "senderos": [
+        { "nombre": "Sendero Los Nevados", "distancia_km": 8, "duracion": "4 h", "dificultad": "Media-Alta", "tipo": "Ida y vuelta" }
+      ],
+      "actividades": ["Trekking", "Termas", "Araucarias"],
+      "pueblos_cercanos": [
+        { "nombre": "Coñaripe", "distancia_km": 20, "tiempo_estimado": "30 min en auto", "tours_disponibles": true, "tours_estimados": 4, "descripcion": "Pueblo termal de acceso por el sur." },
+        { "nombre": "Lican Ray", "distancia_km": 30, "tiempo_estimado": "40 min en auto", "tours_disponibles": true, "tours_estimados": 3, "descripcion": "Balneario del lago Calafquén." }
+      ],
+      "entrada_pagada": true,
+      "sitio_web": "https://www.conaf.cl/parques/reserva-nacional-villarrica/"
+    },
+    {
+      "id": "china-muerta",
+      "nombre": "Reserva Nacional China Muerta",
+      "tipo": "reserva_nacional",
+      "region": "Araucanía",
+      "coordenadas": [-38.6, -71.5],
+      "superficie_ha": 12825,
+      "creado": 1968,
+      "altitud_m": "1000-2000",
+      "descripcion": "Bosques de araucaria milenaria contiguos al Parque Conguillío, junto al volcán Llaima. Parte fue afectada por incendios en 2015 y hoy es un símbolo de la recuperación del bosque.",
+      "evaluacion": { "puntaje": 4.1, "fuente": "Reseñas de visitantes", "mejor_epoca": "Diciembre a Marzo", "dificultad_acceso": "Media (ripio)" },
+      "senderos": [
+        { "nombre": "Sendero de las Araucarias", "distancia_km": 5, "duracion": "2 h 30 min", "dificultad": "Media", "tipo": "Ida y vuelta" }
+      ],
+      "actividades": ["Araucarias", "Trekking", "Naturaleza"],
+      "pueblos_cercanos": [
+        { "nombre": "Melipeuco", "distancia_km": 25, "tiempo_estimado": "40 min en auto", "tours_disponibles": true, "tours_estimados": 2, "descripcion": "Acceso compartido con Conguillío." }
+      ],
+      "entrada_pagada": true,
+      "sitio_web": "https://www.conaf.cl/parques/reserva-nacional-china-muerta/"
+    },
+    {
+      "id": "mocho-choshuenco",
+      "nombre": "Reserva Nacional Mocho-Choshuenco",
+      "tipo": "reserva_nacional",
+      "region": "Los Ríos",
+      "coordenadas": [-39.9167, -72.0333],
+      "superficie_ha": 7536,
+      "creado": 1968,
+      "altitud_m": "600-2422",
+      "descripcion": "Rodea el volcán Mocho-Choshuenco y su glaciar, con bosques de coigüe, lenga y araucaria. Cuenta con un pequeño centro de ski y rutas de ascenso al volcán cerca de Neltume.",
+      "evaluacion": { "puntaje": 4.4, "fuente": "Reseñas de visitantes", "mejor_epoca": "Dic-Mar (trekking); Jul-Sep (ski)", "dificultad_acceso": "Media" },
+      "senderos": [
+        { "nombre": "Ascenso al Volcán Mocho", "distancia_km": 14, "duracion": "7 h", "dificultad": "Alta", "tipo": "Ida y vuelta" },
+        { "nombre": "Sendero Cráter", "distancia_km": 6, "duracion": "3 h", "dificultad": "Media", "tipo": "Ida y vuelta" }
+      ],
+      "actividades": ["Ascenso a volcán", "Ski", "Trekking"],
+      "pueblos_cercanos": [
+        { "nombre": "Choshuenco", "distancia_km": 20, "tiempo_estimado": "40 min en auto", "tours_disponibles": true, "tours_estimados": 2, "descripcion": "Pueblo a orillas del lago Panguipulli." },
+        { "nombre": "Neltume", "distancia_km": 25, "tiempo_estimado": "45 min en auto", "tours_disponibles": true, "tours_estimados": 2, "descripcion": "Base para el ascenso al volcán." }
+      ],
+      "entrada_pagada": true,
+      "sitio_web": "https://www.conaf.cl/parques/reserva-nacional-mocho-choshuenco/"
+    },
+    {
+      "id": "valdivia-reserva",
+      "nombre": "Reserva Nacional Valdivia",
+      "tipo": "reserva_nacional",
+      "region": "Los Ríos",
+      "coordenadas": [-40.0, -73.3333],
+      "superficie_ha": 9727,
+      "creado": 1929,
+      "altitud_m": "0-1000",
+      "descripcion": "Selva valdiviana densa en la cordillera de la costa, contigua al Parque Alerce Costero. Alta pluviosidad, alerces, olivillo costero y gran diversidad de anfibios y aves.",
+      "evaluacion": { "puntaje": 4.2, "fuente": "Reseñas de visitantes", "mejor_epoca": "Diciembre a Marzo", "dificultad_acceso": "Media" },
+      "senderos": [
+        { "nombre": "Sendero Selva Valdiviana", "distancia_km": 5, "duracion": "2 h 30 min", "dificultad": "Media", "tipo": "Ida y vuelta" }
+      ],
+      "actividades": ["Selva valdiviana", "Trekking", "Observación de aves"],
+      "pueblos_cercanos": [
+        { "nombre": "Corral", "distancia_km": 40, "tiempo_estimado": "1 h en auto", "tours_disponibles": false, "tours_estimados": 0, "descripcion": "Acceso por la costa vía Chaihuín." },
+        { "nombre": "Valdivia", "distancia_km": 70, "tiempo_estimado": "1 h 45 min en auto + balsa", "tours_disponibles": true, "tours_estimados": 2, "descripcion": "Ciudad base de la región." }
+      ],
+      "entrada_pagada": true,
+      "sitio_web": "https://www.conaf.cl/parques/reserva-nacional-valdivia/"
+    },
+    {
+      "id": "llanquihue",
+      "nombre": "Reserva Nacional Llanquihue",
+      "tipo": "reserva_nacional",
+      "region": "Los Lagos",
+      "coordenadas": [-41.15, -72.4667],
+      "superficie_ha": 33972,
+      "creado": 1912,
+      "altitud_m": "200-1500",
+      "descripcion": "Bosques de alerce y coigüe entre los volcanes Osorno y Calbuco, al este del lago Llanquihue. Ríos, cascadas y senderos cercanos a Las Cascadas y Ensenada.",
+      "evaluacion": { "puntaje": 4.2, "fuente": "Reseñas de visitantes", "mejor_epoca": "Diciembre a Marzo", "dificultad_acceso": "Media" },
+      "senderos": [
+        { "nombre": "Sendero Río Blanco", "distancia_km": 6, "duracion": "3 h", "dificultad": "Media", "tipo": "Ida y vuelta" }
+      ],
+      "actividades": ["Trekking", "Cascadas", "Bosque nativo"],
+      "pueblos_cercanos": [
+        { "nombre": "Las Cascadas", "distancia_km": 15, "tiempo_estimado": "25 min en auto", "tours_disponibles": false, "tours_estimados": 0, "descripcion": "Pueblo a orillas del lago Llanquihue." },
+        { "nombre": "Puerto Varas", "distancia_km": 55, "tiempo_estimado": "1 h 10 min en auto", "tours_disponibles": true, "tours_estimados": 2, "descripcion": "Centro turístico base." }
+      ],
+      "entrada_pagada": true,
+      "sitio_web": "https://www.conaf.cl/parques/reserva-nacional-llanquihue/"
+    },
+    {
+      "id": "futaleufu",
+      "nombre": "Reserva Nacional Futaleufú",
+      "tipo": "reserva_nacional",
+      "region": "Los Lagos",
+      "coordenadas": [-43.3, -71.85],
+      "superficie_ha": 12065,
+      "creado": 1998,
+      "altitud_m": "300-1800",
+      "descripcion": "Montañas, bosques y lagunas cerca del pueblo de Futaleufú, en la Patagonia. Refugio de huemul y hábitat de bosque siempreverde, junto a uno de los ríos de rafting más famosos del mundo.",
+      "evaluacion": { "puntaje": 4.4, "fuente": "Reseñas de visitantes", "mejor_epoca": "Diciembre a Marzo", "dificultad_acceso": "Media" },
+      "senderos": [
+        { "nombre": "Sendero Las Lagunas", "distancia_km": 8, "duracion": "4 h", "dificultad": "Media-Alta", "tipo": "Ida y vuelta" }
+      ],
+      "actividades": ["Trekking", "Rafting (río Futaleufú)", "Avistamiento de huemul"],
+      "pueblos_cercanos": [
+        { "nombre": "Futaleufú", "distancia_km": 12, "tiempo_estimado": "20 min en auto", "tours_disponibles": true, "tours_estimados": 6, "descripcion": "Capital del rafting; base de todos los servicios." }
+      ],
+      "entrada_pagada": true,
+      "sitio_web": "https://www.conaf.cl/parques/reserva-nacional-futaleufu/"
+    },
+    {
+      "id": "lago-palena",
+      "nombre": "Reserva Nacional Lago Palena",
+      "tipo": "reserva_nacional",
+      "region": "Los Lagos",
+      "coordenadas": [-43.65, -71.65],
+      "superficie_ha": 41380,
+      "creado": 1965,
+      "altitud_m": "300-2000",
+      "descripcion": "Reserva remota en torno al lago Palena, en la cordillera fronteriza de la Patagonia. Bosque siempreverde, lengas y ríos prístinos; de muy escasa afluencia de visitantes.",
+      "evaluacion": { "puntaje": 4.2, "fuente": "Reseñas de visitantes", "mejor_epoca": "Diciembre a Febrero", "dificultad_acceso": "Muy alta (remoto)" },
+      "senderos": [],
+      "actividades": ["Naturaleza prístina", "Pesca", "Fotografía"],
+      "pueblos_cercanos": [
+        { "nombre": "Palena", "distancia_km": 45, "tiempo_estimado": "1 h 30 min en auto (ripio)", "tours_disponibles": false, "tours_estimados": 0, "descripcion": "Pueblo cordillerano más cercano." }
+      ],
+      "entrada_pagada": false,
+      "sitio_web": "https://www.conaf.cl/parques/reserva-nacional-lago-palena/"
     }
   ]
 }
