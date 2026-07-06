@@ -1370,6 +1370,157 @@
       ],
       "entrada_pagada": true,
       "sitio_web": "https://www.conaf.cl/parques/reserva-nacional-rio-blanco/"
+    },
+    {
+      "id": "robleria-cobre-loncha",
+      "nombre": "Reserva Nacional Roblería del Cobre de Loncha",
+      "tipo": "reserva_nacional",
+      "region": "Metropolitana",
+      "coordenadas": [-34.05, -71.15],
+      "superficie_ha": 5870,
+      "creado": 1996,
+      "altitud_m": "400-2000",
+      "descripcion": "Protege bosques de roble de Santiago (Nothofagus macrocarpa) y palma chilena en la comuna de Alhué, al sur de la Región Metropolitana. Administrada en conjunto con la minera El Teniente; acceso regulado.",
+      "evaluacion": { "puntaje": 4.1, "fuente": "Reseñas de visitantes", "mejor_epoca": "Septiembre a Abril", "dificultad_acceso": "Media (acceso regulado)" },
+      "senderos": [
+        { "nombre": "Sendero del Robledal", "distancia_km": 4, "duracion": "2 h", "dificultad": "Media", "tipo": "Ida y vuelta" }
+      ],
+      "actividades": ["Bosque de roble", "Palma chilena", "Observación de aves"],
+      "pueblos_cercanos": [
+        { "nombre": "Alhué", "distancia_km": 20, "tiempo_estimado": "35 min en auto", "tours_disponibles": false, "tours_estimados": 0, "descripcion": "Pueblo de acceso; visita coordinada con CONAF." },
+        { "nombre": "Melipilla", "distancia_km": 55, "tiempo_estimado": "1 h en auto", "tours_disponibles": false, "tours_estimados": 0, "descripcion": "Ciudad base más cercana." }
+      ],
+      "entrada_pagada": true,
+      "sitio_web": "https://www.conaf.cl/parques/reserva-nacional-robleria-del-cobre-de-loncha/"
+    },
+    {
+      "id": "laguna-torca",
+      "nombre": "Reserva Nacional Laguna Torca",
+      "tipo": "reserva_nacional",
+      "region": "Maule",
+      "coordenadas": [-34.8333, -72.05],
+      "superficie_ha": 604,
+      "creado": 1985,
+      "altitud_m": "0-20",
+      "descripcion": "Humedal costero junto al Lago Vichuquén, refugio de cisnes de cuello negro y más de 80 especies de aves. Rodeada de bosques de pino, cercana al balneario de Llico.",
+      "evaluacion": { "puntaje": 4.2, "fuente": "Reseñas de visitantes", "mejor_epoca": "Septiembre a Marzo", "dificultad_acceso": "Baja" },
+      "senderos": [
+        { "nombre": "Mirador de la laguna", "distancia_km": 2, "duracion": "45 min", "dificultad": "Baja", "tipo": "Ida y vuelta" }
+      ],
+      "actividades": ["Observación de aves", "Cisnes de cuello negro", "Fotografía"],
+      "pueblos_cercanos": [
+        { "nombre": "Llico", "distancia_km": 3, "tiempo_estimado": "5 min", "tours_disponibles": false, "tours_estimados": 0, "descripcion": "Balneario junto a la reserva." },
+        { "nombre": "Vichuquén", "distancia_km": 20, "tiempo_estimado": "30 min en auto", "tours_disponibles": true, "tours_estimados": 2, "descripcion": "Pueblo turístico del lago." }
+      ],
+      "entrada_pagada": true,
+      "sitio_web": "https://www.conaf.cl/parques/reserva-nacional-laguna-torca/"
+    },
+    {
+      "id": "federico-albert",
+      "nombre": "Reserva Nacional Federico Albert",
+      "tipo": "reserva_nacional",
+      "region": "Maule",
+      "coordenadas": [-35.7333, -72.5333],
+      "superficie_ha": 145,
+      "creado": 1982,
+      "altitud_m": "0-40",
+      "descripcion": "Bosque plantado a inicios del siglo XX para frenar el avance de las dunas sobre Chanco, obra del naturalista Federico Albert. Hoy un parque forestal costero con senderos sombreados.",
+      "evaluacion": { "puntaje": 4.1, "fuente": "Reseñas de visitantes", "mejor_epoca": "Octubre a Abril", "dificultad_acceso": "Baja" },
+      "senderos": [
+        { "nombre": "Sendero del Bosque de Chanco", "distancia_km": 2, "duracion": "1 h", "dificultad": "Baja", "tipo": "Circuito" }
+      ],
+      "actividades": ["Senderismo", "Playa cercana", "Camping"],
+      "pueblos_cercanos": [
+        { "nombre": "Chanco", "distancia_km": 2, "tiempo_estimado": "5 min", "tours_disponibles": false, "tours_estimados": 0, "descripcion": "Pueblo junto a la reserva." },
+        { "nombre": "Cauquenes", "distancia_km": 55, "tiempo_estimado": "1 h en auto", "tours_disponibles": false, "tours_estimados": 0, "descripcion": "Ciudad base de la zona." }
+      ],
+      "entrada_pagada": true,
+      "sitio_web": "https://www.conaf.cl/parques/reserva-nacional-federico-albert/"
+    },
+    {
+      "id": "los-ruiles",
+      "nombre": "Reserva Nacional Los Ruiles",
+      "tipo": "reserva_nacional",
+      "region": "Maule",
+      "coordenadas": [-35.8333, -72.4167],
+      "superficie_ha": 45,
+      "creado": 1982,
+      "altitud_m": "150-400",
+      "descripcion": "Diminuta reserva que protege al ruil (Nothofagus alessandrii), árbol endémico en peligro crítico de extinción, en la cordillera de la costa del Maule. Un tesoro botánico poco conocido.",
+      "evaluacion": { "puntaje": 4.0, "fuente": "Reseñas de visitantes", "mejor_epoca": "Octubre a Abril", "dificultad_acceso": "Media" },
+      "senderos": [
+        { "nombre": "Sendero interpretativo del Ruil", "distancia_km": 1.5, "duracion": "45 min", "dificultad": "Baja", "tipo": "Circuito" }
+      ],
+      "actividades": ["Botánica", "Senderismo interpretativo", "Conservación"],
+      "pueblos_cercanos": [
+        { "nombre": "Empedrado", "distancia_km": 15, "tiempo_estimado": "25 min en auto", "tours_disponibles": false, "tours_estimados": 0, "descripcion": "Pueblo de acceso." },
+        { "nombre": "Cauquenes", "distancia_km": 40, "tiempo_estimado": "50 min en auto", "tours_disponibles": false, "tours_estimados": 0, "descripcion": "Ciudad base más cercana." }
+      ],
+      "entrada_pagada": true,
+      "sitio_web": "https://www.conaf.cl/parques/reserva-nacional-los-ruiles/"
+    },
+    {
+      "id": "los-bellotos-del-melado",
+      "nombre": "Reserva Nacional Los Bellotos del Melado",
+      "tipo": "reserva_nacional",
+      "region": "Maule",
+      "coordenadas": [-35.8, -71.15],
+      "superficie_ha": 417,
+      "creado": 1995,
+      "altitud_m": "600-1200",
+      "descripcion": "Protege uno de los bosques de belloto del sur (Beilschmiedia berteroana) más australes, en la precordillera del Maule cerca del río Melado. Especie vulnerable y de distribución muy restringida.",
+      "evaluacion": { "puntaje": 4.0, "fuente": "Reseñas de visitantes", "mejor_epoca": "Noviembre a Abril", "dificultad_acceso": "Media (ripio)" },
+      "senderos": [
+        { "nombre": "Sendero del Bellotar", "distancia_km": 3, "duracion": "1 h 30 min", "dificultad": "Media", "tipo": "Ida y vuelta" }
+      ],
+      "actividades": ["Botánica", "Senderismo", "Conservación"],
+      "pueblos_cercanos": [
+        { "nombre": "San Clemente", "distancia_km": 60, "tiempo_estimado": "1 h 30 min en auto", "tours_disponibles": false, "tours_estimados": 0, "descripcion": "Comuna de acceso hacia la precordillera." },
+        { "nombre": "Linares", "distancia_km": 70, "tiempo_estimado": "1 h 40 min en auto", "tours_disponibles": false, "tours_estimados": 0, "descripcion": "Ciudad base." }
+      ],
+      "entrada_pagada": true,
+      "sitio_web": "https://www.conaf.cl/parques/reserva-nacional-los-bellotos-del-melado/"
+    },
+    {
+      "id": "nuble",
+      "nombre": "Reserva Nacional Ñuble",
+      "tipo": "reserva_nacional",
+      "region": "Ñuble",
+      "coordenadas": [-36.75, -71.3],
+      "superficie_ha": 55948,
+      "creado": 1978,
+      "altitud_m": "800-3200",
+      "descripcion": "Extensa reserva andina cercana a los Nevados de Chillán, clave para la conservación del huemul del sur. Bosques de roble, coigüe y araucaria, ríos y valles de montaña.",
+      "evaluacion": { "puntaje": 4.3, "fuente": "Reseñas de visitantes", "mejor_epoca": "Diciembre a Marzo", "dificultad_acceso": "Alta (ripio, remoto)" },
+      "senderos": [
+        { "nombre": "Sendero Valle del río Ñuble", "distancia_km": 10, "duracion": "5 h", "dificultad": "Alta", "tipo": "Ida y vuelta" }
+      ],
+      "actividades": ["Avistamiento de huemul", "Trekking", "Naturaleza remota"],
+      "pueblos_cercanos": [
+        { "nombre": "San Fabián de Alico", "distancia_km": 40, "tiempo_estimado": "1 h 30 min en auto", "tours_disponibles": false, "tours_estimados": 0, "descripcion": "Puerta de entrada por el valle del Ñuble." },
+        { "nombre": "Chillán", "distancia_km": 110, "tiempo_estimado": "2 h 30 min en auto", "tours_disponibles": true, "tours_estimados": 2, "descripcion": "Capital regional." }
+      ],
+      "entrada_pagada": true,
+      "sitio_web": "https://www.conaf.cl/parques/reserva-nacional-nuble/"
+    },
+    {
+      "id": "huemules-de-niblinto",
+      "nombre": "Reserva Nacional Los Huemules de Niblinto",
+      "tipo": "reserva_nacional",
+      "region": "Ñuble",
+      "coordenadas": [-36.85, -71.4],
+      "superficie_ha": 2021,
+      "creado": 1999,
+      "altitud_m": "900-2400",
+      "descripcion": "Creada específicamente para proteger a una de las poblaciones más septentrionales de huemul. Bosque andino de robles y coigües en la cuenca del río Niblinto, cerca de Chillán.",
+      "evaluacion": { "puntaje": 4.1, "fuente": "Reseñas de visitantes", "mejor_epoca": "Diciembre a Marzo", "dificultad_acceso": "Alta (acceso restringido, conservación)" },
+      "senderos": [],
+      "actividades": ["Conservación del huemul", "Investigación"],
+      "pueblos_cercanos": [
+        { "nombre": "Chillán", "distancia_km": 80, "tiempo_estimado": "2 h en auto", "tours_disponibles": false, "tours_estimados": 0, "descripcion": "Ciudad base; acceso restringido por ser zona de conservación." }
+      ],
+      "entrada_pagada": true,
+      "sitio_web": "https://www.conaf.cl/parques/reserva-nacional-los-huemules-de-niblinto/"
     }
   ]
 }
