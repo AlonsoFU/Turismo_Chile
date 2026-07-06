@@ -1198,6 +1198,178 @@
       ],
       "entrada_pagada": true,
       "sitio_web": "https://www.conaf.cl/parques/reserva-nacional-coyhaique/"
+    },
+    {
+      "id": "las-vicunas",
+      "nombre": "Reserva Nacional Las Vicuñas",
+      "tipo": "reserva_nacional",
+      "region": "Arica y Parinacota",
+      "coordenadas": [-18.75, -69.2],
+      "superficie_ha": 209131,
+      "creado": 1983,
+      "altitud_m": "4300-5800",
+      "descripcion": "Altiplano contiguo al Parque Lauca, con grandes poblaciones de vicuñas, bofedales y volcanes. Colinda con el Salar de Surire. Parte de la Reserva de la Biosfera Lauca.",
+      "evaluacion": { "puntaje": 4.4, "fuente": "Reseñas de visitantes", "mejor_epoca": "Abril a Noviembre", "dificultad_acceso": "Alta (altura, ripio)" },
+      "senderos": [
+        { "nombre": "Mirador de bofedales", "distancia_km": 2, "duracion": "45 min", "dificultad": "Baja", "tipo": "Ida y vuelta" }
+      ],
+      "actividades": ["Avistamiento de vicuñas", "Fotografía", "Cultura aymara"],
+      "pueblos_cercanos": [
+        { "nombre": "Putre", "distancia_km": 70, "tiempo_estimado": "1 h 30 min en auto", "tours_disponibles": true, "tours_estimados": 4, "descripcion": "Base de aclimatación; se visita junto con Lauca y Surire." },
+        { "nombre": "Arica", "distancia_km": 190, "tiempo_estimado": "3 h 30 min en auto", "tours_disponibles": true, "tours_estimados": 6, "descripcion": "Tours de altiplano de 2 días." }
+      ],
+      "entrada_pagada": false,
+      "sitio_web": "https://www.conaf.cl/parques/reserva-nacional-las-vicunas/"
+    },
+    {
+      "id": "pampa-del-tamarugal",
+      "nombre": "Reserva Nacional Pampa del Tamarugal",
+      "tipo": "reserva_nacional",
+      "region": "Tarapacá",
+      "coordenadas": [-20.5, -69.65],
+      "superficie_ha": 100650,
+      "creado": 1987,
+      "altitud_m": "900-1200",
+      "descripcion": "Extensos bosques de tamarugo, árbol capaz de vivir en el desierto absoluto. En su interior se encuentran los Geoglifos de Pintados, uno de los mayores conjuntos de arte rupestre del mundo.",
+      "evaluacion": { "puntaje": 4.3, "fuente": "Reseñas de visitantes", "mejor_epoca": "Todo el año (evitar mediodía de verano)", "dificultad_acceso": "Baja" },
+      "senderos": [
+        { "nombre": "Sendero Geoglifos de Pintados", "distancia_km": 3, "duracion": "1 h 30 min", "dificultad": "Baja", "tipo": "Circuito" }
+      ],
+      "actividades": ["Geoglifos", "Bosque de tamarugos", "Fotografía"],
+      "pueblos_cercanos": [
+        { "nombre": "Pozo Almonte", "distancia_km": 25, "tiempo_estimado": "25 min en auto", "tours_disponibles": true, "tours_estimados": 3, "descripcion": "Pueblo más cercano sobre la Ruta 5." },
+        { "nombre": "Iquique", "distancia_km": 75, "tiempo_estimado": "1 h en auto", "tours_disponibles": true, "tours_estimados": 5, "descripcion": "Ciudad base; se combina con Humberstone y La Tirana." }
+      ],
+      "entrada_pagada": true,
+      "sitio_web": "https://www.conaf.cl/parques/reserva-nacional-pampa-del-tamarugal/"
+    },
+    {
+      "id": "la-chimba",
+      "nombre": "Reserva Nacional La Chimba",
+      "tipo": "reserva_nacional",
+      "region": "Antofagasta",
+      "coordenadas": [-23.5167, -70.4],
+      "superficie_ha": 2583,
+      "creado": 1988,
+      "altitud_m": "300-1000",
+      "descripcion": "Oasis de niebla en el desierto costero al norte de Antofagasta, con flora endémica que sobrevive gracias a la camanchaca. Refugio de biodiversidad muy cercano a la ciudad.",
+      "evaluacion": { "puntaje": 4.0, "fuente": "Reseñas de visitantes", "mejor_epoca": "Todo el año", "dificultad_acceso": "Media" },
+      "senderos": [
+        { "nombre": "Sendero Oasis de Niebla", "distancia_km": 4, "duracion": "2 h", "dificultad": "Media", "tipo": "Ida y vuelta" }
+      ],
+      "actividades": ["Oasis de niebla", "Flora endémica", "Senderismo"],
+      "pueblos_cercanos": [
+        { "nombre": "Antofagasta", "distancia_km": 15, "tiempo_estimado": "25 min en auto", "tours_disponibles": false, "tours_estimados": 0, "descripcion": "La reserva está a las afueras de la ciudad." }
+      ],
+      "entrada_pagada": true,
+      "sitio_web": "https://www.conaf.cl/parques/reserva-nacional-la-chimba/"
+    },
+    {
+      "id": "las-chinchillas",
+      "nombre": "Reserva Nacional Las Chinchillas",
+      "tipo": "reserva_nacional",
+      "region": "Coquimbo",
+      "coordenadas": [-31.5, -71.0667],
+      "superficie_ha": 4229,
+      "creado": 1983,
+      "altitud_m": "400-820",
+      "descripcion": "Creada para proteger a la chinchilla de cola corta, roedor en peligro crítico de extinción. Matorral y bosque esclerófilo cerca de Illapel, con un centro de interpretación y observación nocturna.",
+      "evaluacion": { "puntaje": 4.2, "fuente": "Reseñas de visitantes", "mejor_epoca": "Septiembre a Abril", "dificultad_acceso": "Media" },
+      "senderos": [
+        { "nombre": "Sendero Quebrada El Durazno", "distancia_km": 3, "duracion": "1 h 30 min", "dificultad": "Media", "tipo": "Circuito" }
+      ],
+      "actividades": ["Avistamiento de chinchillas", "Educación ambiental", "Astroturismo"],
+      "pueblos_cercanos": [
+        { "nombre": "Illapel", "distancia_km": 15, "tiempo_estimado": "20 min en auto", "tours_disponibles": true, "tours_estimados": 2, "descripcion": "Ciudad base de la provincia del Choapa." }
+      ],
+      "entrada_pagada": true,
+      "sitio_web": "https://www.conaf.cl/parques/reserva-nacional-las-chinchillas/"
+    },
+    {
+      "id": "rio-los-molles",
+      "nombre": "Reserva Nacional Río Los Molles",
+      "tipo": "reserva_nacional",
+      "region": "Coquimbo",
+      "coordenadas": [-32.0333, -70.7833],
+      "superficie_ha": 179,
+      "creado": 1983,
+      "altitud_m": "1300-2000",
+      "descripcion": "Pequeña reserva precordillerana en la provincia del Choapa, con vegetación andina, aguas termales cercanas y paisajes de quebrada. Poco visitada y de carácter local.",
+      "evaluacion": { "puntaje": 3.9, "fuente": "Reseñas de visitantes", "mejor_epoca": "Octubre a Abril", "dificultad_acceso": "Media (ripio)" },
+      "senderos": [
+        { "nombre": "Sendero de la quebrada", "distancia_km": 2, "duracion": "1 h", "dificultad": "Media", "tipo": "Ida y vuelta" }
+      ],
+      "actividades": ["Senderismo", "Termas cercanas", "Naturaleza"],
+      "pueblos_cercanos": [
+        { "nombre": "Salamanca", "distancia_km": 40, "tiempo_estimado": "1 h en auto", "tours_disponibles": false, "tours_estimados": 0, "descripcion": "Pueblo más cercano en el valle del Choapa." }
+      ],
+      "entrada_pagada": true,
+      "sitio_web": "https://www.conaf.cl/parques/reserva-nacional-rio-los-molles/"
+    },
+    {
+      "id": "lago-penuelas",
+      "nombre": "Reserva Nacional Lago Peñuelas",
+      "tipo": "reserva_nacional",
+      "region": "Valparaíso",
+      "coordenadas": [-33.15, -71.5333],
+      "superficie_ha": 9260,
+      "creado": 1952,
+      "altitud_m": "360-550",
+      "descripcion": "Embalse rodeado de bosques de pino y plantaciones, entre Valparaíso y Santiago. Reserva de la Biosfera La Campana-Peñuelas, con abundante avifauna acuática y senderos accesibles.",
+      "evaluacion": { "puntaje": 4.1, "fuente": "Reseñas de visitantes", "mejor_epoca": "Septiembre a Abril", "dificultad_acceso": "Baja" },
+      "senderos": [
+        { "nombre": "Sendero del Bosque", "distancia_km": 4, "duracion": "1 h 30 min", "dificultad": "Baja", "tipo": "Circuito" }
+      ],
+      "actividades": ["Observación de aves", "Picnic", "Ciclismo", "Senderismo"],
+      "pueblos_cercanos": [
+        { "nombre": "Curauma", "distancia_km": 10, "tiempo_estimado": "15 min en auto", "tours_disponibles": false, "tours_estimados": 0, "descripcion": "Sector de acceso sobre la Ruta 68." },
+        { "nombre": "Valparaíso", "distancia_km": 30, "tiempo_estimado": "35 min en auto", "tours_disponibles": true, "tours_estimados": 2, "descripcion": "Ciudad base; escapada de día." }
+      ],
+      "entrada_pagada": true,
+      "sitio_web": "https://www.conaf.cl/parques/reserva-nacional-lago-penuelas/"
+    },
+    {
+      "id": "el-yali",
+      "nombre": "Reserva Nacional El Yali",
+      "tipo": "reserva_nacional",
+      "region": "Valparaíso",
+      "coordenadas": [-33.75, -71.6833],
+      "superficie_ha": 520,
+      "creado": 1996,
+      "altitud_m": "0-30",
+      "descripcion": "Humedal costero declarado sitio Ramsar, uno de los más importantes de Chile central. Lagunas y salinas que albergan más de 130 especies de aves, incluidos flamencos y cisnes de cuello negro.",
+      "evaluacion": { "puntaje": 4.3, "fuente": "Reseñas de visitantes", "mejor_epoca": "Septiembre a Marzo", "dificultad_acceso": "Media" },
+      "senderos": [
+        { "nombre": "Sendero de las Lagunas", "distancia_km": 3, "duracion": "1 h 30 min", "dificultad": "Baja", "tipo": "Ida y vuelta" }
+      ],
+      "actividades": ["Observación de aves", "Flamencos", "Fotografía"],
+      "pueblos_cercanos": [
+        { "nombre": "Santo Domingo", "distancia_km": 25, "tiempo_estimado": "30 min en auto", "tours_disponibles": false, "tours_estimados": 0, "descripcion": "Balneario más cercano al humedal." },
+        { "nombre": "San Antonio", "distancia_km": 45, "tiempo_estimado": "50 min en auto", "tours_disponibles": true, "tours_estimados": 2, "descripcion": "Puerto y base de servicios." }
+      ],
+      "entrada_pagada": true,
+      "sitio_web": "https://www.conaf.cl/parques/reserva-nacional-el-yali/"
+    },
+    {
+      "id": "rio-blanco",
+      "nombre": "Reserva Nacional Río Blanco",
+      "tipo": "reserva_nacional",
+      "region": "Valparaíso",
+      "coordenadas": [-32.9167, -70.3],
+      "superficie_ha": 10175,
+      "creado": 1932,
+      "altitud_m": "1400-4000",
+      "descripcion": "Una de las reservas más antiguas de Chile, en la cordillera cercana a Los Andes. Bosque andino, un criadero de truchas histórico y hábitat de cóndores y guanacos en la alta montaña.",
+      "evaluacion": { "puntaje": 4.2, "fuente": "Reseñas de visitantes", "mejor_epoca": "Noviembre a Abril", "dificultad_acceso": "Media" },
+      "senderos": [
+        { "nombre": "Sendero Piscicultura - Bosque Andino", "distancia_km": 6, "duracion": "3 h", "dificultad": "Media", "tipo": "Ida y vuelta" }
+      ],
+      "actividades": ["Senderismo", "Avistamiento de cóndores", "Pesca (piscicultura)"],
+      "pueblos_cercanos": [
+        { "nombre": "Los Andes", "distancia_km": 35, "tiempo_estimado": "45 min en auto", "tours_disponibles": false, "tours_estimados": 0, "descripcion": "Ciudad de acceso por la ruta internacional." }
+      ],
+      "entrada_pagada": true,
+      "sitio_web": "https://www.conaf.cl/parques/reserva-nacional-rio-blanco/"
     }
   ]
 }
