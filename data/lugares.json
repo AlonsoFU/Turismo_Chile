@@ -1778,6 +1778,255 @@
       ],
       "entrada_pagada": false,
       "sitio_web": "https://www.conaf.cl/parques/reserva-nacional-lago-palena/"
+    },
+    {
+      "id": "rio-simpson",
+      "nombre": "Reserva Nacional Río Simpson",
+      "tipo": "reserva_nacional",
+      "region": "Aysén",
+      "coordenadas": [-45.5, -72.35],
+      "superficie_ha": 40827,
+      "creado": 1967,
+      "altitud_m": "100-1500",
+      "descripcion": "Se extiende a lo largo del valle del río Simpson, entre Coyhaique y Puerto Aysén. Bosque siempreverde, cascadas como el Velo de la Novia y la Cascada de la Virgen, y excelente pesca con mosca.",
+      "evaluacion": { "puntaje": 4.4, "fuente": "Reseñas de visitantes", "mejor_epoca": "Noviembre a Marzo", "dificultad_acceso": "Baja (sobre la ruta pavimentada)" },
+      "senderos": [
+        { "nombre": "Sendero Cascada de la Virgen", "distancia_km": 1, "duracion": "30 min", "dificultad": "Baja", "tipo": "Ida y vuelta" }
+      ],
+      "actividades": ["Pesca con mosca", "Cascadas", "Senderismo", "Camping"],
+      "pueblos_cercanos": [
+        { "nombre": "Coyhaique", "distancia_km": 35, "tiempo_estimado": "35 min en auto", "tours_disponibles": true, "tours_estimados": 4, "descripcion": "Capital regional; la ruta a Puerto Aysén cruza la reserva." },
+        { "nombre": "Puerto Aysén", "distancia_km": 30, "tiempo_estimado": "30 min en auto", "tours_disponibles": true, "tours_estimados": 2, "descripcion": "Puerto de acceso por el poniente." }
+      ],
+      "entrada_pagada": true,
+      "sitio_web": "https://www.conaf.cl/parques/reserva-nacional-rio-simpson/"
+    },
+    {
+      "id": "las-guaitecas",
+      "nombre": "Reserva Nacional Las Guaitecas",
+      "tipo": "reserva_nacional",
+      "region": "Aysén",
+      "coordenadas": [-44.0, -73.7],
+      "superficie_ha": 1097975,
+      "creado": 1938,
+      "altitud_m": "0-1000",
+      "descripcion": "Enorme reserva de archipiélagos al sur de Chiloé, en torno a las islas Guaitecas y Melinka. Protege los bosques de ciprés de las Guaitecas y un laberinto de canales, islas y fiordos.",
+      "evaluacion": { "puntaje": 4.2, "fuente": "Reseñas de visitantes", "mejor_epoca": "Diciembre a Marzo", "dificultad_acceso": "Alta (navegación)" },
+      "senderos": [],
+      "actividades": ["Navegación", "Pesca artesanal", "Avistamiento de fauna marina"],
+      "pueblos_cercanos": [
+        { "nombre": "Melinka", "distancia_km": 5, "tiempo_estimado": "Navegación", "tours_disponibles": true, "tours_estimados": 2, "descripcion": "Único poblado del archipiélago; acceso por ferry o avioneta." }
+      ],
+      "entrada_pagada": false,
+      "sitio_web": "https://www.conaf.cl/parques/reserva-nacional-las-guaitecas/"
+    },
+    {
+      "id": "katalalixar",
+      "nombre": "Reserva Nacional Katalalixar",
+      "tipo": "reserva_nacional",
+      "region": "Aysén",
+      "coordenadas": [-48.0, -75.0],
+      "superficie_ha": 674500,
+      "creado": 1983,
+      "altitud_m": "0-1200",
+      "descripcion": "Vasto archipiélago prístino entre el Campo de Hielo Norte y el océano, de clima extremadamente lluvioso. Canales, turberas y bosque siempreverde casi inexplorado, territorio ancestral kawésqar.",
+      "evaluacion": { "puntaje": 4.1, "fuente": "Reseñas de visitantes", "mejor_epoca": "Diciembre a Febrero", "dificultad_acceso": "Muy alta (solo navegación)" },
+      "senderos": [],
+      "actividades": ["Navegación", "Naturaleza prístina", "Investigación"],
+      "pueblos_cercanos": [
+        { "nombre": "Tortel", "distancia_km": 0, "tiempo_estimado": "Navegación de varios días", "tours_disponibles": false, "tours_estimados": 0, "descripcion": "Localidad más cercana; sin acceso turístico regular." }
+      ],
+      "entrada_pagada": false,
+      "sitio_web": "https://www.conaf.cl/parques/reserva-nacional-katalalixar/"
+    },
+    {
+      "id": "lago-rosselot",
+      "nombre": "Reserva Nacional Lago Rosselot",
+      "tipo": "reserva_nacional",
+      "region": "Aysén",
+      "coordenadas": [-44.1, -72.3],
+      "superficie_ha": 12725,
+      "creado": 1983,
+      "altitud_m": "150-1500",
+      "descripcion": "Bosque siempreverde en torno al lago Rosselot, sobre la Carretera Austral cerca de La Junta. Aguas para la pesca deportiva y paisajes de montaña.",
+      "evaluacion": { "puntaje": 4.2, "fuente": "Reseñas de visitantes", "mejor_epoca": "Diciembre a Marzo", "dificultad_acceso": "Media" },
+      "senderos": [
+        { "nombre": "Sendero mirador del lago", "distancia_km": 3, "duracion": "1 h 30 min", "dificultad": "Media", "tipo": "Ida y vuelta" }
+      ],
+      "actividades": ["Pesca deportiva", "Senderismo", "Carretera Austral"],
+      "pueblos_cercanos": [
+        { "nombre": "La Junta", "distancia_km": 10, "tiempo_estimado": "15 min en auto", "tours_disponibles": false, "tours_estimados": 0, "descripcion": "Pueblo de la Carretera Austral, acceso a la reserva." }
+      ],
+      "entrada_pagada": true,
+      "sitio_web": "https://www.conaf.cl/parques/reserva-nacional-lago-rosselot/"
+    },
+    {
+      "id": "lago-carlota",
+      "nombre": "Reserva Nacional Lago Carlota",
+      "tipo": "reserva_nacional",
+      "region": "Aysén",
+      "coordenadas": [-44.4, -71.7],
+      "superficie_ha": 18060,
+      "creado": 1965,
+      "altitud_m": "500-1800",
+      "descripcion": "Reserva cordillerana poco visitada en torno a los lagos Carlota y Verde, cerca de la frontera con Argentina. Bosque de lenga y coigüe, humedales y buena pesca.",
+      "evaluacion": { "puntaje": 4.0, "fuente": "Reseñas de visitantes", "mejor_epoca": "Diciembre a Marzo", "dificultad_acceso": "Alta (ripio, remoto)" },
+      "senderos": [
+        { "nombre": "Sendero del bosque de lenga", "distancia_km": 4, "duracion": "2 h", "dificultad": "Media", "tipo": "Ida y vuelta" }
+      ],
+      "actividades": ["Pesca", "Senderismo", "Naturaleza"],
+      "pueblos_cercanos": [
+        { "nombre": "Lago Verde", "distancia_km": 20, "tiempo_estimado": "30 min en auto", "tours_disponibles": false, "tours_estimados": 0, "descripcion": "Localidad fronteriza más cercana." }
+      ],
+      "entrada_pagada": false,
+      "sitio_web": "https://www.conaf.cl/parques/reserva-nacional-lago-carlota/"
+    },
+    {
+      "id": "lago-las-torres",
+      "nombre": "Reserva Nacional Lago Las Torres",
+      "tipo": "reserva_nacional",
+      "region": "Aysén",
+      "coordenadas": [-44.9, -72.15],
+      "superficie_ha": 16516,
+      "creado": 1982,
+      "altitud_m": "500-2000",
+      "descripcion": "Sobre la Carretera Austral cerca de Villa Amengual, con un lago de aguas transparentes enmarcado por cumbres nevadas. Bosque siempreverde y camping a orillas del agua.",
+      "evaluacion": { "puntaje": 4.2, "fuente": "Reseñas de visitantes", "mejor_epoca": "Diciembre a Marzo", "dificultad_acceso": "Media" },
+      "senderos": [
+        { "nombre": "Sendero del Lago", "distancia_km": 3, "duracion": "1 h 30 min", "dificultad": "Baja", "tipo": "Ida y vuelta" }
+      ],
+      "actividades": ["Camping", "Pesca", "Senderismo", "Carretera Austral"],
+      "pueblos_cercanos": [
+        { "nombre": "Villa Amengual", "distancia_km": 15, "tiempo_estimado": "20 min en auto", "tours_disponibles": false, "tours_estimados": 0, "descripcion": "Pueblo de la Carretera Austral más cercano." }
+      ],
+      "entrada_pagada": true,
+      "sitio_web": "https://www.conaf.cl/parques/reserva-nacional-lago-las-torres/"
+    },
+    {
+      "id": "trapananda",
+      "nombre": "Reserva Nacional Trapananda",
+      "tipo": "reserva_nacional",
+      "region": "Aysén",
+      "coordenadas": [-45.4, -72.0],
+      "superficie_ha": 2305,
+      "creado": 1992,
+      "altitud_m": "400-1500",
+      "descripcion": "Pequeña reserva de bosque de lenga y ñirre en los cerros cercanos a Coyhaique, con miradores hacia el valle. Poco desarrollada para el turismo, de carácter local.",
+      "evaluacion": { "puntaje": 3.9, "fuente": "Reseñas de visitantes", "mejor_epoca": "Noviembre a Marzo", "dificultad_acceso": "Media" },
+      "senderos": [],
+      "actividades": ["Senderismo", "Naturaleza", "Miradores"],
+      "pueblos_cercanos": [
+        { "nombre": "Coyhaique", "distancia_km": 20, "tiempo_estimado": "30 min en auto", "tours_disponibles": false, "tours_estimados": 0, "descripcion": "Capital regional cercana." }
+      ],
+      "entrada_pagada": false,
+      "sitio_web": "https://www.conaf.cl/parques/reserva-nacional-trapananda/"
+    },
+    {
+      "id": "manihuales",
+      "nombre": "Reserva Nacional Río Mañihuales",
+      "tipo": "reserva_nacional",
+      "region": "Aysén",
+      "coordenadas": [-45.2, -72.15],
+      "superficie_ha": 1205,
+      "creado": 1998,
+      "altitud_m": "150-800",
+      "descripcion": "Creada para proteger a la huala y a una población de huemules cerca de Villa Mañihuales, sobre la Carretera Austral. Humedales y bosque siempreverde de fácil acceso.",
+      "evaluacion": { "puntaje": 4.0, "fuente": "Reseñas de visitantes", "mejor_epoca": "Noviembre a Marzo", "dificultad_acceso": "Baja" },
+      "senderos": [
+        { "nombre": "Sendero del humedal", "distancia_km": 2, "duracion": "1 h", "dificultad": "Baja", "tipo": "Circuito" }
+      ],
+      "actividades": ["Avistamiento de huemul", "Observación de aves", "Senderismo"],
+      "pueblos_cercanos": [
+        { "nombre": "Villa Mañihuales", "distancia_km": 5, "tiempo_estimado": "10 min en auto", "tours_disponibles": false, "tours_estimados": 0, "descripcion": "Pueblo junto a la reserva." }
+      ],
+      "entrada_pagada": true,
+      "sitio_web": "https://www.conaf.cl/parques/reserva-nacional-rio-manihuales/"
+    },
+    {
+      "id": "magallanes",
+      "nombre": "Reserva Nacional Magallanes",
+      "tipo": "reserva_nacional",
+      "region": "Magallanes y de la Antártica Chilena",
+      "coordenadas": [-53.1333, -71.05],
+      "superficie_ha": 20950,
+      "creado": 1932,
+      "altitud_m": "100-1200",
+      "descripcion": "A solo minutos de Punta Arenas, protege bosques de lenga y coigüe de Magallanes. Alberga el centro de ski Cerro Mirador y el sendero de Las Lengas, con vistas al estrecho de Magallanes.",
+      "evaluacion": { "puntaje": 4.3, "fuente": "Reseñas de visitantes", "mejor_epoca": "Dic-Mar (trekking); Jun-Sep (ski)", "dificultad_acceso": "Baja" },
+      "senderos": [
+        { "nombre": "Sendero Las Lengas", "distancia_km": 5, "duracion": "2 h 30 min", "dificultad": "Media", "tipo": "Ida y vuelta" }
+      ],
+      "actividades": ["Ski", "Trekking", "Bosque magallánico"],
+      "pueblos_cercanos": [
+        { "nombre": "Punta Arenas", "distancia_km": 9, "tiempo_estimado": "15 min en auto", "tours_disponibles": true, "tours_estimados": 5, "descripcion": "Capital regional a los pies de la reserva." }
+      ],
+      "entrada_pagada": true,
+      "sitio_web": "https://www.conaf.cl/parques/reserva-nacional-magallanes/"
+    },
+    {
+      "id": "laguna-parrillar",
+      "nombre": "Reserva Nacional Laguna Parrillar",
+      "tipo": "reserva_nacional",
+      "region": "Magallanes y de la Antártica Chilena",
+      "coordenadas": [-53.4, -71.25],
+      "superficie_ha": 18814,
+      "creado": 1977,
+      "altitud_m": "100-700",
+      "descripcion": "En torno a la laguna Parrillar, al sur de Punta Arenas, con bosque magallánico y turberas. Fuente de agua de la ciudad, ideal para pesca, picnic y caminatas tranquilas.",
+      "evaluacion": { "puntaje": 4.1, "fuente": "Reseñas de visitantes", "mejor_epoca": "Diciembre a Marzo", "dificultad_acceso": "Media" },
+      "senderos": [
+        { "nombre": "Sendero Laguna Parrillar", "distancia_km": 4, "duracion": "2 h", "dificultad": "Baja", "tipo": "Ida y vuelta" }
+      ],
+      "actividades": ["Pesca", "Senderismo", "Picnic", "Observación de aves"],
+      "pueblos_cercanos": [
+        { "nombre": "Punta Arenas", "distancia_km": 50, "tiempo_estimado": "1 h en auto", "tours_disponibles": true, "tours_estimados": 2, "descripcion": "Ciudad base; acceso por camino de ripio al sur." }
+      ],
+      "entrada_pagada": true,
+      "sitio_web": "https://www.conaf.cl/parques/reserva-nacional-laguna-parrillar/"
+    },
+    {
+      "id": "los-queules",
+      "nombre": "Reserva Nacional Los Queules",
+      "tipo": "reserva_nacional",
+      "region": "Maule",
+      "coordenadas": [-35.9833, -72.55],
+      "superficie_ha": 147,
+      "creado": 1995,
+      "altitud_m": "200-500",
+      "descripcion": "Pequeña reserva en la cordillera de la costa del Maule (comuna de Pelluhue) que protege al queule (Gomortega keule), árbol endémico en peligro crítico, junto a bosque siempreverde y quebradas.",
+      "evaluacion": { "puntaje": 4.0, "fuente": "Reseñas de visitantes", "mejor_epoca": "Octubre a Abril", "dificultad_acceso": "Media" },
+      "senderos": [
+        { "nombre": "Sendero del Queule", "distancia_km": 2, "duracion": "1 h", "dificultad": "Baja", "tipo": "Circuito" }
+      ],
+      "actividades": ["Botánica", "Bosque nativo", "Senderismo interpretativo"],
+      "pueblos_cercanos": [
+        { "nombre": "Pelluhue", "distancia_km": 20, "tiempo_estimado": "30 min en auto", "tours_disponibles": false, "tours_estimados": 0, "descripcion": "Balneario costero de acceso." },
+        { "nombre": "Cauquenes", "distancia_km": 55, "tiempo_estimado": "1 h en auto", "tours_disponibles": false, "tours_estimados": 0, "descripcion": "Ciudad base de la provincia." }
+      ],
+      "entrada_pagada": true,
+      "sitio_web": "https://www.conaf.cl/parques/reserva-nacional-los-queules/"
+    },
+    {
+      "id": "altos-de-pemehue",
+      "nombre": "Reserva Nacional Altos de Pemehue",
+      "tipo": "reserva_nacional",
+      "region": "Biobío",
+      "coordenadas": [-37.85, -71.55],
+      "superficie_ha": 18586,
+      "creado": 2009,
+      "altitud_m": "700-2000",
+      "descripcion": "Bosques de araucaria y la laguna Santa Rosa en la cordillera de las comunas de Quilaco y Mulchén, territorio de la comunidad pehuenche Newen Mapu. Reabierta al turismo tras un acuerdo histórico de coadministración.",
+      "evaluacion": { "puntaje": 4.2, "fuente": "Reseñas de visitantes", "mejor_epoca": "Diciembre a Marzo", "dificultad_acceso": "Alta (ripio, remoto)" },
+      "senderos": [
+        { "nombre": "Sendero Laguna Santa Rosa", "distancia_km": 8, "duracion": "4 h", "dificultad": "Media-Alta", "tipo": "Ida y vuelta" }
+      ],
+      "actividades": ["Araucarias", "Trekking", "Cabalgatas", "Cultura pehuenche"],
+      "pueblos_cercanos": [
+        { "nombre": "Quilaco", "distancia_km": 40, "tiempo_estimado": "1 h 30 min en auto", "tours_disponibles": false, "tours_estimados": 0, "descripcion": "Comuna de acceso a la reserva." },
+        { "nombre": "Los Ángeles", "distancia_km": 110, "tiempo_estimado": "2 h 30 min en auto", "tours_disponibles": false, "tours_estimados": 0, "descripcion": "Ciudad base de la región." }
+      ],
+      "entrada_pagada": true,
+      "sitio_web": "https://www.conaf.cl/parques/reserva-nacional-altos-de-pemehue/"
     }
   ]
 }
