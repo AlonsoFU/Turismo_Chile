@@ -1,0 +1,769 @@
+{
+  "meta": {
+    "titulo": "Turismo Chile — Parques Nacionales y Reservas",
+    "descripcion": "Dataset abierto de áreas silvestres protegidas de Chile (SNASPE, administradas por CONAF) con senderos, evaluación, pueblos de acceso y tours.",
+    "version": "1.0.0",
+    "actualizado": "2026-07-06",
+    "fuente_datos": "Elaboración propia a partir de información pública de CONAF y guías de viaje. Coordenadas y datos aproximados; verificar antes de viajar.",
+    "tipos": {
+      "parque_nacional": { "etiqueta": "Parque Nacional", "color": "#2e7d32" },
+      "reserva_nacional": { "etiqueta": "Reserva Nacional", "color": "#00838f" },
+      "monumento_natural": { "etiqueta": "Monumento Natural", "color": "#8e24aa" }
+    }
+  },
+  "lugares": [
+    {
+      "id": "lauca",
+      "nombre": "Parque Nacional Lauca",
+      "tipo": "parque_nacional",
+      "region": "Arica y Parinacota",
+      "coordenadas": [-18.2333, -69.2333],
+      "superficie_ha": 137883,
+      "creado": 1970,
+      "altitud_m": "3200-6300",
+      "descripcion": "Altiplano con el lago Chungará a los pies de los volcanes Parinacota y Pomerape. Reserva de la Biosfera con vicuñas, vizcachas y flamencos. Uno de los parques de mayor altitud del mundo.",
+      "evaluacion": { "puntaje": 4.7, "fuente": "Reseñas de visitantes", "mejor_epoca": "Abril a Noviembre (evitar invierno altiplánico ene-feb)", "dificultad_acceso": "Alta (aclimatación a la altura)" },
+      "senderos": [
+        { "nombre": "Sendero Lago Chungará", "distancia_km": 3, "duracion": "1 h", "dificultad": "Baja", "tipo": "Ida y vuelta" },
+        { "nombre": "Mirador Las Cuevas", "distancia_km": 2, "duracion": "45 min", "dificultad": "Baja", "tipo": "Circuito" },
+        { "nombre": "Sendero Cotacotani", "distancia_km": 5, "duracion": "2 h", "dificultad": "Media", "tipo": "Ida y vuelta" }
+      ],
+      "actividades": ["Avistamiento de fauna", "Fotografía", "Termas cercanas"],
+      "pueblos_cercanos": [
+        { "nombre": "Putre", "distancia_km": 45, "tiempo_estimado": "1 h en auto", "tours_disponibles": true, "tours_estimados": 8, "descripcion": "Pueblo base para aclimatación a la altura antes de subir al altiplano." },
+        { "nombre": "Arica", "distancia_km": 160, "tiempo_estimado": "3 h en auto", "tours_disponibles": true, "tours_estimados": 20, "descripcion": "Ciudad costera, punto de partida de la mayoría de los tours de día completo." }
+      ],
+      "entrada_pagada": false,
+      "sitio_web": "https://www.conaf.cl/parques/parque-nacional-lauca/"
+    },
+    {
+      "id": "volcan-isluga",
+      "nombre": "Parque Nacional Volcán Isluga",
+      "tipo": "parque_nacional",
+      "region": "Tarapacá",
+      "coordenadas": [-19.15, -68.8167],
+      "superficie_ha": 174744,
+      "creado": 1967,
+      "altitud_m": "2100-5550",
+      "descripcion": "Altiplano andino con el volcán Isluga activo, humedales, aldeas aymaras, iglesias coloniales y termas. Bofedales con llamas, alpacas y flamencos.",
+      "evaluacion": { "puntaje": 4.4, "fuente": "Reseñas de visitantes", "mejor_epoca": "Mayo a Noviembre", "dificultad_acceso": "Alta (caminos de ripio, altura)" },
+      "senderos": [
+        { "nombre": "Termas de Enquelga", "distancia_km": 2, "duracion": "40 min", "dificultad": "Baja", "tipo": "Ida y vuelta" },
+        { "nombre": "Bofedales de Isluga", "distancia_km": 6, "duracion": "2 h 30 min", "dificultad": "Media", "tipo": "Ida y vuelta" }
+      ],
+      "actividades": ["Cultura aymara", "Termas", "Avistamiento de fauna"],
+      "pueblos_cercanos": [
+        { "nombre": "Colchane", "distancia_km": 12, "tiempo_estimado": "20 min en auto", "tours_disponibles": false, "tours_estimados": 0, "descripcion": "Pueblo fronterizo con Bolivia, acceso más cercano." },
+        { "nombre": "Iquique", "distancia_km": 240, "tiempo_estimado": "4 h en auto", "tours_disponibles": true, "tours_estimados": 4, "descripcion": "Ciudad principal; tours de 2 días con alojamiento en el altiplano." }
+      ],
+      "entrada_pagada": false,
+      "sitio_web": "https://www.conaf.cl/parques/parque-nacional-volcan-isluga/"
+    },
+    {
+      "id": "pan-de-azucar",
+      "nombre": "Parque Nacional Pan de Azúcar",
+      "tipo": "parque_nacional",
+      "region": "Atacama",
+      "coordenadas": [-26.1167, -70.6333],
+      "superficie_ha": 43754,
+      "creado": 1985,
+      "altitud_m": "0-800",
+      "descripcion": "Desierto costero que se encuentra con el océano. Isla Pan de Azúcar con colonia de pingüinos de Humboldt, lobos marinos y camanchaca que alimenta cactus endémicos.",
+      "evaluacion": { "puntaje": 4.6, "fuente": "Reseñas de visitantes", "mejor_epoca": "Todo el año", "dificultad_acceso": "Baja" },
+      "senderos": [
+        { "nombre": "Mirador Pan de Azúcar", "distancia_km": 4, "duracion": "1 h 30 min", "dificultad": "Media", "tipo": "Ida y vuelta" },
+        { "nombre": "Sendero El Mirador de los Cactus", "distancia_km": 2, "duracion": "1 h", "dificultad": "Baja", "tipo": "Circuito" }
+      ],
+      "actividades": ["Navegación a la isla", "Avistamiento de pingüinos", "Playa", "Camping"],
+      "pueblos_cercanos": [
+        { "nombre": "Chañaral", "distancia_km": 30, "tiempo_estimado": "40 min en auto", "tours_disponibles": true, "tours_estimados": 5, "descripcion": "Acceso más cercano; embarcaciones a la isla salen de la caleta." },
+        { "nombre": "Caldera", "distancia_km": 130, "tiempo_estimado": "1 h 45 min en auto", "tours_disponibles": true, "tours_estimados": 6, "descripcion": "Balneario con más servicios turísticos." }
+      ],
+      "entrada_pagada": true,
+      "sitio_web": "https://www.conaf.cl/parques/parque-nacional-pan-de-azucar/"
+    },
+    {
+      "id": "nevado-tres-cruces",
+      "nombre": "Parque Nacional Nevado Tres Cruces",
+      "tipo": "parque_nacional",
+      "region": "Atacama",
+      "coordenadas": [-27.05, -68.7833],
+      "superficie_ha": 59082,
+      "creado": 1994,
+      "altitud_m": "3700-6749",
+      "descripcion": "Altiplano de Atacama con la Laguna Santa Rosa y la Laguna del Negro Francisco, refugio de flamencos. Cerca del Ojos del Salado, el volcán más alto del mundo.",
+      "evaluacion": { "puntaje": 4.7, "fuente": "Reseñas de visitantes", "mejor_epoca": "Noviembre a Abril", "dificultad_acceso": "Alta (4x4, altura extrema)" },
+      "senderos": [
+        { "nombre": "Mirador Laguna Santa Rosa", "distancia_km": 2, "duracion": "45 min", "dificultad": "Baja", "tipo": "Ida y vuelta" },
+        { "nombre": "Borde Laguna del Negro Francisco", "distancia_km": 4, "duracion": "1 h 30 min", "dificultad": "Media", "tipo": "Ida y vuelta" }
+      ],
+      "actividades": ["Avistamiento de flamencos", "Astroturismo", "Montañismo (Ojos del Salado)"],
+      "pueblos_cercanos": [
+        { "nombre": "Copiapó", "distancia_km": 160, "tiempo_estimado": "3 h en auto (4x4)", "tours_disponibles": true, "tours_estimados": 10, "descripcion": "Base logística; casi todos los tours de altiplano parten desde aquí." }
+      ],
+      "entrada_pagada": true,
+      "sitio_web": "https://www.conaf.cl/parques/parque-nacional-nevado-tres-cruces/"
+    },
+    {
+      "id": "llanos-de-challe",
+      "nombre": "Parque Nacional Llanos de Challe",
+      "tipo": "parque_nacional",
+      "region": "Atacama",
+      "coordenadas": [-28.1667, -71.1],
+      "superficie_ha": 45708,
+      "creado": 1994,
+      "altitud_m": "0-1080",
+      "descripcion": "Desierto costero famoso por el fenómeno del 'desierto florido' en años lluviosos, con la garra de león (Bomarea) y otras flores endémicas. Playas vírgenes.",
+      "evaluacion": { "puntaje": 4.5, "fuente": "Reseñas de visitantes", "mejor_epoca": "Sep-Oct en años de desierto florido", "dificultad_acceso": "Media" },
+      "senderos": [
+        { "nombre": "Sendero Interpretativo Flor del Desierto", "distancia_km": 3, "duracion": "1 h", "dificultad": "Baja", "tipo": "Circuito" }
+      ],
+      "actividades": ["Desierto florido", "Playa", "Fotografía"],
+      "pueblos_cercanos": [
+        { "nombre": "Huasco", "distancia_km": 45, "tiempo_estimado": "1 h en auto", "tours_disponibles": true, "tours_estimados": 3, "descripcion": "Caleta costera de acceso al parque." },
+        { "nombre": "Vallenar", "distancia_km": 90, "tiempo_estimado": "1 h 30 min en auto", "tours_disponibles": true, "tours_estimados": 4, "descripcion": "Ciudad principal del valle del Huasco." }
+      ],
+      "entrada_pagada": true,
+      "sitio_web": "https://www.conaf.cl/parques/parque-nacional-llanos-de-challe/"
+    },
+    {
+      "id": "bosque-fray-jorge",
+      "nombre": "Parque Nacional Bosque Fray Jorge",
+      "tipo": "parque_nacional",
+      "region": "Coquimbo",
+      "coordenadas": [-30.6667, -71.6667],
+      "superficie_ha": 9959,
+      "creado": 1941,
+      "altitud_m": "0-660",
+      "descripcion": "Bosque valdiviano relicto en pleno semidesierto, sobrevive gracias a la camanchaca (niebla costera). Reserva de la Biosfera de la UNESCO.",
+      "evaluacion": { "puntaje": 4.6, "fuente": "Reseñas de visitantes", "mejor_epoca": "Todo el año (niebla más densa en invierno)", "dificultad_acceso": "Baja" },
+      "senderos": [
+        { "nombre": "Sendero del Bosque Hidrófilo", "distancia_km": 1, "duracion": "45 min", "dificultad": "Baja", "tipo": "Circuito (pasarela)" }
+      ],
+      "actividades": ["Senderismo interpretativo", "Fotografía", "Observación de aves"],
+      "pueblos_cercanos": [
+        { "nombre": "Ovalle", "distancia_km": 90, "tiempo_estimado": "1 h 30 min en auto", "tours_disponibles": true, "tours_estimados": 6, "descripcion": "Ciudad base del valle del Limarí." },
+        { "nombre": "La Serena", "distancia_km": 110, "tiempo_estimado": "2 h en auto", "tours_disponibles": true, "tours_estimados": 8, "descripcion": "Principal centro turístico de la región." }
+      ],
+      "entrada_pagada": true,
+      "sitio_web": "https://www.conaf.cl/parques/parque-nacional-bosque-fray-jorge/"
+    },
+    {
+      "id": "la-campana",
+      "nombre": "Parque Nacional La Campana",
+      "tipo": "parque_nacional",
+      "region": "Valparaíso",
+      "coordenadas": [-32.95, -71.1333],
+      "superficie_ha": 8000,
+      "creado": 1967,
+      "altitud_m": "400-2222",
+      "descripcion": "Cerro La Campana, cumbre que ascendió Charles Darwin en 1834. Alberga uno de los últimos palmares de palma chilena. Reserva de la Biosfera.",
+      "evaluacion": { "puntaje": 4.7, "fuente": "Reseñas de visitantes", "mejor_epoca": "Marzo a Noviembre (evitar calor de verano)", "dificultad_acceso": "Baja" },
+      "senderos": [
+        { "nombre": "Sendero Andinista (Cumbre Cerro La Campana)", "distancia_km": 14, "duracion": "7-8 h", "dificultad": "Alta", "tipo": "Ida y vuelta" },
+        { "nombre": "Sendero El Amasijo", "distancia_km": 7, "duracion": "3 h", "dificultad": "Media", "tipo": "Circuito" },
+        { "nombre": "Sendero La Cascada", "distancia_km": 6, "duracion": "3 h", "dificultad": "Media", "tipo": "Ida y vuelta" }
+      ],
+      "actividades": ["Trekking", "Palma chilena", "Observación de flora"],
+      "pueblos_cercanos": [
+        { "nombre": "Olmué", "distancia_km": 8, "tiempo_estimado": "15 min en auto", "tours_disponibles": true, "tours_estimados": 5, "descripcion": "Acceso por sector Granizo, el más usado para la cumbre." },
+        { "nombre": "Santiago", "distancia_km": 110, "tiempo_estimado": "1 h 45 min en auto", "tours_disponibles": true, "tours_estimados": 12, "descripcion": "Excursión de día completo muy popular desde la capital." }
+      ],
+      "entrada_pagada": true,
+      "sitio_web": "https://www.conaf.cl/parques/parque-nacional-la-campana/"
+    },
+    {
+      "id": "radal-siete-tazas",
+      "nombre": "Parque Nacional Radal Siete Tazas",
+      "tipo": "parque_nacional",
+      "region": "Maule",
+      "coordenadas": [-35.4667, -70.9833],
+      "superficie_ha": 4900,
+      "creado": 2008,
+      "altitud_m": "600-2156",
+      "descripcion": "Siete pozones de roca basáltica esculpidos por el río Claro, con aguas turquesa y el Salto La Leona. Bosque de robles y coigües.",
+      "evaluacion": { "puntaje": 4.6, "fuente": "Reseñas de visitantes", "mejor_epoca": "Noviembre a Marzo", "dificultad_acceso": "Media (últimos km de ripio)" },
+      "senderos": [
+        { "nombre": "Sendero a las Siete Tazas", "distancia_km": 1, "duracion": "30 min", "dificultad": "Baja", "tipo": "Ida y vuelta" },
+        { "nombre": "Sendero El Bosque de las Nalcas", "distancia_km": 5, "duracion": "2 h 30 min", "dificultad": "Media", "tipo": "Ida y vuelta" }
+      ],
+      "actividades": ["Piscinas naturales", "Trekking", "Fotografía"],
+      "pueblos_cercanos": [
+        { "nombre": "Molina", "distancia_km": 65, "tiempo_estimado": "1 h 30 min en auto", "tours_disponibles": true, "tours_estimados": 6, "descripcion": "Puerta de entrada; buses en temporada alta." },
+        { "nombre": "Curicó", "distancia_km": 80, "tiempo_estimado": "1 h 45 min en auto", "tours_disponibles": true, "tours_estimados": 5, "descripcion": "Ciudad con más servicios y conexión de buses." }
+      ],
+      "entrada_pagada": true,
+      "sitio_web": "https://www.conaf.cl/parques/parque-nacional-radal-siete-tazas/"
+    },
+    {
+      "id": "nahuelbuta",
+      "nombre": "Parque Nacional Nahuelbuta",
+      "tipo": "parque_nacional",
+      "region": "Araucanía",
+      "coordenadas": [-37.8, -73.0167],
+      "superficie_ha": 6832,
+      "creado": 1939,
+      "altitud_m": "800-1550",
+      "descripcion": "Cordillera de la costa con bosques milenarios de araucarias, únicos a esta baja altitud. Miradores hacia el mar y los Andes en días despejados.",
+      "evaluacion": { "puntaje": 4.5, "fuente": "Reseñas de visitantes", "mejor_epoca": "Diciembre a Marzo", "dificultad_acceso": "Media" },
+      "senderos": [
+        { "nombre": "Sendero Piedra del Águila", "distancia_km": 9, "duracion": "4 h", "dificultad": "Media", "tipo": "Ida y vuelta" },
+        { "nombre": "Sendero Cerro Anay", "distancia_km": 5, "duracion": "2 h 30 min", "dificultad": "Media", "tipo": "Ida y vuelta" }
+      ],
+      "actividades": ["Araucarias milenarias", "Trekking", "Avistamiento de aves"],
+      "pueblos_cercanos": [
+        { "nombre": "Angol", "distancia_km": 35, "tiempo_estimado": "1 h 15 min en auto", "tours_disponibles": true, "tours_estimados": 3, "descripcion": "Acceso principal por el sector oriente (Pehuenco)." }
+      ],
+      "entrada_pagada": true,
+      "sitio_web": "https://www.conaf.cl/parques/parque-nacional-nahuelbuta/"
+    },
+    {
+      "id": "tolhuaca",
+      "nombre": "Parque Nacional Tolhuaca",
+      "tipo": "parque_nacional",
+      "region": "Araucanía",
+      "coordenadas": [-38.2, -71.8167],
+      "superficie_ha": 6474,
+      "creado": 1935,
+      "altitud_m": "850-1830",
+      "descripcion": "Bosques de araucaria y lenga en torno a la Laguna Malleco, con la espectacular Salto Malleco. Cercano a termas naturales.",
+      "evaluacion": { "puntaje": 4.4, "fuente": "Reseñas de visitantes", "mejor_epoca": "Diciembre a Marzo", "dificultad_acceso": "Media (ripio)" },
+      "senderos": [
+        { "nombre": "Sendero Laguna Malleco", "distancia_km": 4, "duracion": "1 h 30 min", "dificultad": "Baja", "tipo": "Ida y vuelta" },
+        { "nombre": "Sendero Salto Malleco", "distancia_km": 2, "duracion": "1 h", "dificultad": "Baja", "tipo": "Ida y vuelta" }
+      ],
+      "actividades": ["Termas", "Trekking", "Camping"],
+      "pueblos_cercanos": [
+        { "nombre": "Curacautín", "distancia_km": 55, "tiempo_estimado": "1 h 30 min en auto", "tours_disponibles": true, "tours_estimados": 4, "descripcion": "Base para el parque y las termas de la zona." }
+      ],
+      "entrada_pagada": true,
+      "sitio_web": "https://www.conaf.cl/parques/parque-nacional-tolhuaca/"
+    },
+    {
+      "id": "conguillio",
+      "nombre": "Parque Nacional Conguillío",
+      "tipo": "parque_nacional",
+      "region": "Araucanía",
+      "coordenadas": [-38.6667, -71.6667],
+      "superficie_ha": 60833,
+      "creado": 1950,
+      "altitud_m": "900-3125",
+      "descripcion": "Dominado por el volcán Llaima activo, con bosques de araucarias milenarias, lagos y campos de lava. Escenario del documental de la BBC 'Walking with Dinosaurs'.",
+      "evaluacion": { "puntaje": 4.8, "fuente": "Reseñas de visitantes", "mejor_epoca": "Diciembre a Marzo", "dificultad_acceso": "Media" },
+      "senderos": [
+        { "nombre": "Sendero Sierra Nevada", "distancia_km": 10, "duracion": "5 h", "dificultad": "Media-Alta", "tipo": "Ida y vuelta" },
+        { "nombre": "Sendero Los Carpinteros", "distancia_km": 8, "duracion": "3 h", "dificultad": "Media", "tipo": "Ida y vuelta" },
+        { "nombre": "Sendero Araucarias", "distancia_km": 0.8, "duracion": "30 min", "dificultad": "Baja", "tipo": "Circuito" }
+      ],
+      "actividades": ["Trekking", "Araucarias milenarias", "Ski (invierno)", "Camping"],
+      "pueblos_cercanos": [
+        { "nombre": "Melipeuco", "distancia_km": 30, "tiempo_estimado": "50 min en auto", "tours_disponibles": true, "tours_estimados": 5, "descripcion": "Acceso sur del parque, más cercano al sector Truful-Truful." },
+        { "nombre": "Curacautín", "distancia_km": 40, "tiempo_estimado": "1 h en auto", "tours_disponibles": true, "tours_estimados": 6, "descripcion": "Acceso norte por sector Captrén." },
+        { "nombre": "Temuco", "distancia_km": 120, "tiempo_estimado": "2 h 30 min en auto", "tours_disponibles": true, "tours_estimados": 10, "descripcion": "Capital regional, punto de partida de tours guiados." }
+      ],
+      "entrada_pagada": true,
+      "sitio_web": "https://www.conaf.cl/parques/parque-nacional-conguillio/"
+    },
+    {
+      "id": "huerquehue",
+      "nombre": "Parque Nacional Huerquehue",
+      "tipo": "parque_nacional",
+      "region": "Araucanía",
+      "coordenadas": [-39.15, -71.65],
+      "superficie_ha": 12500,
+      "creado": 1967,
+      "altitud_m": "700-2000",
+      "descripcion": "Lagos de montaña rodeados de araucarias, con miradores hacia el volcán Villarrica. El sendero Los Lagos es uno de los trekking de un día más queridos del sur.",
+      "evaluacion": { "puntaje": 4.8, "fuente": "Reseñas de visitantes", "mejor_epoca": "Noviembre a Abril", "dificultad_acceso": "Baja" },
+      "senderos": [
+        { "nombre": "Sendero Los Lagos", "distancia_km": 12, "duracion": "5 h", "dificultad": "Media-Alta", "tipo": "Circuito" },
+        { "nombre": "Sendero Ñirrico", "distancia_km": 6, "duracion": "2 h 30 min", "dificultad": "Media", "tipo": "Ida y vuelta" }
+      ],
+      "actividades": ["Trekking", "Araucarias", "Baño en lagos"],
+      "pueblos_cercanos": [
+        { "nombre": "Pucón", "distancia_km": 35, "tiempo_estimado": "45 min en auto", "tours_disponibles": true, "tours_estimados": 20, "descripcion": "Capital turística del sur; múltiples tours y transporte diario." }
+      ],
+      "entrada_pagada": true,
+      "sitio_web": "https://www.conaf.cl/parques/parque-nacional-huerquehue/"
+    },
+    {
+      "id": "villarrica",
+      "nombre": "Parque Nacional Villarrica",
+      "tipo": "parque_nacional",
+      "region": "Araucanía / Los Ríos",
+      "coordenadas": [-39.4167, -71.9333],
+      "superficie_ha": 63000,
+      "creado": 1940,
+      "altitud_m": "600-2847",
+      "descripcion": "Tres volcanes (Villarrica, Quetrupillán y Lanín) con bosques de araucaria y coigüe. El ascenso al volcán Villarrica activo, con su cráter de lava, es una experiencia icónica.",
+      "evaluacion": { "puntaje": 4.8, "fuente": "Reseñas de visitantes", "mejor_epoca": "Octubre a Abril (ascenso al volcán)", "dificultad_acceso": "Media" },
+      "senderos": [
+        { "nombre": "Ascenso Volcán Villarrica", "distancia_km": 10, "duracion": "7-8 h", "dificultad": "Alta", "tipo": "Ida y vuelta (con guía obligatorio)" },
+        { "nombre": "Sendero Los Cráteres", "distancia_km": 11, "duracion": "5 h", "dificultad": "Media", "tipo": "Ida y vuelta" }
+      ],
+      "actividades": ["Ascenso a volcán", "Ski (Centro Pucón)", "Trekking"],
+      "pueblos_cercanos": [
+        { "nombre": "Pucón", "distancia_km": 12, "tiempo_estimado": "25 min en auto", "tours_disponibles": true, "tours_estimados": 30, "descripcion": "Base para el ascenso al volcán; decenas de operadores con equipo y guía." }
+      ],
+      "entrada_pagada": true,
+      "sitio_web": "https://www.conaf.cl/parques/parque-nacional-villarrica/"
+    },
+    {
+      "id": "puyehue",
+      "nombre": "Parque Nacional Puyehue",
+      "tipo": "parque_nacional",
+      "region": "Los Lagos",
+      "coordenadas": [-40.6833, -72.15],
+      "superficie_ha": 106772,
+      "creado": 1941,
+      "altitud_m": "250-2240",
+      "descripcion": "Selva valdiviana lluviosa con los volcanes Puyehue y Casablanca, termas, saltos de agua y el centro de ski Antillanca. Gran biodiversidad de aves.",
+      "evaluacion": { "puntaje": 4.5, "fuente": "Reseñas de visitantes", "mejor_epoca": "Diciembre a Marzo (verano); Jun-Sep para ski", "dificultad_acceso": "Baja" },
+      "senderos": [
+        { "nombre": "Sendero El Pionero (Mirador)", "distancia_km": 5, "duracion": "2 h", "dificultad": "Media", "tipo": "Ida y vuelta" },
+        { "nombre": "Sendero Aguas Calientes - Salto del Indio", "distancia_km": 3, "duracion": "1 h", "dificultad": "Baja", "tipo": "Ida y vuelta" }
+      ],
+      "actividades": ["Termas", "Ski", "Trekking", "Observación de aves"],
+      "pueblos_cercanos": [
+        { "nombre": "Entre Lagos", "distancia_km": 25, "tiempo_estimado": "30 min en auto", "tours_disponibles": true, "tours_estimados": 4, "descripcion": "Pueblo a orillas del Lago Puyehue, acceso más cercano." },
+        { "nombre": "Osorno", "distancia_km": 75, "tiempo_estimado": "1 h 15 min en auto", "tours_disponibles": true, "tours_estimados": 8, "descripcion": "Ciudad base con conexión de buses a las termas." }
+      ],
+      "entrada_pagada": true,
+      "sitio_web": "https://www.conaf.cl/parques/parque-nacional-puyehue/"
+    },
+    {
+      "id": "vicente-perez-rosales",
+      "nombre": "Parque Nacional Vicente Pérez Rosales",
+      "tipo": "parque_nacional",
+      "region": "Los Lagos",
+      "coordenadas": [-41.1333, -72.4167],
+      "superficie_ha": 253780,
+      "creado": 1926,
+      "altitud_m": "50-3491",
+      "descripcion": "El parque nacional más antiguo de Chile. Incluye el volcán Osorno, los Saltos del Petrohué y el Lago Todos los Santos de aguas esmeralda.",
+      "evaluacion": { "puntaje": 4.7, "fuente": "Reseñas de visitantes", "mejor_epoca": "Todo el año", "dificultad_acceso": "Baja" },
+      "senderos": [
+        { "nombre": "Saltos del Petrohué", "distancia_km": 2, "duracion": "1 h", "dificultad": "Baja", "tipo": "Circuito (pasarelas)" },
+        { "nombre": "Sendero Paso Desolación", "distancia_km": 12, "duracion": "5 h", "dificultad": "Media-Alta", "tipo": "Ida y vuelta" },
+        { "nombre": "Ascenso Volcán Osorno (base)", "distancia_km": 8, "duracion": "4 h", "dificultad": "Media", "tipo": "Ida y vuelta" }
+      ],
+      "actividades": ["Saltos de agua", "Volcán Osorno (ski/andinismo)", "Navegación lago", "Trekking"],
+      "pueblos_cercanos": [
+        { "nombre": "Ensenada", "distancia_km": 16, "tiempo_estimado": "20 min en auto", "tours_disponibles": true, "tours_estimados": 6, "descripcion": "Acceso al volcán Osorno y a los saltos." },
+        { "nombre": "Puerto Varas", "distancia_km": 50, "tiempo_estimado": "1 h en auto", "tours_disponibles": true, "tours_estimados": 25, "descripcion": "Principal centro turístico; buses diarios a Petrohué y tours combinados." }
+      ],
+      "entrada_pagada": true,
+      "sitio_web": "https://www.conaf.cl/parques/parque-nacional-vicente-perez-rosales/"
+    },
+    {
+      "id": "alerce-andino",
+      "nombre": "Parque Nacional Alerce Andino",
+      "tipo": "parque_nacional",
+      "region": "Los Lagos",
+      "coordenadas": [-41.5, -72.6333],
+      "superficie_ha": 39255,
+      "creado": 1982,
+      "altitud_m": "50-1500",
+      "descripcion": "Protege bosques de alerce milenario (algunos de más de 3000 años), con más de 50 lagunas de origen glaciar y selva valdiviana densa.",
+      "evaluacion": { "puntaje": 4.6, "fuente": "Reseñas de visitantes", "mejor_epoca": "Diciembre a Marzo", "dificultad_acceso": "Media" },
+      "senderos": [
+        { "nombre": "Sendero Laguna Sargazo", "distancia_km": 6, "duracion": "2 h 30 min", "dificultad": "Media", "tipo": "Ida y vuelta" },
+        { "nombre": "Sendero Alerce Milenario", "distancia_km": 2, "duracion": "1 h", "dificultad": "Baja", "tipo": "Ida y vuelta" }
+      ],
+      "actividades": ["Alerces milenarios", "Trekking", "Lagunas glaciares"],
+      "pueblos_cercanos": [
+        { "nombre": "Puerto Montt", "distancia_km": 45, "tiempo_estimado": "1 h 15 min en auto", "tours_disponibles": true, "tours_estimados": 6, "descripcion": "Ciudad base; acceso por Correntoso o Chaica." }
+      ],
+      "entrada_pagada": true,
+      "sitio_web": "https://www.conaf.cl/parques/parque-nacional-alerce-andino/"
+    },
+    {
+      "id": "chiloe",
+      "nombre": "Parque Nacional Chiloé",
+      "tipo": "parque_nacional",
+      "region": "Los Lagos",
+      "coordenadas": [-42.6167, -74.0333],
+      "superficie_ha": 42567,
+      "creado": 1982,
+      "altitud_m": "0-850",
+      "descripcion": "Bosque siempreverde y dunas en la costa oeste de la Isla Grande de Chiloé. Playas extensas, avifauna y cultura huilliche.",
+      "evaluacion": { "puntaje": 4.5, "fuente": "Reseñas de visitantes", "mejor_epoca": "Diciembre a Marzo", "dificultad_acceso": "Media" },
+      "senderos": [
+        { "nombre": "Sendero El Tepual", "distancia_km": 1.7, "duracion": "1 h", "dificultad": "Baja", "tipo": "Circuito (pasarela)" },
+        { "nombre": "Sendero Dunas de Cucao", "distancia_km": 3, "duracion": "1 h 30 min", "dificultad": "Baja", "tipo": "Ida y vuelta" }
+      ],
+      "actividades": ["Playa", "Bosque nativo", "Observación de aves", "Cultura huilliche"],
+      "pueblos_cercanos": [
+        { "nombre": "Cucao", "distancia_km": 1, "tiempo_estimado": "5 min", "tours_disponibles": true, "tours_estimados": 4, "descripcion": "Pueblo en la entrada del parque." },
+        { "nombre": "Castro", "distancia_km": 55, "tiempo_estimado": "1 h 15 min en auto", "tours_disponibles": true, "tours_estimados": 8, "descripcion": "Capital de Chiloé; buses a Cucao vía Chonchi." }
+      ],
+      "entrada_pagada": true,
+      "sitio_web": "https://www.conaf.cl/parques/parque-nacional-chiloe/"
+    },
+    {
+      "id": "pumalin",
+      "nombre": "Parque Nacional Pumalín Douglas Tompkins",
+      "tipo": "parque_nacional",
+      "region": "Los Lagos",
+      "coordenadas": [-42.5, -72.65],
+      "superficie_ha": 402392,
+      "creado": 2018,
+      "altitud_m": "0-2000",
+      "descripcion": "Extensos bosques de alerce y selva valdiviana en la Carretera Austral, donado por la Fundación Tompkins. El volcán Chaitén y fiordos completan el paisaje.",
+      "evaluacion": { "puntaje": 4.8, "fuente": "Reseñas de visitantes", "mejor_epoca": "Diciembre a Marzo", "dificultad_acceso": "Media-Alta" },
+      "senderos": [
+        { "nombre": "Sendero Volcán Chaitén", "distancia_km": 4.4, "duracion": "2 h 30 min", "dificultad": "Media", "tipo": "Ida y vuelta" },
+        { "nombre": "Sendero Los Alerces", "distancia_km": 0.8, "duracion": "30 min", "dificultad": "Baja", "tipo": "Circuito" },
+        { "nombre": "Sendero Cascadas Escondidas", "distancia_km": 4, "duracion": "2 h", "dificultad": "Media", "tipo": "Ida y vuelta" }
+      ],
+      "actividades": ["Alerces milenarios", "Trekking", "Carretera Austral", "Camping"],
+      "pueblos_cercanos": [
+        { "nombre": "Chaitén", "distancia_km": 25, "tiempo_estimado": "35 min en auto", "tours_disponibles": true, "tours_estimados": 5, "descripcion": "Pueblo base en la Carretera Austral, llegada por ferry desde Puerto Montt." },
+        { "nombre": "Caleta Gonzalo", "distancia_km": 0, "tiempo_estimado": "En el sector norte", "tours_disponibles": false, "tours_estimados": 0, "descripcion": "Centro de visitantes del sector norte." }
+      ],
+      "entrada_pagada": false,
+      "sitio_web": "https://www.conaf.cl/parques/parque-nacional-pumalin-douglas-tompkins/"
+    },
+    {
+      "id": "queulat",
+      "nombre": "Parque Nacional Queulat",
+      "tipo": "parque_nacional",
+      "region": "Aysén",
+      "coordenadas": [-44.4833, -72.5333],
+      "superficie_ha": 154093,
+      "creado": 1983,
+      "altitud_m": "0-2225",
+      "descripcion": "Selva fría con el famoso Ventisquero Colgante, un glaciar suspendido del que caen cascadas hacia una laguna. Fiordos y bosque siempreverde en la Carretera Austral.",
+      "evaluacion": { "puntaje": 4.8, "fuente": "Reseñas de visitantes", "mejor_epoca": "Noviembre a Marzo", "dificultad_acceso": "Media" },
+      "senderos": [
+        { "nombre": "Sendero Mirador Ventisquero Colgante", "distancia_km": 6.5, "duracion": "3 h", "dificultad": "Media", "tipo": "Ida y vuelta" },
+        { "nombre": "Sendero Laguna Témpanos", "distancia_km": 0.6, "duracion": "20 min", "dificultad": "Baja", "tipo": "Ida y vuelta" }
+      ],
+      "actividades": ["Glaciar colgante", "Trekking", "Kayak en laguna"],
+      "pueblos_cercanos": [
+        { "nombre": "Puyuhuapi", "distancia_km": 25, "tiempo_estimado": "35 min en auto", "tours_disponibles": true, "tours_estimados": 4, "descripcion": "Pueblo de la Carretera Austral, base más cercana." },
+        { "nombre": "Coyhaique", "distancia_km": 165, "tiempo_estimado": "2 h 45 min en auto", "tours_disponibles": true, "tours_estimados": 6, "descripcion": "Capital regional; tours de día completo al ventisquero." }
+      ],
+      "entrada_pagada": true,
+      "sitio_web": "https://www.conaf.cl/parques/parque-nacional-queulat/"
+    },
+    {
+      "id": "cerro-castillo",
+      "nombre": "Parque Nacional Cerro Castillo",
+      "tipo": "parque_nacional",
+      "region": "Aysén",
+      "coordenadas": [-46.05, -72.1667],
+      "superficie_ha": 143953,
+      "creado": 2017,
+      "altitud_m": "300-2675",
+      "descripcion": "Macizo de agujas basálticas coronado por glaciares, considerado el 'nuevo Torres del Paine'. Su travesía de 4 días es uno de los mejores trekking de la Patagonia.",
+      "evaluacion": { "puntaje": 4.8, "fuente": "Reseñas de visitantes", "mejor_epoca": "Diciembre a Marzo", "dificultad_acceso": "Media-Alta" },
+      "senderos": [
+        { "nombre": "Sendero Laguna Cerro Castillo", "distancia_km": 16, "duracion": "7-8 h", "dificultad": "Alta", "tipo": "Ida y vuelta" },
+        { "nombre": "Travesía Las Horquetas - Villa Cerro Castillo", "distancia_km": 51, "duracion": "4 días", "dificultad": "Alta", "tipo": "Travesía" }
+      ],
+      "actividades": ["Trekking de varios días", "Montañismo", "Glaciares"],
+      "pueblos_cercanos": [
+        { "nombre": "Villa Cerro Castillo", "distancia_km": 8, "tiempo_estimado": "15 min en auto", "tours_disponibles": true, "tours_estimados": 5, "descripcion": "Fin de la travesía; guías y transporte al inicio del sendero." },
+        { "nombre": "Coyhaique", "distancia_km": 90, "tiempo_estimado": "1 h 30 min en auto", "tours_disponibles": true, "tours_estimados": 8, "descripcion": "Capital regional, base logística principal." }
+      ],
+      "entrada_pagada": true,
+      "sitio_web": "https://www.conaf.cl/parques/parque-nacional-cerro-castillo/"
+    },
+    {
+      "id": "laguna-san-rafael",
+      "nombre": "Parque Nacional Laguna San Rafael",
+      "tipo": "parque_nacional",
+      "region": "Aysén",
+      "coordenadas": [-46.65, -73.85],
+      "superficie_ha": 1742000,
+      "creado": 1959,
+      "altitud_m": "0-4058",
+      "descripcion": "Alberga el Campo de Hielo Norte y el glaciar San Rafael, que desemboca en una laguna con témpanos. Incluye el Monte San Valentín, la cumbre más alta de la Patagonia.",
+      "evaluacion": { "puntaje": 4.7, "fuente": "Reseñas de visitantes", "mejor_epoca": "Octubre a Abril", "dificultad_acceso": "Alta (solo por barco o avión)" },
+      "senderos": [
+        { "nombre": "Navegación al Glaciar San Rafael", "distancia_km": 0, "duracion": "Full day / 5 días (crucero)", "dificultad": "Baja", "tipo": "Navegación" }
+      ],
+      "actividades": ["Navegación a glaciar", "Kayak entre témpanos", "Fotografía"],
+      "pueblos_cercanos": [
+        { "nombre": "Puerto Río Tranquilo", "distancia_km": 0, "tiempo_estimado": "5 h de navegación", "tours_disponibles": true, "tours_estimados": 6, "descripcion": "Excursiones en lancha al glaciar Exploradores/San Rafael." },
+        { "nombre": "Puerto Chacabuco", "distancia_km": 0, "tiempo_estimado": "Crucero de varios días", "tours_disponibles": true, "tours_estimados": 4, "descripcion": "Salida de cruceros al glaciar (vía Puerto Aysén)." }
+      ],
+      "entrada_pagada": true,
+      "sitio_web": "https://www.conaf.cl/parques/parque-nacional-laguna-san-rafael/"
+    },
+    {
+      "id": "patagonia",
+      "nombre": "Parque Nacional Patagonia",
+      "tipo": "parque_nacional",
+      "region": "Aysén",
+      "coordenadas": [-47.15, -72.35],
+      "superficie_ha": 304527,
+      "creado": 2018,
+      "altitud_m": "150-3700",
+      "descripcion": "Estepa patagónica restaurada por la Fundación Tompkins, hogar de guanacos, huemules, pumas y flamencos. El Valle Chacabuco es su corazón.",
+      "evaluacion": { "puntaje": 4.7, "fuente": "Reseñas de visitantes", "mejor_epoca": "Noviembre a Marzo", "dificultad_acceso": "Alta" },
+      "senderos": [
+        { "nombre": "Sendero Lagunas Altas", "distancia_km": 23, "duracion": "8 h", "dificultad": "Alta", "tipo": "Circuito" },
+        { "nombre": "Sendero La Vega", "distancia_km": 4, "duracion": "1 h 30 min", "dificultad": "Baja", "tipo": "Circuito" }
+      ],
+      "actividades": ["Avistamiento de fauna", "Trekking", "Restauración ecológica"],
+      "pueblos_cercanos": [
+        { "nombre": "Cochrane", "distancia_km": 30, "tiempo_estimado": "40 min en auto", "tours_disponibles": true, "tours_estimados": 3, "descripcion": "Pueblo base de la Carretera Austral sur." }
+      ],
+      "entrada_pagada": false,
+      "sitio_web": "https://www.conaf.cl/parques/parque-nacional-patagonia/"
+    },
+    {
+      "id": "bernardo-ohiggins",
+      "nombre": "Parque Nacional Bernardo O'Higgins",
+      "tipo": "parque_nacional",
+      "region": "Aysén / Magallanes",
+      "coordenadas": [-49.0, -73.5],
+      "superficie_ha": 3525901,
+      "creado": 1969,
+      "altitud_m": "0-3000",
+      "descripcion": "El parque más grande de Chile. Protege el Campo de Hielo Sur y numerosos glaciares que caen a los fiordos, como el glaciar Serrano y Balmaceda.",
+      "evaluacion": { "puntaje": 4.7, "fuente": "Reseñas de visitantes", "mejor_epoca": "Octubre a Abril", "dificultad_acceso": "Alta (solo por navegación)" },
+      "senderos": [
+        { "nombre": "Sendero Glaciar Serrano", "distancia_km": 1, "duracion": "30 min", "dificultad": "Baja", "tipo": "Ida y vuelta" },
+        { "nombre": "Navegación fiordos Última Esperanza", "distancia_km": 0, "duracion": "Full day", "dificultad": "Baja", "tipo": "Navegación" }
+      ],
+      "actividades": ["Navegación a glaciares", "Kayak", "Fotografía"],
+      "pueblos_cercanos": [
+        { "nombre": "Puerto Natales", "distancia_km": 0, "tiempo_estimado": "3 h de navegación", "tours_disponibles": true, "tours_estimados": 10, "descripcion": "Salida de navegaciones a los glaciares Balmaceda y Serrano." }
+      ],
+      "entrada_pagada": true,
+      "sitio_web": "https://www.conaf.cl/parques/parque-nacional-bernardo-ohiggins/"
+    },
+    {
+      "id": "torres-del-paine",
+      "nombre": "Parque Nacional Torres del Paine",
+      "tipo": "parque_nacional",
+      "region": "Magallanes y de la Antártica Chilena",
+      "coordenadas": [-51.0, -73.0],
+      "superficie_ha": 227298,
+      "creado": 1959,
+      "altitud_m": "20-3050",
+      "descripcion": "El parque más famoso de Chile y Reserva de la Biosfera. Las Torres del Paine, los Cuernos, lagos turquesa y el glaciar Grey. Hogar del circuito 'W' y del 'O'.",
+      "evaluacion": { "puntaje": 4.9, "fuente": "Reseñas de visitantes", "mejor_epoca": "Noviembre a Marzo", "dificultad_acceso": "Media" },
+      "senderos": [
+        { "nombre": "Base de las Torres", "distancia_km": 18, "duracion": "8-9 h", "dificultad": "Alta", "tipo": "Ida y vuelta" },
+        { "nombre": "Circuito W", "distancia_km": 80, "duracion": "4-5 días", "dificultad": "Alta", "tipo": "Travesía" },
+        { "nombre": "Circuito O (Macizo Paine)", "distancia_km": 130, "duracion": "7-9 días", "dificultad": "Alta", "tipo": "Circuito" },
+        { "nombre": "Mirador Cuernos - Lago Nordenskjöld", "distancia_km": 8, "duracion": "3 h", "dificultad": "Media", "tipo": "Ida y vuelta" }
+      ],
+      "actividades": ["Trekking (W y O)", "Navegación glaciar Grey", "Kayak", "Avistamiento de fauna"],
+      "pueblos_cercanos": [
+        { "nombre": "Puerto Natales", "distancia_km": 112, "tiempo_estimado": "2 h 30 min en auto/bus", "tours_disponibles": true, "tours_estimados": 40, "descripcion": "Principal puerta de entrada; buses diarios, arriendo de equipo y decenas de operadores." },
+        { "nombre": "Punta Arenas", "distancia_km": 310, "tiempo_estimado": "4 h 30 min en auto", "tours_disponibles": true, "tours_estimados": 15, "descripcion": "Aeropuerto más cercano; tours de varios días." }
+      ],
+      "entrada_pagada": true,
+      "sitio_web": "https://www.conaf.cl/parques/parque-nacional-torres-del-paine/"
+    },
+    {
+      "id": "pali-aike",
+      "nombre": "Parque Nacional Pali Aike",
+      "tipo": "parque_nacional",
+      "region": "Magallanes y de la Antártica Chilena",
+      "coordenadas": [-52.1, -69.65],
+      "superficie_ha": 5030,
+      "creado": 1970,
+      "altitud_m": "100-300",
+      "descripcion": "Campo volcánico en la estepa patagónica, con cráteres, cuevas y tubos de lava. Importante sitio arqueológico con vestigios humanos de más de 8000 años.",
+      "evaluacion": { "puntaje": 4.3, "fuente": "Reseñas de visitantes", "mejor_epoca": "Noviembre a Marzo", "dificultad_acceso": "Media (ripio)" },
+      "senderos": [
+        { "nombre": "Sendero Cráter Morada del Diablo", "distancia_km": 9, "duracion": "3 h 30 min", "dificultad": "Media", "tipo": "Ida y vuelta" },
+        { "nombre": "Sendero Cueva Pali Aike", "distancia_km": 1.7, "duracion": "45 min", "dificultad": "Baja", "tipo": "Ida y vuelta" }
+      ],
+      "actividades": ["Volcanismo", "Arqueología", "Avistamiento de fauna"],
+      "pueblos_cercanos": [
+        { "nombre": "Punta Arenas", "distancia_km": 200, "tiempo_estimado": "3 h en auto", "tours_disponibles": true, "tours_estimados": 3, "descripcion": "Base logística; tours combinados con Pingüinera." }
+      ],
+      "entrada_pagada": true,
+      "sitio_web": "https://www.conaf.cl/parques/parque-nacional-pali-aike/"
+    },
+    {
+      "id": "rapa-nui",
+      "nombre": "Parque Nacional Rapa Nui",
+      "tipo": "parque_nacional",
+      "region": "Valparaíso (Isla de Pascua)",
+      "coordenadas": [-27.1167, -109.3667],
+      "superficie_ha": 7130,
+      "creado": 1935,
+      "altitud_m": "0-507",
+      "descripcion": "Patrimonio de la Humanidad de la UNESCO. Protege los moái, el volcán Rano Raraku (cantera), Orongo y las plataformas ceremoniales de la cultura Rapa Nui.",
+      "evaluacion": { "puntaje": 4.9, "fuente": "Reseñas de visitantes", "mejor_epoca": "Todo el año (Tapati en febrero)", "dificultad_acceso": "Baja (vuelo desde Santiago)" },
+      "senderos": [
+        { "nombre": "Sendero Rano Raraku (cantera de moái)", "distancia_km": 2, "duracion": "1 h 30 min", "dificultad": "Baja", "tipo": "Circuito" },
+        { "nombre": "Sendero Te Ara o Te Ao (Orongo)", "distancia_km": 7, "duracion": "3 h", "dificultad": "Media", "tipo": "Ida y vuelta" }
+      ],
+      "actividades": ["Arqueología moái", "Buceo", "Cultura polinésica", "Playa Anakena"],
+      "pueblos_cercanos": [
+        { "nombre": "Hanga Roa", "distancia_km": 2, "tiempo_estimado": "5 min", "tours_disponibles": true, "tours_estimados": 25, "descripcion": "Único poblado de la isla; todos los tours, alojamiento y arriendo parten aquí." }
+      ],
+      "entrada_pagada": true,
+      "sitio_web": "https://www.conaf.cl/parques/parque-nacional-rapa-nui/"
+    },
+    {
+      "id": "los-flamencos",
+      "nombre": "Reserva Nacional Los Flamencos",
+      "tipo": "reserva_nacional",
+      "region": "Antofagasta",
+      "coordenadas": [-23.7, -68.15],
+      "superficie_ha": 73987,
+      "creado": 1990,
+      "altitud_m": "2300-4300",
+      "descripcion": "Siete sectores en torno a San Pedro de Atacama: el Salar de Atacama con flamencos, la Laguna Chaxa, el Valle de la Luna y las lagunas altiplánicas Miscanti y Miñiques.",
+      "evaluacion": { "puntaje": 4.8, "fuente": "Reseñas de visitantes", "mejor_epoca": "Todo el año", "dificultad_acceso": "Baja-Media" },
+      "senderos": [
+        { "nombre": "Valle de la Luna - Duna Mayor", "distancia_km": 5, "duracion": "2 h", "dificultad": "Media", "tipo": "Ida y vuelta" },
+        { "nombre": "Sendero Laguna Chaxa", "distancia_km": 1, "duracion": "40 min", "dificultad": "Baja", "tipo": "Circuito" },
+        { "nombre": "Lagunas Miscanti y Miñiques", "distancia_km": 2, "duracion": "1 h", "dificultad": "Baja (altura 4200 m)", "tipo": "Circuito" }
+      ],
+      "actividades": ["Flamencos", "Astroturismo", "Valle de la Luna", "Lagunas altiplánicas"],
+      "pueblos_cercanos": [
+        { "nombre": "San Pedro de Atacama", "distancia_km": 20, "tiempo_estimado": "25 min en auto", "tours_disponibles": true, "tours_estimados": 50, "descripcion": "Capital turística del desierto; decenas de operadores para cada sector." },
+        { "nombre": "Calama", "distancia_km": 120, "tiempo_estimado": "1 h 30 min en auto", "tours_disponibles": true, "tours_estimados": 10, "descripcion": "Aeropuerto más cercano." }
+      ],
+      "entrada_pagada": true,
+      "sitio_web": "https://www.conaf.cl/parques/reserva-nacional-los-flamencos/"
+    },
+    {
+      "id": "pinguino-de-humboldt",
+      "nombre": "Reserva Nacional Pingüino de Humboldt",
+      "tipo": "reserva_nacional",
+      "region": "Atacama / Coquimbo",
+      "coordenadas": [-29.2333, -71.55],
+      "superficie_ha": 859,
+      "creado": 1990,
+      "altitud_m": "0-300",
+      "descripcion": "Tres islas (Chañaral, Choros y Damas) con la mayor colonia de pingüino de Humboldt de Chile, además de delfines nariz de botella, lobos marinos y ballenas en temporada.",
+      "evaluacion": { "puntaje": 4.7, "fuente": "Reseñas de visitantes", "mejor_epoca": "Diciembre a Marzo", "dificultad_acceso": "Media (navegación)" },
+      "senderos": [
+        { "nombre": "Sendero Isla Damas", "distancia_km": 2, "duracion": "1 h", "dificultad": "Baja", "tipo": "Circuito" }
+      ],
+      "actividades": ["Avistamiento de pingüinos", "Delfines y ballenas", "Navegación", "Playa"],
+      "pueblos_cercanos": [
+        { "nombre": "Punta de Choros", "distancia_km": 15, "tiempo_estimado": "20 min + navegación", "tours_disponibles": true, "tours_estimados": 15, "descripcion": "Caleta desde donde zarpan las lanchas a las islas." },
+        { "nombre": "La Serena", "distancia_km": 115, "tiempo_estimado": "2 h en auto", "tours_disponibles": true, "tours_estimados": 12, "descripcion": "Tours de día completo con transporte incluido." }
+      ],
+      "entrada_pagada": true,
+      "sitio_web": "https://www.conaf.cl/parques/reserva-nacional-pinguino-de-humboldt/"
+    },
+    {
+      "id": "rio-de-los-cipreses",
+      "nombre": "Reserva Nacional Río de los Cipreses",
+      "tipo": "reserva_nacional",
+      "region": "O'Higgins",
+      "coordenadas": [-34.35, -70.4167],
+      "superficie_ha": 36882,
+      "creado": 1985,
+      "altitud_m": "900-4900",
+      "descripcion": "Valle andino del río Cipreses con bosques de ciprés de la cordillera, glaciares, pinturas rupestres y una colonia de loros tricahue.",
+      "evaluacion": { "puntaje": 4.5, "fuente": "Reseñas de visitantes", "mejor_epoca": "Octubre a Abril", "dificultad_acceso": "Media" },
+      "senderos": [
+        { "nombre": "Sendero Los Peralillos", "distancia_km": 12, "duracion": "5 h", "dificultad": "Media", "tipo": "Ida y vuelta" },
+        { "nombre": "Sendero Urriola (petroglifos)", "distancia_km": 3, "duracion": "1 h 30 min", "dificultad": "Baja", "tipo": "Ida y vuelta" }
+      ],
+      "actividades": ["Trekking", "Loros tricahue", "Pinturas rupestres"],
+      "pueblos_cercanos": [
+        { "nombre": "Coya", "distancia_km": 15, "tiempo_estimado": "25 min en auto", "tours_disponibles": false, "tours_estimados": 0, "descripcion": "Pueblo de acceso, camino a la reserva." },
+        { "nombre": "Rancagua", "distancia_km": 50, "tiempo_estimado": "1 h en auto", "tours_disponibles": true, "tours_estimados": 4, "descripcion": "Ciudad base de la región de O'Higgins." }
+      ],
+      "entrada_pagada": true,
+      "sitio_web": "https://www.conaf.cl/parques/reserva-nacional-rio-de-los-cipreses/"
+    },
+    {
+      "id": "rio-clarillo",
+      "nombre": "Reserva Nacional Río Clarillo",
+      "tipo": "reserva_nacional",
+      "region": "Metropolitana",
+      "coordenadas": [-33.7167, -70.4833],
+      "superficie_ha": 13185,
+      "creado": 1982,
+      "altitud_m": "850-3050",
+      "descripcion": "Bosque esclerófilo precordillerano a menos de una hora de Santiago, con el río Clarillo de aguas cristalinas. Ideal para un día de naturaleza cerca de la capital.",
+      "evaluacion": { "puntaje": 4.5, "fuente": "Reseñas de visitantes", "mejor_epoca": "Septiembre a Mayo", "dificultad_acceso": "Baja" },
+      "senderos": [
+        { "nombre": "Sendero Aliwen Mahuida", "distancia_km": 3, "duracion": "1 h 30 min", "dificultad": "Baja", "tipo": "Circuito" },
+        { "nombre": "Sendero Quebrada Jorquera", "distancia_km": 8, "duracion": "3 h 30 min", "dificultad": "Media", "tipo": "Ida y vuelta" }
+      ],
+      "actividades": ["Senderismo", "Picnic", "Observación de aves"],
+      "pueblos_cercanos": [
+        { "nombre": "Pirque", "distancia_km": 18, "tiempo_estimado": "30 min en auto", "tours_disponibles": false, "tours_estimados": 0, "descripcion": "Comuna de acceso, con viñas cercanas." },
+        { "nombre": "Santiago", "distancia_km": 45, "tiempo_estimado": "1 h en auto", "tours_disponibles": true, "tours_estimados": 5, "descripcion": "Escapada de día desde la capital." }
+      ],
+      "entrada_pagada": true,
+      "sitio_web": "https://www.conaf.cl/parques/reserva-nacional-rio-clarillo/"
+    },
+    {
+      "id": "altos-de-lircay",
+      "nombre": "Reserva Nacional Altos de Lircay",
+      "tipo": "reserva_nacional",
+      "region": "Maule",
+      "coordenadas": [-35.6, -70.9],
+      "superficie_ha": 12163,
+      "creado": 1996,
+      "altitud_m": "600-2300",
+      "descripcion": "Bosques de robles, coigües y araucarias con el mirador El Enladrillado, una meseta basáltica gigante. Base para ascender al volcán Descabezado Grande.",
+      "evaluacion": { "puntaje": 4.7, "fuente": "Reseñas de visitantes", "mejor_epoca": "Noviembre a Abril", "dificultad_acceso": "Media" },
+      "senderos": [
+        { "nombre": "Sendero El Enladrillado", "distancia_km": 20, "duracion": "8 h", "dificultad": "Alta", "tipo": "Ida y vuelta" },
+        { "nombre": "Sendero Laguna del Alto", "distancia_km": 16, "duracion": "6 h", "dificultad": "Media-Alta", "tipo": "Ida y vuelta" }
+      ],
+      "actividades": ["Trekking", "Montañismo", "Camping"],
+      "pueblos_cercanos": [
+        { "nombre": "Vilches", "distancia_km": 3, "tiempo_estimado": "10 min", "tours_disponibles": false, "tours_estimados": 0, "descripcion": "Pueblo en la entrada de la reserva." },
+        { "nombre": "Talca", "distancia_km": 65, "tiempo_estimado": "1 h 30 min en auto", "tours_disponibles": true, "tours_estimados": 5, "descripcion": "Ciudad base; buses a Vilches en temporada." }
+      ],
+      "entrada_pagada": true,
+      "sitio_web": "https://www.conaf.cl/parques/reserva-nacional-altos-de-lircay/"
+    },
+    {
+      "id": "malalcahuello",
+      "nombre": "Reserva Nacional Malalcahuello",
+      "tipo": "reserva_nacional",
+      "region": "Araucanía",
+      "coordenadas": [-38.45, -71.5833],
+      "superficie_ha": 13730,
+      "creado": 1931,
+      "altitud_m": "1000-2865",
+      "descripcion": "A los pies del volcán Lonquimay, con bosques de araucaria y el cráter Navidad, surgido en la erupción de 1988. Centro de ski Corralco.",
+      "evaluacion": { "puntaje": 4.6, "fuente": "Reseñas de visitantes", "mejor_epoca": "Dic-Mar (trekking); Jun-Sep (ski)", "dificultad_acceso": "Media" },
+      "senderos": [
+        { "nombre": "Sendero Cráter Navidad", "distancia_km": 8, "duracion": "3 h 30 min", "dificultad": "Media", "tipo": "Ida y vuelta" },
+        { "nombre": "Sendero Piedra Santa", "distancia_km": 5, "duracion": "2 h", "dificultad": "Media", "tipo": "Ida y vuelta" }
+      ],
+      "actividades": ["Ski", "Trekking", "Araucarias", "Ascenso volcán Lonquimay"],
+      "pueblos_cercanos": [
+        { "nombre": "Malalcahuello", "distancia_km": 5, "tiempo_estimado": "10 min", "tours_disponibles": true, "tours_estimados": 4, "descripcion": "Pueblo turístico en la entrada de la reserva." },
+        { "nombre": "Curacautín", "distancia_km": 30, "tiempo_estimado": "40 min en auto", "tours_disponibles": true, "tours_estimados": 5, "descripcion": "Base para la zona de araucarias y termas." }
+      ],
+      "entrada_pagada": true,
+      "sitio_web": "https://www.conaf.cl/parques/reserva-nacional-malalcahuello/"
+    },
+    {
+      "id": "coyhaique",
+      "nombre": "Reserva Nacional Coyhaique",
+      "tipo": "reserva_nacional",
+      "region": "Aysén",
+      "coordenadas": [-45.5, -72.0333],
+      "superficie_ha": 2150,
+      "creado": 1948,
+      "altitud_m": "400-1361",
+      "descripcion": "Bosque de lenga, ñirre y coigüe a solo minutos de Coyhaique, con lagunas, el Cerro Cinchao y senderos familiares con vistas a la ciudad.",
+      "evaluacion": { "puntaje": 4.4, "fuente": "Reseñas de visitantes", "mejor_epoca": "Noviembre a Marzo", "dificultad_acceso": "Baja" },
+      "senderos": [
+        { "nombre": "Sendero Laguna Verde", "distancia_km": 5, "duracion": "2 h", "dificultad": "Baja", "tipo": "Circuito" },
+        { "nombre": "Sendero Cerro Cinchao", "distancia_km": 8, "duracion": "3 h 30 min", "dificultad": "Media", "tipo": "Ida y vuelta" }
+      ],
+      "actividades": ["Senderismo", "Camping", "Pesca en lagunas"],
+      "pueblos_cercanos": [
+        { "nombre": "Coyhaique", "distancia_km": 5, "tiempo_estimado": "15 min en auto", "tours_disponibles": true, "tours_estimados": 3, "descripcion": "Capital regional a los pies de la reserva." }
+      ],
+      "entrada_pagada": true,
+      "sitio_web": "https://www.conaf.cl/parques/reserva-nacional-coyhaique/"
+    }
+  ]
+}
