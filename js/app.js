@@ -202,8 +202,10 @@
     // stats
     const parques = visibles.filter((l) => l.tipo === "parque_nacional").length;
     const reservas = visibles.filter((l) => l.tipo === "reserva_nacional").length;
+    const monumentos = visibles.filter((l) => l.tipo === "monumento_natural").length;
     document.getElementById("stats").innerHTML =
-      "<span>🌲 " + parques + " parques</span><span>💧 " + reservas + " reservas</span>";
+      "<span>🌲 " + parques + " parques</span><span>💧 " + reservas + " reservas</span>" +
+      (monumentos ? "<span>🗿 " + monumentos + " monumentos</span>" : "");
     document.getElementById("footerCount").textContent =
       visibles.length + " lugares mostrados";
   }

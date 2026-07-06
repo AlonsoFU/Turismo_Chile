@@ -2027,6 +2027,346 @@
       ],
       "entrada_pagada": true,
       "sitio_web": "https://www.conaf.cl/parques/reserva-nacional-altos-de-pemehue/"
+    },
+    {
+      "id": "quebrada-de-cardones",
+      "nombre": "Monumento Natural Quebrada de Cardones",
+      "tipo": "monumento_natural",
+      "region": "Arica y Parinacota",
+      "coordenadas": [-18.45, -69.9],
+      "superficie_ha": 11325,
+      "creado": 2010,
+      "altitud_m": "1800-2900",
+      "descripcion": "Protege un bosque de cactus candelabro (Browningia candelaris) en la precordillera de Arica, junto a petroglifos y quebradas. Paisaje único entre el desierto y el altiplano.",
+      "evaluacion": { "puntaje": 4.2, "fuente": "Reseñas de visitantes", "mejor_epoca": "Todo el año", "dificultad_acceso": "Media" },
+      "senderos": [
+        { "nombre": "Sendero de los Cardones", "distancia_km": 2, "duracion": "1 h", "dificultad": "Baja", "tipo": "Circuito" }
+      ],
+      "actividades": ["Cactus candelabro", "Petroglifos", "Fotografía"],
+      "pueblos_cercanos": [
+        { "nombre": "Poconchile", "distancia_km": 30, "tiempo_estimado": "40 min en auto", "tours_disponibles": false, "tours_estimados": 0, "descripcion": "Pueblo del valle de Lluta, camino al monumento." },
+        { "nombre": "Arica", "distancia_km": 65, "tiempo_estimado": "1 h 15 min en auto", "tours_disponibles": true, "tours_estimados": 2, "descripcion": "Ciudad base; se combina con la ruta al altiplano." }
+      ],
+      "entrada_pagada": false,
+      "sitio_web": "https://www.conaf.cl/parques/monumento-natural-quebrada-de-cardones/"
+    },
+    {
+      "id": "salar-de-surire",
+      "nombre": "Monumento Natural Salar de Surire",
+      "tipo": "monumento_natural",
+      "region": "Arica y Parinacota",
+      "coordenadas": [-18.85, -69.05],
+      "superficie_ha": 11298,
+      "creado": 1983,
+      "altitud_m": "4200-4300",
+      "descripcion": "Gran salar altiplánico a 4.200 m, refugio de las tres especies de flamencos sudamericanos (andino, chileno y de James). Rodeado de bofedales con vicuñas y de termas naturales (Polloquere).",
+      "evaluacion": { "puntaje": 4.6, "fuente": "Reseñas de visitantes", "mejor_epoca": "Abril a Noviembre", "dificultad_acceso": "Alta (altura, ripio)" },
+      "senderos": [
+        { "nombre": "Mirador del salar y termas de Polloquere", "distancia_km": 2, "duracion": "45 min", "dificultad": "Baja", "tipo": "Ida y vuelta" }
+      ],
+      "actividades": ["Flamencos", "Termas", "Vicuñas", "Fotografía"],
+      "pueblos_cercanos": [
+        { "nombre": "Putre", "distancia_km": 130, "tiempo_estimado": "3 h en auto (4x4)", "tours_disponibles": true, "tours_estimados": 3, "descripcion": "Base de aclimatación; se visita en tours de altiplano de 2 días." }
+      ],
+      "entrada_pagada": false,
+      "sitio_web": "https://www.conaf.cl/parques/monumento-natural-salar-de-surire/"
+    },
+    {
+      "id": "paposo-norte",
+      "nombre": "Monumento Natural Paposo Norte",
+      "tipo": "monumento_natural",
+      "region": "Antofagasta",
+      "coordenadas": [-24.5, -70.55],
+      "superficie_ha": 7915,
+      "creado": 2013,
+      "altitud_m": "0-800",
+      "descripcion": "Oasis de niebla en el desierto costero al norte de Paposo, con una de las mayores concentraciones de flora endémica de Chile, alimentada por la camanchaca. Sitio de gran valor botánico.",
+      "evaluacion": { "puntaje": 4.1, "fuente": "Reseñas de visitantes", "mejor_epoca": "Julio a Octubre (mayor niebla)", "dificultad_acceso": "Alta (ripio, remoto)" },
+      "senderos": [
+        { "nombre": "Sendero del oasis de niebla", "distancia_km": 4, "duracion": "2 h", "dificultad": "Media", "tipo": "Ida y vuelta" }
+      ],
+      "actividades": ["Flora endémica", "Oasis de niebla", "Botánica"],
+      "pueblos_cercanos": [
+        { "nombre": "Taltal", "distancia_km": 90, "tiempo_estimado": "1 h 45 min en auto", "tours_disponibles": false, "tours_estimados": 0, "descripcion": "Pueblo costero más cercano vía Paposo." }
+      ],
+      "entrada_pagada": false,
+      "sitio_web": "https://www.conaf.cl/parques/monumento-natural-paposo-norte/"
+    },
+    {
+      "id": "la-portada",
+      "nombre": "Monumento Natural La Portada",
+      "tipo": "monumento_natural",
+      "region": "Antofagasta",
+      "coordenadas": [-23.5167, -70.4167],
+      "superficie_ha": 31,
+      "creado": 1990,
+      "altitud_m": "0-50",
+      "descripcion": "El icónico arco de roca sedimentaria emergido del mar, a 18 km al norte de Antofagasta. Acantilados con aves marinas y un mirador que es uno de los postales más famosas del norte.",
+      "evaluacion": { "puntaje": 4.5, "fuente": "Reseñas de visitantes", "mejor_epoca": "Todo el año", "dificultad_acceso": "Baja" },
+      "senderos": [
+        { "nombre": "Sendero del acantilado y mirador", "distancia_km": 1, "duracion": "30 min", "dificultad": "Baja", "tipo": "Ida y vuelta" }
+      ],
+      "actividades": ["Mirador", "Playa", "Aves marinas", "Fotografía"],
+      "pueblos_cercanos": [
+        { "nombre": "Antofagasta", "distancia_km": 18, "tiempo_estimado": "25 min en auto", "tours_disponibles": true, "tours_estimados": 4, "descripcion": "Ciudad a un costado; visita de medio día." }
+      ],
+      "entrada_pagada": false,
+      "sitio_web": "https://www.conaf.cl/parques/monumento-natural-la-portada/"
+    },
+    {
+      "id": "pichasca",
+      "nombre": "Monumento Natural Pichasca",
+      "tipo": "monumento_natural",
+      "region": "Coquimbo",
+      "coordenadas": [-30.4, -70.85],
+      "superficie_ha": 128,
+      "creado": 1985,
+      "altitud_m": "600-1000",
+      "descripcion": "Yacimiento paleontológico en el valle del Río Hurtado, con troncos petrificados, restos de dinosaurios y un alero con pinturas rupestres habitado hace miles de años. Un viaje al pasado geológico de Chile.",
+      "evaluacion": { "puntaje": 4.4, "fuente": "Reseñas de visitantes", "mejor_epoca": "Septiembre a Abril", "dificultad_acceso": "Media" },
+      "senderos": [
+        { "nombre": "Sendero Paleontológico", "distancia_km": 3, "duracion": "1 h 30 min", "dificultad": "Media", "tipo": "Circuito" }
+      ],
+      "actividades": ["Paleontología", "Bosque petrificado", "Arte rupestre", "Astroturismo"],
+      "pueblos_cercanos": [
+        { "nombre": "Río Hurtado", "distancia_km": 15, "tiempo_estimado": "25 min en auto", "tours_disponibles": false, "tours_estimados": 0, "descripcion": "Localidad del valle, acceso al monumento." },
+        { "nombre": "Ovalle", "distancia_km": 55, "tiempo_estimado": "1 h en auto", "tours_disponibles": true, "tours_estimados": 3, "descripcion": "Ciudad base del Limarí." }
+      ],
+      "entrada_pagada": true,
+      "sitio_web": "https://www.conaf.cl/parques/monumento-natural-pichasca/"
+    },
+    {
+      "id": "isla-cachagua",
+      "nombre": "Monumento Natural Isla Cachagua",
+      "tipo": "monumento_natural",
+      "region": "Valparaíso",
+      "coordenadas": [-32.5833, -71.4667],
+      "superficie_ha": 4.5,
+      "creado": 1989,
+      "altitud_m": "0-25",
+      "descripcion": "Islote a 100 m de la playa de Cachagua (Zapallar) que alberga cerca del 15% de la población nacional de pingüino de Humboldt, además de pingüinos de Magallanes y aves marinas. Se observa desde la costa.",
+      "evaluacion": { "puntaje": 4.4, "fuente": "Reseñas de visitantes", "mejor_epoca": "Septiembre a Marzo", "dificultad_acceso": "Baja (observación desde la playa)" },
+      "senderos": [
+        { "nombre": "Mirador de la playa de Cachagua", "distancia_km": 1, "duracion": "30 min", "dificultad": "Baja", "tipo": "Ida y vuelta" }
+      ],
+      "actividades": ["Avistamiento de pingüinos", "Aves marinas", "Playa"],
+      "pueblos_cercanos": [
+        { "nombre": "Cachagua", "distancia_km": 1, "tiempo_estimado": "5 min", "tours_disponibles": false, "tours_estimados": 0, "descripcion": "Balneario frente al islote." },
+        { "nombre": "Zapallar", "distancia_km": 5, "tiempo_estimado": "10 min en auto", "tours_disponibles": true, "tours_estimados": 2, "descripcion": "Balneario vecino con servicios." }
+      ],
+      "entrada_pagada": false,
+      "sitio_web": "https://www.conaf.cl/parques/monumento-natural-isla-cachagua/"
+    },
+    {
+      "id": "el-morado",
+      "nombre": "Monumento Natural El Morado",
+      "tipo": "monumento_natural",
+      "region": "Metropolitana",
+      "coordenadas": [-33.8333, -70.05],
+      "superficie_ha": 3009,
+      "creado": 1974,
+      "altitud_m": "1750-5060",
+      "descripcion": "Alta montaña en el Cajón del Maipo, junto a Baños Morales. Un sendero conduce a la Laguna El Morado bajo el glaciar San Francisco y el imponente Cerro El Morado. La escapada de montaña clásica desde Santiago.",
+      "evaluacion": { "puntaje": 4.6, "fuente": "Reseñas de visitantes", "mejor_epoca": "Octubre a Abril", "dificultad_acceso": "Media" },
+      "senderos": [
+        { "nombre": "Sendero Laguna El Morado", "distancia_km": 8, "duracion": "4 h", "dificultad": "Media", "tipo": "Ida y vuelta" }
+      ],
+      "actividades": ["Trekking", "Glaciar", "Termas (Baños Morales)", "Montaña"],
+      "pueblos_cercanos": [
+        { "nombre": "Baños Morales", "distancia_km": 1, "tiempo_estimado": "5 min", "tours_disponibles": true, "tours_estimados": 4, "descripcion": "Villorrio de montaña en la entrada del monumento." },
+        { "nombre": "San José de Maipo", "distancia_km": 50, "tiempo_estimado": "1 h 30 min en auto", "tours_disponibles": true, "tours_estimados": 6, "descripcion": "Capital del Cajón del Maipo; tours de día desde Santiago." }
+      ],
+      "entrada_pagada": true,
+      "sitio_web": "https://www.conaf.cl/parques/monumento-natural-el-morado/"
+    },
+    {
+      "id": "cerro-nielol",
+      "nombre": "Monumento Natural Cerro Ñielol",
+      "tipo": "monumento_natural",
+      "region": "Araucanía",
+      "coordenadas": [-38.7167, -72.5833],
+      "superficie_ha": 89.5,
+      "creado": 1987,
+      "altitud_m": "120-340",
+      "descripcion": "Cerro con bosque nativo en pleno Temuco, pulmón verde de la ciudad. Conserva La Patagua, árbol bajo el cual se firmó el Pacto de Temuco con el pueblo mapuche en 1881, y ofrece miradores hacia la ciudad.",
+      "evaluacion": { "puntaje": 4.3, "fuente": "Reseñas de visitantes", "mejor_epoca": "Todo el año", "dificultad_acceso": "Baja" },
+      "senderos": [
+        { "nombre": "Sendero El Avellano", "distancia_km": 3, "duracion": "1 h 30 min", "dificultad": "Baja", "tipo": "Circuito" }
+      ],
+      "actividades": ["Senderismo urbano", "Bosque nativo", "Historia mapuche", "Miradores"],
+      "pueblos_cercanos": [
+        { "nombre": "Temuco", "distancia_km": 1, "tiempo_estimado": "5 min", "tours_disponibles": true, "tours_estimados": 2, "descripcion": "El monumento está dentro de la ciudad." }
+      ],
+      "entrada_pagada": true,
+      "sitio_web": "https://www.conaf.cl/parques/monumento-natural-cerro-nielol/"
+    },
+    {
+      "id": "contulmo",
+      "nombre": "Monumento Natural Contulmo",
+      "tipo": "monumento_natural",
+      "region": "Araucanía",
+      "coordenadas": [-38.0167, -73.2],
+      "superficie_ha": 82,
+      "creado": 1941,
+      "altitud_m": "200-500",
+      "descripcion": "Relicto de selva valdiviana en la cordillera de Nahuelbuta, entre Contulmo y Purén. Densos helechos, lianas y árboles nativos como el ulmo y el olivillo, con senderos umbríos muy bien conservados.",
+      "evaluacion": { "puntaje": 4.2, "fuente": "Reseñas de visitantes", "mejor_epoca": "Octubre a Abril", "dificultad_acceso": "Baja" },
+      "senderos": [
+        { "nombre": "Sendero del Bosque", "distancia_km": 2, "duracion": "1 h", "dificultad": "Baja", "tipo": "Circuito" }
+      ],
+      "actividades": ["Bosque nativo", "Senderismo interpretativo", "Flora"],
+      "pueblos_cercanos": [
+        { "nombre": "Contulmo", "distancia_km": 8, "tiempo_estimado": "15 min en auto", "tours_disponibles": false, "tours_estimados": 0, "descripcion": "Pueblo junto al lago Lanalhue, acceso al monumento." },
+        { "nombre": "Purén", "distancia_km": 12, "tiempo_estimado": "20 min en auto", "tours_disponibles": false, "tours_estimados": 0, "descripcion": "Localidad vecina de la Araucanía." }
+      ],
+      "entrada_pagada": true,
+      "sitio_web": "https://www.conaf.cl/parques/monumento-natural-contulmo/"
+    },
+    {
+      "id": "lahuen-nadi",
+      "nombre": "Monumento Natural Lahuen Ñadi",
+      "tipo": "monumento_natural",
+      "region": "Los Lagos",
+      "coordenadas": [-41.3667, -72.8667],
+      "superficie_ha": 200,
+      "creado": 2000,
+      "altitud_m": "50-100",
+      "descripcion": "Bosque de alerces milenarios en la llanura cercana a Puerto Montt, sobrevivientes de la tala histórica. Pasarelas accesibles permiten caminar entre alerces de cientos de años a pocos minutos de la ciudad.",
+      "evaluacion": { "puntaje": 4.3, "fuente": "Reseñas de visitantes", "mejor_epoca": "Todo el año", "dificultad_acceso": "Baja" },
+      "senderos": [
+        { "nombre": "Sendero del Alerzal", "distancia_km": 2, "duracion": "1 h", "dificultad": "Baja", "tipo": "Circuito (pasarela)" }
+      ],
+      "actividades": ["Alerces milenarios", "Senderismo accesible", "Bosque nativo"],
+      "pueblos_cercanos": [
+        { "nombre": "Puerto Montt", "distancia_km": 25, "tiempo_estimado": "30 min en auto", "tours_disponibles": true, "tours_estimados": 2, "descripcion": "Ciudad base; acceso cerca del aeropuerto El Tepual." }
+      ],
+      "entrada_pagada": true,
+      "sitio_web": "https://www.conaf.cl/parques/monumento-natural-lahuen-nadi/"
+    },
+    {
+      "id": "islotes-de-punihuil",
+      "nombre": "Monumento Natural Islotes de Puñihuil",
+      "tipo": "monumento_natural",
+      "region": "Los Lagos",
+      "coordenadas": [-41.9167, -74.0333],
+      "superficie_ha": 8.5,
+      "creado": 1999,
+      "altitud_m": "0-30",
+      "descripcion": "Tres islotes frente a la playa de Puñihuil, en el norte de Chiloé, únicos en el mundo por albergar colonias reproductivas de pingüino de Humboldt y de Magallanes juntas. También se avistan nutrias y aves marinas.",
+      "evaluacion": { "puntaje": 4.6, "fuente": "Reseñas de visitantes", "mejor_epoca": "Octubre a Marzo", "dificultad_acceso": "Media (navegación corta)" },
+      "senderos": [
+        { "nombre": "Navegación a los islotes", "distancia_km": 0, "duracion": "30 min", "dificultad": "Baja", "tipo": "Navegación" }
+      ],
+      "actividades": ["Avistamiento de pingüinos", "Navegación", "Nutrias", "Playa"],
+      "pueblos_cercanos": [
+        { "nombre": "Puñihuil", "distancia_km": 1, "tiempo_estimado": "5 min", "tours_disponibles": true, "tours_estimados": 6, "descripcion": "Caleta desde donde zarpan las lanchas a los islotes." },
+        { "nombre": "Ancud", "distancia_km": 35, "tiempo_estimado": "50 min en auto", "tours_disponibles": true, "tours_estimados": 5, "descripcion": "Ciudad base del norte de Chiloé." }
+      ],
+      "entrada_pagada": true,
+      "sitio_web": "https://www.conaf.cl/parques/monumento-natural-islotes-de-punihuil/"
+    },
+    {
+      "id": "dos-lagunas",
+      "nombre": "Monumento Natural Dos Lagunas",
+      "tipo": "monumento_natural",
+      "region": "Aysén",
+      "coordenadas": [-45.5, -71.85],
+      "superficie_ha": 181,
+      "creado": 1982,
+      "altitud_m": "700-900",
+      "descripcion": "Dos lagunas de estepa rodeadas de bosque de lenga y ñirre, camino de Coyhaique hacia la frontera. Refugio de aves acuáticas con senderos interpretativos suaves y buena observación de fauna.",
+      "evaluacion": { "puntaje": 4.0, "fuente": "Reseñas de visitantes", "mejor_epoca": "Noviembre a Marzo", "dificultad_acceso": "Baja" },
+      "senderos": [
+        { "nombre": "Sendero de las Lagunas", "distancia_km": 2, "duracion": "1 h", "dificultad": "Baja", "tipo": "Circuito" }
+      ],
+      "actividades": ["Observación de aves", "Senderismo", "Naturaleza"],
+      "pueblos_cercanos": [
+        { "nombre": "Coyhaique", "distancia_km": 25, "tiempo_estimado": "30 min en auto", "tours_disponibles": false, "tours_estimados": 0, "descripcion": "Capital regional; camino a Coyhaique Alto." }
+      ],
+      "entrada_pagada": true,
+      "sitio_web": "https://www.conaf.cl/parques/monumento-natural-dos-lagunas/"
+    },
+    {
+      "id": "cinco-hermanas",
+      "nombre": "Monumento Natural Cinco Hermanas",
+      "tipo": "monumento_natural",
+      "region": "Aysén",
+      "coordenadas": [-45.4, -72.9],
+      "superficie_ha": 228,
+      "creado": 1982,
+      "altitud_m": "0-300",
+      "descripcion": "Grupo de islas de bosque siempreverde en el fiordo de Aysén, cerca de Puerto Chacabuco. Hábitat de aves marinas y flora costera; se aprecia durante la navegación por el fiordo.",
+      "evaluacion": { "puntaje": 4.1, "fuente": "Reseñas de visitantes", "mejor_epoca": "Noviembre a Marzo", "dificultad_acceso": "Alta (navegación)" },
+      "senderos": [],
+      "actividades": ["Navegación por el fiordo", "Aves marinas", "Fotografía"],
+      "pueblos_cercanos": [
+        { "nombre": "Puerto Chacabuco", "distancia_km": 10, "tiempo_estimado": "Navegación", "tours_disponibles": true, "tours_estimados": 2, "descripcion": "Puerto de salida de navegaciones por el fiordo de Aysén." }
+      ],
+      "entrada_pagada": false,
+      "sitio_web": "https://www.conaf.cl/parques/monumento-natural-cinco-hermanas/"
+    },
+    {
+      "id": "cueva-del-milodon",
+      "nombre": "Monumento Natural Cueva del Milodón",
+      "tipo": "monumento_natural",
+      "region": "Magallanes y de la Antártica Chilena",
+      "coordenadas": [-51.5667, -72.6167],
+      "superficie_ha": 189.5,
+      "creado": 1993,
+      "altitud_m": "50-400",
+      "descripcion": "Gran cueva donde en 1895 se hallaron restos del milodón, un perezoso gigante extinto. A 24 km de Puerto Natales, combina paleontología, arqueología y un icónico paisaje patagónico, camino a Torres del Paine.",
+      "evaluacion": { "puntaje": 4.5, "fuente": "Reseñas de visitantes", "mejor_epoca": "Octubre a Abril", "dificultad_acceso": "Baja" },
+      "senderos": [
+        { "nombre": "Sendero de la Cueva", "distancia_km": 2, "duracion": "1 h", "dificultad": "Baja", "tipo": "Circuito" }
+      ],
+      "actividades": ["Paleontología", "Historia", "Senderismo", "Fotografía"],
+      "pueblos_cercanos": [
+        { "nombre": "Puerto Natales", "distancia_km": 24, "tiempo_estimado": "30 min en auto", "tours_disponibles": true, "tours_estimados": 8, "descripcion": "Base turística; se visita camino a Torres del Paine." }
+      ],
+      "entrada_pagada": true,
+      "sitio_web": "https://www.conaf.cl/parques/monumento-natural-cueva-del-milodon/"
+    },
+    {
+      "id": "los-pinguinos",
+      "nombre": "Monumento Natural Los Pingüinos",
+      "tipo": "monumento_natural",
+      "region": "Magallanes y de la Antártica Chilena",
+      "coordenadas": [-52.9167, -70.5833],
+      "superficie_ha": 97,
+      "creado": 1966,
+      "altitud_m": "0-30",
+      "descripcion": "Las islas Magdalena y Marta, en el estrecho de Magallanes, albergan una colonia de más de 100.000 pingüinos de Magallanes. La isla Magdalena tiene un faro histórico y un sendero entre los nidos.",
+      "evaluacion": { "puntaje": 4.7, "fuente": "Reseñas de visitantes", "mejor_epoca": "Noviembre a Marzo", "dificultad_acceso": "Media (navegación)" },
+      "senderos": [
+        { "nombre": "Sendero de la Isla Magdalena", "distancia_km": 2, "duracion": "1 h", "dificultad": "Baja", "tipo": "Circuito" }
+      ],
+      "actividades": ["Avistamiento de pingüinos", "Navegación", "Faro histórico", "Aves marinas"],
+      "pueblos_cercanos": [
+        { "nombre": "Punta Arenas", "distancia_km": 35, "tiempo_estimado": "2 h de navegación", "tours_disponibles": true, "tours_estimados": 6, "descripcion": "Salida de ferries y zodiacs a la isla Magdalena en temporada." }
+      ],
+      "entrada_pagada": true,
+      "sitio_web": "https://www.conaf.cl/parques/monumento-natural-los-pinguinos/"
+    },
+    {
+      "id": "laguna-de-los-cisnes",
+      "nombre": "Monumento Natural Laguna de los Cisnes",
+      "tipo": "monumento_natural",
+      "region": "Magallanes y de la Antártica Chilena",
+      "coordenadas": [-53.25, -70.35],
+      "superficie_ha": 25,
+      "creado": 1982,
+      "altitud_m": "0-30",
+      "descripcion": "Laguna en Tierra del Fuego, a pocos kilómetros de Porvenir, con estromatolitos (raras formaciones vivas de microorganismos) y avifauna como cisnes de cuello negro y flamencos.",
+      "evaluacion": { "puntaje": 4.1, "fuente": "Reseñas de visitantes", "mejor_epoca": "Noviembre a Marzo", "dificultad_acceso": "Media (vía Porvenir)" },
+      "senderos": [
+        { "nombre": "Mirador de la laguna", "distancia_km": 1, "duracion": "30 min", "dificultad": "Baja", "tipo": "Ida y vuelta" }
+      ],
+      "actividades": ["Estromatolitos", "Observación de aves", "Fotografía"],
+      "pueblos_cercanos": [
+        { "nombre": "Porvenir", "distancia_km": 6, "tiempo_estimado": "10 min en auto", "tours_disponibles": true, "tours_estimados": 2, "descripcion": "Capital de Tierra del Fuego; se llega en ferry desde Punta Arenas." }
+      ],
+      "entrada_pagada": false,
+      "sitio_web": "https://www.conaf.cl/parques/monumento-natural-laguna-de-los-cisnes/"
     }
   ]
 }
