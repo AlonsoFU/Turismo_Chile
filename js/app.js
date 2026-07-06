@@ -64,7 +64,7 @@
   /* ---------- Eventos globales ---------- */
   function wireEvents() {
     document.getElementById("search").addEventListener("input", (e) => {
-      state.filtroTexto = e.target.value.trim().toLowerCase();
+      state.filtroTexto = normaliza(e.target.value.trim());
       render();
     });
     document.getElementById("detailClose").addEventListener("click", cerrarDetalle);
@@ -107,7 +107,7 @@
       if (!state.tiposActivos.has(l.tipo)) return false;
       if (!t) return true;
       const pueblos = (l.pueblos_cercanos || []).map((p) => p.nombre).join(" ");
-      const heno = [l.nombre, l.region, l.descripcion, pueblos].join(" ").toLowerCase();
+      const heno = normaliza([l.nombre, l.region, l.descripcion, pueblos].join(" "));
       return heno.includes(t);
     });
   }
@@ -324,6 +324,13 @@
   }
 
   /* ---------- Utilidades ---------- */
+  function normaliza(str) {
+    return String(str)
+      .toLowerCase()
+      .normalize("NFD")
+      .replace(/[̀-ͯ]/g, ""); // quita tildes/diacríticos
+  }
+
   function difClase(dif) {
     const d = (dif || "").toLowerCase();
     if (d.startsWith("baja")) return "tag--dif-baja";

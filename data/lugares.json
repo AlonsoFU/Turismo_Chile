@@ -606,6 +606,335 @@
       "sitio_web": "https://www.conaf.cl/parques/parque-nacional-rapa-nui/"
     },
     {
+      "id": "salar-del-huasco",
+      "nombre": "Parque Nacional Salar del Huasco",
+      "tipo": "parque_nacional",
+      "region": "Tarapacá",
+      "coordenadas": [-20.2833, -68.8833],
+      "superficie_ha": 110962,
+      "creado": 2010,
+      "altitud_m": "3800",
+      "descripcion": "Salar altiplánico y humedal Ramsar rodeado de bofedales, con flamencos andinos, de James y chilenos, además de vicuñas. Cielos ideales para astroturismo.",
+      "evaluacion": { "puntaje": 4.4, "fuente": "Reseñas de visitantes", "mejor_epoca": "Abril a Noviembre", "dificultad_acceso": "Media-Alta (altura)" },
+      "senderos": [
+        { "nombre": "Sendero Mirador del Salar", "distancia_km": 2, "duracion": "45 min", "dificultad": "Baja", "tipo": "Ida y vuelta" }
+      ],
+      "actividades": ["Flamencos", "Astroturismo", "Avistamiento de fauna"],
+      "pueblos_cercanos": [
+        { "nombre": "Pica", "distancia_km": 70, "tiempo_estimado": "1 h 30 min en auto", "tours_disponibles": true, "tours_estimados": 3, "descripcion": "Oasis con termas; base más cercana al salar." },
+        { "nombre": "Iquique", "distancia_km": 170, "tiempo_estimado": "3 h en auto", "tours_disponibles": true, "tours_estimados": 4, "descripcion": "Ciudad principal; tours de día completo al altiplano." }
+      ],
+      "entrada_pagada": false,
+      "sitio_web": "https://www.conaf.cl/parques/parque-nacional-salar-del-huasco/"
+    },
+    {
+      "id": "llullaillaco",
+      "nombre": "Parque Nacional Llullaillaco",
+      "tipo": "parque_nacional",
+      "region": "Antofagasta",
+      "coordenadas": [-24.7167, -68.5333],
+      "superficie_ha": 268671,
+      "creado": 1995,
+      "altitud_m": "3200-6739",
+      "descripcion": "Desierto de altura en torno al volcán Llullaillaco (6739 m), uno de los sitios ceremoniales incas más altos del mundo. Puna extrema con vicuñas y guanacos.",
+      "evaluacion": { "puntaje": 4.3, "fuente": "Reseñas de visitantes", "mejor_epoca": "Noviembre a Marzo", "dificultad_acceso": "Muy alta (expedición, 4x4)" },
+      "senderos": [
+        { "nombre": "Aproximación campo base Llullaillaco", "distancia_km": 12, "duracion": "2 días (montañismo)", "dificultad": "Alta", "tipo": "Travesía" }
+      ],
+      "actividades": ["Montañismo de altura", "Arqueología inca", "Avistamiento de fauna"],
+      "pueblos_cercanos": [
+        { "nombre": "Antofagasta", "distancia_km": 320, "tiempo_estimado": "6 h en auto (4x4)", "tours_disponibles": true, "tours_estimados": 2, "descripcion": "Base logística; solo expediciones organizadas." }
+      ],
+      "entrada_pagada": true,
+      "sitio_web": "https://www.conaf.cl/parques/parque-nacional-llullaillaco/"
+    },
+    {
+      "id": "morro-moreno",
+      "nombre": "Parque Nacional Morro Moreno",
+      "tipo": "parque_nacional",
+      "region": "Antofagasta",
+      "coordenadas": [-23.5, -70.5833],
+      "superficie_ha": 7314,
+      "creado": 2010,
+      "altitud_m": "0-1290",
+      "descripcion": "Península de Mejillones con un oasis de niebla (camanchaca) que sostiene vegetación en pleno desierto de Atacama. Miradores sobre el Pacífico.",
+      "evaluacion": { "puntaje": 4.3, "fuente": "Reseñas de visitantes", "mejor_epoca": "Todo el año", "dificultad_acceso": "Media" },
+      "senderos": [
+        { "nombre": "Sendero Oasis de Niebla", "distancia_km": 6, "duracion": "3 h", "dificultad": "Media", "tipo": "Ida y vuelta" }
+      ],
+      "actividades": ["Oasis de niebla", "Miradores costeros", "Observación de flora"],
+      "pueblos_cercanos": [
+        { "nombre": "Mejillones", "distancia_km": 25, "tiempo_estimado": "30 min en auto", "tours_disponibles": false, "tours_estimados": 0, "descripcion": "Puerto más cercano al acceso del parque." },
+        { "nombre": "Antofagasta", "distancia_km": 60, "tiempo_estimado": "1 h en auto", "tours_disponibles": true, "tours_estimados": 2, "descripcion": "Ciudad base; acceso por camino a la península." }
+      ],
+      "entrada_pagada": true,
+      "sitio_web": "https://www.conaf.cl/parques/parque-nacional-morro-moreno/"
+    },
+    {
+      "id": "juan-fernandez",
+      "nombre": "Parque Nacional Archipiélago Juan Fernández",
+      "tipo": "parque_nacional",
+      "region": "Valparaíso (Islas Juan Fernández)",
+      "coordenadas": [-33.6333, -78.85],
+      "superficie_ha": 9967,
+      "creado": 1935,
+      "altitud_m": "0-915",
+      "descripcion": "Archipiélago oceánico famoso por inspirar 'Robinson Crusoe'. Alto endemismo de flora y fauna (lobo fino de Juan Fernández, picaflor rojo). Reserva de la Biosfera UNESCO.",
+      "evaluacion": { "puntaje": 4.7, "fuente": "Reseñas de visitantes", "mejor_epoca": "Octubre a Marzo", "dificultad_acceso": "Alta (vuelo o barco desde el continente)" },
+      "senderos": [
+        { "nombre": "Sendero Mirador Selkirk", "distancia_km": 4, "duracion": "2 h 30 min", "dificultad": "Media-Alta", "tipo": "Ida y vuelta" },
+        { "nombre": "Sendero Plazoleta El Yunque", "distancia_km": 3, "duracion": "1 h 30 min", "dificultad": "Media", "tipo": "Ida y vuelta" }
+      ],
+      "actividades": ["Buceo", "Endemismo", "Trekking", "Historia de Robinson Crusoe"],
+      "pueblos_cercanos": [
+        { "nombre": "San Juan Bautista", "distancia_km": 2, "tiempo_estimado": "10 min", "tours_disponibles": true, "tours_estimados": 6, "descripcion": "Único poblado del archipiélago; base de todos los servicios." },
+        { "nombre": "Valparaíso", "distancia_km": 670, "tiempo_estimado": "2 h 30 min en avión (a Isla Robinson Crusoe)", "tours_disponibles": true, "tours_estimados": 3, "descripcion": "Punto de partida de vuelos y barcos al archipiélago." }
+      ],
+      "entrada_pagada": true,
+      "sitio_web": "https://www.conaf.cl/parques/parque-nacional-archipielago-juan-fernandez/"
+    },
+    {
+      "id": "laguna-del-laja",
+      "nombre": "Parque Nacional Laguna del Laja",
+      "tipo": "parque_nacional",
+      "region": "Biobío",
+      "coordenadas": [-37.4, -71.35],
+      "superficie_ha": 11600,
+      "creado": 1958,
+      "altitud_m": "970-2985",
+      "descripcion": "Dominado por el volcán Antuco y la laguna del Laja sobre campos de lava. Bosques de araucaria, el Salto Las Chilcas y un centro de ski en invierno.",
+      "evaluacion": { "puntaje": 4.5, "fuente": "Reseñas de visitantes", "mejor_epoca": "Dic-Mar (trekking); Jul-Sep (ski)", "dificultad_acceso": "Media" },
+      "senderos": [
+        { "nombre": "Sendero Sierra Velluda", "distancia_km": 10, "duracion": "5 h", "dificultad": "Media-Alta", "tipo": "Ida y vuelta" },
+        { "nombre": "Sendero Salto Las Chilcas", "distancia_km": 3, "duracion": "1 h", "dificultad": "Baja", "tipo": "Ida y vuelta" }
+      ],
+      "actividades": ["Ascenso Volcán Antuco", "Ski", "Trekking", "Saltos de agua"],
+      "pueblos_cercanos": [
+        { "nombre": "Antuco", "distancia_km": 30, "tiempo_estimado": "40 min en auto", "tours_disponibles": false, "tours_estimados": 0, "descripcion": "Pueblo de acceso al parque." },
+        { "nombre": "Los Ángeles", "distancia_km": 90, "tiempo_estimado": "1 h 30 min en auto", "tours_disponibles": true, "tours_estimados": 4, "descripcion": "Ciudad base de la región." }
+      ],
+      "entrada_pagada": true,
+      "sitio_web": "https://www.conaf.cl/parques/parque-nacional-laguna-del-laja/"
+    },
+    {
+      "id": "nonguen",
+      "nombre": "Parque Nacional Nonguén",
+      "tipo": "parque_nacional",
+      "region": "Biobío",
+      "coordenadas": [-36.8833, -73.0],
+      "superficie_ha": 3037,
+      "creado": 2021,
+      "altitud_m": "50-400",
+      "descripcion": "Uno de los últimos remanentes de bosque caducifolio de la cordillera de la costa, a las puertas de Concepción. Refugio de biodiversidad urbana con senderos familiares.",
+      "evaluacion": { "puntaje": 4.4, "fuente": "Reseñas de visitantes", "mejor_epoca": "Septiembre a Abril", "dificultad_acceso": "Baja" },
+      "senderos": [
+        { "nombre": "Sendero Quebrada Nonguén", "distancia_km": 5, "duracion": "2 h", "dificultad": "Baja", "tipo": "Ida y vuelta" }
+      ],
+      "actividades": ["Senderismo", "Observación de aves", "Bosque nativo"],
+      "pueblos_cercanos": [
+        { "nombre": "Concepción", "distancia_km": 10, "tiempo_estimado": "25 min en auto", "tours_disponibles": true, "tours_estimados": 2, "descripcion": "El parque está prácticamente en la ciudad." }
+      ],
+      "entrada_pagada": false,
+      "sitio_web": "https://www.conaf.cl/parques/parque-nacional-nonguen/"
+    },
+    {
+      "id": "alerce-costero",
+      "nombre": "Parque Nacional Alerce Costero",
+      "tipo": "parque_nacional",
+      "region": "Los Ríos",
+      "coordenadas": [-40.1833, -73.4333],
+      "superficie_ha": 24694,
+      "creado": 2010,
+      "altitud_m": "50-1044",
+      "descripcion": "Protege el 'Alerce Milenario', un alerce de más de 3500 años, entre los árboles más antiguos del planeta. Selva valdiviana en la cordillera de la costa.",
+      "evaluacion": { "puntaje": 4.6, "fuente": "Reseñas de visitantes", "mejor_epoca": "Noviembre a Marzo", "dificultad_acceso": "Media" },
+      "senderos": [
+        { "nombre": "Sendero El Alerce Milenario", "distancia_km": 2, "duracion": "1 h", "dificultad": "Baja", "tipo": "Ida y vuelta" },
+        { "nombre": "Sendero Mirador Cordillera Pelada", "distancia_km": 4, "duracion": "2 h", "dificultad": "Media", "tipo": "Ida y vuelta" }
+      ],
+      "actividades": ["Alerces milenarios", "Trekking", "Selva valdiviana"],
+      "pueblos_cercanos": [
+        { "nombre": "La Unión", "distancia_km": 45, "tiempo_estimado": "1 h 15 min en auto", "tours_disponibles": true, "tours_estimados": 3, "descripcion": "Acceso por sector Cerro Mirador." },
+        { "nombre": "Valdivia", "distancia_km": 90, "tiempo_estimado": "2 h en auto", "tours_disponibles": true, "tours_estimados": 4, "descripcion": "Ciudad base; acceso también por Corral y Chaihuín." }
+      ],
+      "entrada_pagada": true,
+      "sitio_web": "https://www.conaf.cl/parques/parque-nacional-alerce-costero/"
+    },
+    {
+      "id": "hornopiren",
+      "nombre": "Parque Nacional Hornopirén",
+      "tipo": "parque_nacional",
+      "region": "Los Lagos",
+      "coordenadas": [-41.9167, -72.4333],
+      "superficie_ha": 48232,
+      "creado": 1988,
+      "altitud_m": "0-1572",
+      "descripcion": "Inicio de la Carretera Austral, con los volcanes Hornopirén y Yates, bosques de alerce, lagos glaciares y ríos de aguas turquesa.",
+      "evaluacion": { "puntaje": 4.5, "fuente": "Reseñas de visitantes", "mejor_epoca": "Diciembre a Marzo", "dificultad_acceso": "Media-Alta" },
+      "senderos": [
+        { "nombre": "Sendero Lago General Pinto Concha", "distancia_km": 12, "duracion": "6 h", "dificultad": "Alta", "tipo": "Ida y vuelta" }
+      ],
+      "actividades": ["Trekking", "Alerces", "Carretera Austral", "Termas cercanas"],
+      "pueblos_cercanos": [
+        { "nombre": "Hornopirén", "distancia_km": 15, "tiempo_estimado": "25 min en auto", "tours_disponibles": true, "tours_estimados": 3, "descripcion": "Pueblo puerta de la Carretera Austral." },
+        { "nombre": "Puerto Montt", "distancia_km": 110, "tiempo_estimado": "2 h 30 min en auto", "tours_disponibles": true, "tours_estimados": 4, "descripcion": "Ciudad base; acceso por la Ruta 7." }
+      ],
+      "entrada_pagada": true,
+      "sitio_web": "https://www.conaf.cl/parques/parque-nacional-hornopiren/"
+    },
+    {
+      "id": "corcovado",
+      "nombre": "Parque Nacional Corcovado",
+      "tipo": "parque_nacional",
+      "region": "Los Lagos",
+      "coordenadas": [-43.4667, -72.8],
+      "superficie_ha": 209726,
+      "creado": 2005,
+      "altitud_m": "0-2300",
+      "descripcion": "Zona remota y prístina en torno al volcán Corcovado, con fiordos, lagunas, turberas y una de las mayores concentraciones de biodiversidad de la Patagonia norte.",
+      "evaluacion": { "puntaje": 4.6, "fuente": "Reseñas de visitantes", "mejor_epoca": "Diciembre a Febrero", "dificultad_acceso": "Muy alta (bote/avioneta)" },
+      "senderos": [
+        { "nombre": "Sendero costero (acceso guiado)", "distancia_km": 6, "duracion": "3 h", "dificultad": "Media", "tipo": "Ida y vuelta" }
+      ],
+      "actividades": ["Naturaleza prístina", "Avistamiento de fauna", "Fotografía"],
+      "pueblos_cercanos": [
+        { "nombre": "Chaitén", "distancia_km": 60, "tiempo_estimado": "Navegación / avioneta", "tours_disponibles": true, "tours_estimados": 2, "descripcion": "Base logística; el acceso requiere transporte privado." }
+      ],
+      "entrada_pagada": false,
+      "sitio_web": "https://www.conaf.cl/parques/parque-nacional-corcovado/"
+    },
+    {
+      "id": "isla-magdalena",
+      "nombre": "Parque Nacional Isla Magdalena",
+      "tipo": "parque_nacional",
+      "region": "Aysén",
+      "coordenadas": [-44.65, -73.1667],
+      "superficie_ha": 157616,
+      "creado": 1983,
+      "altitud_m": "0-1660",
+      "descripcion": "Gran isla cubierta de bosque siempreverde con el volcán Mentolat y su glaciar. Naturaleza casi intacta frente a Puerto Cisnes, en el litoral de Aysén.",
+      "evaluacion": { "puntaje": 4.4, "fuente": "Reseñas de visitantes", "mejor_epoca": "Diciembre a Marzo", "dificultad_acceso": "Alta (navegación)" },
+      "senderos": [
+        { "nombre": "Sendero de interpretación (sector costero)", "distancia_km": 3, "duracion": "1 h 30 min", "dificultad": "Media", "tipo": "Ida y vuelta" }
+      ],
+      "actividades": ["Navegación", "Bosque siempreverde", "Avistamiento de fauna"],
+      "pueblos_cercanos": [
+        { "nombre": "Puerto Cisnes", "distancia_km": 10, "tiempo_estimado": "Navegación 30 min", "tours_disponibles": true, "tours_estimados": 2, "descripcion": "Puerto frente a la isla, acceso en lancha." }
+      ],
+      "entrada_pagada": false,
+      "sitio_web": "https://www.conaf.cl/parques/parque-nacional-isla-magdalena/"
+    },
+    {
+      "id": "melimoyu",
+      "nombre": "Parque Nacional Melimoyu",
+      "tipo": "parque_nacional",
+      "region": "Aysén",
+      "coordenadas": [-44.05, -72.85],
+      "superficie_ha": 105821,
+      "creado": 2018,
+      "altitud_m": "0-2400",
+      "descripcion": "Parque de la Red de Parques de la Patagonia en torno al volcán Melimoyu, con bosques, humedales y una costa donde se avistan ballenas azules en verano.",
+      "evaluacion": { "puntaje": 4.5, "fuente": "Reseñas de visitantes", "mejor_epoca": "Diciembre a Marzo", "dificultad_acceso": "Muy alta (remoto)" },
+      "senderos": [
+        { "nombre": "Sendero sector Marín Balmaceda (acceso costero)", "distancia_km": 4, "duracion": "2 h", "dificultad": "Media", "tipo": "Ida y vuelta" }
+      ],
+      "actividades": ["Avistamiento de ballenas", "Naturaleza prístina", "Kayak"],
+      "pueblos_cercanos": [
+        { "nombre": "La Junta", "distancia_km": 60, "tiempo_estimado": "1 h 30 min + navegación", "tours_disponibles": true, "tours_estimados": 2, "descripcion": "Base en la Carretera Austral; acceso vía Raúl Marín Balmaceda." }
+      ],
+      "entrada_pagada": false,
+      "sitio_web": "https://www.conaf.cl/parques/parque-nacional-melimoyu/"
+    },
+    {
+      "id": "kawesqar",
+      "nombre": "Parque Nacional Kawésqar",
+      "tipo": "parque_nacional",
+      "region": "Magallanes y de la Antártica Chilena",
+      "coordenadas": [-50.0, -74.0],
+      "superficie_ha": 2842329,
+      "creado": 2019,
+      "altitud_m": "0-1500",
+      "descripcion": "Uno de los parques más grandes de Chile: un laberinto de fiordos, canales, islas y glaciares del Campo de Hielo Sur, territorio ancestral del pueblo Kawésqar.",
+      "evaluacion": { "puntaje": 4.6, "fuente": "Reseñas de visitantes", "mejor_epoca": "Octubre a Abril", "dificultad_acceso": "Muy alta (solo navegación)" },
+      "senderos": [
+        { "nombre": "Navegación por los canales y fiordos", "distancia_km": 0, "duracion": "Crucero de varios días", "dificultad": "Baja", "tipo": "Navegación" }
+      ],
+      "actividades": ["Navegación de fiordos", "Glaciares", "Cultura Kawésqar", "Kayak"],
+      "pueblos_cercanos": [
+        { "nombre": "Puerto Natales", "distancia_km": 0, "tiempo_estimado": "Navegación de varios días", "tours_disponibles": true, "tours_estimados": 5, "descripcion": "Salida de cruceros y navegaciones hacia los fiordos." },
+        { "nombre": "Puerto Edén", "distancia_km": 0, "tiempo_estimado": "En el corazón del parque", "tours_disponibles": false, "tours_estimados": 0, "descripcion": "Aldea Kawésqar en medio de los canales." }
+      ],
+      "entrada_pagada": false,
+      "sitio_web": "https://www.conaf.cl/parques/parque-nacional-kawesqar/"
+    },
+    {
+      "id": "alberto-de-agostini",
+      "nombre": "Parque Nacional Alberto de Agostini",
+      "tipo": "parque_nacional",
+      "region": "Magallanes y de la Antártica Chilena",
+      "coordenadas": [-54.5, -70.0],
+      "superficie_ha": 1460000,
+      "creado": 1965,
+      "altitud_m": "0-2469",
+      "descripcion": "Cordillera Darwin en Tierra del Fuego, con glaciares que descienden hasta el mar en fiordos como Pía y Garibaldi. Solo accesible por navegación.",
+      "evaluacion": { "puntaje": 4.7, "fuente": "Reseñas de visitantes", "mejor_epoca": "Octubre a Abril", "dificultad_acceso": "Muy alta (crucero)" },
+      "senderos": [
+        { "nombre": "Sendero Glaciar Pía", "distancia_km": 2, "duracion": "1 h", "dificultad": "Media", "tipo": "Ida y vuelta" },
+        { "nombre": "Navegación Avenida de los Glaciares", "distancia_km": 0, "duracion": "Crucero", "dificultad": "Baja", "tipo": "Navegación" }
+      ],
+      "actividades": ["Navegación a glaciares", "Fiordos", "Fotografía"],
+      "pueblos_cercanos": [
+        { "nombre": "Punta Arenas", "distancia_km": 0, "tiempo_estimado": "Crucero de 3-4 días", "tours_disponibles": true, "tours_estimados": 4, "descripcion": "Salida de cruceros de expedición a la Cordillera Darwin y Cabo de Hornos." },
+        { "nombre": "Puerto Williams", "distancia_km": 0, "tiempo_estimado": "Navegación", "tours_disponibles": true, "tours_estimados": 3, "descripcion": "Puerto más austral, base de expediciones." }
+      ],
+      "entrada_pagada": true,
+      "sitio_web": "https://www.conaf.cl/parques/parque-nacional-alberto-de-agostini/"
+    },
+    {
+      "id": "yendegaia",
+      "nombre": "Parque Nacional Yendegaia",
+      "tipo": "parque_nacional",
+      "region": "Magallanes y de la Antártica Chilena",
+      "coordenadas": [-54.75, -68.85],
+      "superficie_ha": 150180,
+      "creado": 2013,
+      "altitud_m": "0-2200",
+      "descripcion": "Conecta la Cordillera Darwin con el canal Beagle en Tierra del Fuego. Bosques de lenga, glaciares y estepa; corredor biológico hacia Argentina.",
+      "evaluacion": { "puntaje": 4.4, "fuente": "Reseñas de visitantes", "mejor_epoca": "Diciembre a Marzo", "dificultad_acceso": "Muy alta (remoto)" },
+      "senderos": [
+        { "nombre": "Sendero Valle Yendegaia", "distancia_km": 8, "duracion": "4 h", "dificultad": "Media-Alta", "tipo": "Ida y vuelta" }
+      ],
+      "actividades": ["Trekking remoto", "Glaciares", "Naturaleza prístina"],
+      "pueblos_cercanos": [
+        { "nombre": "Porvenir", "distancia_km": 250, "tiempo_estimado": "Camino en construcción / navegación", "tours_disponibles": false, "tours_estimados": 0, "descripcion": "Acceso terrestre por la Ruta Y-85 (en desarrollo)." },
+        { "nombre": "Punta Arenas", "distancia_km": 0, "tiempo_estimado": "Navegación por el Beagle", "tours_disponibles": true, "tours_estimados": 2, "descripcion": "Acceso principal por mar." }
+      ],
+      "entrada_pagada": false,
+      "sitio_web": "https://www.conaf.cl/parques/parque-nacional-yendegaia/"
+    },
+    {
+      "id": "cabo-de-hornos",
+      "nombre": "Parque Nacional Cabo de Hornos",
+      "tipo": "parque_nacional",
+      "region": "Magallanes y de la Antártica Chilena",
+      "coordenadas": [-55.75, -67.25],
+      "superficie_ha": 63093,
+      "creado": 1945,
+      "altitud_m": "0-600",
+      "descripcion": "El punto más austral de América, donde se encuentran los océanos Pacífico y Atlántico. Tundra magallánica y el mítico Cabo de Hornos. Reserva de la Biosfera UNESCO.",
+      "evaluacion": { "puntaje": 4.7, "fuente": "Reseñas de visitantes", "mejor_epoca": "Noviembre a Marzo", "dificultad_acceso": "Muy alta (crucero)" },
+      "senderos": [
+        { "nombre": "Sendero al Monumento del Albatros", "distancia_km": 2, "duracion": "1 h", "dificultad": "Media", "tipo": "Ida y vuelta (pasarela)" }
+      ],
+      "actividades": ["Fin del mundo", "Navegación", "Aves marinas", "Historia náutica"],
+      "pueblos_cercanos": [
+        { "nombre": "Puerto Williams", "distancia_km": 110, "tiempo_estimado": "Navegación", "tours_disponibles": true, "tours_estimados": 3, "descripcion": "Ciudad más austral del mundo; base de las navegaciones al cabo." },
+        { "nombre": "Punta Arenas", "distancia_km": 0, "tiempo_estimado": "Crucero de expedición", "tours_disponibles": true, "tours_estimados": 4, "descripcion": "Salida de cruceros que incluyen Cabo de Hornos." }
+      ],
+      "entrada_pagada": true,
+      "sitio_web": "https://www.conaf.cl/parques/parque-nacional-cabo-de-hornos/"
+    },
+    {
       "id": "los-flamencos",
       "nombre": "Reserva Nacional Los Flamencos",
       "tipo": "reserva_nacional",
@@ -676,14 +1005,14 @@
     },
     {
       "id": "rio-clarillo",
-      "nombre": "Reserva Nacional Río Clarillo",
-      "tipo": "reserva_nacional",
+      "nombre": "Parque Nacional Río Clarillo",
+      "tipo": "parque_nacional",
       "region": "Metropolitana",
       "coordenadas": [-33.7167, -70.4833],
       "superficie_ha": 13185,
-      "creado": 1982,
+      "creado": 2019,
       "altitud_m": "850-3050",
-      "descripcion": "Bosque esclerófilo precordillerano a menos de una hora de Santiago, con el río Clarillo de aguas cristalinas. Ideal para un día de naturaleza cerca de la capital.",
+      "descripcion": "Bosque esclerófilo precordillerano a menos de una hora de Santiago, con el río Clarillo de aguas cristalinas. Reclasificado de reserva a parque nacional en 2019. Ideal para un día de naturaleza cerca de la capital.",
       "evaluacion": { "puntaje": 4.5, "fuente": "Reseñas de visitantes", "mejor_epoca": "Septiembre a Mayo", "dificultad_acceso": "Baja" },
       "senderos": [
         { "nombre": "Sendero Aliwen Mahuida", "distancia_km": 3, "duracion": "1 h 30 min", "dificultad": "Baja", "tipo": "Circuito" },
@@ -695,7 +1024,7 @@
         { "nombre": "Santiago", "distancia_km": 45, "tiempo_estimado": "1 h en auto", "tours_disponibles": true, "tours_estimados": 5, "descripcion": "Escapada de día desde la capital." }
       ],
       "entrada_pagada": true,
-      "sitio_web": "https://www.conaf.cl/parques/reserva-nacional-rio-clarillo/"
+      "sitio_web": "https://www.conaf.cl/parques/parque-nacional-rio-clarillo/"
     },
     {
       "id": "altos-de-lircay",

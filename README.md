@@ -7,7 +7,7 @@ Aplicación web que muestra en un **mapa interactivo** los parques nacionales y 
 - 🏘️ **Pueblos cercanos** (puertas de entrada): distancia, tiempo estimado de viaje y **cantidad estimada de tours** disponibles desde cada pueblo.
 - 🎒 Actividades, superficie, altitud, año de creación y enlace a CONAF.
 
-Actualmente incluye **33 áreas protegidas** (26 parques nacionales y 7 reservas nacionales), de Arica a Magallanes, más Rapa Nui.
+Actualmente incluye **48 áreas protegidas** (42 parques nacionales y 6 reservas nacionales), de Arica a Cabo de Hornos, más Rapa Nui, Juan Fernández y los grandes parques de la Patagonia (Kawésqar, Torres del Paine, Bernardo O'Higgins, etc.).
 
 ## 🚀 Cómo ejecutarlo
 
@@ -80,7 +80,7 @@ Guarda y recarga la página: el marcador, la ficha y el buscador se generan auto
 
 ## ✨ Funcionalidades
 
-- Buscador por nombre, región, descripción o pueblo.
+- Buscador por nombre, región, descripción o pueblo (insensible a tildes).
 - Filtros por tipo de área (parque / reserva) con leyenda de colores.
 - Panel lateral con ficha completa al hacer clic en un marcador o en la lista.
 - Diseño responsive (móvil y escritorio).
@@ -91,7 +91,7 @@ Los datos son de **elaboración propia** a partir de información pública de CO
 
 ## 🛣️ Próximos pasos posibles
 
-- Completar las ~46 áreas del SNASPE y sumar monumentos naturales.
+- Sumar monumentos naturales y las reservas nacionales restantes del SNASPE.
 - Capas de rutas y curvas de nivel.
 - Fichas de tours reales con operadores y precios.
 - Geolocalización del usuario y cálculo de ruta al parque.
