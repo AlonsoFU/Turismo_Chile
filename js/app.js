@@ -265,8 +265,10 @@
           (state.tipos[l.tipo] ? state.tipos[l.tipo].etiqueta : "") +
           "</span>" +
           "<span>" +
-          (l.senderos ? l.senderos.length : 0) +
-          " senderos</span>" +
+          (l.senderos && l.senderos.length
+            ? l.senderos.length + " senderos"
+            : (l.actividades ? l.actividades.length : 0) + " actividades") +
+          "</span>" +
           "</div>";
         li.addEventListener("click", () => {
           if (map) {
@@ -298,13 +300,16 @@
         lista.appendChild(li);
       });
 
-    // stats
-    const parques = visibles.filter((l) => l.tipo === "parque_nacional").length;
-    const reservas = visibles.filter((l) => l.tipo === "reserva_nacional").length;
-    const monumentos = visibles.filter((l) => l.tipo === "monumento_natural").length;
-    document.getElementById("stats").innerHTML =
-      "<span>🌲 " + parques + " parques</span><span>💧 " + reservas + " reservas</span>" +
-      (monumentos ? "<span>🗿 " + monumentos + " monumentos</span>" : "");
+    // stats (data-driven: un contador por cada tipo con resultados)
+    document.getElementById("stats").innerHTML = Object.entries(state.tipos)
+      .map(([clave, info]) => {
+        const n = visibles.filter((l) => l.tipo === clave).length;
+        if (!n) return "";
+        return (
+          "<span>" + (info.icono || "") + " " + n + " " + (info.plural || info.etiqueta) + "</span>"
+        );
+      })
+      .join("");
     document.getElementById("footerCount").textContent =
       visibles.length + " lugares mostrados";
 
@@ -319,11 +324,24 @@
     const visitadosTotal = state.lugares.filter((l) => esVisitado(l.id)).length;
     const pct = total ? Math.round((visitadosTotal / total) * 100) : 0;
 
-    const porTipo = (tipo) => {
-      const list = state.lugares.filter((l) => l.tipo === tipo);
-      const v = list.filter((l) => esVisitado(l.id)).length;
-      return v + "/" + list.length;
-    };
+    const tiposHtml = Object.entries(state.tipos)
+      .map(([clave, info]) => {
+        const list = state.lugares.filter((l) => l.tipo === clave);
+        if (!list.length) return "";
+        const v = list.filter((l) => esVisitado(l.id)).length;
+        return (
+          "<span>" +
+          (info.icono || "") +
+          " " +
+          v +
+          "/" +
+          list.length +
+          " " +
+          (info.plural || info.etiqueta) +
+          "</span>"
+        );
+      })
+      .join("");
 
     cont.innerHTML =
       '<div class="progress__head">' +
@@ -344,9 +362,7 @@
       pct +
       '%"></div></div>' +
       '<div class="progress__types">' +
-      "<span>🌲 " + porTipo("parque_nacional") + " parques</span>" +
-      "<span>💧 " + porTipo("reserva_nacional") + " reservas</span>" +
-      "<span>🗿 " + porTipo("monumento_natural") + " monumentos</span>" +
+      tiposHtml +
       "</div>";
 
     const reset = document.getElementById("progressReset");
@@ -379,7 +395,7 @@
       ["Acceso", ev.dificultad_acceso || "–"],
       ["Entrada", l.entrada_pagada ? "Pagada" : "Liberada"],
       ["Evaluación", ev.puntaje ? "★ " + ev.puntaje.toFixed(1) + " / 5" : "–"],
-    ];
+    ].filter((f) => f[1] && f[1] !== "–"); // oculta datos no aplicables
 
     const senderos = (l.senderos || [])
       .map((s) => {

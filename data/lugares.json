@@ -6,9 +6,10 @@
     "actualizado": "2026-07-06",
     "fuente_datos": "Elaboración propia a partir de información pública de CONAF y guías de viaje. Coordenadas y datos aproximados; verificar antes de viajar.",
     "tipos": {
-      "parque_nacional": { "etiqueta": "Parque Nacional", "color": "#2e7d32" },
-      "reserva_nacional": { "etiqueta": "Reserva Nacional", "color": "#00838f" },
-      "monumento_natural": { "etiqueta": "Monumento Natural", "color": "#8e24aa" }
+      "parque_nacional": { "etiqueta": "Parque Nacional", "color": "#2e7d32", "icono": "🌲", "plural": "parques" },
+      "reserva_nacional": { "etiqueta": "Reserva Nacional", "color": "#00838f", "icono": "💧", "plural": "reservas" },
+      "monumento_natural": { "etiqueta": "Monumento Natural", "color": "#8e24aa", "icono": "🗿", "plural": "monumentos" },
+      "actividad": { "etiqueta": "Aventura / Panorama", "color": "#ef6c00", "icono": "🏄", "plural": "panoramas" }
     }
   },
   "lugares": [
@@ -2367,6 +2368,366 @@
       ],
       "entrada_pagada": false,
       "sitio_web": "https://www.conaf.cl/parques/monumento-natural-laguna-de-los-cisnes/"
+    },
+    {
+      "id": "parapente-iquique",
+      "nombre": "Parapente y Sandboard en Iquique",
+      "tipo": "actividad",
+      "region": "Tarapacá",
+      "coordenadas": [-20.24, -70.13],
+      "altitud_m": "0-600",
+      "descripcion": "Iquique es uno de los mejores lugares del mundo para volar en parapente todo el año: despegas desde Alto Hospicio y aterrizas en la playa. A un costado, el Cerro Dragón —la duna urbana más grande de Sudamérica— es perfecto para sandboard.",
+      "evaluacion": { "puntaje": 4.7, "fuente": "Reseñas de visitantes", "mejor_epoca": "Todo el año", "dificultad_acceso": "Baja" },
+      "senderos": [],
+      "actividades": ["Parapente", "Sandboard", "Playa", "Vuelo biplaza"],
+      "pueblos_cercanos": [
+        { "nombre": "Iquique", "distancia_km": 5, "tiempo_estimado": "15 min en auto", "tours_disponibles": true, "tours_estimados": 15, "descripcion": "Los despegues y las escuelas de parapente están en la misma ciudad." }
+      ],
+      "entrada_pagada": true
+    },
+    {
+      "id": "geiseres-del-tatio",
+      "nombre": "Géiseres del Tatio",
+      "tipo": "actividad",
+      "region": "Antofagasta",
+      "coordenadas": [-22.3333, -68.0133],
+      "altitud_m": "4320",
+      "descripcion": "El campo geotérmico más alto del mundo, con más de 80 géiseres que lanzan columnas de vapor al amanecer. Se sale de madrugada desde San Pedro para verlos en su mejor momento y terminar con un baño en las termas.",
+      "evaluacion": { "puntaje": 4.6, "fuente": "Reseñas de visitantes", "mejor_epoca": "Todo el año (madrugada)", "dificultad_acceso": "Media (altura, madrugón)" },
+      "senderos": [],
+      "actividades": ["Géiseres", "Termas", "Astroturismo", "Madrugada"],
+      "pueblos_cercanos": [
+        { "nombre": "San Pedro de Atacama", "distancia_km": 90, "tiempo_estimado": "2 h en auto", "tours_disponibles": true, "tours_estimados": 30, "descripcion": "Todos los tours salen ~4:30 AM desde el pueblo." }
+      ],
+      "entrada_pagada": true
+    },
+    {
+      "id": "sandboard-valle-muerte",
+      "nombre": "Sandboard en Valle de la Muerte",
+      "tipo": "actividad",
+      "region": "Antofagasta",
+      "coordenadas": [-22.905, -68.2333],
+      "altitud_m": "2500",
+      "descripcion": "Grandes dunas de arena entre formaciones rocosas rojizas a minutos de San Pedro de Atacama. El mejor lugar del norte para bajar en tabla, ideal al atardecer con la Cordillera de la Sal de fondo.",
+      "evaluacion": { "puntaje": 4.5, "fuente": "Reseñas de visitantes", "mejor_epoca": "Todo el año", "dificultad_acceso": "Baja" },
+      "senderos": [],
+      "actividades": ["Sandboard", "Fotografía", "Atardecer"],
+      "pueblos_cercanos": [
+        { "nombre": "San Pedro de Atacama", "distancia_km": 5, "tiempo_estimado": "10 min en auto", "tours_disponibles": true, "tours_estimados": 20, "descripcion": "Arriendo de tabla y tours con transporte desde el pueblo." }
+      ],
+      "entrada_pagada": true
+    },
+    {
+      "id": "astro-san-pedro",
+      "nombre": "Astroturismo en San Pedro de Atacama",
+      "tipo": "actividad",
+      "region": "Antofagasta",
+      "coordenadas": [-22.9098, -68.2],
+      "altitud_m": "2400",
+      "descripcion": "El cielo del desierto de Atacama es uno de los más limpios del planeta. Tours nocturnos con telescopios muestran galaxias, nebulosas y la Vía Láctea como pocos lugares en el mundo.",
+      "evaluacion": { "puntaje": 4.7, "fuente": "Reseñas de visitantes", "mejor_epoca": "Todo el año (noches sin luna)", "dificultad_acceso": "Baja" },
+      "senderos": [],
+      "actividades": ["Astroturismo", "Telescopios", "Fotografía nocturna"],
+      "pueblos_cercanos": [
+        { "nombre": "San Pedro de Atacama", "distancia_km": 3, "tiempo_estimado": "10 min", "tours_disponibles": true, "tours_estimados": 15, "descripcion": "Decenas de operadores de astroturismo en el pueblo." }
+      ],
+      "entrada_pagada": true
+    },
+    {
+      "id": "bahia-inglesa",
+      "nombre": "Buceo y Kayak en Bahía Inglesa",
+      "tipo": "actividad",
+      "region": "Atacama",
+      "coordenadas": [-27.1, -70.86],
+      "altitud_m": "0",
+      "descripcion": "Aguas turquesas y cálidas del norte, ideales para buceo, snorkel y kayak. Uno de los balnearios más lindos de Chile, con playas de arena blanca a pasos de Caldera.",
+      "evaluacion": { "puntaje": 4.4, "fuente": "Reseñas de visitantes", "mejor_epoca": "Octubre a Abril", "dificultad_acceso": "Baja" },
+      "senderos": [],
+      "actividades": ["Buceo", "Kayak", "Snorkel", "Playa"],
+      "pueblos_cercanos": [
+        { "nombre": "Caldera", "distancia_km": 6, "tiempo_estimado": "10 min en auto", "tours_disponibles": true, "tours_estimados": 6, "descripcion": "Puerto vecino con más servicios y buceo." },
+        { "nombre": "Copiapó", "distancia_km": 75, "tiempo_estimado": "1 h en auto", "tours_disponibles": true, "tours_estimados": 4, "descripcion": "Ciudad base de la región." }
+      ],
+      "entrada_pagada": false
+    },
+    {
+      "id": "astro-elqui",
+      "nombre": "Astroturismo en el Valle del Elqui",
+      "tipo": "actividad",
+      "region": "Coquimbo",
+      "coordenadas": [-30.0333, -70.5],
+      "altitud_m": "600-1100",
+      "descripcion": "Valle de cielos despejados, pisco y misticismo. Observatorios turísticos como Mamalluca y los cielos de Cochiguaz ofrecen noches de estrellas inolvidables, entre viñedos y pueblos pintorescos.",
+      "evaluacion": { "puntaje": 4.6, "fuente": "Reseñas de visitantes", "mejor_epoca": "Todo el año (noches despejadas)", "dificultad_acceso": "Baja" },
+      "senderos": [],
+      "actividades": ["Astroturismo", "Ruta del pisco", "Fotografía", "Termalismo"],
+      "pueblos_cercanos": [
+        { "nombre": "Vicuña", "distancia_km": 10, "tiempo_estimado": "15 min en auto", "tours_disponibles": true, "tours_estimados": 12, "descripcion": "Pueblo base para los observatorios del valle." },
+        { "nombre": "La Serena", "distancia_km": 65, "tiempo_estimado": "1 h en auto", "tours_disponibles": true, "tours_estimados": 15, "descripcion": "Ciudad costera; tours de noche al Elqui." }
+      ],
+      "entrada_pagada": true
+    },
+    {
+      "id": "valle-nevado-ski",
+      "nombre": "Ski en Valle Nevado y Farellones",
+      "tipo": "actividad",
+      "region": "Metropolitana",
+      "coordenadas": [-33.3561, -70.2506],
+      "altitud_m": "2400-3670",
+      "descripcion": "Los centros de ski más grandes de Sudamérica (Valle Nevado, La Parva, El Colorado) a solo una hora y media de Santiago. En verano, base para trekking y downhill en bicicleta.",
+      "evaluacion": { "puntaje": 4.5, "fuente": "Reseñas de visitantes", "mejor_epoca": "Junio a Septiembre (ski)", "dificultad_acceso": "Media (camino de curvas)" },
+      "senderos": [],
+      "actividades": ["Ski", "Snowboard", "Downhill (verano)", "Montaña"],
+      "pueblos_cercanos": [
+        { "nombre": "Farellones", "distancia_km": 10, "tiempo_estimado": "20 min en auto", "tours_disponibles": true, "tours_estimados": 8, "descripcion": "Villa de montaña con alojamiento y arriendo de equipo." },
+        { "nombre": "Santiago", "distancia_km": 55, "tiempo_estimado": "1 h 30 min en auto", "tours_disponibles": true, "tours_estimados": 20, "descripcion": "Transporte y tours diarios en temporada de ski." }
+      ],
+      "entrada_pagada": true
+    },
+    {
+      "id": "rafting-cajon-maipo",
+      "nombre": "Rafting en el Cajón del Maipo",
+      "tipo": "actividad",
+      "region": "Metropolitana",
+      "coordenadas": [-33.75, -70.35],
+      "altitud_m": "1000-1200",
+      "descripcion": "Descenso en balsa por los rápidos del río Maipo, la aventura acuática más cercana a Santiago. En San Alfonso, la Cascada de las Ánimas suma canopy, cabalgatas y termas.",
+      "evaluacion": { "puntaje": 4.5, "fuente": "Reseñas de visitantes", "mejor_epoca": "Octubre a Marzo", "dificultad_acceso": "Baja" },
+      "senderos": [],
+      "actividades": ["Rafting", "Canopy", "Cabalgatas", "Termas"],
+      "pueblos_cercanos": [
+        { "nombre": "San José de Maipo", "distancia_km": 15, "tiempo_estimado": "20 min en auto", "tours_disponibles": true, "tours_estimados": 12, "descripcion": "Corazón del Cajón; operadores de rafting y aventura." },
+        { "nombre": "Santiago", "distancia_km": 55, "tiempo_estimado": "1 h 15 min en auto", "tours_disponibles": true, "tours_estimados": 15, "descripcion": "Excursión de día muy popular desde la capital." }
+      ],
+      "entrada_pagada": true
+    },
+    {
+      "id": "embalse-el-yeso",
+      "nombre": "Embalse El Yeso",
+      "tipo": "actividad",
+      "region": "Metropolitana",
+      "coordenadas": [-33.6667, -70.0833],
+      "altitud_m": "2500",
+      "descripcion": "Embalse de agua turquesa rodeado de montañas en lo profundo del Cajón del Maipo. Uno de los paisajes más fotografiados cerca de Santiago, ideal para un día de montaña, picnic y fotografía.",
+      "evaluacion": { "puntaje": 4.6, "fuente": "Reseñas de visitantes", "mejor_epoca": "Noviembre a Abril", "dificultad_acceso": "Media (ripio final)" },
+      "senderos": [],
+      "actividades": ["Fotografía", "Montaña", "Picnic", "Trekking suave"],
+      "pueblos_cercanos": [
+        { "nombre": "San Gabriel", "distancia_km": 40, "tiempo_estimado": "1 h 15 min en auto", "tours_disponibles": true, "tours_estimados": 8, "descripcion": "Último poblado antes del embalse; tours desde Santiago." }
+      ],
+      "entrada_pagada": false
+    },
+    {
+      "id": "termas-valle-colina",
+      "nombre": "Termas Valle de Colina",
+      "tipo": "actividad",
+      "region": "Metropolitana",
+      "coordenadas": [-33.8333, -69.9333],
+      "altitud_m": "2500",
+      "descripcion": "Terrazas de pozones termales naturales escalonados en plena cordillera, al fondo del Cajón del Maipo. Baños de agua caliente con vista a la montaña; se puede acampar.",
+      "evaluacion": { "puntaje": 4.5, "fuente": "Reseñas de visitantes", "mejor_epoca": "Todo el año", "dificultad_acceso": "Media (ripio)" },
+      "senderos": [],
+      "actividades": ["Termas", "Camping", "Cabalgatas", "Montaña"],
+      "pueblos_cercanos": [
+        { "nombre": "Baños Morales", "distancia_km": 12, "tiempo_estimado": "30 min en auto", "tours_disponibles": true, "tours_estimados": 6, "descripcion": "Villorrio cercano; tours desde el Cajón del Maipo." }
+      ],
+      "entrada_pagada": true
+    },
+    {
+      "id": "dunas-concon",
+      "nombre": "Sandboard en las Dunas de Concón",
+      "tipo": "actividad",
+      "region": "Valparaíso",
+      "coordenadas": [-32.9167, -71.5167],
+      "altitud_m": "0-100",
+      "descripcion": "Campo dunar frente al mar entre Concón y Reñaca, a minutos de Viña del Mar. Sandboard, caminatas al atardecer y una vista privilegiada del Pacífico.",
+      "evaluacion": { "puntaje": 4.2, "fuente": "Reseñas de visitantes", "mejor_epoca": "Todo el año", "dificultad_acceso": "Baja" },
+      "senderos": [],
+      "actividades": ["Sandboard", "Atardecer", "Fotografía"],
+      "pueblos_cercanos": [
+        { "nombre": "Concón", "distancia_km": 2, "tiempo_estimado": "5 min", "tours_disponibles": true, "tours_estimados": 4, "descripcion": "Las dunas están en la ciudad; arriendo de tablas cerca." },
+        { "nombre": "Viña del Mar", "distancia_km": 12, "tiempo_estimado": "20 min en auto", "tours_disponibles": true, "tours_estimados": 6, "descripcion": "Base turística de la costa central." }
+      ],
+      "entrada_pagada": false
+    },
+    {
+      "id": "parapente-maitencillo",
+      "nombre": "Parapente en Maitencillo",
+      "tipo": "actividad",
+      "region": "Valparaíso",
+      "coordenadas": [-32.6417, -71.4417],
+      "altitud_m": "0-200",
+      "descripcion": "Vuelos en parapente biplaza sobre la costa central, con despegue en las lomas y aterrizaje frente a las playas de Maitencillo. Una de las mejores experiencias de vuelo cerca de Santiago.",
+      "evaluacion": { "puntaje": 4.5, "fuente": "Reseñas de visitantes", "mejor_epoca": "Octubre a Abril", "dificultad_acceso": "Baja" },
+      "senderos": [],
+      "actividades": ["Parapente", "Vuelo biplaza", "Playa"],
+      "pueblos_cercanos": [
+        { "nombre": "Maitencillo", "distancia_km": 2, "tiempo_estimado": "5 min", "tours_disponibles": true, "tours_estimados": 5, "descripcion": "Balneario con escuelas de parapente." }
+      ],
+      "entrada_pagada": true
+    },
+    {
+      "id": "surf-punta-lobos",
+      "nombre": "Surf en Punta de Lobos, Pichilemu",
+      "tipo": "actividad",
+      "region": "O'Higgins",
+      "coordenadas": [-34.4167, -72.0333],
+      "altitud_m": "0",
+      "descripcion": "La capital del surf en Chile. Punta de Lobos es una ola de clase mundial (reserva mundial de surf), con escuelas para principiantes en la playa principal de Pichilemu y ambiente costero relajado.",
+      "evaluacion": { "puntaje": 4.7, "fuente": "Reseñas de visitantes", "mejor_epoca": "Todo el año (mejores olas en invierno)", "dificultad_acceso": "Baja" },
+      "senderos": [],
+      "actividades": ["Surf", "Bodyboard", "Clases de surf", "Playa"],
+      "pueblos_cercanos": [
+        { "nombre": "Pichilemu", "distancia_km": 6, "tiempo_estimado": "10 min en auto", "tours_disponibles": true, "tours_estimados": 15, "descripcion": "Pueblo surfista con escuelas y arriendo de equipo." }
+      ],
+      "entrada_pagada": false
+    },
+    {
+      "id": "surf-cobquecura",
+      "nombre": "Surf y Lobería en Cobquecura",
+      "tipo": "actividad",
+      "region": "Ñuble",
+      "coordenadas": [-36.1333, -72.7833],
+      "altitud_m": "0",
+      "descripcion": "Costa tranquila y con encanto: olas para surfistas en Buchupureo, la Iglesia de Piedra (santuario natural) y una gran lobería. Un panorama costero distinto, lejos de las multitudes.",
+      "evaluacion": { "puntaje": 4.3, "fuente": "Reseñas de visitantes", "mejor_epoca": "Octubre a Abril", "dificultad_acceso": "Media" },
+      "senderos": [],
+      "actividades": ["Surf", "Lobos marinos", "Playa", "Iglesia de Piedra"],
+      "pueblos_cercanos": [
+        { "nombre": "Cobquecura", "distancia_km": 5, "tiempo_estimado": "10 min en auto", "tours_disponibles": true, "tours_estimados": 3, "descripcion": "Pueblo costero patrimonial." },
+        { "nombre": "Chillán", "distancia_km": 110, "tiempo_estimado": "2 h en auto", "tours_disponibles": false, "tours_estimados": 0, "descripcion": "Ciudad base de la región." }
+      ],
+      "entrada_pagada": false
+    },
+    {
+      "id": "rafting-trancura-pucon",
+      "nombre": "Rafting y Canopy en Pucón (Río Trancura)",
+      "tipo": "actividad",
+      "region": "Araucanía",
+      "coordenadas": [-39.2833, -71.8333],
+      "altitud_m": "250-400",
+      "descripcion": "La capital de la aventura del sur. Rafting por los rápidos del río Trancura, canopy entre araucarias, hidrospeed, cabalgatas y termas — todo desde Pucón, a orillas del lago Villarrica.",
+      "evaluacion": { "puntaje": 4.7, "fuente": "Reseñas de visitantes", "mejor_epoca": "Noviembre a Marzo", "dificultad_acceso": "Baja" },
+      "senderos": [],
+      "actividades": ["Rafting", "Canopy / tirolesa", "Hidrospeed", "Termas", "Cabalgatas"],
+      "pueblos_cercanos": [
+        { "nombre": "Pucón", "distancia_km": 12, "tiempo_estimado": "20 min en auto", "tours_disponibles": true, "tours_estimados": 40, "descripcion": "Decenas de operadores de aventura en el centro del pueblo." }
+      ],
+      "entrada_pagada": true
+    },
+    {
+      "id": "termas-geometricas",
+      "nombre": "Termas Geométricas",
+      "tipo": "actividad",
+      "region": "Los Ríos",
+      "coordenadas": [-39.6333, -71.8167],
+      "altitud_m": "600",
+      "descripcion": "17 pozones termales de diseño conectados por pasarelas de madera roja en medio de una quebrada con vegetación y cascadas, cerca de Coñaripe. De los baños termales más bellos de Chile.",
+      "evaluacion": { "puntaje": 4.8, "fuente": "Reseñas de visitantes", "mejor_epoca": "Todo el año", "dificultad_acceso": "Media (ripio)" },
+      "senderos": [],
+      "actividades": ["Termas", "Fotografía", "Relajo"],
+      "pueblos_cercanos": [
+        { "nombre": "Coñaripe", "distancia_km": 16, "tiempo_estimado": "30 min en auto", "tours_disponibles": true, "tours_estimados": 5, "descripcion": "Pueblo termal de acceso." },
+        { "nombre": "Pucón", "distancia_km": 60, "tiempo_estimado": "1 h 20 min en auto", "tours_disponibles": true, "tours_estimados": 6, "descripcion": "Tours combinados desde la capital de la aventura." }
+      ],
+      "entrada_pagada": true
+    },
+    {
+      "id": "ski-nevados-chillan",
+      "nombre": "Ski y Termas en Nevados de Chillán",
+      "tipo": "actividad",
+      "region": "Ñuble",
+      "coordenadas": [-36.9067, -71.4067],
+      "altitud_m": "1200-2700",
+      "descripcion": "Centro de ski a los pies de un volcán activo, famoso por sus canchas largas y sus aguas termales al pie de la nieve. En verano, base para trekking y termas en el Valle Las Trancas.",
+      "evaluacion": { "puntaje": 4.5, "fuente": "Reseñas de visitantes", "mejor_epoca": "Junio a Septiembre (ski)", "dificultad_acceso": "Media" },
+      "senderos": [],
+      "actividades": ["Ski", "Snowboard", "Termas", "Trekking (verano)"],
+      "pueblos_cercanos": [
+        { "nombre": "Valle Las Trancas", "distancia_km": 8, "tiempo_estimado": "15 min en auto", "tours_disponibles": true, "tours_estimados": 8, "descripcion": "Villa turística con alojamiento y arriendo de equipo." },
+        { "nombre": "Chillán", "distancia_km": 80, "tiempo_estimado": "1 h 30 min en auto", "tours_disponibles": true, "tours_estimados": 6, "descripcion": "Ciudad base de la región de Ñuble." }
+      ],
+      "entrada_pagada": true
+    },
+    {
+      "id": "rafting-petrohue",
+      "nombre": "Rafting en el Río Petrohué",
+      "tipo": "actividad",
+      "region": "Los Lagos",
+      "coordenadas": [-41.1417, -72.4283],
+      "altitud_m": "100-200",
+      "descripcion": "Descenso en balsa por aguas de color esmeralda con el volcán Osorno de fondo, cerca de Puerto Varas. Una de las experiencias de rafting más escénicas de Chile, apta para principiantes.",
+      "evaluacion": { "puntaje": 4.6, "fuente": "Reseñas de visitantes", "mejor_epoca": "Octubre a Abril", "dificultad_acceso": "Baja" },
+      "senderos": [],
+      "actividades": ["Rafting", "Kayak", "Paisaje volcánico"],
+      "pueblos_cercanos": [
+        { "nombre": "Puerto Varas", "distancia_km": 40, "tiempo_estimado": "50 min en auto", "tours_disponibles": true, "tours_estimados": 15, "descripcion": "Ciudad de las rosas; operadores de rafting y aventura." }
+      ],
+      "entrada_pagada": true
+    },
+    {
+      "id": "canyoning-puerto-varas",
+      "nombre": "Canyoning y Kayak en Puerto Varas",
+      "tipo": "actividad",
+      "region": "Los Lagos",
+      "coordenadas": [-41.3167, -72.9833],
+      "altitud_m": "50-400",
+      "descripcion": "Base de aventura del sur lacustre: canyoning entre cascadas, kayak en el lago Llanquihue con vista a los volcanes Osorno y Calbuco, y cicloturismo por la cuenca. Ambiente de arquitectura alemana.",
+      "evaluacion": { "puntaje": 4.5, "fuente": "Reseñas de visitantes", "mejor_epoca": "Noviembre a Marzo", "dificultad_acceso": "Baja" },
+      "senderos": [],
+      "actividades": ["Canyoning", "Kayak", "Cicloturismo", "SUP"],
+      "pueblos_cercanos": [
+        { "nombre": "Puerto Varas", "distancia_km": 1, "tiempo_estimado": "5 min", "tours_disponibles": true, "tours_estimados": 20, "descripcion": "Los operadores de aventura están en el centro." }
+      ],
+      "entrada_pagada": true
+    },
+    {
+      "id": "rafting-futaleufu",
+      "nombre": "Rafting en el Río Futaleufú",
+      "tipo": "actividad",
+      "region": "Los Lagos",
+      "coordenadas": [-43.1833, -71.8667],
+      "altitud_m": "300",
+      "descripcion": "Uno de los ríos de rafting y kayak más desafiantes y bellos del planeta, de aguas turquesa entre montañas de la Patagonia. Rápidos clase IV-V para expertos y tramos más suaves para iniciados.",
+      "evaluacion": { "puntaje": 4.9, "fuente": "Reseñas de visitantes", "mejor_epoca": "Diciembre a Marzo", "dificultad_acceso": "Media (Carretera Austral)" },
+      "senderos": [],
+      "actividades": ["Rafting clase IV-V", "Kayak", "Ziplines", "Cabalgatas"],
+      "pueblos_cercanos": [
+        { "nombre": "Futaleufú", "distancia_km": 5, "tiempo_estimado": "10 min en auto", "tours_disponibles": true, "tours_estimados": 10, "descripcion": "Pueblo de aventura junto al río; operadores internacionales." }
+      ],
+      "entrada_pagada": true
+    },
+    {
+      "id": "capillas-de-marmol",
+      "nombre": "Kayak en las Capillas de Mármol",
+      "tipo": "actividad",
+      "region": "Aysén",
+      "coordenadas": [-46.65, -72.6333],
+      "altitud_m": "200",
+      "descripcion": "Formaciones de mármol esculpidas por el agua del Lago General Carrera, de un turquesa intenso. Se recorren en kayak o lancha desde Puerto Río Tranquilo: una de las postales más famosas de la Patagonia.",
+      "evaluacion": { "puntaje": 4.8, "fuente": "Reseñas de visitantes", "mejor_epoca": "Noviembre a Marzo", "dificultad_acceso": "Media (Carretera Austral)" },
+      "senderos": [],
+      "actividades": ["Kayak", "Navegación", "Fotografía"],
+      "pueblos_cercanos": [
+        { "nombre": "Puerto Río Tranquilo", "distancia_km": 3, "tiempo_estimado": "10 min", "tours_disponibles": true, "tours_estimados": 12, "descripcion": "Pueblo a orillas del lago; salidas en kayak y lancha." }
+      ],
+      "entrada_pagada": true
+    },
+    {
+      "id": "kayak-glaciar-grey",
+      "nombre": "Kayak y Navegación al Glaciar Grey",
+      "tipo": "actividad",
+      "region": "Magallanes y de la Antártica Chilena",
+      "coordenadas": [-51.0, -73.1667],
+      "altitud_m": "50",
+      "descripcion": "Remar entre témpanos de hielo azul frente al glaciar Grey, en el corazón de la Patagonia. Kayak y navegaciones que combinan aventura con los paisajes de Torres del Paine.",
+      "evaluacion": { "puntaje": 4.7, "fuente": "Reseñas de visitantes", "mejor_epoca": "Octubre a Abril", "dificultad_acceso": "Media" },
+      "senderos": [],
+      "actividades": ["Kayak entre témpanos", "Navegación", "Glaciar", "Trekking"],
+      "pueblos_cercanos": [
+        { "nombre": "Puerto Natales", "distancia_km": 120, "tiempo_estimado": "3 h en auto", "tours_disponibles": true, "tours_estimados": 10, "descripcion": "Base para las excursiones al glaciar Grey." }
+      ],
+      "entrada_pagada": true
     }
   ]
 }

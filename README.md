@@ -1,6 +1,6 @@
-# 🇨🇱 Turismo Chile — Mapa interactivo de Parques Nacionales y Reservas
+# 🇨🇱 Turismo Chile — Mapa interactivo de Parques, Reservas y Aventuras
 
-Aplicación web que muestra en un **mapa interactivo** los parques nacionales y reservas naturales de Chile, con información práctica para planificar un viaje:
+Aplicación web que muestra en un **mapa interactivo** los parques nacionales, reservas naturales y **panoramas de aventura** de Chile, con información práctica para planificar un viaje:
 
 - 🧭 **Mi pasaporte**: marca los lugares que vas visitando y lleva la cuenta con una barra de progreso ("visitaste 12 de 47 parques"). Se guarda en tu navegador, sin cuenta ni servidor.
 - 🥾 **Senderos** de cada área: distancia, duración, dificultad y tipo (ida y vuelta / circuito / travesía).
@@ -8,7 +8,9 @@ Aplicación web que muestra en un **mapa interactivo** los parques nacionales y 
 - 🏘️ **Pueblos cercanos** (puertas de entrada): distancia, tiempo estimado de viaje y **cantidad estimada de tours** disponibles desde cada pueblo.
 - 🎒 Actividades, superficie, altitud, año de creación y enlace a CONAF.
 
-Incluye el **Sistema Nacional de Áreas Silvestres Protegidas (SNASPE) completo**: **108 áreas protegidas** — **47 parques nacionales** (los 46 oficiales de CONAF + Cabo Froward, el más reciente), las **45 reservas nacionales** y los **16 monumentos naturales** territoriales —, de Arica a Cabo de Hornos, más Rapa Nui, Juan Fernández y los grandes parques de la Patagonia (Kawésqar, Torres del Paine, Bernardo O'Higgins, etc.).
+Incluye **130 lugares**:
+- El **Sistema Nacional de Áreas Silvestres Protegidas (SNASPE) completo**: **47 parques nacionales** (los 46 oficiales de CONAF + Cabo Froward, el más reciente), las **45 reservas nacionales** y los **16 monumentos naturales** territoriales, de Arica a Cabo de Hornos, más Rapa Nui y Juan Fernández.
+- **22 panoramas de aventura** que salen de la ciudad: ski, rafting, sandboard, parapente, surf, termas, astroturismo, kayak y canopy (Valle Nevado, Cajón del Maipo, Pucón, San Pedro de Atacama, Pichilemu, Capillas de Mármol, Futaleufú, etc.).
 
 ## 🚀 Cómo ejecutarlo
 
