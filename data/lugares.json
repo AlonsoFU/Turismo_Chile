@@ -2728,6 +2728,363 @@
         { "nombre": "Puerto Natales", "distancia_km": 120, "tiempo_estimado": "3 h en auto", "tours_disponibles": true, "tours_estimados": 10, "descripcion": "Base para las excursiones al glaciar Grey." }
       ],
       "entrada_pagada": true
+    },
+    {
+      "id": "lagunas-baltinache",
+      "nombre": "Lagunas Escondidas de Baltinache",
+      "tipo": "actividad",
+      "region": "Antofagasta",
+      "coordenadas": [-22.9, -68.4167],
+      "altitud_m": "2400",
+      "descripcion": "Siete lagunas de aguas saladas escondidas en la Cordillera de la Sal, cerca de San Pedro. En algunas puedes flotar como en el Mar Muerto por su altísima concentración de sal.",
+      "evaluacion": { "puntaje": 4.5, "fuente": "Reseñas de visitantes", "mejor_epoca": "Todo el año", "dificultad_acceso": "Media (ripio)" },
+      "senderos": [],
+      "actividades": ["Flotar en lagunas saladas", "Fotografía", "Atardecer"],
+      "pueblos_cercanos": [
+        { "nombre": "San Pedro de Atacama", "distancia_km": 40, "tiempo_estimado": "50 min en auto", "tours_disponibles": true, "tours_estimados": 12, "descripcion": "Tours de medio día desde el pueblo." }
+      ],
+      "entrada_pagada": true
+    },
+    {
+      "id": "termas-de-puritama",
+      "nombre": "Termas de Puritama",
+      "tipo": "actividad",
+      "region": "Antofagasta",
+      "coordenadas": [-22.7333, -68.05],
+      "altitud_m": "3500",
+      "descripcion": "Ocho pozones de aguas termales cristalinas escalonados en un cañón de vegetación verde en pleno desierto de Atacama, a media hora de San Pedro. Un oasis para relajarse.",
+      "evaluacion": { "puntaje": 4.6, "fuente": "Reseñas de visitantes", "mejor_epoca": "Todo el año", "dificultad_acceso": "Media" },
+      "senderos": [],
+      "actividades": ["Termas", "Relajo", "Fotografía"],
+      "pueblos_cercanos": [
+        { "nombre": "San Pedro de Atacama", "distancia_km": 30, "tiempo_estimado": "40 min en auto", "tours_disponibles": true, "tours_estimados": 10, "descripcion": "Tours y traslados desde el pueblo." }
+      ],
+      "entrada_pagada": true
+    },
+    {
+      "id": "mano-del-desierto",
+      "nombre": "Mano del Desierto",
+      "tipo": "actividad",
+      "region": "Antofagasta",
+      "coordenadas": [-24.1583, -70.1444],
+      "altitud_m": "1100",
+      "descripcion": "Enorme escultura de una mano que emerge de la arena en medio del desierto, a un lado de la Ruta 5. Parada de carretera y foto icónica del norte de Chile.",
+      "evaluacion": { "puntaje": 4.3, "fuente": "Reseñas de visitantes", "mejor_epoca": "Todo el año", "dificultad_acceso": "Baja (junto a la carretera)" },
+      "senderos": [],
+      "actividades": ["Fotografía", "Roadtrip", "Arte en el desierto"],
+      "pueblos_cercanos": [
+        { "nombre": "Antofagasta", "distancia_km": 70, "tiempo_estimado": "50 min en auto", "tours_disponibles": true, "tours_estimados": 3, "descripcion": "Ciudad más cercana sobre la Ruta 5 Sur." }
+      ],
+      "entrada_pagada": false
+    },
+    {
+      "id": "ballenas-chanaral-aceituno",
+      "nombre": "Avistamiento de Ballenas en Chañaral de Aceituno",
+      "tipo": "actividad",
+      "region": "Atacama",
+      "coordenadas": [-29.05, -71.4833],
+      "altitud_m": "0",
+      "descripcion": "Una de las mejores zonas de Chile para ver ballenas fin y azules, además de delfines nariz de botella, pingüinos y lobos marinos, en navegaciones frente a la Isla Chañaral.",
+      "evaluacion": { "puntaje": 4.7, "fuente": "Reseñas de visitantes", "mejor_epoca": "Diciembre a Abril", "dificultad_acceso": "Media" },
+      "senderos": [],
+      "actividades": ["Avistamiento de ballenas", "Delfines", "Navegación", "Buceo"],
+      "pueblos_cercanos": [
+        { "nombre": "Chañaral de Aceituno", "distancia_km": 2, "tiempo_estimado": "5 min", "tours_disponibles": true, "tours_estimados": 8, "descripcion": "Caleta desde donde zarpan las navegaciones." },
+        { "nombre": "Vallenar", "distancia_km": 120, "tiempo_estimado": "2 h en auto", "tours_disponibles": true, "tours_estimados": 3, "descripcion": "Ciudad base del valle del Huasco." }
+      ],
+      "entrada_pagada": true
+    },
+    {
+      "id": "valle-del-encanto",
+      "nombre": "Valle del Encanto (petroglifos)",
+      "tipo": "actividad",
+      "region": "Coquimbo",
+      "coordenadas": [-30.65, -71.2833],
+      "altitud_m": "300",
+      "descripcion": "Sitio arqueológico con cientos de petroglifos y piedras tacitas de la cultura Molle, entre rocas y una quebrada. Uno de los mejores conjuntos de arte rupestre de Chile central.",
+      "evaluacion": { "puntaje": 4.3, "fuente": "Reseñas de visitantes", "mejor_epoca": "Septiembre a Abril", "dificultad_acceso": "Baja" },
+      "senderos": [],
+      "actividades": ["Arte rupestre", "Arqueología", "Senderismo suave", "Astroturismo"],
+      "pueblos_cercanos": [
+        { "nombre": "Ovalle", "distancia_km": 25, "tiempo_estimado": "30 min en auto", "tours_disponibles": true, "tours_estimados": 4, "descripcion": "Ciudad base del valle del Limarí." }
+      ],
+      "entrada_pagada": true
+    },
+    {
+      "id": "kitesurf-puclaro",
+      "nombre": "Kitesurf en el Embalse Puclaro",
+      "tipo": "actividad",
+      "region": "Coquimbo",
+      "coordenadas": [-30.0333, -70.8333],
+      "altitud_m": "430",
+      "descripcion": "Embalse del Valle del Elqui con viento constante en las tardes, ideal para kitesurf y windsurf entre cerros. Escuelas para aprender con vistas al valle y sus viñedos.",
+      "evaluacion": { "puntaje": 4.4, "fuente": "Reseñas de visitantes", "mejor_epoca": "Octubre a Marzo", "dificultad_acceso": "Baja" },
+      "senderos": [],
+      "actividades": ["Kitesurf", "Windsurf", "Clases", "Paisaje del Elqui"],
+      "pueblos_cercanos": [
+        { "nombre": "Vicuña", "distancia_km": 20, "tiempo_estimado": "25 min en auto", "tours_disponibles": true, "tours_estimados": 4, "descripcion": "Pueblo base del Elqui." },
+        { "nombre": "La Serena", "distancia_km": 55, "tiempo_estimado": "50 min en auto", "tours_disponibles": true, "tours_estimados": 3, "descripcion": "Ciudad costera cercana." }
+      ],
+      "entrada_pagada": false
+    },
+    {
+      "id": "ski-portillo",
+      "nombre": "Ski en Portillo",
+      "tipo": "actividad",
+      "region": "Valparaíso",
+      "coordenadas": [-32.8333, -70.1283],
+      "altitud_m": "2880-3310",
+      "descripcion": "El centro de ski más antiguo de Sudamérica, junto a la Laguna del Inca y la ruta internacional a Argentina. Nieve de calidad, pistas legendarias y paisajes de alta cordillera.",
+      "evaluacion": { "puntaje": 4.6, "fuente": "Reseñas de visitantes", "mejor_epoca": "Junio a Septiembre", "dificultad_acceso": "Media (camino de montaña)" },
+      "senderos": [],
+      "actividades": ["Ski", "Snowboard", "Laguna del Inca", "Montaña"],
+      "pueblos_cercanos": [
+        { "nombre": "Los Andes", "distancia_km": 65, "tiempo_estimado": "1 h 15 min en auto", "tours_disponibles": true, "tours_estimados": 5, "descripcion": "Ciudad de acceso por la ruta internacional." }
+      ],
+      "entrada_pagada": true
+    },
+    {
+      "id": "buceo-quintay",
+      "nombre": "Buceo en Quintay",
+      "tipo": "actividad",
+      "region": "Valparaíso",
+      "coordenadas": [-33.1917, -71.6944],
+      "altitud_m": "0",
+      "descripcion": "Caleta de pescadores con aguas claras y bosques de huiro, uno de los mejores lugares de buceo de la zona central. Además, una antigua ballenera reconvertida en museo.",
+      "evaluacion": { "puntaje": 4.3, "fuente": "Reseñas de visitantes", "mejor_epoca": "Diciembre a Marzo", "dificultad_acceso": "Baja" },
+      "senderos": [],
+      "actividades": ["Buceo", "Snorkel", "Playa", "Historia ballenera"],
+      "pueblos_cercanos": [
+        { "nombre": "Quintay", "distancia_km": 1, "tiempo_estimado": "5 min", "tours_disponibles": true, "tours_estimados": 3, "descripcion": "Caleta con centros de buceo." },
+        { "nombre": "Valparaíso", "distancia_km": 45, "tiempo_estimado": "50 min en auto", "tours_disponibles": true, "tours_estimados": 2, "descripcion": "Ciudad base de la región." }
+      ],
+      "entrada_pagada": true
+    },
+    {
+      "id": "ruta-vino-colchagua",
+      "nombre": "Ruta del Vino de Colchagua",
+      "tipo": "actividad",
+      "region": "O'Higgins",
+      "coordenadas": [-34.6333, -71.3667],
+      "altitud_m": "150",
+      "descripcion": "El valle vitivinícola más famoso de Chile, con decenas de viñas premiadas, catas, el Tren del Vino y paisajes de parras. Ideal para un fin de semana gastronómico.",
+      "evaluacion": { "puntaje": 4.6, "fuente": "Reseñas de visitantes", "mejor_epoca": "Marzo a Mayo (vendimia) y todo el año", "dificultad_acceso": "Baja" },
+      "senderos": [],
+      "actividades": ["Tours de viñas", "Catas de vino", "Gastronomía", "Tren del Vino"],
+      "pueblos_cercanos": [
+        { "nombre": "Santa Cruz", "distancia_km": 5, "tiempo_estimado": "10 min en auto", "tours_disponibles": true, "tours_estimados": 20, "descripcion": "Capital del valle; base de las rutas del vino." }
+      ],
+      "entrada_pagada": true
+    },
+    {
+      "id": "kitesurf-matanzas",
+      "nombre": "Kitesurf y Windsurf en Matanzas",
+      "tipo": "actividad",
+      "region": "O'Higgins",
+      "coordenadas": [-33.9583, -71.8722],
+      "altitud_m": "0",
+      "descripcion": "La capital chilena del kitesurf y windsurf, con viento casi todos los días. Pueblo costero relajado con escuelas para todos los niveles, cerca de la ola de Puertecillo.",
+      "evaluacion": { "puntaje": 4.5, "fuente": "Reseñas de visitantes", "mejor_epoca": "Octubre a Abril", "dificultad_acceso": "Media" },
+      "senderos": [],
+      "actividades": ["Kitesurf", "Windsurf", "Surf", "Clases"],
+      "pueblos_cercanos": [
+        { "nombre": "Matanzas", "distancia_km": 1, "tiempo_estimado": "5 min", "tours_disponibles": true, "tours_estimados": 8, "descripcion": "Pueblo con escuelas y arriendo de equipo." },
+        { "nombre": "Santiago", "distancia_km": 160, "tiempo_estimado": "2 h 30 min en auto", "tours_disponibles": true, "tours_estimados": 4, "descripcion": "Escapada de fin de semana desde la capital." }
+      ],
+      "entrada_pagada": false
+    },
+    {
+      "id": "termas-del-flaco",
+      "nombre": "Termas del Flaco",
+      "tipo": "actividad",
+      "region": "O'Higgins",
+      "coordenadas": [-34.9833, -70.4167],
+      "altitud_m": "1700",
+      "descripcion": "Pozones termales en la cordillera de San Fernando, junto a un yacimiento con huellas de dinosaurios de más de 100 millones de años. Termas de montaña con historia.",
+      "evaluacion": { "puntaje": 4.2, "fuente": "Reseñas de visitantes", "mejor_epoca": "Diciembre a Marzo", "dificultad_acceso": "Alta (camino de montaña estacional)" },
+      "senderos": [],
+      "actividades": ["Termas", "Huellas de dinosaurios", "Montaña"],
+      "pueblos_cercanos": [
+        { "nombre": "San Fernando", "distancia_km": 75, "tiempo_estimado": "2 h en auto", "tours_disponibles": true, "tours_estimados": 2, "descripcion": "Ciudad de acceso al valle cordillerano." }
+      ],
+      "entrada_pagada": true
+    },
+    {
+      "id": "rio-claro-siete-tazas",
+      "nombre": "Natación y Saltos en el Río Claro",
+      "tipo": "actividad",
+      "region": "Maule",
+      "coordenadas": [-35.1667, -71.0167],
+      "altitud_m": "500",
+      "descripcion": "Pozones de aguas turquesa y saltos de agua en el río Claro, cerca de las Siete Tazas. En verano, un panorama refrescante para nadar y saltar entre roca basáltica.",
+      "evaluacion": { "puntaje": 4.4, "fuente": "Reseñas de visitantes", "mejor_epoca": "Diciembre a Marzo", "dificultad_acceso": "Media" },
+      "senderos": [],
+      "actividades": ["Natación", "Pozones naturales", "Camping", "Fotografía"],
+      "pueblos_cercanos": [
+        { "nombre": "Molina", "distancia_km": 60, "tiempo_estimado": "1 h 20 min en auto", "tours_disponibles": true, "tours_estimados": 4, "descripcion": "Pueblo puerta de la zona de las Siete Tazas." }
+      ],
+      "entrada_pagada": true
+    },
+    {
+      "id": "kayak-humedales-valdivia",
+      "nombre": "Kayak en los Humedales de Valdivia",
+      "tipo": "actividad",
+      "region": "Los Ríos",
+      "coordenadas": [-39.75, -73.2333],
+      "altitud_m": "0-20",
+      "descripcion": "Remar por los ríos y el Santuario de la Naturaleza del río Cruces, avistando cisnes de cuello negro y aves. Se combina con la famosa ruta cervecera de Valdivia.",
+      "evaluacion": { "puntaje": 4.4, "fuente": "Reseñas de visitantes", "mejor_epoca": "Octubre a Marzo", "dificultad_acceso": "Baja" },
+      "senderos": [],
+      "actividades": ["Kayak", "Observación de aves", "Ruta cervecera", "Navegación"],
+      "pueblos_cercanos": [
+        { "nombre": "Valdivia", "distancia_km": 5, "tiempo_estimado": "10 min", "tours_disponibles": true, "tours_estimados": 10, "descripcion": "Ciudad fluvial; operadores de kayak y navegación." }
+      ],
+      "entrada_pagada": false
+    },
+    {
+      "id": "salto-del-laja",
+      "nombre": "Salto del Laja",
+      "tipo": "actividad",
+      "region": "Biobío",
+      "coordenadas": [-37.2667, -72.3667],
+      "altitud_m": "150",
+      "descripcion": "Impresionante cascada del río Laja de unos 35 m, la 'Niágara chilena', a un costado de la Ruta 5. Miradores, senderos y tirolesa; parada clásica de carretera.",
+      "evaluacion": { "puntaje": 4.4, "fuente": "Reseñas de visitantes", "mejor_epoca": "Todo el año", "dificultad_acceso": "Baja" },
+      "senderos": [],
+      "actividades": ["Cascada", "Miradores", "Tirolesa", "Roadtrip"],
+      "pueblos_cercanos": [
+        { "nombre": "Los Ángeles", "distancia_km": 25, "tiempo_estimado": "25 min en auto", "tours_disponibles": true, "tours_estimados": 3, "descripcion": "Ciudad más cercana sobre la Ruta 5." }
+      ],
+      "entrada_pagada": false
+    },
+    {
+      "id": "ski-corralco",
+      "nombre": "Ski en Corralco (Volcán Lonquimay)",
+      "tipo": "actividad",
+      "region": "Araucanía",
+      "coordenadas": [-38.4417, -71.5333],
+      "altitud_m": "1400-2400",
+      "descripcion": "Centro de ski a los pies del volcán Lonquimay, rodeado de bosques de araucaria milenaria. Nieve de calidad y menos multitudes que en la zona central.",
+      "evaluacion": { "puntaje": 4.6, "fuente": "Reseñas de visitantes", "mejor_epoca": "Junio a Septiembre", "dificultad_acceso": "Media" },
+      "senderos": [],
+      "actividades": ["Ski", "Snowboard", "Araucarias", "Randonnée"],
+      "pueblos_cercanos": [
+        { "nombre": "Malalcahuello", "distancia_km": 12, "tiempo_estimado": "20 min en auto", "tours_disponibles": true, "tours_estimados": 4, "descripcion": "Pueblo turístico de acceso al centro de ski." }
+      ],
+      "entrada_pagada": true
+    },
+    {
+      "id": "cochamo",
+      "nombre": "Escalada y Trekking en Cochamó",
+      "tipo": "actividad",
+      "region": "Los Lagos",
+      "coordenadas": [-41.5, -72.3],
+      "altitud_m": "50-1600",
+      "descripcion": "Conocido como el 'Yosemite chileno': un valle de paredes de granito de cientos de metros, bosque nativo, cascadas y ríos. Meca de la escalada en roca y del trekking de varios días.",
+      "evaluacion": { "puntaje": 4.8, "fuente": "Reseñas de visitantes", "mejor_epoca": "Diciembre a Marzo", "dificultad_acceso": "Alta (se llega caminando)" },
+      "senderos": [],
+      "actividades": ["Escalada en roca", "Trekking", "Cabalgatas", "Camping"],
+      "pueblos_cercanos": [
+        { "nombre": "Cochamó", "distancia_km": 17, "tiempo_estimado": "30 min en auto + caminata", "tours_disponibles": true, "tours_estimados": 5, "descripcion": "Pueblo de acceso; el valle se ingresa a pie o a caballo." },
+        { "nombre": "Puerto Varas", "distancia_km": 90, "tiempo_estimado": "2 h en auto", "tours_disponibles": true, "tours_estimados": 4, "descripcion": "Base turística de la región." }
+      ],
+      "entrada_pagada": false
+    },
+    {
+      "id": "kayak-palafitos-chiloe",
+      "nombre": "Kayak entre los Palafitos de Chiloé",
+      "tipo": "actividad",
+      "region": "Los Lagos",
+      "coordenadas": [-42.4833, -73.7667],
+      "altitud_m": "0",
+      "descripcion": "Remar en calma frente a los coloridos palafitos de Castro, las casas sobre pilotes símbolo de Chiloé. Una forma distinta de conocer la cultura y los canales de la isla.",
+      "evaluacion": { "puntaje": 4.4, "fuente": "Reseñas de visitantes", "mejor_epoca": "Noviembre a Marzo", "dificultad_acceso": "Baja" },
+      "senderos": [],
+      "actividades": ["Kayak", "Cultura chilota", "Palafitos", "Fotografía"],
+      "pueblos_cercanos": [
+        { "nombre": "Castro", "distancia_km": 1, "tiempo_estimado": "5 min", "tours_disponibles": true, "tours_estimados": 6, "descripcion": "Capital de Chiloé; salidas de kayak en la ciudad." }
+      ],
+      "entrada_pagada": true
+    },
+    {
+      "id": "ballenas-corcovado",
+      "nombre": "Avistamiento de Ballenas Azules (Golfo Corcovado)",
+      "tipo": "actividad",
+      "region": "Los Lagos",
+      "coordenadas": [-43.1167, -73.6167],
+      "altitud_m": "0",
+      "descripcion": "El sur de Chiloé y el golfo Corcovado son una de las principales zonas de alimentación de la ballena azul, el animal más grande del planeta. Navegaciones para avistarlas en verano.",
+      "evaluacion": { "puntaje": 4.7, "fuente": "Reseñas de visitantes", "mejor_epoca": "Enero a Abril", "dificultad_acceso": "Media (navegación)" },
+      "senderos": [],
+      "actividades": ["Avistamiento de ballenas", "Navegación", "Aves marinas"],
+      "pueblos_cercanos": [
+        { "nombre": "Quellón", "distancia_km": 20, "tiempo_estimado": "Navegación", "tours_disponibles": true, "tours_estimados": 4, "descripcion": "Puerto en el sur de Chiloé, base de las salidas." }
+      ],
+      "entrada_pagada": true
+    },
+    {
+      "id": "glaciar-exploradores",
+      "nombre": "Trekking sobre el Glaciar Exploradores",
+      "tipo": "actividad",
+      "region": "Aysén",
+      "coordenadas": [-46.5, -73.1],
+      "altitud_m": "300-800",
+      "descripcion": "Caminata con crampones sobre el hielo del glaciar Exploradores, que baja del Campo de Hielo Norte junto al Monte San Valentín. Grietas, lagunas azules y seracs de hielo.",
+      "evaluacion": { "puntaje": 4.7, "fuente": "Reseñas de visitantes", "mejor_epoca": "Noviembre a Marzo", "dificultad_acceso": "Media-Alta" },
+      "senderos": [],
+      "actividades": ["Trekking sobre hielo", "Glaciar", "Fotografía"],
+      "pueblos_cercanos": [
+        { "nombre": "Puerto Río Tranquilo", "distancia_km": 50, "tiempo_estimado": "1 h 15 min en auto", "tours_disponibles": true, "tours_estimados": 6, "descripcion": "Base sobre la Carretera Austral; se combina con las Capillas de Mármol." }
+      ],
+      "entrada_pagada": true
+    },
+    {
+      "id": "pesca-mosca-aysen",
+      "nombre": "Pesca con Mosca en Aysén",
+      "tipo": "actividad",
+      "region": "Aysén",
+      "coordenadas": [-45.5667, -72.0667],
+      "altitud_m": "300",
+      "descripcion": "La Patagonia de Aysén es un paraíso mundial de la pesca con mosca: ríos y lagos cristalinos con truchas y salmones, entre bosques y montañas, cerca de Coyhaique.",
+      "evaluacion": { "puntaje": 4.6, "fuente": "Reseñas de visitantes", "mejor_epoca": "Noviembre a Abril", "dificultad_acceso": "Media" },
+      "senderos": [],
+      "actividades": ["Pesca con mosca", "Navegación", "Naturaleza"],
+      "pueblos_cercanos": [
+        { "nombre": "Coyhaique", "distancia_km": 5, "tiempo_estimado": "15 min en auto", "tours_disponibles": true, "tours_estimados": 8, "descripcion": "Capital regional; guías y lodges de pesca." }
+      ],
+      "entrada_pagada": false
+    },
+    {
+      "id": "cabalgatas-patagonia",
+      "nombre": "Cabalgatas en Estancia Patagónica",
+      "tipo": "actividad",
+      "region": "Magallanes y de la Antártica Chilena",
+      "coordenadas": [-51.25, -72.35],
+      "altitud_m": "50-400",
+      "descripcion": "Recorrer la estepa patagónica a caballo como un gaucho, entre guanacos y con las Torres del Paine al horizonte. Experiencia de estancia con asado patagónico incluido.",
+      "evaluacion": { "puntaje": 4.6, "fuente": "Reseñas de visitantes", "mejor_epoca": "Octubre a Abril", "dificultad_acceso": "Media" },
+      "senderos": [],
+      "actividades": ["Cabalgatas", "Vida de estancia", "Asado patagónico", "Fauna"],
+      "pueblos_cercanos": [
+        { "nombre": "Puerto Natales", "distancia_km": 40, "tiempo_estimado": "40 min en auto", "tours_disponibles": true, "tours_estimados": 6, "descripcion": "Base para las estancias de la zona de Paine." }
+      ],
+      "entrada_pagada": true
+    },
+    {
+      "id": "buceo-rapa-nui",
+      "nombre": "Buceo en Rapa Nui",
+      "tipo": "actividad",
+      "region": "Valparaíso (Isla de Pascua)",
+      "coordenadas": [-27.15, -109.4333],
+      "altitud_m": "0",
+      "descripcion": "Aguas de las más transparentes del mundo (hasta 50 m de visibilidad), con arrecifes de coral, paredes volcánicas y un moái sumergido. Buceo y snorkel inolvidables en la isla.",
+      "evaluacion": { "puntaje": 4.7, "fuente": "Reseñas de visitantes", "mejor_epoca": "Todo el año", "dificultad_acceso": "Alta (vuelo desde Santiago)" },
+      "senderos": [],
+      "actividades": ["Buceo", "Snorkel", "Cultura Rapa Nui"],
+      "pueblos_cercanos": [
+        { "nombre": "Hanga Roa", "distancia_km": 2, "tiempo_estimado": "5 min", "tours_disponibles": true, "tours_estimados": 6, "descripcion": "Único poblado de la isla; centros de buceo." }
+      ],
+      "entrada_pagada": true
     }
   ]
 }
