@@ -6,13 +6,6 @@
   <title>Turismo Chile — Mapa de Parques Nacionales y Reservas</title>
   <meta name="description" content="Mapa interactivo de los parques nacionales y reservas naturales de Chile: senderos, evaluación, pueblos de acceso y tours." />
 
-  <!-- Leaflet (mapa) -->
-  <link
-    rel="stylesheet"
-    href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
-    integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
-    crossorigin=""
-  />
   <style>
 :root {
   --verde: #2e7d32;
@@ -260,6 +253,85 @@ html, body {
   box-shadow: var(--sombra);
 }
 
+/* ---------- MiniMap (mapa propio) ---------- */
+.minimap-tiles,
+.minimap-markers {
+  position: absolute;
+  top: 0;
+  left: 0;
+  will-change: transform;
+}
+.minimap-markers { pointer-events: none; }
+.minimap-tile {
+  position: absolute;
+  width: 256px;
+  height: 256px;
+  user-select: none;
+}
+.minimap-marker {
+  position: absolute;
+  width: 22px;
+  height: 22px;
+  margin-left: -11px;
+  margin-top: -22px;
+  pointer-events: auto;
+  cursor: pointer;
+}
+.minimap-popup {
+  position: absolute;
+  transform: translate(-50%, -100%);
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.25);
+  padding: 8px 10px;
+  min-width: 150px;
+  max-width: 220px;
+  z-index: 500;
+  pointer-events: auto;
+}
+.minimap-popup::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: -6px;
+  transform: translateX(-50%);
+  border: 6px solid transparent;
+  border-top-color: #fff;
+  border-bottom: 0;
+}
+.minimap-zoom {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  z-index: 600;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+.minimap-zoom button {
+  width: 32px;
+  height: 32px;
+  border: 1px solid var(--borde);
+  background: #fff;
+  font-size: 1.1rem;
+  line-height: 1;
+  cursor: pointer;
+  border-radius: 6px;
+  box-shadow: var(--sombra);
+}
+.minimap-zoom button:hover { background: #f0f0f0; }
+.minimap-attr {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  background: rgba(255, 255, 255, 0.75);
+  font-size: 10px;
+  padding: 1px 5px;
+  z-index: 600;
+  border-top-left-radius: 4px;
+}
+.minimap-attr a { color: #0066cc; }
+
 /* Marcadores */
 .marker-pin {
   width: 22px;
@@ -498,11 +570,230 @@ html, body {
     </section>
   </div>
 
-  <script
-    src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
-    integrity="sha256-20nQCchB9co0qIjJ1yE55zX6qFvbmnfGXPRuVfg0RRA="
-    crossorigin=""
-  ></script>
+  <script>
+/* MiniMap — mapa de tiles ligero en vanilla JS (sin librerías externas).
+   Reemplaza a Leaflet para que la app no dependa de ningún CDN de librerías.
+   Solo necesita internet para las imágenes de OpenStreetMap (como cualquier mapa). */
+(function (global) {
+  "use strict";
+
+  var TILE = 256;
+  function clamp(v, a, b) { return Math.max(a, Math.min(b, v)); }
+
+  function project(lat, lon, z) {
+    var ws = TILE * Math.pow(2, z);
+    var x = (lon + 180) / 360 * ws;
+    var s = clamp(Math.sin(lat * Math.PI / 180), -0.9999, 0.9999);
+    var y = (0.5 - Math.log((1 + s) / (1 - s)) / (4 * Math.PI)) * ws;
+    return { x: x, y: y };
+  }
+  function unproject(x, y, z) {
+    var ws = TILE * Math.pow(2, z);
+    var lon = x / ws * 360 - 180;
+    var n = Math.PI - 2 * Math.PI * y / ws;
+    var lat = 180 / Math.PI * Math.atan(0.5 * (Math.exp(n) - Math.exp(-n)));
+    return { lat: lat, lon: lon };
+  }
+
+  function MiniMap(el, opts) {
+    opts = opts || {};
+    this.el = el;
+    this.center = { lat: opts.center ? opts.center[0] : -38, lon: opts.center ? opts.center[1] : -71 };
+    this.zoom = opts.zoom || 4;
+    this.minZoom = opts.minZoom || 3;
+    this.maxZoom = opts.maxZoom || 17;
+    this.markers = [];
+    this._popupId = null;
+    this._build();
+    this._wire();
+    this.render();
+  }
+
+  MiniMap.prototype._build = function () {
+    var el = this.el, self = this;
+    el.style.position = "relative";
+    el.style.overflow = "hidden";
+    el.style.background = "#aadaff";
+    el.style.cursor = "grab";
+    el.style.userSelect = "none";
+    el.innerHTML = "";
+
+    this.tiles = document.createElement("div");
+    this.tiles.className = "minimap-tiles";
+    this.mk = document.createElement("div");
+    this.mk.className = "minimap-markers";
+    this.popup = document.createElement("div");
+    this.popup.className = "minimap-popup";
+    this.popup.style.display = "none";
+
+    var attr = document.createElement("div");
+    attr.className = "minimap-attr";
+    attr.innerHTML = '© <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener">OpenStreetMap</a>';
+
+    var zc = document.createElement("div");
+    zc.className = "minimap-zoom";
+    var bplus = document.createElement("button"); bplus.type = "button"; bplus.textContent = "+"; bplus.setAttribute("aria-label", "Acercar");
+    var bminus = document.createElement("button"); bminus.type = "button"; bminus.textContent = "−"; bminus.setAttribute("aria-label", "Alejar");
+    bplus.addEventListener("click", function (e) { e.stopPropagation(); self.setZoom(self.zoom + 1); });
+    bminus.addEventListener("click", function (e) { e.stopPropagation(); self.setZoom(self.zoom - 1); });
+    zc.appendChild(bplus); zc.appendChild(bminus);
+
+    el.appendChild(this.tiles);
+    el.appendChild(this.mk);
+    el.appendChild(this.popup);
+    el.appendChild(attr);
+    el.appendChild(zc);
+  };
+
+  MiniMap.prototype._wire = function () {
+    var self = this, dragging = false, sx = 0, sy = 0;
+    this.el.addEventListener("mousedown", function (e) {
+      dragging = true; sx = e.clientX; sy = e.clientY; self._dx = 0; self._dy = 0;
+      self.el.style.cursor = "grabbing";
+    });
+    window.addEventListener("mousemove", function (e) {
+      if (!dragging) return;
+      self._dx = e.clientX - sx; self._dy = e.clientY - sy;
+      self.tiles.style.transform = "translate(" + self._dx + "px," + self._dy + "px)";
+      self.mk.style.transform = "translate(" + self._dx + "px," + self._dy + "px)";
+    });
+    window.addEventListener("mouseup", function () {
+      if (!dragging) return;
+      dragging = false; self.el.style.cursor = "grab";
+      var dx = self._dx || 0, dy = self._dy || 0; self._dx = 0; self._dy = 0;
+      self.tiles.style.transform = ""; self.mk.style.transform = "";
+      if (dx || dy) self._panBy(-dx, -dy);
+    });
+    this.el.addEventListener("wheel", function (e) {
+      e.preventDefault();
+      self.setZoom(self.zoom + (e.deltaY < 0 ? 1 : -1));
+    }, { passive: false });
+
+    // Táctil: paneo con un dedo
+    var tsx = 0, tsy = 0, tdx = 0, tdy = 0, tdrag = false;
+    this.el.addEventListener("touchstart", function (e) {
+      if (e.touches.length !== 1) return;
+      tdrag = true; tsx = e.touches[0].clientX; tsy = e.touches[0].clientY; tdx = 0; tdy = 0;
+    }, { passive: true });
+    this.el.addEventListener("touchmove", function (e) {
+      if (!tdrag || e.touches.length !== 1) return;
+      tdx = e.touches[0].clientX - tsx; tdy = e.touches[0].clientY - tsy;
+      self.tiles.style.transform = "translate(" + tdx + "px," + tdy + "px)";
+      self.mk.style.transform = "translate(" + tdx + "px," + tdy + "px)";
+    }, { passive: true });
+    this.el.addEventListener("touchend", function () {
+      if (!tdrag) return; tdrag = false;
+      self.tiles.style.transform = ""; self.mk.style.transform = "";
+      if (tdx || tdy) self._panBy(-tdx, -tdy);
+    });
+
+    window.addEventListener("resize", function () { self.render(); });
+  };
+
+  MiniMap.prototype._origin = function () {
+    var w = this.el.clientWidth, h = this.el.clientHeight;
+    var c = project(this.center.lat, this.center.lon, this.zoom);
+    return { x: c.x - w / 2, y: c.y - h / 2, w: w, h: h };
+  };
+
+  MiniMap.prototype._panBy = function (dxWorld, dyWorld) {
+    var c = project(this.center.lat, this.center.lon, this.zoom);
+    this.center = unproject(c.x + dxWorld, c.y + dyWorld, this.zoom);
+    this.render();
+  };
+
+  MiniMap.prototype.setZoom = function (z) {
+    z = clamp(Math.round(z), this.minZoom, this.maxZoom);
+    if (z === this.zoom) return;
+    this.zoom = z; this.render();
+  };
+  MiniMap.prototype.setView = function (center, zoom) {
+    if (center) this.center = { lat: center[0], lon: center[1] };
+    if (zoom != null) this.zoom = clamp(Math.round(zoom), this.minZoom, this.maxZoom);
+    this.render();
+  };
+  MiniMap.prototype.flyTo = function (center, zoom) { this.setView(center, zoom); };
+
+  MiniMap.prototype.clearMarkers = function () {
+    this.markers = []; this.mk.innerHTML = ""; this.closePopup();
+  };
+  MiniMap.prototype.addMarker = function (m) {
+    var wrap = document.createElement("div");
+    wrap.className = "minimap-marker";
+    wrap.innerHTML = m.html;
+    var rec = { id: m.id, lat: m.lat, lon: m.lon, el: wrap, popupHtml: m.popupHtml, onDetail: m.onDetail };
+    var self = this;
+    wrap.addEventListener("click", function (e) {
+      e.stopPropagation();
+      self.openPopup(m.id);
+    });
+    this.markers.push(rec);
+    this.mk.appendChild(wrap);
+    this._placeMarker(rec);
+    return rec;
+  };
+  MiniMap.prototype._placeMarker = function (rec) {
+    var o = this._origin();
+    var p = project(rec.lat, rec.lon, this.zoom);
+    var left = p.x - o.x, top = p.y - o.y;
+    rec.el.style.left = left + "px";
+    rec.el.style.top = top + "px";
+    rec.el.style.display = (left > -30 && left < o.w + 30 && top > -40 && top < o.h + 10) ? "block" : "none";
+  };
+
+  MiniMap.prototype.render = function () {
+    var o = this._origin(), ws = Math.pow(2, this.zoom);
+    this.tiles.style.transform = "";
+    this.tiles.innerHTML = "";
+    var x0 = Math.floor(o.x / TILE), x1 = Math.floor((o.x + o.w) / TILE);
+    var y0 = Math.floor(o.y / TILE), y1 = Math.floor((o.y + o.h) / TILE);
+    for (var ty = y0; ty <= y1; ty++) {
+      if (ty < 0 || ty >= ws) continue;
+      for (var tx = x0; tx <= x1; tx++) {
+        var wtx = ((tx % ws) + ws) % ws;
+        var img = document.createElement("img");
+        img.className = "minimap-tile";
+        img.src = "https://tile.openstreetmap.org/" + this.zoom + "/" + wtx + "/" + ty + ".png";
+        img.style.left = (tx * TILE - o.x) + "px";
+        img.style.top = (ty * TILE - o.y) + "px";
+        img.draggable = false;
+        img.alt = "";
+        this.tiles.appendChild(img);
+      }
+    }
+    this.mk.style.transform = "";
+    for (var i = 0; i < this.markers.length; i++) this._placeMarker(this.markers[i]);
+    if (this._popupId != null) this._positionPopup();
+  };
+
+  MiniMap.prototype._find = function (id) {
+    for (var i = 0; i < this.markers.length; i++) if (this.markers[i].id === id) return this.markers[i];
+    return null;
+  };
+  MiniMap.prototype.openPopup = function (id) {
+    var rec = this._find(id);
+    if (!rec) return;
+    this._popupId = id;
+    this.popup.innerHTML = rec.popupHtml || "";
+    this.popup.style.display = "block";
+    var btn = this.popup.querySelector("[data-detalle]");
+    if (btn) btn.addEventListener("click", function (e) { e.stopPropagation(); if (rec.onDetail) rec.onDetail(); });
+    this._positionPopup();
+  };
+  MiniMap.prototype.closePopup = function () { this._popupId = null; this.popup.style.display = "none"; };
+  MiniMap.prototype._positionPopup = function () {
+    var rec = this._find(this._popupId);
+    if (!rec) { this.closePopup(); return; }
+    var o = this._origin();
+    var p = project(rec.lat, rec.lon, this.zoom);
+    this.popup.style.left = (p.x - o.x) + "px";
+    this.popup.style.top = (p.y - o.y - 24) + "px";
+  };
+
+  global.MiniMap = MiniMap;
+})(window);
+
+</script>
   <script>
 /* Datos incrustados para poder abrir index.html con doble clic (sin servidor).
    Se genera a partir de data/lugares.json y contiene lo mismo. */
@@ -3327,25 +3618,21 @@ window.LUGARES_DATA = {
     wireEvents();
   }
 
-  /* ---------- Mapa (opcional: si Leaflet no carga, la app sigue funcionando) ---------- */
+  /* ---------- Mapa (MiniMap propio, sin librerías externas) ---------- */
   function initMapa() {
-    if (typeof L === "undefined") {
-      const wrap = document.getElementById("map");
-      if (wrap) {
-        wrap.innerHTML =
-          '<div style="display:flex;align-items:center;justify-content:center;height:100%;' +
-          'padding:24px;text-align:center;color:#52606d;font-size:0.9rem">' +
-          "No se pudo cargar la librería del mapa (Leaflet). " +
-          "Revisa tu conexión a internet y recarga.<br>La lista y las fichas siguen disponibles a la izquierda." +
-          "</div>";
-      }
+    const wrap = document.getElementById("map");
+    if (!wrap) return;
+    if (typeof MiniMap === "undefined") {
+      wrap.innerHTML =
+        '<div style="display:flex;align-items:center;justify-content:center;height:100%;' +
+        'padding:24px;text-align:center;color:#52606d;font-size:0.9rem">' +
+        "La lista y las fichas están disponibles a la izquierda." +
+        "</div>";
       return;
     }
-    map = L.map("map", { zoomControl: true }).setView([-38, -71], 4);
-    L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
-      maxZoom: 18,
-      attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>',
-    }).addTo(map);
+    // Solo las imágenes del mapa (OpenStreetMap) requieren internet; si no hay,
+    // el mapa se ve gris pero los marcadores, la lista y las fichas funcionan igual.
+    map = new MiniMap(wrap, { center: [-38, -71], zoom: 4, minZoom: 3, maxZoom: 17 });
   }
 
   /* ---------- Eventos globales ---------- */
@@ -3428,44 +3715,40 @@ window.LUGARES_DATA = {
   /* ---------- Marcadores ---------- */
   function renderMarkers() {
     if (!map) return;
-    state.markers.forEach((m) => map.removeLayer(m));
+    map.clearMarkers();
     state.markers.clear();
 
     const visibles = lugaresFiltrados();
     visibles.forEach((l) => {
       const color = (state.tipos[l.tipo] && state.tipos[l.tipo].color) || "#2e7d32";
       const vis = esVisitado(l.id);
-      const icon = L.divIcon({
-        className: "",
-        html:
-          '<div class="marker-pin' +
-          (vis ? " marker-pin--visited" : "") +
-          '" style="background:' +
-          color +
-          '">' +
-          (vis ? '<span class="marker-check">✓</span>' : "") +
-          "</div>",
-        iconSize: [22, 22],
-        iconAnchor: [11, 22],
-        popupAnchor: [0, -20],
-      });
-      const marker = L.marker(l.coordenadas, { icon }).addTo(map);
-      marker.bindPopup(
+      const html =
+        '<div class="marker-pin' +
+        (vis ? " marker-pin--visited" : "") +
+        '" style="background:' +
+        color +
+        '">' +
+        (vis ? '<span class="marker-check">✓</span>' : "") +
+        "</div>";
+      const popupHtml =
         '<div class="popup__name">' +
-          escapeHtml(l.nombre) +
-          '</div><div class="popup__type">' +
-          (state.tipos[l.tipo] ? state.tipos[l.tipo].etiqueta : "") +
-          " · " +
-          escapeHtml(l.region) +
-          '</div><div class="popup__btn" data-detalle="' +
-          l.id +
-          '">Ver detalle →</div>'
-      );
-      marker.on("popupopen", (e) => {
-        const btn = e.popup.getElement().querySelector("[data-detalle]");
-        if (btn) btn.addEventListener("click", () => abrirDetalle(l.id));
+        escapeHtml(l.nombre) +
+        '</div><div class="popup__type">' +
+        (state.tipos[l.tipo] ? state.tipos[l.tipo].etiqueta : "") +
+        " · " +
+        escapeHtml(l.region) +
+        '</div><div class="popup__btn" data-detalle="' +
+        l.id +
+        '">Ver detalle →</div>';
+      const rec = map.addMarker({
+        id: l.id,
+        lat: l.coordenadas[0],
+        lon: l.coordenadas[1],
+        html: html,
+        popupHtml: popupHtml,
+        onDetail: () => abrirDetalle(l.id),
       });
-      state.markers.set(l.id, marker);
+      state.markers.set(l.id, rec);
     });
   }
 
@@ -3524,9 +3807,8 @@ window.LUGARES_DATA = {
           "</div>";
         li.addEventListener("click", () => {
           if (map) {
-            map.flyTo(l.coordenadas, 9, { duration: 0.8 });
-            const m = state.markers.get(l.id);
-            if (m) m.openPopup();
+            map.flyTo(l.coordenadas, Math.max(map.zoom, 9));
+            map.openPopup(l.id);
           }
           abrirDetalle(l.id);
         });

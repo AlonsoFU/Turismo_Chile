@@ -82,25 +82,21 @@
     wireEvents();
   }
 
-  /* ---------- Mapa (opcional: si Leaflet no carga, la app sigue funcionando) ---------- */
+  /* ---------- Mapa (MiniMap propio, sin librerías externas) ---------- */
   function initMapa() {
-    if (typeof L === "undefined") {
-      const wrap = document.getElementById("map");
-      if (wrap) {
-        wrap.innerHTML =
-          '<div style="display:flex;align-items:center;justify-content:center;height:100%;' +
-          'padding:24px;text-align:center;color:#52606d;font-size:0.9rem">' +
-          "No se pudo cargar la librería del mapa (Leaflet). " +
-          "Revisa tu conexión a internet y recarga.<br>La lista y las fichas siguen disponibles a la izquierda." +
-          "</div>";
-      }
+    const wrap = document.getElementById("map");
+    if (!wrap) return;
+    if (typeof MiniMap === "undefined") {
+      wrap.innerHTML =
+        '<div style="display:flex;align-items:center;justify-content:center;height:100%;' +
+        'padding:24px;text-align:center;color:#52606d;font-size:0.9rem">' +
+        "La lista y las fichas están disponibles a la izquierda." +
+        "</div>";
       return;
     }
-    map = L.map("map", { zoomControl: true }).setView([-38, -71], 4);
-    L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
-      maxZoom: 18,
-      attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>',
-    }).addTo(map);
+    // Solo las imágenes del mapa (OpenStreetMap) requieren internet; si no hay,
+    // el mapa se ve gris pero los marcadores, la lista y las fichas funcionan igual.
+    map = new MiniMap(wrap, { center: [-38, -71], zoom: 4, minZoom: 3, maxZoom: 17 });
   }
 
   /* ---------- Eventos globales ---------- */
@@ -183,44 +179,40 @@
   /* ---------- Marcadores ---------- */
   function renderMarkers() {
     if (!map) return;
-    state.markers.forEach((m) => map.removeLayer(m));
+    map.clearMarkers();
     state.markers.clear();
 
     const visibles = lugaresFiltrados();
     visibles.forEach((l) => {
       const color = (state.tipos[l.tipo] && state.tipos[l.tipo].color) || "#2e7d32";
       const vis = esVisitado(l.id);
-      const icon = L.divIcon({
-        className: "",
-        html:
-          '<div class="marker-pin' +
-          (vis ? " marker-pin--visited" : "") +
-          '" style="background:' +
-          color +
-          '">' +
-          (vis ? '<span class="marker-check">✓</span>' : "") +
-          "</div>",
-        iconSize: [22, 22],
-        iconAnchor: [11, 22],
-        popupAnchor: [0, -20],
-      });
-      const marker = L.marker(l.coordenadas, { icon }).addTo(map);
-      marker.bindPopup(
+      const html =
+        '<div class="marker-pin' +
+        (vis ? " marker-pin--visited" : "") +
+        '" style="background:' +
+        color +
+        '">' +
+        (vis ? '<span class="marker-check">✓</span>' : "") +
+        "</div>";
+      const popupHtml =
         '<div class="popup__name">' +
-          escapeHtml(l.nombre) +
-          '</div><div class="popup__type">' +
-          (state.tipos[l.tipo] ? state.tipos[l.tipo].etiqueta : "") +
-          " · " +
-          escapeHtml(l.region) +
-          '</div><div class="popup__btn" data-detalle="' +
-          l.id +
-          '">Ver detalle →</div>'
-      );
-      marker.on("popupopen", (e) => {
-        const btn = e.popup.getElement().querySelector("[data-detalle]");
-        if (btn) btn.addEventListener("click", () => abrirDetalle(l.id));
+        escapeHtml(l.nombre) +
+        '</div><div class="popup__type">' +
+        (state.tipos[l.tipo] ? state.tipos[l.tipo].etiqueta : "") +
+        " · " +
+        escapeHtml(l.region) +
+        '</div><div class="popup__btn" data-detalle="' +
+        l.id +
+        '">Ver detalle →</div>';
+      const rec = map.addMarker({
+        id: l.id,
+        lat: l.coordenadas[0],
+        lon: l.coordenadas[1],
+        html: html,
+        popupHtml: popupHtml,
+        onDetail: () => abrirDetalle(l.id),
       });
-      state.markers.set(l.id, marker);
+      state.markers.set(l.id, rec);
     });
   }
 
@@ -279,9 +271,8 @@
           "</div>";
         li.addEventListener("click", () => {
           if (map) {
-            map.flyTo(l.coordenadas, 9, { duration: 0.8 });
-            const m = state.markers.get(l.id);
-            if (m) m.openPopup();
+            map.flyTo(l.coordenadas, Math.max(map.zoom, 9));
+            map.openPopup(l.id);
           }
           abrirDetalle(l.id);
         });

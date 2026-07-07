@@ -24,7 +24,7 @@ El proyecto es **100% estático** (HTML + CSS + JavaScript, sin apps ni dependen
 python3 -m http.server 8000   # luego abre http://localhost:8000
 ```
 
-> El mapa usa tiles de OpenStreetMap y la librería Leaflet desde CDN, por lo que la primera carga requiere conexión a internet. La lista y las fichas funcionan igual sin conexión.
+> El mapa es propio (vanilla JS, sin librerías externas). Solo las **imágenes** del mapa vienen de OpenStreetMap, así que con internet el mapa se ve completo; sin internet se ve gris pero los marcadores, la lista, el buscador, las fichas y el pasaporte funcionan igual.
 
 ## 🗂️ Estructura
 

@@ -244,6 +244,85 @@ html, body {
   box-shadow: var(--sombra);
 }
 
+/* ---------- MiniMap (mapa propio) ---------- */
+.minimap-tiles,
+.minimap-markers {
+  position: absolute;
+  top: 0;
+  left: 0;
+  will-change: transform;
+}
+.minimap-markers { pointer-events: none; }
+.minimap-tile {
+  position: absolute;
+  width: 256px;
+  height: 256px;
+  user-select: none;
+}
+.minimap-marker {
+  position: absolute;
+  width: 22px;
+  height: 22px;
+  margin-left: -11px;
+  margin-top: -22px;
+  pointer-events: auto;
+  cursor: pointer;
+}
+.minimap-popup {
+  position: absolute;
+  transform: translate(-50%, -100%);
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.25);
+  padding: 8px 10px;
+  min-width: 150px;
+  max-width: 220px;
+  z-index: 500;
+  pointer-events: auto;
+}
+.minimap-popup::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: -6px;
+  transform: translateX(-50%);
+  border: 6px solid transparent;
+  border-top-color: #fff;
+  border-bottom: 0;
+}
+.minimap-zoom {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  z-index: 600;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+.minimap-zoom button {
+  width: 32px;
+  height: 32px;
+  border: 1px solid var(--borde);
+  background: #fff;
+  font-size: 1.1rem;
+  line-height: 1;
+  cursor: pointer;
+  border-radius: 6px;
+  box-shadow: var(--sombra);
+}
+.minimap-zoom button:hover { background: #f0f0f0; }
+.minimap-attr {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  background: rgba(255, 255, 255, 0.75);
+  font-size: 10px;
+  padding: 1px 5px;
+  z-index: 600;
+  border-top-left-radius: 4px;
+}
+.minimap-attr a { color: #0066cc; }
+
 /* Marcadores */
 .marker-pin {
   width: 22px;
