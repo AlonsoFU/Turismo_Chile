@@ -91,27 +91,56 @@
       self.tiles.style.transform = ""; self.mk.style.transform = "";
       if (dx || dy) self._panBy(-dx, -dy);
     });
+    // Zoom con rueda: UN nivel por gesto, hacia el cursor, con freno anti-saltos
     this.el.addEventListener("wheel", function (e) {
       e.preventDefault();
-      self.setZoom(self.zoom + (e.deltaY < 0 ? 1 : -1));
+      var now = Date.now();
+      if (now - (self._lastWheel || 0) < 90) return; // throttle (trackpads disparan muchos eventos)
+      self._lastWheel = now;
+      var r = self.el.getBoundingClientRect();
+      self._zoomTo(self.zoom + (e.deltaY < 0 ? 1 : -1), e.clientX - r.left, e.clientY - r.top);
     }, { passive: false });
 
-    // Táctil: paneo con un dedo
-    var tsx = 0, tsy = 0, tdx = 0, tdy = 0, tdrag = false;
+    // Doble clic para acercar (hacia el punto clicado)
+    this.el.addEventListener("dblclick", function (e) {
+      var r = self.el.getBoundingClientRect();
+      self._zoomTo(self.zoom + 1, e.clientX - r.left, e.clientY - r.top);
+    });
+
+    // Táctil: un dedo = paneo; dos dedos = pinch zoom (hacia el punto medio)
+    var tsx = 0, tsy = 0, tdx = 0, tdy = 0, mode = null, d0 = 0, z0 = 0;
+    function tdist(t) {
+      var dx = t[0].clientX - t[1].clientX, dy = t[0].clientY - t[1].clientY;
+      return Math.sqrt(dx * dx + dy * dy);
+    }
     this.el.addEventListener("touchstart", function (e) {
-      if (e.touches.length !== 1) return;
-      tdrag = true; tsx = e.touches[0].clientX; tsy = e.touches[0].clientY; tdx = 0; tdy = 0;
+      if (e.touches.length >= 2) {
+        mode = "pinch"; d0 = tdist(e.touches) || 1; z0 = self.zoom;
+        self.tiles.style.transform = ""; self.mk.style.transform = "";
+      } else if (e.touches.length === 1) {
+        mode = "pan"; tsx = e.touches[0].clientX; tsy = e.touches[0].clientY; tdx = 0; tdy = 0;
+      }
     }, { passive: true });
     this.el.addEventListener("touchmove", function (e) {
-      if (!tdrag || e.touches.length !== 1) return;
-      tdx = e.touches[0].clientX - tsx; tdy = e.touches[0].clientY - tsy;
-      self.tiles.style.transform = "translate(" + tdx + "px," + tdy + "px)";
-      self.mk.style.transform = "translate(" + tdx + "px," + tdy + "px)";
+      if (mode === "pinch" && e.touches.length >= 2) {
+        var r = self.el.getBoundingClientRect();
+        var mx = (e.touches[0].clientX + e.touches[1].clientX) / 2 - r.left;
+        var my = (e.touches[0].clientY + e.touches[1].clientY) / 2 - r.top;
+        var target = Math.round(z0 + Math.log(tdist(e.touches) / d0) / Math.log(2));
+        if (target !== self.zoom) self._zoomTo(target, mx, my);
+      } else if (mode === "pan" && e.touches.length === 1) {
+        tdx = e.touches[0].clientX - tsx; tdy = e.touches[0].clientY - tsy;
+        self.tiles.style.transform = "translate(" + tdx + "px," + tdy + "px)";
+        self.mk.style.transform = "translate(" + tdx + "px," + tdy + "px)";
+      }
     }, { passive: true });
-    this.el.addEventListener("touchend", function () {
-      if (!tdrag) return; tdrag = false;
-      self.tiles.style.transform = ""; self.mk.style.transform = "";
-      if (tdx || tdy) self._panBy(-tdx, -tdy);
+    this.el.addEventListener("touchend", function (e) {
+      if (mode === "pan") {
+        self.tiles.style.transform = ""; self.mk.style.transform = "";
+        if (tdx || tdy) self._panBy(-tdx, -tdy);
+      }
+      mode = e.touches && e.touches.length === 1 ? "pan" : null;
+      if (mode === "pan") { tsx = e.touches[0].clientX; tsy = e.touches[0].clientY; tdx = 0; tdy = 0; }
     });
 
     window.addEventListener("resize", function () { self.render(); });
@@ -130,9 +159,25 @@
   };
 
   MiniMap.prototype.setZoom = function (z) {
-    z = clamp(Math.round(z), this.minZoom, this.maxZoom);
-    if (z === this.zoom) return;
-    this.zoom = z; this.render();
+    // zoom centrado (usado por los botones + / −)
+    var w = this.el.clientWidth, h = this.el.clientHeight;
+    this._zoomTo(z, w / 2, h / 2);
+  };
+  MiniMap.prototype._latLonAtPixel = function (sx, sy) {
+    var o = this._origin();
+    return unproject(o.x + sx, o.y + sy, this.zoom);
+  };
+  MiniMap.prototype._zoomTo = function (newZoom, sx, sy) {
+    // cambia el zoom manteniendo fijo el punto geográfico bajo (sx, sy)
+    newZoom = clamp(Math.round(newZoom), this.minZoom, this.maxZoom);
+    if (newZoom === this.zoom) return;
+    var ll = this._latLonAtPixel(sx, sy);
+    var w = this.el.clientWidth, h = this.el.clientHeight;
+    var p = project(ll.lat, ll.lon, newZoom);
+    var ox = p.x - sx, oy = p.y - sy;
+    this.zoom = newZoom;
+    this.center = unproject(ox + w / 2, oy + h / 2, newZoom);
+    this.render();
   };
   MiniMap.prototype.setView = function (center, zoom) {
     if (center) this.center = { lat: center[0], lon: center[1] };
