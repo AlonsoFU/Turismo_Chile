@@ -572,6 +572,16 @@
       .map((a) => '<span class="tag">' + escapeHtml(a) + "</span>")
       .join(" ");
 
+    // Temporada: barra de 12 meses marcando cuándo se puede hacer
+    const meses = mesesDe(l);
+    const INIC = ["", "E", "F", "M", "A", "M", "J", "J", "A", "S", "O", "N", "D"];
+    let mesesHtml = "";
+    for (let mm = 1; mm <= 12; mm++) {
+      mesesHtml +=
+        '<div class="mes' + (meses.has(mm) ? " on" : "") + '" title="' +
+        MESES_NOMBRE[mm] + '">' + INIC[mm] + "</div>";
+    }
+
     document.getElementById("detailContent").innerHTML =
       '<div class="detail__hero" style="background:linear-gradient(135deg,' +
       color +
@@ -603,6 +613,11 @@
         )
         .join("") +
       "</div>" +
+      '<div class="section-title">📅 ¿Cuándo se puede?</div>' +
+      '<div class="meses">' + mesesHtml + "</div>" +
+      (ev.mejor_epoca
+        ? '<div class="meses-nota">Mejor época: ' + escapeHtml(ev.mejor_epoca) + "</div>"
+        : "") +
       (actividades
         ? '<div class="section-title">🎒 Actividades</div><div class="trail__meta">' +
           actividades +

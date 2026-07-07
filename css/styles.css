@@ -518,6 +518,31 @@ html, body {
   gap: 8px;
 }
 
+/* Temporada: barra de 12 meses */
+.meses {
+  display: flex;
+  gap: 3px;
+}
+.mes {
+  flex: 1;
+  text-align: center;
+  font-size: 0.66rem;
+  font-weight: 600;
+  padding: 6px 0;
+  border-radius: 5px;
+  background: var(--bg);
+  color: #b0b8c1;
+}
+.mes.on {
+  background: linear-gradient(135deg, var(--verde), var(--teal));
+  color: #fff;
+}
+.meses-nota {
+  font-size: 0.76rem;
+  color: var(--texto-suave);
+  margin-top: 6px;
+}
+
 /* Senderos */
 .trail {
   border: 1px solid var(--borde);
