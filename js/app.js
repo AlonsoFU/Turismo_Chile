@@ -53,28 +53,56 @@
   const RE_MES = new RegExp("\\b(" + MES_ALT + ")\\b", "g");
   const TODOS_LOS_MESES = new Set([1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]);
 
+  const RE_ESTACIONAL = /(ski|nieve|snowboard|ballena|florido|floreci|vendimia)/;
+
   function agregarRango(set, a, b) {
     var i = a;
     while (true) { set.add(i); if (i === b) break; i = (i % 12) + 1; }
   }
-  function mesesDe(l) {
-    if (l._meses) return l._meses;
-    var txt = normaliza((l.evaluacion && l.evaluacion.mejor_epoca) || "").replace(/\([^)]*\)/g, " ");
-    var out;
-    if (!txt.trim() || txt.indexOf("todo el ano") >= 0) {
-      out = TODOS_LOS_MESES;
-    } else {
-      out = new Set();
-      var m, found = false;
-      RE_RANGO.lastIndex = 0;
-      while ((m = RE_RANGO.exec(txt))) { found = true; agregarRango(out, MESES_MAP[m[1]], MESES_MAP[m[2]]); }
-      if (!found) {
-        RE_MES.lastIndex = 0;
-        while ((m = RE_MES.exec(txt))) { out.add(MESES_MAP[m[1]]); found = true; }
-      }
-      if (!found) out = TODOS_LOS_MESES;
+  function parseMeses(texto) {
+    var txt = normaliza(texto || "").replace(/\([^)]*\)/g, " ");
+    if (!txt.trim() || txt.indexOf("todo el ano") >= 0) return new Set(TODOS_LOS_MESES);
+    var out = new Set(), m, found = false;
+    RE_RANGO.lastIndex = 0;
+    while ((m = RE_RANGO.exec(txt))) { found = true; agregarRango(out, MESES_MAP[m[1]], MESES_MAP[m[2]]); }
+    if (!found) {
+      RE_MES.lastIndex = 0;
+      while ((m = RE_MES.exec(txt))) { out.add(MESES_MAP[m[1]]); found = true; }
     }
-    l._meses = out;
+    if (!found) return new Set(TODOS_LOS_MESES);
+    return out;
+  }
+  // Meses de MEJOR época (lo ideal)
+  function mesesMejor(l) {
+    if (!l._mBest) l._mBest = parseMeses(l.evaluacion && l.evaluacion.mejor_epoca);
+    return l._mBest;
+  }
+  function esEstacional(l) {
+    var s = normaliza(
+      (l.nombre || "") + " " + (l.actividades || []).join(" ") +
+      " " + ((l.evaluacion && l.evaluacion.mejor_epoca) || "")
+    );
+    return RE_ESTACIONAL.test(s);
+  }
+  // Meses de DISPONIBILIDAD (cuándo se puede). Respeta un campo explícito
+  // "disponibilidad"; si no, estima la ventana = mejor época ± 1 mes de
+  // temporada media, salvo actividades estrictamente estacionales (ski,
+  // ballenas, desierto florido, vendimia) donde disponibilidad = mejor época.
+  function mesesDisp(l) {
+    if (l._mDisp) return l._mDisp;
+    if (l.evaluacion && l.evaluacion.disponibilidad) {
+      l._mDisp = parseMeses(l.evaluacion.disponibilidad);
+      return l._mDisp;
+    }
+    var best = mesesMejor(l);
+    if (best.size === 12 || esEstacional(l)) { l._mDisp = best; return best; }
+    var out = new Set();
+    best.forEach(function (m) {
+      out.add(m);
+      out.add(m === 1 ? 12 : m - 1);
+      out.add(m === 12 ? 1 : m + 1);
+    });
+    l._mDisp = out;
     return out;
   }
 
@@ -308,7 +336,7 @@
       if (!state.tiposActivos.has(l.tipo)) return false;
       if (state.filtroEstado === "visitados" && !esVisitado(l.id)) return false;
       if (state.filtroEstado === "pendientes" && esVisitado(l.id)) return false;
-      if (state.filtroMes && !mesesDe(l).has(state.filtroMes)) return false;
+      if (state.filtroMes && !mesesDisp(l).has(state.filtroMes)) return false;
       if (!t) return true;
       const pueblos = (l.pueblos_cercanos || []).map((p) => p.nombre).join(" ");
       const heno = normaliza([l.nombre, l.region, l.descripcion, pueblos].join(" "));
@@ -572,15 +600,21 @@
       .map((a) => '<span class="tag">' + escapeHtml(a) + "</span>")
       .join(" ");
 
-    // Temporada: barra de 12 meses marcando cuándo se puede hacer
-    const meses = mesesDe(l);
+    // Temporada: barra de 12 meses. Verde fuerte = mejor época; verde claro = también se puede.
+    const mBest = mesesMejor(l);
+    const mDisp = mesesDisp(l);
+    const hayDisp = mDisp.size > mBest.size;
     const INIC = ["", "E", "F", "M", "A", "M", "J", "J", "A", "S", "O", "N", "D"];
     let mesesHtml = "";
     for (let mm = 1; mm <= 12; mm++) {
+      const cls = mBest.has(mm) ? " on" : mDisp.has(mm) ? " avail" : "";
       mesesHtml +=
-        '<div class="mes' + (meses.has(mm) ? " on" : "") + '" title="' +
-        MESES_NOMBRE[mm] + '">' + INIC[mm] + "</div>";
+        '<div class="mes' + cls + '" title="' + MESES_NOMBRE[mm] + '">' + INIC[mm] + "</div>";
     }
+    const mesesLeyenda =
+      '<div class="meses-leyenda"><span class="mes-sw on"></span> mejor época' +
+      (hayDisp ? ' &nbsp; <span class="mes-sw avail"></span> también se puede' : "") +
+      "</div>";
 
     document.getElementById("detailContent").innerHTML =
       '<div class="detail__hero" style="background:linear-gradient(135deg,' +
@@ -615,8 +649,10 @@
       "</div>" +
       '<div class="section-title">📅 ¿Cuándo se puede?</div>' +
       '<div class="meses">' + mesesHtml + "</div>" +
+      mesesLeyenda +
       (ev.mejor_epoca
-        ? '<div class="meses-nota">Mejor época: ' + escapeHtml(ev.mejor_epoca) + "</div>"
+        ? '<div class="meses-nota">Mejor época: ' + escapeHtml(ev.mejor_epoca) +
+          (hayDisp ? " · disponibilidad estimada (temporada media incluida)" : "") + "</div>"
         : "") +
       (actividades
         ? '<div class="section-title">🎒 Actividades</div><div class="trail__meta">' +

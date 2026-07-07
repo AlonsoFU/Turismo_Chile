@@ -537,6 +537,28 @@ html, body {
   background: linear-gradient(135deg, var(--verde), var(--teal));
   color: #fff;
 }
+.mes.avail {
+  background: #cdeccf;
+  color: #3a6b3f;
+}
+.meses-leyenda {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  flex-wrap: wrap;
+  font-size: 0.68rem;
+  color: var(--texto-suave);
+  margin-top: 6px;
+}
+.mes-sw {
+  display: inline-block;
+  width: 12px;
+  height: 12px;
+  border-radius: 3px;
+  vertical-align: middle;
+}
+.mes-sw.on { background: linear-gradient(135deg, var(--verde), var(--teal)); }
+.mes-sw.avail { background: #cdeccf; }
 .meses-nota {
   font-size: 0.76rem;
   color: var(--texto-suave);
