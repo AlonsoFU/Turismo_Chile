@@ -82,6 +82,26 @@ html, body {
 .chip[aria-pressed="true"] { border-color: currentColor; font-weight: 600; }
 .chip[aria-pressed="false"] { opacity: 0.5; }
 
+.controls__when {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 12px;
+  font-size: 0.8rem;
+  color: var(--texto-suave);
+}
+.controls__when label { white-space: nowrap; }
+.controls__select {
+  flex: 1;
+  padding: 7px 8px;
+  border: 1px solid var(--borde);
+  border-radius: 8px;
+  font-size: 0.85rem;
+  background: #fff;
+  cursor: pointer;
+}
+.controls__select:focus { outline: none; border-color: var(--verde); }
+
 .stats {
   display: flex;
   gap: 8px;

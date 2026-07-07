@@ -89,6 +89,7 @@ Guarda y recarga la página: el marcador, la ficha y el buscador se generan auto
 
 - **Marcadores con figurita**: cada lugar muestra un emoji según su actividad (⛷️ ski, 🚣 rafting, 🏄 surf, 🐋 ballenas, ♨️ termas, 🍷 vino…) y el borde con el color de su tipo. Incluye un botón **🗺️ Leyenda** en el mapa.
 - **Pasaporte de viajes**: marca visitados (✓ en la tarjeta, en la ficha o en el mapa), barra de progreso por tipo, y filtro Todos / Pendientes / Visitados. Persistente en `localStorage`.
+- **Filtro por época (📅 ¿Cuándo viajas?)**: elige un mes y muestra solo los lugares recomendados para esa fecha. Los meses se interpretan automáticamente desde el campo "mejor época" de cada lugar (entiende rangos como "Noviembre a Marzo", dobles temporadas "Dic-Mar; Jul-Sep" y "Todo el año").
 - Buscador por nombre, región, descripción o pueblo (insensible a tildes).
 - Filtros por tipo de área (parque / reserva / monumento) con leyenda de colores.
 - Panel lateral con ficha completa al hacer clic en un marcador o en la lista.

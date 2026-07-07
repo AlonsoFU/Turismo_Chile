@@ -11,6 +11,7 @@
     seleccionado: null,
     visitados: new Set(), // ids de lugares marcados como visitados
     filtroEstado: "todos", // todos | pendientes | visitados
+    filtroMes: 0, // 0 = cualquier época; 1-12 = mes
   };
 
   const LS_KEY = "turismo_chile_visitados_v1";
@@ -37,6 +38,45 @@
     { icono: "🗿", etiqueta: "Arqueología / petroglifos", match: ["petroglifo", "encanto", "arqueolog", "rupestre", "mano del desierto"] },
     { icono: "💧", etiqueta: "Cascadas / pozones / lagunas", match: ["salto", "cascada", "tazas", "rio claro", "pozones", "natacion", "flotar", "baltinache"] },
   ];
+
+  // ---- Temporalidad: interpreta "mejor_epoca" (texto libre) a un set de meses ----
+  const MESES_NOMBRE = ["", "Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio",
+    "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"];
+  const MESES_MAP = {
+    enero: 1, ene: 1, febrero: 2, feb: 2, marzo: 3, mar: 3, abril: 4, abr: 4,
+    mayo: 5, may: 5, junio: 6, jun: 6, julio: 7, jul: 7, agosto: 8, ago: 8,
+    septiembre: 9, setiembre: 9, sept: 9, sep: 9, octubre: 10, oct: 10,
+    noviembre: 11, nov: 11, diciembre: 12, dic: 12,
+  };
+  const MES_ALT = Object.keys(MESES_MAP).sort((a, b) => b.length - a.length).join("|");
+  const RE_RANGO = new RegExp("(" + MES_ALT + ")\\s*(?:a|-|–|hasta)\\s*(" + MES_ALT + ")", "g");
+  const RE_MES = new RegExp("\\b(" + MES_ALT + ")\\b", "g");
+  const TODOS_LOS_MESES = new Set([1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]);
+
+  function agregarRango(set, a, b) {
+    var i = a;
+    while (true) { set.add(i); if (i === b) break; i = (i % 12) + 1; }
+  }
+  function mesesDe(l) {
+    if (l._meses) return l._meses;
+    var txt = normaliza((l.evaluacion && l.evaluacion.mejor_epoca) || "").replace(/\([^)]*\)/g, " ");
+    var out;
+    if (!txt.trim() || txt.indexOf("todo el ano") >= 0) {
+      out = TODOS_LOS_MESES;
+    } else {
+      out = new Set();
+      var m, found = false;
+      RE_RANGO.lastIndex = 0;
+      while ((m = RE_RANGO.exec(txt))) { found = true; agregarRango(out, MESES_MAP[m[1]], MESES_MAP[m[2]]); }
+      if (!found) {
+        RE_MES.lastIndex = 0;
+        while ((m = RE_MES.exec(txt))) { out.add(MESES_MAP[m[1]]); found = true; }
+      }
+      if (!found) out = TODOS_LOS_MESES;
+    }
+    l._meses = out;
+    return out;
+  }
 
   function iconoDe(l) {
     if (l.icono) return l.icono;
@@ -114,6 +154,7 @@
 
     cargarVisitados();
     renderFiltros();
+    renderMonthFilter();
     renderEstadoFilter();
     renderLegend();
     renderMarkers();
@@ -220,6 +261,22 @@
     });
   }
 
+  /* ---------- Filtro por época (mes) ---------- */
+  function renderMonthFilter() {
+    const sel = document.getElementById("monthFilter");
+    if (!sel) return;
+    let html = '<option value="0">Cualquier época</option>';
+    for (let mzz = 1; mzz <= 12; mzz++) {
+      html += '<option value="' + mzz + '">' + MESES_NOMBRE[mzz] + "</option>";
+    }
+    sel.innerHTML = html;
+    sel.value = String(state.filtroMes);
+    sel.addEventListener("change", () => {
+      state.filtroMes = parseInt(sel.value, 10) || 0;
+      refrescarTodo();
+    });
+  }
+
   /* ---------- Filtro por estado (pasaporte) ---------- */
   function renderEstadoFilter() {
     const cont = document.getElementById("estadoFilter");
@@ -251,6 +308,7 @@
       if (!state.tiposActivos.has(l.tipo)) return false;
       if (state.filtroEstado === "visitados" && !esVisitado(l.id)) return false;
       if (state.filtroEstado === "pendientes" && esVisitado(l.id)) return false;
+      if (state.filtroMes && !mesesDe(l).has(state.filtroMes)) return false;
       if (!t) return true;
       const pueblos = (l.pueblos_cercanos || []).map((p) => p.nombre).join(" ");
       const heno = normaliza([l.nombre, l.region, l.descripcion, pueblos].join(" "));
