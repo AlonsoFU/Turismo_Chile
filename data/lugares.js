@@ -8,10 +8,10 @@ window.LUGARES_DATA = {
     "actualizado": "2026-07-06",
     "fuente_datos": "Elaboración propia a partir de información pública de CONAF y guías de viaje. Coordenadas y datos aproximados; verificar antes de viajar.",
     "tipos": {
-      "parque_nacional": { "etiqueta": "Parque Nacional", "color": "#2e7d32", "icono": "🌲", "plural": "parques" },
-      "reserva_nacional": { "etiqueta": "Reserva Nacional", "color": "#00838f", "icono": "💧", "plural": "reservas" },
-      "monumento_natural": { "etiqueta": "Monumento Natural", "color": "#8e24aa", "icono": "🗿", "plural": "monumentos" },
-      "actividad": { "etiqueta": "Aventura / Panorama", "color": "#ef6c00", "icono": "🏄", "plural": "panoramas" }
+      "parque_nacional": { "etiqueta": "Parque Nacional", "color": "#2e7d32", "colorNombre": "Verde", "icono": "🌲", "plural": "parques" },
+      "reserva_nacional": { "etiqueta": "Reserva Nacional", "color": "#00838f", "colorNombre": "Celeste", "icono": "💧", "plural": "reservas" },
+      "monumento_natural": { "etiqueta": "Monumento Natural", "color": "#8e24aa", "colorNombre": "Morado", "icono": "🗿", "plural": "monumentos" },
+      "actividad": { "etiqueta": "Aventura / Panorama", "color": "#ef6c00", "colorNombre": "Naranja", "icono": "🏄", "plural": "panoramas" }
     }
   },
   "lugares": [

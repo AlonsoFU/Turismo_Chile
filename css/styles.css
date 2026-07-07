@@ -423,6 +423,7 @@ html, body {
   grid-template-columns: 1fr 1fr;
   gap: 3px 8px;
 }
+.legend__grid--tipos { grid-template-columns: 1fr; }
 .legend__item { display: flex; align-items: center; gap: 5px; }
 .legend__dot {
   width: 10px;

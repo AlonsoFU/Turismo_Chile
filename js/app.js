@@ -198,14 +198,15 @@
       state.lugares.some((l) => l.tipo === k)
     );
     let html = '<div class="legend__title">Leyenda</div>';
-    html += '<div class="legend__sub">Color del borde = tipo</div><div class="legend__grid">';
+    html += '<div class="legend__sub">Color del borde del marcador = tipo</div><div class="legend__grid legend__grid--tipos">';
     tipos.forEach(([k, info]) => {
       html +=
         '<div class="legend__item"><span class="legend__dot" style="background:' +
         info.color +
-        '"></span><span class="legend__ico">' +
+        '"></span>' +
+        (info.colorNombre ? "<b>" + escapeHtml(info.colorNombre) + "</b> · " : "") +
         (info.icono || "") +
-        "</span>" +
+        " " +
         escapeHtml(info.etiqueta) +
         "</div>";
     });
