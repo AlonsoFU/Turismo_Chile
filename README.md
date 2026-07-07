@@ -14,19 +14,17 @@ Incluye **130 lugares**:
 
 ## 🚀 Cómo ejecutarlo
 
-El proyecto es **100% estático** (HTML + CSS + JavaScript, sin dependencias que instalar). Como carga los datos con `fetch()`, necesita un servidor local (no basta con abrir el archivo directamente).
+El proyecto es **100% estático** (HTML + CSS + JavaScript, sin apps ni dependencias que instalar).
+
+**Opción 1 — Doble clic (la más simple):** abre `index.html` directamente en tu navegador. Los datos vienen incrustados en `data/lugares.js`, así que funciona sin servidor.
+
+**Opción 2 — Servidor local:** útil si editas `data/lugares.json` (ver abajo).
 
 ```bash
-# Opción 1: Python (viene preinstalado en Mac/Linux)
-python3 -m http.server 8000
-
-# Opción 2: Node
-npx serve .
+python3 -m http.server 8000   # luego abre http://localhost:8000
 ```
 
-Luego abre <http://localhost:8000> en tu navegador.
-
-> El mapa usa tiles de OpenStreetMap y la librería Leaflet desde CDN, por lo que la primera carga requiere conexión a internet.
+> El mapa usa tiles de OpenStreetMap y la librería Leaflet desde CDN, por lo que la primera carga requiere conexión a internet. La lista y las fichas funcionan igual sin conexión.
 
 ## 🗂️ Estructura
 
@@ -34,10 +32,16 @@ Luego abre <http://localhost:8000> en tu navegador.
 Turismo_Chile/
 ├── index.html          # Página principal (mapa + panel)
 ├── css/styles.css      # Estilos
-├── js/app.js           # Lógica del mapa, filtros y panel de detalle
-├── data/lugares.json   # 📊 Base de datos de áreas protegidas
+├── js/app.js           # Lógica del mapa, filtros, pasaporte y detalle
+├── data/lugares.json   # 📊 Base de datos (formato JSON, editable)
+├── data/lugares.js     # Misma data incrustada (permite abrir sin servidor)
 └── README.md
 ```
+
+> **Nota sobre los datos:** la app carga `data/lugares.js` (para que funcione con doble clic). Es una copia de `data/lugares.json` con el prefijo `window.LUGARES_DATA = …`. Si editas el JSON, regenera el JS con:
+> ```bash
+> python3 -c "c=open('data/lugares.json').read(); open('data/lugares.js','w').write('window.LUGARES_DATA = '+c+';')"
+> ```
 
 ## ➕ Cómo agregar un nuevo lugar
 

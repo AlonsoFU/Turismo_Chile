@@ -53,9 +53,16 @@
     initMapa();
 
     try {
-      const res = await fetch("data/lugares.json");
-      if (!res.ok) throw new Error("HTTP " + res.status);
-      const data = await res.json();
+      let data;
+      if (window.LUGARES_DATA) {
+        // Datos incrustados (data/lugares.js): funciona con doble clic, sin servidor
+        data = window.LUGARES_DATA;
+      } else {
+        // Fallback: cargar el JSON (requiere servidor local por seguridad del navegador)
+        const res = await fetch("data/lugares.json");
+        if (!res.ok) throw new Error("HTTP " + res.status);
+        data = await res.json();
+      }
       state.lugares = data.lugares || [];
       state.tipos = (data.meta && data.meta.tipos) || {};
       state.tiposActivos = new Set(Object.keys(state.tipos));
