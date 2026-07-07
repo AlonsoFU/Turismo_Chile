@@ -87,6 +87,7 @@ Guarda y recarga la página: el marcador, la ficha y el buscador se generan auto
 
 ## ✨ Funcionalidades
 
+- **Marcadores con figurita**: cada lugar muestra un emoji según su actividad (⛷️ ski, 🚣 rafting, 🏄 surf, 🐋 ballenas, ♨️ termas, 🍷 vino…) y el borde con el color de su tipo. Incluye un botón **🗺️ Leyenda** en el mapa.
 - **Pasaporte de viajes**: marca visitados (✓ en la tarjeta, en la ficha o en el mapa), barra de progreso por tipo, y filtro Todos / Pendientes / Visitados. Persistente en `localStorage`.
 - Buscador por nombre, región, descripción o pueblo (insensible a tildes).
 - Filtros por tipo de área (parque / reserva / monumento) con leyenda de colores.

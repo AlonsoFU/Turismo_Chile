@@ -15,6 +15,44 @@
 
   const LS_KEY = "turismo_chile_visitados_v1";
 
+  // Íconos por tipo de actividad (orden importa: lo más específico primero).
+  // Se usa tanto para el marcador como para construir la leyenda.
+  const ICONOS_ACTIVIDAD = [
+    { icono: "💨", etiqueta: "Géiseres", match: ["geiser", "tatio"] },
+    { icono: "🪁", etiqueta: "Kite / windsurf", match: ["kitesurf", "windsurf", "kite"] },
+    { icono: "🐋", etiqueta: "Ballenas / fauna marina", match: ["ballena"] },
+    { icono: "🤿", etiqueta: "Buceo / snorkel", match: ["buceo", "snorkel"] },
+    { icono: "🧊", etiqueta: "Glaciar / hielo", match: ["glaciar", "tempano", "hielo", "exploradores"] },
+    { icono: "🚣", etiqueta: "Rafting / kayak", match: ["rafting", "kayak", "canyoning", "hidrospeed", "remar"] },
+    { icono: "🏄", etiqueta: "Surf", match: ["surf"] },
+    { icono: "🪂", etiqueta: "Parapente", match: ["parapente"] },
+    { icono: "⛷️", etiqueta: "Ski / nieve", match: ["ski", "nieve", "snowboard"] },
+    { icono: "♨️", etiqueta: "Termas", match: ["termas"] },
+    { icono: "🔭", etiqueta: "Astroturismo", match: ["astro", "estrellas", "observatorio"] },
+    { icono: "🏜️", etiqueta: "Sandboard / dunas", match: ["sandboard", "duna"] },
+    { icono: "🧗", etiqueta: "Escalada", match: ["escalada", "cochamo"] },
+    { icono: "🐎", etiqueta: "Cabalgatas", match: ["cabalgata", "estancia"] },
+    { icono: "🎣", etiqueta: "Pesca", match: ["pesca"] },
+    { icono: "🍷", etiqueta: "Ruta del vino", match: ["vino", "vina"] },
+    { icono: "🗿", etiqueta: "Arqueología / petroglifos", match: ["petroglifo", "encanto", "arqueolog", "rupestre", "mano del desierto"] },
+    { icono: "💧", etiqueta: "Cascadas / pozones / lagunas", match: ["salto", "cascada", "tazas", "rio claro", "pozones", "natacion", "flotar", "baltinache"] },
+  ];
+
+  function iconoDe(l) {
+    if (l.icono) return l.icono;
+    if (l.tipo !== "actividad") {
+      return (state.tipos[l.tipo] && state.tipos[l.tipo].icono) || "📍";
+    }
+    const heno = normaliza((l.nombre || "") + " " + (l.actividades || []).join(" "));
+    for (var i = 0; i < ICONOS_ACTIVIDAD.length; i++) {
+      var g = ICONOS_ACTIVIDAD[i];
+      for (var j = 0; j < g.match.length; j++) {
+        if (heno.includes(normaliza(g.match[j]))) return g.icono;
+      }
+    }
+    return "🎒";
+  }
+
   let map;
 
   /* ---------- Pasaporte: lugares visitados (localStorage) ---------- */
@@ -77,9 +115,46 @@
     cargarVisitados();
     renderFiltros();
     renderEstadoFilter();
+    renderLegend();
     renderMarkers();
     render();
     wireEvents();
+  }
+
+  /* ---------- Leyenda ---------- */
+  function renderLegend() {
+    const el = document.getElementById("legend");
+    if (!el) return;
+    const tipos = Object.entries(state.tipos).filter(([k]) =>
+      state.lugares.some((l) => l.tipo === k)
+    );
+    let html = '<div class="legend__title">Leyenda</div>';
+    html += '<div class="legend__sub">Color del borde = tipo</div><div class="legend__grid">';
+    tipos.forEach(([k, info]) => {
+      html +=
+        '<div class="legend__item"><span class="legend__dot" style="background:' +
+        info.color +
+        '"></span><span class="legend__ico">' +
+        (info.icono || "") +
+        "</span>" +
+        escapeHtml(info.etiqueta) +
+        "</div>";
+    });
+    html += "</div>";
+    // solo mostrar íconos de aventura si hay actividades cargadas
+    if (state.lugares.some((l) => l.tipo === "actividad")) {
+      html += '<div class="legend__sub">Íconos de aventura</div><div class="legend__grid">';
+      ICONOS_ACTIVIDAD.forEach((g) => {
+        html +=
+          '<div class="legend__item"><span class="legend__ico">' +
+          g.icono +
+          "</span>" +
+          escapeHtml(g.etiqueta) +
+          "</div>";
+      });
+      html += "</div>";
+    }
+    el.innerHTML = html;
   }
 
   /* ---------- Mapa (MiniMap propio, sin librerías externas) ---------- */
@@ -109,6 +184,13 @@
     document.getElementById("toggleSidebar").addEventListener("click", () => {
       document.getElementById("sidebar").classList.toggle("hidden");
     });
+    const legToggle = document.getElementById("legendToggle");
+    if (legToggle) {
+      legToggle.addEventListener("click", () => {
+        const leg = document.getElementById("legend");
+        leg.hidden = !leg.hidden;
+      });
+    }
     document.addEventListener("keydown", (e) => {
       if (e.key === "Escape") cerrarDetalle();
     });
@@ -187,11 +269,12 @@
       const color = (state.tipos[l.tipo] && state.tipos[l.tipo].color) || "#2e7d32";
       const vis = esVisitado(l.id);
       const html =
-        '<div class="marker-pin' +
-        (vis ? " marker-pin--visited" : "") +
-        '" style="background:' +
+        '<div class="marker-badge' +
+        (vis ? " visitado" : "") +
+        '" style="border-color:' +
         color +
         '">' +
+        iconoDe(l) +
         (vis ? '<span class="marker-check">✓</span>' : "") +
         "</div>";
       const popupHtml =

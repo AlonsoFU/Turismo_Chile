@@ -261,10 +261,10 @@ html, body {
 }
 .minimap-marker {
   position: absolute;
-  width: 22px;
-  height: 22px;
-  margin-left: -11px;
-  margin-top: -22px;
+  width: 28px;
+  height: 28px;
+  margin-left: -14px;
+  margin-top: -14px;
   pointer-events: auto;
   cursor: pointer;
 }
@@ -323,26 +323,94 @@ html, body {
 }
 .minimap-attr a { color: #0066cc; }
 
-/* Marcadores */
-.marker-pin {
-  width: 22px;
-  height: 22px;
-  border-radius: 50% 50% 50% 0;
-  transform: rotate(-45deg);
-  border: 2px solid #fff;
-  box-shadow: 0 1px 4px rgba(0,0,0,0.4);
+/* Marcadores: insignia redonda con emoji y borde del color del tipo */
+.marker-badge {
+  position: relative;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: #fff;
+  border: 3px solid #999;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.45);
   display: flex;
   align-items: center;
   justify-content: center;
-}
-.marker-pin--visited { border-color: #ffd54a; }
-.marker-check {
-  transform: rotate(45deg);
-  color: #fff;
-  font-size: 12px;
-  font-weight: bold;
+  font-size: 15px;
   line-height: 1;
 }
+.marker-badge.visitado {
+  box-shadow: 0 0 0 3px #ffd54a, 0 1px 4px rgba(0, 0, 0, 0.45);
+}
+.marker-check {
+  position: absolute;
+  top: -6px;
+  right: -6px;
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  background: var(--verde);
+  color: #fff;
+  font-size: 10px;
+  font-weight: bold;
+  line-height: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1.5px solid #fff;
+}
+
+/* Leyenda */
+.legend-toggle {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  z-index: 600;
+  background: #fff;
+  border: 1px solid var(--borde);
+  border-radius: 8px;
+  padding: 6px 10px;
+  font-size: 0.8rem;
+  cursor: pointer;
+  box-shadow: var(--sombra);
+}
+.legend {
+  position: absolute;
+  bottom: 12px;
+  left: 12px;
+  z-index: 600;
+  background: #fff;
+  border: 1px solid var(--borde);
+  border-radius: 10px;
+  padding: 10px 12px;
+  box-shadow: var(--sombra);
+  width: 250px;
+  max-width: 70%;
+  max-height: 62%;
+  overflow-y: auto;
+  font-size: 0.75rem;
+}
+.legend__title { font-weight: 700; margin-bottom: 2px; }
+.legend__sub {
+  font-weight: 600;
+  color: var(--texto-suave);
+  margin: 9px 0 4px;
+  font-size: 0.68rem;
+  text-transform: uppercase;
+  letter-spacing: 0.4px;
+}
+.legend__grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3px 8px;
+}
+.legend__item { display: flex; align-items: center; gap: 5px; }
+.legend__dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+.legend__ico { width: 18px; text-align: center; flex-shrink: 0; }
 
 /* ---------- Detalle ---------- */
 .detail {

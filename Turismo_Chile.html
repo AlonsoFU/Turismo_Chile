@@ -270,10 +270,10 @@ html, body {
 }
 .minimap-marker {
   position: absolute;
-  width: 22px;
-  height: 22px;
-  margin-left: -11px;
-  margin-top: -22px;
+  width: 28px;
+  height: 28px;
+  margin-left: -14px;
+  margin-top: -14px;
   pointer-events: auto;
   cursor: pointer;
 }
@@ -332,26 +332,94 @@ html, body {
 }
 .minimap-attr a { color: #0066cc; }
 
-/* Marcadores */
-.marker-pin {
-  width: 22px;
-  height: 22px;
-  border-radius: 50% 50% 50% 0;
-  transform: rotate(-45deg);
-  border: 2px solid #fff;
-  box-shadow: 0 1px 4px rgba(0,0,0,0.4);
+/* Marcadores: insignia redonda con emoji y borde del color del tipo */
+.marker-badge {
+  position: relative;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: #fff;
+  border: 3px solid #999;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.45);
   display: flex;
   align-items: center;
   justify-content: center;
-}
-.marker-pin--visited { border-color: #ffd54a; }
-.marker-check {
-  transform: rotate(45deg);
-  color: #fff;
-  font-size: 12px;
-  font-weight: bold;
+  font-size: 15px;
   line-height: 1;
 }
+.marker-badge.visitado {
+  box-shadow: 0 0 0 3px #ffd54a, 0 1px 4px rgba(0, 0, 0, 0.45);
+}
+.marker-check {
+  position: absolute;
+  top: -6px;
+  right: -6px;
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  background: var(--verde);
+  color: #fff;
+  font-size: 10px;
+  font-weight: bold;
+  line-height: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1.5px solid #fff;
+}
+
+/* Leyenda */
+.legend-toggle {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  z-index: 600;
+  background: #fff;
+  border: 1px solid var(--borde);
+  border-radius: 8px;
+  padding: 6px 10px;
+  font-size: 0.8rem;
+  cursor: pointer;
+  box-shadow: var(--sombra);
+}
+.legend {
+  position: absolute;
+  bottom: 12px;
+  left: 12px;
+  z-index: 600;
+  background: #fff;
+  border: 1px solid var(--borde);
+  border-radius: 10px;
+  padding: 10px 12px;
+  box-shadow: var(--sombra);
+  width: 250px;
+  max-width: 70%;
+  max-height: 62%;
+  overflow-y: auto;
+  font-size: 0.75rem;
+}
+.legend__title { font-weight: 700; margin-bottom: 2px; }
+.legend__sub {
+  font-weight: 600;
+  color: var(--texto-suave);
+  margin: 9px 0 4px;
+  font-size: 0.68rem;
+  text-transform: uppercase;
+  letter-spacing: 0.4px;
+}
+.legend__grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3px 8px;
+}
+.legend__item { display: flex; align-items: center; gap: 5px; }
+.legend__dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+.legend__ico { width: 18px; text-align: center; flex-shrink: 0; }
 
 /* ---------- Detalle ---------- */
 .detail {
@@ -561,6 +629,8 @@ html, body {
     <main class="map-wrap">
       <div id="map"></div>
       <button id="toggleSidebar" class="toggle-sidebar" aria-label="Mostrar/ocultar panel">☰</button>
+      <button id="legendToggle" class="legend-toggle" aria-label="Mostrar u ocultar leyenda">🗺️ Leyenda</button>
+      <div id="legend" class="legend" hidden></div>
     </main>
 
     <!-- Detalle -->
@@ -3953,6 +4023,44 @@ window.LUGARES_DATA = {
 
   const LS_KEY = "turismo_chile_visitados_v1";
 
+  // Íconos por tipo de actividad (orden importa: lo más específico primero).
+  // Se usa tanto para el marcador como para construir la leyenda.
+  const ICONOS_ACTIVIDAD = [
+    { icono: "💨", etiqueta: "Géiseres", match: ["geiser", "tatio"] },
+    { icono: "🪁", etiqueta: "Kite / windsurf", match: ["kitesurf", "windsurf", "kite"] },
+    { icono: "🐋", etiqueta: "Ballenas / fauna marina", match: ["ballena"] },
+    { icono: "🤿", etiqueta: "Buceo / snorkel", match: ["buceo", "snorkel"] },
+    { icono: "🧊", etiqueta: "Glaciar / hielo", match: ["glaciar", "tempano", "hielo", "exploradores"] },
+    { icono: "🚣", etiqueta: "Rafting / kayak", match: ["rafting", "kayak", "canyoning", "hidrospeed", "remar"] },
+    { icono: "🏄", etiqueta: "Surf", match: ["surf"] },
+    { icono: "🪂", etiqueta: "Parapente", match: ["parapente"] },
+    { icono: "⛷️", etiqueta: "Ski / nieve", match: ["ski", "nieve", "snowboard"] },
+    { icono: "♨️", etiqueta: "Termas", match: ["termas"] },
+    { icono: "🔭", etiqueta: "Astroturismo", match: ["astro", "estrellas", "observatorio"] },
+    { icono: "🏜️", etiqueta: "Sandboard / dunas", match: ["sandboard", "duna"] },
+    { icono: "🧗", etiqueta: "Escalada", match: ["escalada", "cochamo"] },
+    { icono: "🐎", etiqueta: "Cabalgatas", match: ["cabalgata", "estancia"] },
+    { icono: "🎣", etiqueta: "Pesca", match: ["pesca"] },
+    { icono: "🍷", etiqueta: "Ruta del vino", match: ["vino", "vina"] },
+    { icono: "🗿", etiqueta: "Arqueología / petroglifos", match: ["petroglifo", "encanto", "arqueolog", "rupestre", "mano del desierto"] },
+    { icono: "💧", etiqueta: "Cascadas / pozones / lagunas", match: ["salto", "cascada", "tazas", "rio claro", "pozones", "natacion", "flotar", "baltinache"] },
+  ];
+
+  function iconoDe(l) {
+    if (l.icono) return l.icono;
+    if (l.tipo !== "actividad") {
+      return (state.tipos[l.tipo] && state.tipos[l.tipo].icono) || "📍";
+    }
+    const heno = normaliza((l.nombre || "") + " " + (l.actividades || []).join(" "));
+    for (var i = 0; i < ICONOS_ACTIVIDAD.length; i++) {
+      var g = ICONOS_ACTIVIDAD[i];
+      for (var j = 0; j < g.match.length; j++) {
+        if (heno.includes(normaliza(g.match[j]))) return g.icono;
+      }
+    }
+    return "🎒";
+  }
+
   let map;
 
   /* ---------- Pasaporte: lugares visitados (localStorage) ---------- */
@@ -4015,9 +4123,46 @@ window.LUGARES_DATA = {
     cargarVisitados();
     renderFiltros();
     renderEstadoFilter();
+    renderLegend();
     renderMarkers();
     render();
     wireEvents();
+  }
+
+  /* ---------- Leyenda ---------- */
+  function renderLegend() {
+    const el = document.getElementById("legend");
+    if (!el) return;
+    const tipos = Object.entries(state.tipos).filter(([k]) =>
+      state.lugares.some((l) => l.tipo === k)
+    );
+    let html = '<div class="legend__title">Leyenda</div>';
+    html += '<div class="legend__sub">Color del borde = tipo</div><div class="legend__grid">';
+    tipos.forEach(([k, info]) => {
+      html +=
+        '<div class="legend__item"><span class="legend__dot" style="background:' +
+        info.color +
+        '"></span><span class="legend__ico">' +
+        (info.icono || "") +
+        "</span>" +
+        escapeHtml(info.etiqueta) +
+        "</div>";
+    });
+    html += "</div>";
+    // solo mostrar íconos de aventura si hay actividades cargadas
+    if (state.lugares.some((l) => l.tipo === "actividad")) {
+      html += '<div class="legend__sub">Íconos de aventura</div><div class="legend__grid">';
+      ICONOS_ACTIVIDAD.forEach((g) => {
+        html +=
+          '<div class="legend__item"><span class="legend__ico">' +
+          g.icono +
+          "</span>" +
+          escapeHtml(g.etiqueta) +
+          "</div>";
+      });
+      html += "</div>";
+    }
+    el.innerHTML = html;
   }
 
   /* ---------- Mapa (MiniMap propio, sin librerías externas) ---------- */
@@ -4047,6 +4192,13 @@ window.LUGARES_DATA = {
     document.getElementById("toggleSidebar").addEventListener("click", () => {
       document.getElementById("sidebar").classList.toggle("hidden");
     });
+    const legToggle = document.getElementById("legendToggle");
+    if (legToggle) {
+      legToggle.addEventListener("click", () => {
+        const leg = document.getElementById("legend");
+        leg.hidden = !leg.hidden;
+      });
+    }
     document.addEventListener("keydown", (e) => {
       if (e.key === "Escape") cerrarDetalle();
     });
@@ -4125,11 +4277,12 @@ window.LUGARES_DATA = {
       const color = (state.tipos[l.tipo] && state.tipos[l.tipo].color) || "#2e7d32";
       const vis = esVisitado(l.id);
       const html =
-        '<div class="marker-pin' +
-        (vis ? " marker-pin--visited" : "") +
-        '" style="background:' +
+        '<div class="marker-badge' +
+        (vis ? " visitado" : "") +
+        '" style="border-color:' +
         color +
         '">' +
+        iconoDe(l) +
         (vis ? '<span class="marker-check">✓</span>' : "") +
         "</div>";
       const popupHtml =
