@@ -21,7 +21,7 @@
   const ICONOS_ACTIVIDAD = [
     { icono: "💨", etiqueta: "Géiseres", match: ["geiser", "tatio"] },
     { icono: "🪁", etiqueta: "Kite / windsurf", match: ["kitesurf", "windsurf", "kite"] },
-    { icono: "🐋", etiqueta: "Ballenas / fauna marina", match: ["ballena"] },
+    { icono: "🐋", etiqueta: "Ballenas / fauna marina", match: ["ballena", "lobos marinos"] },
     { icono: "🤿", etiqueta: "Buceo / snorkel", match: ["buceo", "snorkel"] },
     { icono: "🧊", etiqueta: "Glaciar / hielo", match: ["glaciar", "tempano", "hielo", "exploradores"] },
     { icono: "🚣", etiqueta: "Rafting / kayak", match: ["rafting", "kayak", "canyoning", "hidrospeed", "remar"] },
@@ -35,6 +35,7 @@
     { icono: "🧗", etiqueta: "Escalada", match: ["escalada", "cochamo"] },
     { icono: "🐎", etiqueta: "Cabalgatas", match: ["cabalgata", "estancia"] },
     { icono: "🎉", etiqueta: "Fiestas / cultura", match: ["fiesta", "tirana", "curanto", "palafito", "chilote"] },
+    { icono: "🏛️", etiqueta: "Patrimonio / historia", match: ["salitrera", "humberstone", "patrimon", "mina", "historic"] },
     { icono: "🎣", etiqueta: "Pesca", match: ["pesca"] },
     { icono: "🍷", etiqueta: "Ruta del vino", match: ["vino", "vina"] },
     { icono: "🗿", etiqueta: "Arqueología / petroglifos", match: ["petroglifo", "encanto", "arqueolog", "rupestre", "mano del desierto"] },

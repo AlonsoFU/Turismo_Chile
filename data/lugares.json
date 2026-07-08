@@ -3202,6 +3202,106 @@
         { "nombre": "Castro", "distancia_km": 1, "tiempo_estimado": "5 min", "tours_disponibles": true, "tours_estimados": 8, "descripcion": "Capital de Chiloé; palafitos, feria y gastronomía." }
       ],
       "entrada_pagada": false
+    },
+    {
+      "id": "humberstone",
+      "nombre": "Humberstone y Santa Laura",
+      "tipo": "actividad",
+      "region": "Tarapacá",
+      "coordenadas": [-20.2058, -69.7947],
+      "altitud_m": "1000",
+      "descripcion": "Salitreras abandonadas de fines del siglo XIX, Patrimonio de la Humanidad de la UNESCO, a 45 km de Iquique. Un pueblo fantasma del salitre con casas, teatro y maquinaria congelados en el tiempo.",
+      "evaluacion": { "puntaje": 4.5, "fuente": "Reseñas de visitantes", "mejor_epoca": "Todo el año", "dificultad_acceso": "Baja" },
+      "senderos": [],
+      "actividades": ["Patrimonio salitrera", "Historia", "Fotografía", "Pueblo fantasma"],
+      "pueblos_cercanos": [
+        { "nombre": "Pozo Almonte", "distancia_km": 5, "tiempo_estimado": "10 min en auto", "tours_disponibles": true, "tours_estimados": 3, "descripcion": "Pueblo más cercano sobre la Ruta 16." },
+        { "nombre": "Iquique", "distancia_km": 45, "tiempo_estimado": "45 min en auto", "tours_disponibles": true, "tours_estimados": 8, "descripcion": "Ciudad base; tours de medio día." }
+      ],
+      "entrada_pagada": true
+    },
+    {
+      "id": "termas-mamina",
+      "nombre": "Termas de Mamiña",
+      "tipo": "actividad",
+      "region": "Tarapacá",
+      "coordenadas": [-20.0833, -69.2167],
+      "altitud_m": "2700",
+      "descripcion": "Pueblo termal precordillerano con aguas de propiedades curativas, a la vista del altiplano. Un oasis de relajo entre cerros, cerca de las salitreras y de Pica.",
+      "evaluacion": { "puntaje": 4.3, "fuente": "Reseñas de visitantes", "mejor_epoca": "Todo el año", "dificultad_acceso": "Media" },
+      "senderos": [],
+      "actividades": ["Termas", "Cultura andina", "Relajo"],
+      "pueblos_cercanos": [
+        { "nombre": "Pozo Almonte", "distancia_km": 70, "tiempo_estimado": "1 h 15 min en auto", "tours_disponibles": true, "tours_estimados": 3, "descripcion": "Cruce hacia la precordillera." },
+        { "nombre": "Iquique", "distancia_km": 125, "tiempo_estimado": "2 h en auto", "tours_disponibles": true, "tours_estimados": 3, "descripcion": "Ciudad base." }
+      ],
+      "entrada_pagada": true
+    },
+    {
+      "id": "pica",
+      "nombre": "Oasis y Termas de Pica",
+      "tipo": "actividad",
+      "region": "Tarapacá",
+      "coordenadas": [-20.4917, -69.33],
+      "altitud_m": "1300",
+      "descripcion": "Oasis fértil en medio de la Pampa del Tamarugal, famoso por sus limones, mangos y el pozón termal de la Cocha Resbaladero. Un refugio verde y cálido para nadar y descansar en pleno desierto.",
+      "evaluacion": { "puntaje": 4.4, "fuente": "Reseñas de visitantes", "mejor_epoca": "Todo el año", "dificultad_acceso": "Baja" },
+      "senderos": [],
+      "actividades": ["Termas / pozón", "Oasis", "Frutas tropicales", "Baño"],
+      "pueblos_cercanos": [
+        { "nombre": "Pozo Almonte", "distancia_km": 45, "tiempo_estimado": "45 min en auto", "tours_disponibles": true, "tours_estimados": 3, "descripcion": "Cruce de acceso al oasis." },
+        { "nombre": "Iquique", "distancia_km": 115, "tiempo_estimado": "1 h 45 min en auto", "tours_disponibles": true, "tours_estimados": 4, "descripcion": "Ciudad base; tours de día completo." }
+      ],
+      "entrada_pagada": true
+    },
+    {
+      "id": "parque-nieve-farellones",
+      "nombre": "Parque de Nieve en Farellones (trineo y tubing)",
+      "tipo": "actividad",
+      "region": "Metropolitana",
+      "coordenadas": [-33.35, -70.3],
+      "altitud_m": "2400",
+      "descripcion": "Panorama familiar en la nieve sin necesidad de esquiar: trineos, cámaras (tubing), muñecos de nieve y andarivel para niños, a poco más de una hora de Santiago.",
+      "evaluacion": { "puntaje": 4.3, "fuente": "Reseñas de visitantes", "mejor_epoca": "Junio a Septiembre", "dificultad_acceso": "Media (camino de curvas)" },
+      "senderos": [],
+      "actividades": ["Trineo", "Tubing", "Juegos en la nieve", "Familiar"],
+      "pueblos_cercanos": [
+        { "nombre": "Farellones", "distancia_km": 1, "tiempo_estimado": "5 min", "tours_disponibles": true, "tours_estimados": 6, "descripcion": "Villa de montaña con el parque de nieve." },
+        { "nombre": "Santiago", "distancia_km": 50, "tiempo_estimado": "1 h 20 min en auto", "tours_disponibles": true, "tours_estimados": 10, "descripcion": "Excursión de día en temporada de nieve." }
+      ],
+      "entrada_pagada": true
+    },
+    {
+      "id": "lobos-marinos-valdivia",
+      "nombre": "Lobos Marinos en la Feria Fluvial de Valdivia",
+      "tipo": "actividad",
+      "region": "Los Ríos",
+      "coordenadas": [-39.814, -73.245],
+      "altitud_m": "0",
+      "descripcion": "En pleno centro de Valdivia, decenas de lobos marinos se instalan junto a la Feria Fluvial esperando los descartes de los pescadores. Un espectáculo de fauna urbana, disponible todo el año.",
+      "evaluacion": { "puntaje": 4.5, "fuente": "Reseñas de visitantes", "mejor_epoca": "Todo el año", "dificultad_acceso": "Baja" },
+      "senderos": [],
+      "actividades": ["Lobos marinos", "Feria fluvial", "Fotografía", "Navegación por el río"],
+      "pueblos_cercanos": [
+        { "nombre": "Valdivia", "distancia_km": 0, "tiempo_estimado": "En la ciudad", "tours_disponibles": true, "tours_estimados": 8, "descripcion": "La feria está en el centro, junto al río Calle-Calle." }
+      ],
+      "entrada_pagada": false
+    },
+    {
+      "id": "termas-puyuhuapi",
+      "nombre": "Termas de Puyuhuapi",
+      "tipo": "actividad",
+      "region": "Aysén",
+      "coordenadas": [-44.74, -72.63],
+      "altitud_m": "0",
+      "descripcion": "Termas a orillas de un fiordo en la Patagonia, rodeadas de selva fría, accesibles solo por bote. Uno de los spa termales más exclusivos de Chile, mágico bajo la lluvia y la neblina invernal.",
+      "evaluacion": { "puntaje": 4.7, "fuente": "Reseñas de visitantes", "mejor_epoca": "Todo el año", "dificultad_acceso": "Alta (bote + Carretera Austral)" },
+      "senderos": [],
+      "actividades": ["Termas", "Spa", "Fiordo", "Bosque siempreverde"],
+      "pueblos_cercanos": [
+        { "nombre": "Puyuhuapi", "distancia_km": 14, "tiempo_estimado": "20 min + bote", "tours_disponibles": true, "tours_estimados": 3, "descripcion": "Pueblo de la Carretera Austral; embarque hacia las termas." }
+      ],
+      "entrada_pagada": true
     }
   ]
 }
