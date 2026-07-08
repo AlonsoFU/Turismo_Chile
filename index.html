@@ -6,13 +6,6 @@
   <title>Turismo Chile — Mapa de Parques Nacionales y Reservas</title>
   <meta name="description" content="Mapa interactivo de los parques nacionales y reservas naturales de Chile: senderos, evaluación, pueblos de acceso y tours." />
 
-  <!-- Leaflet (mapa) -->
-  <link
-    rel="stylesheet"
-    href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
-    integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
-    crossorigin=""
-  />
   <link rel="stylesheet" href="css/styles.css" />
 </head>
 <body>
@@ -21,7 +14,7 @@
     <aside id="sidebar" class="sidebar">
       <header class="sidebar__header">
         <h1 class="sidebar__title">🇨🇱 Turismo Chile</h1>
-        <p class="sidebar__subtitle">Parques nacionales y reservas naturales</p>
+        <p class="sidebar__subtitle">Parques, reservas y panoramas de aventura</p>
       </header>
 
       <div class="controls">
@@ -33,9 +26,16 @@
           autocomplete="off"
         />
         <div class="controls__filters" id="typeFilters"></div>
+        <div class="controls__when">
+          <label for="monthFilter">📅 ¿Cuándo viajas?</label>
+          <select id="monthFilter" class="controls__select"></select>
+        </div>
       </div>
 
       <div class="stats" id="stats"></div>
+
+      <div class="progress" id="progress"></div>
+      <div class="estado-filter" id="estadoFilter"></div>
 
       <ul class="places" id="placesList" aria-label="Lista de lugares"></ul>
 
@@ -49,6 +49,8 @@
     <main class="map-wrap">
       <div id="map"></div>
       <button id="toggleSidebar" class="toggle-sidebar" aria-label="Mostrar/ocultar panel">☰</button>
+      <button id="legendToggle" class="legend-toggle" aria-label="Mostrar u ocultar leyenda">🗺️ Leyenda</button>
+      <div id="legend" class="legend" hidden></div>
     </main>
 
     <!-- Detalle -->
@@ -58,11 +60,9 @@
     </section>
   </div>
 
-  <script
-    src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
-    integrity="sha256-20nQCchB9co0qIjJ1yE55zX6qFvbmnfGXPRuVfg0RRA="
-    crossorigin=""
-  ></script>
+  <!-- Mapa propio (sin librerías externas) + datos incrustados: funciona con doble clic -->
+  <script src="js/minimap.js"></script>
+  <script src="data/lugares.js"></script>
   <script src="js/app.js"></script>
 </body>
 </html>

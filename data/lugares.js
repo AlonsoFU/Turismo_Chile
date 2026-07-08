@@ -1,4 +1,6 @@
-{
+/* Datos incrustados para poder abrir index.html con doble clic (sin servidor).
+   Se genera a partir de data/lugares.json y contiene lo mismo. */
+window.LUGARES_DATA = {
   "meta": {
     "titulo": "Turismo Chile — Parques Nacionales y Reservas",
     "descripcion": "Dataset abierto de áreas silvestres protegidas de Chile (SNASPE, administradas por CONAF) con senderos, evaluación, pueblos de acceso y tours.",
@@ -3305,3 +3307,4 @@
     }
   ]
 }
+;

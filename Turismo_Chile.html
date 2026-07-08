@@ -1,4 +1,994 @@
-{
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Turismo Chile — Mapa de Parques Nacionales y Reservas</title>
+  <meta name="description" content="Mapa interactivo de los parques nacionales y reservas naturales de Chile: senderos, evaluación, pueblos de acceso y tours." />
+
+  <style>
+:root {
+  --verde: #2e7d32;
+  --verde-osc: #1b5e20;
+  --teal: #00838f;
+  --purpura: #8e24aa;
+  --bg: #f4f6f8;
+  --panel: #ffffff;
+  --texto: #1f2933;
+  --texto-suave: #52606d;
+  --borde: #e1e5ea;
+  --sombra: 0 2px 12px rgba(0, 0, 0, 0.08);
+  --radio: 12px;
+}
+
+* { box-sizing: border-box; }
+
+html, body {
+  margin: 0;
+  height: 100%;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  color: var(--texto);
+  background: var(--bg);
+}
+
+#app {
+  display: grid;
+  grid-template-columns: 380px 1fr;
+  height: 100vh;
+  overflow: hidden;
+}
+
+/* ---------- Sidebar ---------- */
+.sidebar {
+  background: var(--panel);
+  border-right: 1px solid var(--borde);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  z-index: 500;
+  transition: transform 0.25s ease;
+}
+
+.sidebar__header {
+  padding: 18px 20px 12px;
+  background: linear-gradient(135deg, var(--verde), var(--teal));
+  color: #fff;
+}
+.sidebar__title { margin: 0; font-size: 1.35rem; letter-spacing: -0.2px; }
+.sidebar__subtitle { margin: 4px 0 0; font-size: 0.82rem; opacity: 0.92; }
+
+.controls { padding: 14px 16px 6px; }
+.controls__search {
+  width: 100%;
+  padding: 10px 12px;
+  border: 1px solid var(--borde);
+  border-radius: var(--radio);
+  font-size: 0.9rem;
+  outline: none;
+}
+.controls__search:focus { border-color: var(--verde); box-shadow: 0 0 0 3px rgba(46,125,50,0.12); }
+
+.controls__filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 12px;
+}
+.chip {
+  border: 1px solid var(--borde);
+  background: #fff;
+  border-radius: 999px;
+  padding: 6px 12px;
+  font-size: 0.78rem;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  transition: all 0.15s ease;
+  user-select: none;
+}
+.chip .dot { width: 10px; height: 10px; border-radius: 50%; }
+.chip[aria-pressed="true"] { border-color: currentColor; font-weight: 600; }
+.chip[aria-pressed="false"] { opacity: 0.5; }
+
+.controls__when {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 12px;
+  font-size: 0.8rem;
+  color: var(--texto-suave);
+}
+.controls__when label { white-space: nowrap; }
+.controls__select {
+  flex: 1;
+  padding: 7px 8px;
+  border: 1px solid var(--borde);
+  border-radius: 8px;
+  font-size: 0.85rem;
+  background: #fff;
+  cursor: pointer;
+}
+.controls__select:focus { outline: none; border-color: var(--verde); }
+
+.stats {
+  display: flex;
+  gap: 8px;
+  padding: 8px 16px 4px;
+  font-size: 0.75rem;
+  color: var(--texto-suave);
+}
+
+/* ---------- Progreso (pasaporte) ---------- */
+.progress {
+  padding: 4px 16px 8px;
+}
+.progress__head {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  font-size: 0.8rem;
+  margin-bottom: 6px;
+}
+.progress__title { font-weight: 600; }
+.progress__count { color: var(--texto-suave); }
+.progress__reset {
+  background: none;
+  border: none;
+  color: var(--texto-suave);
+  font-size: 0.7rem;
+  cursor: pointer;
+  text-decoration: underline;
+  padding: 0;
+}
+.progress__bar {
+  height: 8px;
+  border-radius: 999px;
+  background: var(--borde);
+  overflow: hidden;
+}
+.progress__fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--verde), var(--teal));
+  border-radius: 999px;
+  transition: width 0.3s ease;
+}
+.progress__types {
+  display: flex;
+  gap: 10px;
+  margin-top: 8px;
+  font-size: 0.72rem;
+  color: var(--texto-suave);
+  flex-wrap: wrap;
+}
+
+/* Filtro de estado (todos / pendientes / visitados) */
+.estado-filter {
+  display: flex;
+  gap: 6px;
+  padding: 4px 16px 8px;
+}
+.estado-chip {
+  flex: 1;
+  border: 1px solid var(--borde);
+  background: #fff;
+  border-radius: 8px;
+  padding: 6px 4px;
+  font-size: 0.74rem;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  color: var(--texto-suave);
+}
+.estado-chip[aria-pressed="true"] {
+  background: var(--verde);
+  border-color: var(--verde);
+  color: #fff;
+  font-weight: 600;
+}
+
+/* ---------- Lista ---------- */
+.places {
+  list-style: none;
+  margin: 0;
+  padding: 8px 12px 12px;
+  overflow-y: auto;
+  flex: 1;
+}
+.place-card {
+  padding: 12px 14px;
+  border: 1px solid var(--borde);
+  border-radius: var(--radio);
+  margin-bottom: 8px;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  border-left: 4px solid var(--verde);
+}
+.place-card:hover { box-shadow: var(--sombra); transform: translateY(-1px); }
+.place-card.active { background: #f0f7f1; border-color: var(--verde); }
+.place-card.visitado { background: #f3faf4; }
+.place-card__top { display: flex; align-items: flex-start; gap: 8px; }
+.place-card__name { font-weight: 600; font-size: 0.92rem; margin: 0 0 4px; flex: 1; }
+.place-card.visitado .place-card__name { color: var(--verde-osc); }
+
+/* Botón check en la tarjeta */
+.visit-btn {
+  flex-shrink: 0;
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  border: 2px solid var(--borde);
+  background: #fff;
+  color: transparent;
+  font-size: 0.8rem;
+  line-height: 1;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.15s ease;
+}
+.visit-btn:hover { border-color: var(--verde); color: #cfe8d4; }
+.visit-btn.on {
+  background: var(--verde);
+  border-color: var(--verde);
+  color: #fff;
+}
+.place-card__meta { font-size: 0.76rem; color: var(--texto-suave); display: flex; justify-content: space-between; gap: 8px; }
+.place-card__badge {
+  font-size: 0.68rem;
+  padding: 2px 8px;
+  border-radius: 999px;
+  color: #fff;
+  white-space: nowrap;
+}
+.rating { color: #f39c12; font-weight: 600; }
+
+.sidebar__footer {
+  padding: 10px 16px;
+  border-top: 1px solid var(--borde);
+  font-size: 0.7rem;
+  color: var(--texto-suave);
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+/* ---------- Mapa ---------- */
+.map-wrap { position: relative; }
+#map { height: 100%; width: 100%; background: #aadaff; }
+
+.toggle-sidebar {
+  display: none;
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  z-index: 600;
+  background: #fff;
+  border: 1px solid var(--borde);
+  border-radius: 8px;
+  width: 40px;
+  height: 40px;
+  font-size: 1.1rem;
+  cursor: pointer;
+  box-shadow: var(--sombra);
+}
+
+/* ---------- MiniMap (mapa propio) ---------- */
+.minimap-tiles,
+.minimap-markers {
+  position: absolute;
+  top: 0;
+  left: 0;
+  will-change: transform;
+}
+.minimap-markers { pointer-events: none; }
+.minimap-tile {
+  position: absolute;
+  width: 256px;
+  height: 256px;
+  user-select: none;
+}
+.minimap-marker {
+  position: absolute;
+  width: 28px;
+  height: 28px;
+  margin-left: -14px;
+  margin-top: -14px;
+  pointer-events: auto;
+  cursor: pointer;
+}
+.minimap-popup {
+  position: absolute;
+  transform: translate(-50%, -100%);
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.25);
+  padding: 8px 10px;
+  min-width: 150px;
+  max-width: 220px;
+  z-index: 500;
+  pointer-events: auto;
+}
+.minimap-popup::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: -6px;
+  transform: translateX(-50%);
+  border: 6px solid transparent;
+  border-top-color: #fff;
+  border-bottom: 0;
+}
+.minimap-zoom {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  z-index: 600;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+.minimap-zoom button {
+  width: 32px;
+  height: 32px;
+  border: 1px solid var(--borde);
+  background: #fff;
+  font-size: 1.1rem;
+  line-height: 1;
+  cursor: pointer;
+  border-radius: 6px;
+  box-shadow: var(--sombra);
+}
+.minimap-zoom button:hover { background: #f0f0f0; }
+.minimap-attr {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  background: rgba(255, 255, 255, 0.75);
+  font-size: 10px;
+  padding: 1px 5px;
+  z-index: 600;
+  border-top-left-radius: 4px;
+}
+.minimap-attr a { color: #0066cc; }
+
+/* Marcadores: insignia redonda con emoji y borde del color del tipo */
+.marker-badge {
+  position: relative;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: #fff;
+  border: 3px solid #999;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.45);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 15px;
+  line-height: 1;
+}
+.marker-badge.visitado {
+  box-shadow: 0 0 0 3px #ffd54a, 0 1px 4px rgba(0, 0, 0, 0.45);
+}
+.marker-check {
+  position: absolute;
+  top: -6px;
+  right: -6px;
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  background: var(--verde);
+  color: #fff;
+  font-size: 10px;
+  font-weight: bold;
+  line-height: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1.5px solid #fff;
+}
+
+/* Leyenda */
+.legend-toggle {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  z-index: 600;
+  background: #fff;
+  border: 1px solid var(--borde);
+  border-radius: 8px;
+  padding: 6px 10px;
+  font-size: 0.8rem;
+  cursor: pointer;
+  box-shadow: var(--sombra);
+}
+.legend {
+  position: absolute;
+  bottom: 12px;
+  left: 12px;
+  z-index: 600;
+  background: #fff;
+  border: 1px solid var(--borde);
+  border-radius: 10px;
+  padding: 10px 12px;
+  box-shadow: var(--sombra);
+  width: 250px;
+  max-width: 70%;
+  max-height: 62%;
+  overflow-y: auto;
+  font-size: 0.75rem;
+}
+.legend__title { font-weight: 700; margin-bottom: 2px; }
+.legend__sub {
+  font-weight: 600;
+  color: var(--texto-suave);
+  margin: 9px 0 4px;
+  font-size: 0.68rem;
+  text-transform: uppercase;
+  letter-spacing: 0.4px;
+}
+.legend__grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3px 8px;
+}
+.legend__grid--tipos { grid-template-columns: 1fr; }
+.legend__item { display: flex; align-items: center; gap: 5px; }
+.legend__dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+.legend__ico { width: 18px; text-align: center; flex-shrink: 0; }
+
+/* ---------- Detalle ---------- */
+.detail {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 420px;
+  max-width: 92vw;
+  height: 100vh;
+  background: var(--panel);
+  box-shadow: -4px 0 24px rgba(0,0,0,0.15);
+  z-index: 700;
+  overflow-y: auto;
+  animation: slideIn 0.25s ease;
+}
+@keyframes slideIn { from { transform: translateX(100%); } to { transform: translateX(0); } }
+
+.detail__close {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  background: rgba(0,0,0,0.35);
+  color: #fff;
+  border: none;
+  border-radius: 50%;
+  width: 32px;
+  height: 32px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  z-index: 2;
+}
+
+.detail__hero {
+  padding: 26px 22px 18px;
+  color: #fff;
+  background: linear-gradient(135deg, var(--verde), var(--teal));
+}
+.detail__type { font-size: 0.72rem; text-transform: uppercase; letter-spacing: 1px; opacity: 0.9; }
+.detail__title { margin: 6px 0 4px; font-size: 1.4rem; line-height: 1.2; }
+.detail__region { font-size: 0.82rem; opacity: 0.92; }
+
+.visit-toggle {
+  margin-top: 14px;
+  background: rgba(255, 255, 255, 0.18);
+  border: 1.5px solid rgba(255, 255, 255, 0.7);
+  color: #fff;
+  padding: 8px 16px;
+  border-radius: 999px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+.visit-toggle:hover { background: rgba(255, 255, 255, 0.3); }
+.visit-toggle.is-visited {
+  background: #fff;
+  color: var(--verde-osc);
+  border-color: #fff;
+}
+
+.detail__body { padding: 18px 22px 40px; }
+.detail__desc { font-size: 0.9rem; line-height: 1.55; color: var(--texto); }
+
+.detail__facts {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  margin: 16px 0;
+}
+.fact {
+  background: var(--bg);
+  border-radius: 10px;
+  padding: 10px 12px;
+}
+.fact__label { font-size: 0.68rem; color: var(--texto-suave); text-transform: uppercase; letter-spacing: 0.5px; }
+.fact__value { font-size: 0.9rem; font-weight: 600; margin-top: 2px; }
+
+.section-title {
+  font-size: 0.95rem;
+  margin: 22px 0 10px;
+  padding-bottom: 6px;
+  border-bottom: 2px solid var(--borde);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* Temporada: barra de 12 meses */
+.meses {
+  display: flex;
+  gap: 3px;
+}
+.mes {
+  flex: 1;
+  text-align: center;
+  font-size: 0.66rem;
+  font-weight: 600;
+  padding: 6px 0;
+  border-radius: 5px;
+  background: var(--bg);
+  color: #b0b8c1;
+}
+.mes.on {
+  background: linear-gradient(135deg, var(--verde), var(--teal));
+  color: #fff;
+}
+.mes.avail {
+  background: #cdeccf;
+  color: #3a6b3f;
+}
+.meses-leyenda {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  flex-wrap: wrap;
+  font-size: 0.68rem;
+  color: var(--texto-suave);
+  margin-top: 6px;
+}
+.mes-sw {
+  display: inline-block;
+  width: 12px;
+  height: 12px;
+  border-radius: 3px;
+  vertical-align: middle;
+}
+.mes-sw.on { background: linear-gradient(135deg, var(--verde), var(--teal)); }
+.mes-sw.avail { background: #cdeccf; }
+.meses-nota {
+  font-size: 0.76rem;
+  color: var(--texto-suave);
+  margin-top: 6px;
+}
+
+/* Senderos */
+.trail {
+  border: 1px solid var(--borde);
+  border-radius: 10px;
+  padding: 10px 12px;
+  margin-bottom: 8px;
+}
+.trail__name { font-weight: 600; font-size: 0.86rem; }
+.trail__meta { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 6px; }
+.tag {
+  font-size: 0.7rem;
+  padding: 2px 8px;
+  border-radius: 6px;
+  background: var(--bg);
+  color: var(--texto-suave);
+}
+.tag--dif-baja { background: #e6f4ea; color: #1e7e34; }
+.tag--dif-media { background: #fff4e0; color: #c67c00; }
+.tag--dif-alta { background: #fde8e8; color: #c0392b; }
+
+/* Pueblos */
+.town {
+  border: 1px solid var(--borde);
+  border-radius: 10px;
+  padding: 12px;
+  margin-bottom: 8px;
+}
+.town__head { display: flex; justify-content: space-between; align-items: baseline; gap: 8px; }
+.town__name { font-weight: 600; font-size: 0.9rem; }
+.town__dist { font-size: 0.76rem; color: var(--texto-suave); white-space: nowrap; }
+.town__desc { font-size: 0.8rem; color: var(--texto-suave); margin: 6px 0; line-height: 1.4; }
+.town__tours { display: flex; align-items: center; gap: 8px; font-size: 0.78rem; }
+.tours-badge {
+  background: var(--verde);
+  color: #fff;
+  border-radius: 999px;
+  padding: 2px 10px;
+  font-weight: 600;
+  font-size: 0.72rem;
+}
+.tours-badge--none { background: #9aa5b1; }
+
+.detail__link {
+  display: inline-block;
+  margin-top: 18px;
+  color: var(--verde-osc);
+  font-size: 0.85rem;
+  text-decoration: none;
+  font-weight: 600;
+}
+.detail__link:hover { text-decoration: underline; }
+
+/* Popup Leaflet */
+.leaflet-popup-content { margin: 10px 12px; }
+.popup__name { font-weight: 600; font-size: 0.85rem; margin-bottom: 2px; }
+.popup__type { font-size: 0.72rem; color: var(--texto-suave); }
+.popup__btn {
+  margin-top: 6px;
+  display: inline-block;
+  background: var(--verde);
+  color: #fff;
+  padding: 4px 10px;
+  border-radius: 6px;
+  font-size: 0.72rem;
+  cursor: pointer;
+}
+
+/* ---------- Responsive ---------- */
+@media (max-width: 820px) {
+  #app { grid-template-columns: 1fr; }
+  .sidebar {
+    position: absolute;
+    top: 0; left: 0;
+    width: 86%;
+    max-width: 360px;
+    height: 100vh;
+    box-shadow: var(--sombra);
+  }
+  .sidebar.hidden { transform: translateX(-105%); }
+  .toggle-sidebar { display: block; }
+  .detail { width: 100vw; }
+}
+
+</style>
+</head>
+<body>
+  <div id="app">
+    <!-- Panel lateral -->
+    <aside id="sidebar" class="sidebar">
+      <header class="sidebar__header">
+        <h1 class="sidebar__title">🇨🇱 Turismo Chile</h1>
+        <p class="sidebar__subtitle">Parques, reservas y panoramas de aventura</p>
+      </header>
+
+      <div class="controls">
+        <input
+          type="search"
+          id="search"
+          class="controls__search"
+          placeholder="Buscar lugar, región o pueblo…"
+          autocomplete="off"
+        />
+        <div class="controls__filters" id="typeFilters"></div>
+        <div class="controls__when">
+          <label for="monthFilter">📅 ¿Cuándo viajas?</label>
+          <select id="monthFilter" class="controls__select"></select>
+        </div>
+      </div>
+
+      <div class="stats" id="stats"></div>
+
+      <div class="progress" id="progress"></div>
+      <div class="estado-filter" id="estadoFilter"></div>
+
+      <ul class="places" id="placesList" aria-label="Lista de lugares"></ul>
+
+      <footer class="sidebar__footer">
+        <span id="footerCount"></span>
+        <span class="sidebar__source">Datos: elaboración propia con base en CONAF · aproximados</span>
+      </footer>
+    </aside>
+
+    <!-- Mapa -->
+    <main class="map-wrap">
+      <div id="map"></div>
+      <button id="toggleSidebar" class="toggle-sidebar" aria-label="Mostrar/ocultar panel">☰</button>
+      <button id="legendToggle" class="legend-toggle" aria-label="Mostrar u ocultar leyenda">🗺️ Leyenda</button>
+      <div id="legend" class="legend" hidden></div>
+    </main>
+
+    <!-- Detalle -->
+    <section id="detail" class="detail" aria-live="polite" hidden>
+      <button id="detailClose" class="detail__close" aria-label="Cerrar detalle">✕</button>
+      <div id="detailContent"></div>
+    </section>
+  </div>
+
+  <script>
+/* MiniMap — mapa de tiles ligero en vanilla JS (sin librerías externas).
+   Reemplaza a Leaflet para que la app no dependa de ningún CDN de librerías.
+   Solo necesita internet para las imágenes de OpenStreetMap (como cualquier mapa). */
+(function (global) {
+  "use strict";
+
+  var TILE = 256;
+  function clamp(v, a, b) { return Math.max(a, Math.min(b, v)); }
+
+  function project(lat, lon, z) {
+    var ws = TILE * Math.pow(2, z);
+    var x = (lon + 180) / 360 * ws;
+    var s = clamp(Math.sin(lat * Math.PI / 180), -0.9999, 0.9999);
+    var y = (0.5 - Math.log((1 + s) / (1 - s)) / (4 * Math.PI)) * ws;
+    return { x: x, y: y };
+  }
+  function unproject(x, y, z) {
+    var ws = TILE * Math.pow(2, z);
+    var lon = x / ws * 360 - 180;
+    var n = Math.PI - 2 * Math.PI * y / ws;
+    var lat = 180 / Math.PI * Math.atan(0.5 * (Math.exp(n) - Math.exp(-n)));
+    return { lat: lat, lon: lon };
+  }
+
+  function MiniMap(el, opts) {
+    opts = opts || {};
+    this.el = el;
+    this.center = { lat: opts.center ? opts.center[0] : -38, lon: opts.center ? opts.center[1] : -71 };
+    this.zoom = opts.zoom || 4;
+    this.minZoom = opts.minZoom || 3;
+    this.maxZoom = opts.maxZoom || 17;
+    this.markers = [];
+    this._popupId = null;
+    this._build();
+    this._wire();
+    this.render();
+  }
+
+  MiniMap.prototype._build = function () {
+    var el = this.el, self = this;
+    el.style.position = "relative";
+    el.style.overflow = "hidden";
+    el.style.background = "#aadaff";
+    el.style.cursor = "grab";
+    el.style.userSelect = "none";
+    el.innerHTML = "";
+
+    this.tiles = document.createElement("div");
+    this.tiles.className = "minimap-tiles";
+    this.mk = document.createElement("div");
+    this.mk.className = "minimap-markers";
+    this.popup = document.createElement("div");
+    this.popup.className = "minimap-popup";
+    this.popup.style.display = "none";
+
+    var attr = document.createElement("div");
+    attr.className = "minimap-attr";
+    attr.innerHTML = '© <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener">OpenStreetMap</a> · <a href="https://carto.com/attributions" target="_blank" rel="noopener">CARTO</a>';
+
+    var zc = document.createElement("div");
+    zc.className = "minimap-zoom";
+    var bplus = document.createElement("button"); bplus.type = "button"; bplus.textContent = "+"; bplus.setAttribute("aria-label", "Acercar");
+    var bminus = document.createElement("button"); bminus.type = "button"; bminus.textContent = "−"; bminus.setAttribute("aria-label", "Alejar");
+    bplus.addEventListener("click", function (e) { e.stopPropagation(); self.setZoom(self.zoom + 1); });
+    bminus.addEventListener("click", function (e) { e.stopPropagation(); self.setZoom(self.zoom - 1); });
+    zc.appendChild(bplus); zc.appendChild(bminus);
+
+    el.appendChild(this.tiles);
+    el.appendChild(this.mk);
+    el.appendChild(this.popup);
+    el.appendChild(attr);
+    el.appendChild(zc);
+  };
+
+  MiniMap.prototype._wire = function () {
+    var self = this, dragging = false, sx = 0, sy = 0;
+    this.el.addEventListener("mousedown", function (e) {
+      dragging = true; sx = e.clientX; sy = e.clientY; self._dx = 0; self._dy = 0;
+      self.el.style.cursor = "grabbing";
+    });
+    window.addEventListener("mousemove", function (e) {
+      if (!dragging) return;
+      self._dx = e.clientX - sx; self._dy = e.clientY - sy;
+      self.tiles.style.transform = "translate(" + self._dx + "px," + self._dy + "px)";
+      self.mk.style.transform = "translate(" + self._dx + "px," + self._dy + "px)";
+    });
+    window.addEventListener("mouseup", function () {
+      if (!dragging) return;
+      dragging = false; self.el.style.cursor = "grab";
+      var dx = self._dx || 0, dy = self._dy || 0; self._dx = 0; self._dy = 0;
+      self.tiles.style.transform = ""; self.mk.style.transform = "";
+      if (dx || dy) self._panBy(-dx, -dy);
+    });
+    // Zoom con rueda: UN nivel por gesto, hacia el cursor, con freno anti-saltos
+    this.el.addEventListener("wheel", function (e) {
+      e.preventDefault();
+      var now = Date.now();
+      if (now - (self._lastWheel || 0) < 90) return; // throttle (trackpads disparan muchos eventos)
+      self._lastWheel = now;
+      var r = self.el.getBoundingClientRect();
+      self._zoomTo(self.zoom + (e.deltaY < 0 ? 1 : -1), e.clientX - r.left, e.clientY - r.top);
+    }, { passive: false });
+
+    // Doble clic para acercar (hacia el punto clicado)
+    this.el.addEventListener("dblclick", function (e) {
+      var r = self.el.getBoundingClientRect();
+      self._zoomTo(self.zoom + 1, e.clientX - r.left, e.clientY - r.top);
+    });
+
+    // Táctil: un dedo = paneo; dos dedos = pinch zoom (hacia el punto medio)
+    var tsx = 0, tsy = 0, tdx = 0, tdy = 0, mode = null, d0 = 0, z0 = 0;
+    function tdist(t) {
+      var dx = t[0].clientX - t[1].clientX, dy = t[0].clientY - t[1].clientY;
+      return Math.sqrt(dx * dx + dy * dy);
+    }
+    this.el.addEventListener("touchstart", function (e) {
+      if (e.touches.length >= 2) {
+        mode = "pinch"; d0 = tdist(e.touches) || 1; z0 = self.zoom;
+        self.tiles.style.transform = ""; self.mk.style.transform = "";
+      } else if (e.touches.length === 1) {
+        mode = "pan"; tsx = e.touches[0].clientX; tsy = e.touches[0].clientY; tdx = 0; tdy = 0;
+      }
+    }, { passive: true });
+    this.el.addEventListener("touchmove", function (e) {
+      if (mode === "pinch" && e.touches.length >= 2) {
+        var r = self.el.getBoundingClientRect();
+        var mx = (e.touches[0].clientX + e.touches[1].clientX) / 2 - r.left;
+        var my = (e.touches[0].clientY + e.touches[1].clientY) / 2 - r.top;
+        var target = Math.round(z0 + Math.log(tdist(e.touches) / d0) / Math.log(2));
+        if (target !== self.zoom) self._zoomTo(target, mx, my);
+      } else if (mode === "pan" && e.touches.length === 1) {
+        tdx = e.touches[0].clientX - tsx; tdy = e.touches[0].clientY - tsy;
+        self.tiles.style.transform = "translate(" + tdx + "px," + tdy + "px)";
+        self.mk.style.transform = "translate(" + tdx + "px," + tdy + "px)";
+      }
+    }, { passive: true });
+    this.el.addEventListener("touchend", function (e) {
+      if (mode === "pan") {
+        self.tiles.style.transform = ""; self.mk.style.transform = "";
+        if (tdx || tdy) self._panBy(-tdx, -tdy);
+      }
+      mode = e.touches && e.touches.length === 1 ? "pan" : null;
+      if (mode === "pan") { tsx = e.touches[0].clientX; tsy = e.touches[0].clientY; tdx = 0; tdy = 0; }
+    });
+
+    window.addEventListener("resize", function () { self.render(); });
+  };
+
+  MiniMap.prototype._origin = function () {
+    var w = this.el.clientWidth, h = this.el.clientHeight;
+    var c = project(this.center.lat, this.center.lon, this.zoom);
+    return { x: c.x - w / 2, y: c.y - h / 2, w: w, h: h };
+  };
+
+  MiniMap.prototype._panBy = function (dxWorld, dyWorld) {
+    var c = project(this.center.lat, this.center.lon, this.zoom);
+    this.center = unproject(c.x + dxWorld, c.y + dyWorld, this.zoom);
+    this.render();
+  };
+
+  MiniMap.prototype.setZoom = function (z) {
+    // zoom centrado (usado por los botones + / −)
+    var w = this.el.clientWidth, h = this.el.clientHeight;
+    this._zoomTo(z, w / 2, h / 2);
+  };
+  MiniMap.prototype._latLonAtPixel = function (sx, sy) {
+    var o = this._origin();
+    return unproject(o.x + sx, o.y + sy, this.zoom);
+  };
+  MiniMap.prototype._zoomTo = function (newZoom, sx, sy) {
+    // cambia el zoom manteniendo fijo el punto geográfico bajo (sx, sy)
+    newZoom = clamp(Math.round(newZoom), this.minZoom, this.maxZoom);
+    if (newZoom === this.zoom) return;
+    var ll = this._latLonAtPixel(sx, sy);
+    var w = this.el.clientWidth, h = this.el.clientHeight;
+    var p = project(ll.lat, ll.lon, newZoom);
+    var ox = p.x - sx, oy = p.y - sy;
+    this.zoom = newZoom;
+    this.center = unproject(ox + w / 2, oy + h / 2, newZoom);
+    this.render();
+  };
+  MiniMap.prototype.setView = function (center, zoom) {
+    if (center) this.center = { lat: center[0], lon: center[1] };
+    if (zoom != null) this.zoom = clamp(Math.round(zoom), this.minZoom, this.maxZoom);
+    this.render();
+  };
+  MiniMap.prototype.flyTo = function (center, zoom) { this.setView(center, zoom); };
+
+  MiniMap.prototype.clearMarkers = function () {
+    this.markers = []; this.mk.innerHTML = ""; this.closePopup();
+  };
+  MiniMap.prototype.addMarker = function (m) {
+    var wrap = document.createElement("div");
+    wrap.className = "minimap-marker";
+    wrap.innerHTML = m.html;
+    var rec = { id: m.id, lat: m.lat, lon: m.lon, el: wrap, popupHtml: m.popupHtml, onDetail: m.onDetail };
+    var self = this;
+    wrap.addEventListener("click", function (e) {
+      e.stopPropagation();
+      self.openPopup(m.id);
+    });
+    this.markers.push(rec);
+    this.mk.appendChild(wrap);
+    this._placeMarker(rec);
+    return rec;
+  };
+  MiniMap.prototype._placeMarker = function (rec) {
+    var o = this._origin();
+    var p = project(rec.lat, rec.lon, this.zoom);
+    var left = p.x - o.x, top = p.y - o.y;
+    rec.el.style.left = left + "px";
+    rec.el.style.top = top + "px";
+    rec.el.style.display = (left > -30 && left < o.w + 30 && top > -40 && top < o.h + 10) ? "block" : "none";
+  };
+
+  MiniMap.prototype.render = function () {
+    var o = this._origin(), ws = Math.pow(2, this.zoom);
+    this.tiles.style.transform = "";
+    this.tiles.innerHTML = "";
+    var x0 = Math.floor(o.x / TILE), x1 = Math.floor((o.x + o.w) / TILE);
+    var y0 = Math.floor(o.y / TILE), y1 = Math.floor((o.y + o.h) / TILE);
+    for (var ty = y0; ty <= y1; ty++) {
+      if (ty < 0 || ty >= ws) continue;
+      for (var tx = x0; tx <= x1; tx++) {
+        var wtx = ((tx % ws) + ws) % ws;
+        var img = document.createElement("img");
+        img.className = "minimap-tile";
+        // CARTO Voyager: basemap CDN pensado para este uso (evita bloqueos 403
+        // que a veces aplica el servidor de OpenStreetMap desde archivos locales).
+        img.src = "https://basemaps.cartocdn.com/rastertiles/voyager/" + this.zoom + "/" + wtx + "/" + ty + ".png";
+        img.style.left = (tx * TILE - o.x) + "px";
+        img.style.top = (ty * TILE - o.y) + "px";
+        img.draggable = false;
+        img.alt = "";
+        // Si un tile falla (sin conexión o bloqueado), se oculta y queda gris.
+        img.onerror = function () { this.style.visibility = "hidden"; };
+        this.tiles.appendChild(img);
+      }
+    }
+    this.mk.style.transform = "";
+    for (var i = 0; i < this.markers.length; i++) this._placeMarker(this.markers[i]);
+    if (this._popupId != null) this._positionPopup();
+  };
+
+  MiniMap.prototype._find = function (id) {
+    for (var i = 0; i < this.markers.length; i++) if (this.markers[i].id === id) return this.markers[i];
+    return null;
+  };
+  MiniMap.prototype.openPopup = function (id) {
+    var rec = this._find(id);
+    if (!rec) return;
+    this._popupId = id;
+    this.popup.innerHTML = rec.popupHtml || "";
+    this.popup.style.display = "block";
+    var btn = this.popup.querySelector("[data-detalle]");
+    if (btn) btn.addEventListener("click", function (e) { e.stopPropagation(); if (rec.onDetail) rec.onDetail(); });
+    this._positionPopup();
+  };
+  MiniMap.prototype.closePopup = function () { this._popupId = null; this.popup.style.display = "none"; };
+  MiniMap.prototype._positionPopup = function () {
+    var rec = this._find(this._popupId);
+    if (!rec) { this.closePopup(); return; }
+    var o = this._origin();
+    var p = project(rec.lat, rec.lon, this.zoom);
+    this.popup.style.left = (p.x - o.x) + "px";
+    this.popup.style.top = (p.y - o.y - 24) + "px";
+  };
+
+  global.MiniMap = MiniMap;
+})(window);
+
+</script>
+  <script>
+/* Datos incrustados para poder abrir index.html con doble clic (sin servidor).
+   Se genera a partir de data/lugares.json y contiene lo mismo. */
+window.LUGARES_DATA = {
   "meta": {
     "titulo": "Turismo Chile — Parques Nacionales y Reservas",
     "descripcion": "Dataset abierto de áreas silvestres protegidas de Chile (SNASPE, administradas por CONAF) con senderos, evaluación, pueblos de acceso y tours.",
@@ -3305,3 +4295,763 @@
     }
   ]
 }
+;
+
+</script>
+  <script>
+/* Turismo Chile — Mapa interactivo de parques nacionales y reservas */
+(function () {
+  "use strict";
+
+  const state = {
+    lugares: [],
+    tipos: {},
+    filtroTexto: "",
+    tiposActivos: new Set(),
+    markers: new Map(), // id -> Leaflet marker
+    seleccionado: null,
+    visitados: new Set(), // ids de lugares marcados como visitados
+    filtroEstado: "todos", // todos | pendientes | visitados
+    filtroMes: 0, // 0 = cualquier época; 1-12 = mes
+  };
+
+  const LS_KEY = "turismo_chile_visitados_v1";
+
+  // Íconos por tipo de actividad (orden importa: lo más específico primero).
+  // Se usa tanto para el marcador como para construir la leyenda.
+  const ICONOS_ACTIVIDAD = [
+    { icono: "💨", etiqueta: "Géiseres", match: ["geiser", "tatio"] },
+    { icono: "🪁", etiqueta: "Kite / windsurf", match: ["kitesurf", "windsurf", "kite"] },
+    { icono: "🐋", etiqueta: "Ballenas / fauna marina", match: ["ballena", "lobos marinos"] },
+    { icono: "🤿", etiqueta: "Buceo / snorkel", match: ["buceo", "snorkel"] },
+    { icono: "🧊", etiqueta: "Glaciar / hielo", match: ["glaciar", "tempano", "hielo", "exploradores"] },
+    { icono: "🚣", etiqueta: "Rafting / kayak", match: ["rafting", "kayak", "canyoning", "hidrospeed", "remar"] },
+    { icono: "🏄", etiqueta: "Surf", match: ["surf"] },
+    { icono: "🪂", etiqueta: "Parapente", match: ["parapente"] },
+    { icono: "❄️", etiqueta: "Raquetas de nieve", match: ["raqueta", "snowshoe", "trineo"] },
+    { icono: "⛷️", etiqueta: "Ski", match: ["ski", "nieve", "snowboard"] },
+    { icono: "♨️", etiqueta: "Termas", match: ["termas"] },
+    { icono: "🔭", etiqueta: "Astroturismo", match: ["astro", "estrellas", "observatorio"] },
+    { icono: "🏜️", etiqueta: "Sandboard / dunas", match: ["sandboard", "duna"] },
+    { icono: "🧗", etiqueta: "Escalada", match: ["escalada", "cochamo"] },
+    { icono: "🐎", etiqueta: "Cabalgatas", match: ["cabalgata", "estancia"] },
+    { icono: "🎉", etiqueta: "Fiestas / cultura", match: ["fiesta", "tirana", "curanto", "palafito", "chilote"] },
+    { icono: "🏛️", etiqueta: "Patrimonio / historia", match: ["salitrera", "humberstone", "patrimon", "mina", "historic"] },
+    { icono: "🎣", etiqueta: "Pesca", match: ["pesca"] },
+    { icono: "🍷", etiqueta: "Ruta del vino", match: ["vino", "vina"] },
+    { icono: "🗿", etiqueta: "Arqueología / petroglifos", match: ["petroglifo", "encanto", "arqueolog", "rupestre", "mano del desierto"] },
+    { icono: "💧", etiqueta: "Cascadas / pozones / lagunas", match: ["salto", "cascada", "tazas", "rio claro", "pozones", "natacion", "flotar", "baltinache"] },
+  ];
+
+  // ---- Temporalidad: interpreta "mejor_epoca" (texto libre) a un set de meses ----
+  const MESES_NOMBRE = ["", "Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio",
+    "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"];
+  const MESES_MAP = {
+    enero: 1, ene: 1, febrero: 2, feb: 2, marzo: 3, mar: 3, abril: 4, abr: 4,
+    mayo: 5, may: 5, junio: 6, jun: 6, julio: 7, jul: 7, agosto: 8, ago: 8,
+    septiembre: 9, setiembre: 9, sept: 9, sep: 9, octubre: 10, oct: 10,
+    noviembre: 11, nov: 11, diciembre: 12, dic: 12,
+  };
+  const MES_ALT = Object.keys(MESES_MAP).sort((a, b) => b.length - a.length).join("|");
+  const RE_RANGO = new RegExp("(" + MES_ALT + ")\\s*(?:a|-|–|hasta)\\s*(" + MES_ALT + ")", "g");
+  const RE_MES = new RegExp("\\b(" + MES_ALT + ")\\b", "g");
+  const TODOS_LOS_MESES = new Set([1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]);
+
+  const RE_ESTACIONAL = /(ski|nieve|snowboard|ballena|florido|floreci|vendimia)/;
+
+  function agregarRango(set, a, b) {
+    var i = a;
+    while (true) { set.add(i); if (i === b) break; i = (i % 12) + 1; }
+  }
+  function parseMeses(texto) {
+    var txt = normaliza(texto || "").replace(/\([^)]*\)/g, " ");
+    if (!txt.trim() || txt.indexOf("todo el ano") >= 0) return new Set(TODOS_LOS_MESES);
+    var out = new Set(), m, found = false;
+    RE_RANGO.lastIndex = 0;
+    while ((m = RE_RANGO.exec(txt))) { found = true; agregarRango(out, MESES_MAP[m[1]], MESES_MAP[m[2]]); }
+    if (!found) {
+      RE_MES.lastIndex = 0;
+      while ((m = RE_MES.exec(txt))) { out.add(MESES_MAP[m[1]]); found = true; }
+    }
+    if (!found) return new Set(TODOS_LOS_MESES);
+    return out;
+  }
+  // Meses de MEJOR época (lo ideal)
+  function mesesMejor(l) {
+    if (!l._mBest) l._mBest = parseMeses(l.evaluacion && l.evaluacion.mejor_epoca);
+    return l._mBest;
+  }
+  function esEstacional(l) {
+    var s = normaliza(
+      (l.nombre || "") + " " + (l.actividades || []).join(" ") +
+      " " + ((l.evaluacion && l.evaluacion.mejor_epoca) || "")
+    );
+    return RE_ESTACIONAL.test(s);
+  }
+  // Meses de DISPONIBILIDAD (cuándo se puede). Respeta un campo explícito
+  // "disponibilidad"; si no, estima la ventana = mejor época ± 1 mes de
+  // temporada media, salvo actividades estrictamente estacionales (ski,
+  // ballenas, desierto florido, vendimia) donde disponibilidad = mejor época.
+  function mesesDisp(l) {
+    if (l._mDisp) return l._mDisp;
+    if (l.evaluacion && l.evaluacion.disponibilidad) {
+      l._mDisp = parseMeses(l.evaluacion.disponibilidad);
+      return l._mDisp;
+    }
+    var best = mesesMejor(l);
+    if (best.size === 12 || esEstacional(l)) { l._mDisp = best; return best; }
+    var out = new Set();
+    best.forEach(function (m) {
+      out.add(m);
+      out.add(m === 1 ? 12 : m - 1);
+      out.add(m === 12 ? 1 : m + 1);
+    });
+    l._mDisp = out;
+    return out;
+  }
+
+  function iconoDe(l) {
+    if (l.icono) return l.icono;
+    if (l.tipo !== "actividad") {
+      return (state.tipos[l.tipo] && state.tipos[l.tipo].icono) || "📍";
+    }
+    const heno = normaliza((l.nombre || "") + " " + (l.actividades || []).join(" "));
+    for (var i = 0; i < ICONOS_ACTIVIDAD.length; i++) {
+      var g = ICONOS_ACTIVIDAD[i];
+      for (var j = 0; j < g.match.length; j++) {
+        if (heno.includes(normaliza(g.match[j]))) return g.icono;
+      }
+    }
+    return "🎒";
+  }
+
+  let map;
+
+  /* ---------- Pasaporte: lugares visitados (localStorage) ---------- */
+  function cargarVisitados() {
+    try {
+      const raw = localStorage.getItem(LS_KEY);
+      if (raw) JSON.parse(raw).forEach((id) => state.visitados.add(id));
+    } catch (e) {
+      /* localStorage no disponible: se ignora */
+    }
+  }
+  function guardarVisitados() {
+    try {
+      localStorage.setItem(LS_KEY, JSON.stringify([...state.visitados]));
+    } catch (e) {
+      /* se ignora */
+    }
+  }
+  function esVisitado(id) {
+    return state.visitados.has(id);
+  }
+  function toggleVisitado(id) {
+    if (state.visitados.has(id)) state.visitados.delete(id);
+    else state.visitados.add(id);
+    guardarVisitados();
+  }
+  function refrescarTodo() {
+    renderMarkers();
+    render();
+  }
+
+  /* ---------- Inicialización ---------- */
+  init();
+
+  async function init() {
+    initMapa();
+
+    try {
+      let data;
+      if (window.LUGARES_DATA) {
+        // Datos incrustados (data/lugares.js): funciona con doble clic, sin servidor
+        data = window.LUGARES_DATA;
+      } else {
+        // Fallback: cargar el JSON (requiere servidor local por seguridad del navegador)
+        const res = await fetch("data/lugares.json");
+        if (!res.ok) throw new Error("HTTP " + res.status);
+        data = await res.json();
+      }
+      state.lugares = data.lugares || [];
+      state.tipos = (data.meta && data.meta.tipos) || {};
+      state.tiposActivos = new Set(Object.keys(state.tipos));
+    } catch (err) {
+      document.getElementById("placesList").innerHTML =
+        '<li style="padding:16px;color:#c0392b">No se pudieron cargar los datos (' +
+        err.message +
+        "). Ejecuta el proyecto desde un servidor local (ver README).</li>";
+      return;
+    }
+
+    cargarVisitados();
+    renderFiltros();
+    renderMonthFilter();
+    renderEstadoFilter();
+    renderLegend();
+    renderMarkers();
+    render();
+    wireEvents();
+  }
+
+  /* ---------- Leyenda ---------- */
+  function renderLegend() {
+    const el = document.getElementById("legend");
+    if (!el) return;
+    const tipos = Object.entries(state.tipos).filter(([k]) =>
+      state.lugares.some((l) => l.tipo === k)
+    );
+    let html = '<div class="legend__title">Leyenda</div>';
+    html += '<div class="legend__sub">Color del borde del marcador = tipo</div><div class="legend__grid legend__grid--tipos">';
+    tipos.forEach(([k, info]) => {
+      html +=
+        '<div class="legend__item"><span class="legend__dot" style="background:' +
+        info.color +
+        '"></span>' +
+        (info.colorNombre ? "<b>" + escapeHtml(info.colorNombre) + "</b> · " : "") +
+        (info.icono || "") +
+        " " +
+        escapeHtml(info.etiqueta) +
+        "</div>";
+    });
+    html += "</div>";
+    // Colores de la barra de temporada (en la ficha de cada lugar)
+    html += '<div class="legend__sub">Temporada (barra de meses)</div><div class="legend__grid">';
+    html += '<div class="legend__item"><span class="mes-sw on"></span> Mejor época</div>';
+    html += '<div class="legend__item"><span class="mes-sw avail"></span> También se puede</div>';
+    html += "</div>";
+
+    // solo mostrar íconos de aventura si hay actividades cargadas
+    if (state.lugares.some((l) => l.tipo === "actividad")) {
+      html += '<div class="legend__sub">Íconos de aventura</div><div class="legend__grid">';
+      ICONOS_ACTIVIDAD.forEach((g) => {
+        html +=
+          '<div class="legend__item"><span class="legend__ico">' +
+          g.icono +
+          "</span>" +
+          escapeHtml(g.etiqueta) +
+          "</div>";
+      });
+      html += "</div>";
+    }
+    el.innerHTML = html;
+  }
+
+  /* ---------- Mapa (MiniMap propio, sin librerías externas) ---------- */
+  function initMapa() {
+    const wrap = document.getElementById("map");
+    if (!wrap) return;
+    if (typeof MiniMap === "undefined") {
+      wrap.innerHTML =
+        '<div style="display:flex;align-items:center;justify-content:center;height:100%;' +
+        'padding:24px;text-align:center;color:#52606d;font-size:0.9rem">' +
+        "La lista y las fichas están disponibles a la izquierda." +
+        "</div>";
+      return;
+    }
+    // Solo las imágenes del mapa (OpenStreetMap) requieren internet; si no hay,
+    // el mapa se ve gris pero los marcadores, la lista y las fichas funcionan igual.
+    map = new MiniMap(wrap, { center: [-38, -71], zoom: 4, minZoom: 3, maxZoom: 17 });
+  }
+
+  /* ---------- Eventos globales ---------- */
+  function wireEvents() {
+    document.getElementById("search").addEventListener("input", (e) => {
+      state.filtroTexto = normaliza(e.target.value.trim());
+      render();
+    });
+    document.getElementById("detailClose").addEventListener("click", cerrarDetalle);
+    document.getElementById("toggleSidebar").addEventListener("click", () => {
+      document.getElementById("sidebar").classList.toggle("hidden");
+    });
+    const legToggle = document.getElementById("legendToggle");
+    if (legToggle) {
+      legToggle.addEventListener("click", () => {
+        const leg = document.getElementById("legend");
+        leg.hidden = !leg.hidden;
+      });
+    }
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "Escape") cerrarDetalle();
+    });
+  }
+
+  /* ---------- Filtros por tipo ---------- */
+  function renderFiltros() {
+    const cont = document.getElementById("typeFilters");
+    cont.innerHTML = "";
+    const conDatos = new Set(state.lugares.map((l) => l.tipo));
+    Object.entries(state.tipos).forEach(([clave, info]) => {
+      if (!conDatos.has(clave)) return; // solo tipos con al menos un lugar
+      const chip = document.createElement("button");
+      chip.className = "chip";
+      chip.style.color = info.color;
+      chip.setAttribute("aria-pressed", "true");
+      chip.innerHTML =
+        '<span class="dot" style="background:' + info.color + '"></span>' + info.etiqueta;
+      chip.addEventListener("click", () => {
+        if (state.tiposActivos.has(clave)) state.tiposActivos.delete(clave);
+        else state.tiposActivos.add(clave);
+        chip.setAttribute("aria-pressed", state.tiposActivos.has(clave) ? "true" : "false");
+        renderMarkers();
+        render();
+      });
+      cont.appendChild(chip);
+    });
+  }
+
+  /* ---------- Filtro por época (mes) ---------- */
+  function renderMonthFilter() {
+    const sel = document.getElementById("monthFilter");
+    if (!sel) return;
+    let html = '<option value="0">Cualquier época</option>';
+    for (let mzz = 1; mzz <= 12; mzz++) {
+      html += '<option value="' + mzz + '">' + MESES_NOMBRE[mzz] + "</option>";
+    }
+    sel.innerHTML = html;
+    sel.value = String(state.filtroMes);
+    sel.addEventListener("change", () => {
+      state.filtroMes = parseInt(sel.value, 10) || 0;
+      refrescarTodo();
+    });
+  }
+
+  /* ---------- Filtro por estado (pasaporte) ---------- */
+  function renderEstadoFilter() {
+    const cont = document.getElementById("estadoFilter");
+    if (!cont) return;
+    const opciones = [
+      ["todos", "Todos"],
+      ["pendientes", "Pendientes"],
+      ["visitados", "Visitados"],
+    ];
+    cont.innerHTML = "";
+    opciones.forEach(([clave, etiqueta]) => {
+      const b = document.createElement("button");
+      b.className = "estado-chip";
+      b.setAttribute("aria-pressed", state.filtroEstado === clave ? "true" : "false");
+      b.textContent = etiqueta;
+      b.addEventListener("click", () => {
+        state.filtroEstado = clave;
+        renderEstadoFilter();
+        refrescarTodo();
+      });
+      cont.appendChild(b);
+    });
+  }
+
+  /* ---------- Filtrado ---------- */
+  function lugaresFiltrados() {
+    const t = state.filtroTexto;
+    return state.lugares.filter((l) => {
+      if (!state.tiposActivos.has(l.tipo)) return false;
+      if (state.filtroEstado === "visitados" && !esVisitado(l.id)) return false;
+      if (state.filtroEstado === "pendientes" && esVisitado(l.id)) return false;
+      if (state.filtroMes && !mesesDisp(l).has(state.filtroMes)) return false;
+      if (!t) return true;
+      const pueblos = (l.pueblos_cercanos || []).map((p) => p.nombre).join(" ");
+      const heno = normaliza([l.nombre, l.region, l.descripcion, pueblos].join(" "));
+      return heno.includes(t);
+    });
+  }
+
+  /* ---------- Marcadores ---------- */
+  function renderMarkers() {
+    if (!map) return;
+    map.clearMarkers();
+    state.markers.clear();
+
+    const visibles = lugaresFiltrados();
+    visibles.forEach((l) => {
+      const color = (state.tipos[l.tipo] && state.tipos[l.tipo].color) || "#2e7d32";
+      const vis = esVisitado(l.id);
+      const html =
+        '<div class="marker-badge' +
+        (vis ? " visitado" : "") +
+        '" style="border-color:' +
+        color +
+        '">' +
+        iconoDe(l) +
+        (vis ? '<span class="marker-check">✓</span>' : "") +
+        "</div>";
+      const popupHtml =
+        '<div class="popup__name">' +
+        escapeHtml(l.nombre) +
+        '</div><div class="popup__type">' +
+        (state.tipos[l.tipo] ? state.tipos[l.tipo].etiqueta : "") +
+        " · " +
+        escapeHtml(l.region) +
+        '</div><div class="popup__btn" data-detalle="' +
+        l.id +
+        '">Ver detalle →</div>';
+      const rec = map.addMarker({
+        id: l.id,
+        lat: l.coordenadas[0],
+        lon: l.coordenadas[1],
+        html: html,
+        popupHtml: popupHtml,
+        onDetail: () => abrirDetalle(l.id),
+      });
+      state.markers.set(l.id, rec);
+    });
+  }
+
+  /* ---------- Lista + stats ---------- */
+  function render() {
+    const visibles = lugaresFiltrados();
+    const lista = document.getElementById("placesList");
+    lista.innerHTML = "";
+
+    if (visibles.length === 0) {
+      lista.innerHTML = '<li style="padding:16px;color:#52606d">Sin resultados.</li>';
+    }
+
+    visibles
+      .slice()
+      .sort((a, b) => a.nombre.localeCompare(b.nombre, "es"))
+      .forEach((l) => {
+        const color = (state.tipos[l.tipo] && state.tipos[l.tipo].color) || "#2e7d32";
+        const vis = esVisitado(l.id);
+        const li = document.createElement("li");
+        li.className =
+          "place-card" +
+          (state.seleccionado === l.id ? " active" : "") +
+          (vis ? " visitado" : "");
+        li.style.borderLeftColor = color;
+        li.innerHTML =
+          '<div class="place-card__top">' +
+          '<p class="place-card__name">' +
+          escapeHtml(l.nombre) +
+          "</p>" +
+          '<button class="visit-btn' +
+          (vis ? " on" : "") +
+          '" title="' +
+          (vis ? "Marcado como visitado" : "Marcar como visitado") +
+          '" aria-label="Marcar como visitado">✓</button>' +
+          "</div>" +
+          '<div class="place-card__meta">' +
+          "<span>" +
+          escapeHtml(l.region) +
+          "</span>" +
+          '<span class="rating">★ ' +
+          (l.evaluacion ? l.evaluacion.puntaje.toFixed(1) : "–") +
+          "</span>" +
+          "</div>" +
+          '<div class="place-card__meta" style="margin-top:6px">' +
+          '<span class="place-card__badge" style="background:' +
+          color +
+          '">' +
+          (state.tipos[l.tipo] ? state.tipos[l.tipo].etiqueta : "") +
+          "</span>" +
+          "<span>" +
+          (l.senderos && l.senderos.length
+            ? l.senderos.length + " senderos"
+            : (l.actividades ? l.actividades.length : 0) + " actividades") +
+          "</span>" +
+          "</div>";
+        li.addEventListener("click", () => {
+          if (map) {
+            map.flyTo(l.coordenadas, Math.max(map.zoom, 9));
+            map.openPopup(l.id);
+          }
+          abrirDetalle(l.id);
+        });
+        const vb = li.querySelector(".visit-btn");
+        if (vb) {
+          vb.addEventListener("click", (e) => {
+            e.stopPropagation();
+            toggleVisitado(l.id);
+            if (state.filtroEstado === "todos") {
+              // actualización en el sitio: no reconstruye la lista (mantiene el scroll)
+              const on = esVisitado(l.id);
+              li.classList.toggle("visitado", on);
+              vb.classList.toggle("on", on);
+              vb.title = on ? "Marcado como visitado" : "Marcar como visitado";
+              renderMarkers();
+              renderProgress();
+            } else {
+              // con filtro Visitados/Pendientes el ítem puede salir de la vista
+              refrescarTodo();
+            }
+          });
+        }
+        lista.appendChild(li);
+      });
+
+    // stats (data-driven: un contador por cada tipo con resultados)
+    document.getElementById("stats").innerHTML = Object.entries(state.tipos)
+      .map(([clave, info]) => {
+        const n = visibles.filter((l) => l.tipo === clave).length;
+        if (!n) return "";
+        return (
+          "<span>" + (info.icono || "") + " " + n + " " + (info.plural || info.etiqueta) + "</span>"
+        );
+      })
+      .join("");
+    document.getElementById("footerCount").textContent =
+      visibles.length + " lugares mostrados";
+
+    renderProgress();
+  }
+
+  /* ---------- Barra de progreso (pasaporte) ---------- */
+  function renderProgress() {
+    const cont = document.getElementById("progress");
+    if (!cont) return;
+    const total = state.lugares.length;
+    const visitadosTotal = state.lugares.filter((l) => esVisitado(l.id)).length;
+    const pct = total ? Math.round((visitadosTotal / total) * 100) : 0;
+
+    const tiposHtml = Object.entries(state.tipos)
+      .map(([clave, info]) => {
+        const list = state.lugares.filter((l) => l.tipo === clave);
+        if (!list.length) return "";
+        const v = list.filter((l) => esVisitado(l.id)).length;
+        return (
+          "<span>" +
+          (info.icono || "") +
+          " " +
+          v +
+          "/" +
+          list.length +
+          " " +
+          (info.plural || info.etiqueta) +
+          "</span>"
+        );
+      })
+      .join("");
+
+    cont.innerHTML =
+      '<div class="progress__head">' +
+      '<span class="progress__title">🧭 Mi pasaporte</span>' +
+      '<span class="progress__count">' +
+      visitadosTotal +
+      " de " +
+      total +
+      " (" +
+      pct +
+      "%)" +
+      (visitadosTotal
+        ? ' · <button class="progress__reset" id="progressReset">reiniciar</button>'
+        : "") +
+      "</span>" +
+      "</div>" +
+      '<div class="progress__bar"><div class="progress__fill" style="width:' +
+      pct +
+      '%"></div></div>' +
+      '<div class="progress__types">' +
+      tiposHtml +
+      "</div>";
+
+    const reset = document.getElementById("progressReset");
+    if (reset) {
+      reset.addEventListener("click", () => {
+        if (confirm("¿Borrar todos los lugares marcados como visitados?")) {
+          state.visitados.clear();
+          guardarVisitados();
+          refrescarTodo();
+        }
+      });
+    }
+  }
+
+  /* ---------- Panel de detalle ---------- */
+  function abrirDetalle(id) {
+    const l = state.lugares.find((x) => x.id === id);
+    if (!l) return;
+    state.seleccionado = id;
+
+    const color = (state.tipos[l.tipo] && state.tipos[l.tipo].color) || "#2e7d32";
+    const ev = l.evaluacion || {};
+
+    const facts = [
+      ["Región", l.region],
+      ["Superficie", l.superficie_ha ? formatNum(l.superficie_ha) + " ha" : "–"],
+      ["Altitud", l.altitud_m ? l.altitud_m + " m" : "–"],
+      ["Creación", l.creado || "–"],
+      ["Mejor época", ev.mejor_epoca || "–"],
+      ["Acceso", ev.dificultad_acceso || "–"],
+      ["Entrada", l.entrada_pagada ? "Pagada" : "Liberada"],
+      ["Evaluación", ev.puntaje ? "★ " + ev.puntaje.toFixed(1) + " / 5" : "–"],
+    ].filter((f) => f[1] && f[1] !== "–"); // oculta datos no aplicables
+
+    const senderos = (l.senderos || [])
+      .map((s) => {
+        const dif = difClase(s.dificultad);
+        return (
+          '<div class="trail"><div class="trail__name">' +
+          escapeHtml(s.nombre) +
+          '</div><div class="trail__meta">' +
+          '<span class="tag">📏 ' + escapeHtml(String(s.distancia_km)) + " km</span>" +
+          '<span class="tag">⏱ ' + escapeHtml(s.duracion) + "</span>" +
+          '<span class="tag ' + dif + '">⛰ ' + escapeHtml(s.dificultad) + "</span>" +
+          '<span class="tag">' + escapeHtml(s.tipo) + "</span>" +
+          "</div></div>"
+        );
+      })
+      .join("");
+
+    const pueblos = (l.pueblos_cercanos || [])
+      .map((p) => {
+        const badge = p.tours_disponibles
+          ? '<span class="tours-badge">🚐 ~' + p.tours_estimados + " tours</span>"
+          : '<span class="tours-badge tours-badge--none">Sin tours regulares</span>';
+        return (
+          '<div class="town"><div class="town__head">' +
+          '<span class="town__name">📍 ' + escapeHtml(p.nombre) + "</span>" +
+          '<span class="town__dist">' + escapeHtml(String(p.distancia_km)) + " km · " + escapeHtml(p.tiempo_estimado) + "</span>" +
+          "</div>" +
+          '<div class="town__desc">' + escapeHtml(p.descripcion || "") + "</div>" +
+          '<div class="town__tours">' + badge + "</div></div>"
+        );
+      })
+      .join("");
+
+    const actividades = (l.actividades || [])
+      .map((a) => '<span class="tag">' + escapeHtml(a) + "</span>")
+      .join(" ");
+
+    // Temporada: barra de 12 meses. Verde fuerte = mejor época; verde claro = también se puede.
+    const mBest = mesesMejor(l);
+    const mDisp = mesesDisp(l);
+    const hayDisp = mDisp.size > mBest.size;
+    const INIC = ["", "E", "F", "M", "A", "M", "J", "J", "A", "S", "O", "N", "D"];
+    let mesesHtml = "";
+    for (let mm = 1; mm <= 12; mm++) {
+      const cls = mBest.has(mm) ? " on" : mDisp.has(mm) ? " avail" : "";
+      mesesHtml +=
+        '<div class="mes' + cls + '" title="' + MESES_NOMBRE[mm] + '">' + INIC[mm] + "</div>";
+    }
+    const mesesLeyenda =
+      '<div class="meses-leyenda"><span class="mes-sw on"></span> mejor época' +
+      (hayDisp ? ' &nbsp; <span class="mes-sw avail"></span> también se puede' : "") +
+      "</div>";
+
+    document.getElementById("detailContent").innerHTML =
+      '<div class="detail__hero" style="background:linear-gradient(135deg,' +
+      color +
+      "," +
+      shade(color) +
+      ')">' +
+      '<div class="detail__type">' +
+      (state.tipos[l.tipo] ? state.tipos[l.tipo].etiqueta : "") +
+      "</div>" +
+      '<h2 class="detail__title">' + escapeHtml(l.nombre) + "</h2>" +
+      '<div class="detail__region">📍 ' + escapeHtml(l.region) + "</div>" +
+      '<button id="visitToggle" class="visit-toggle' +
+      (esVisitado(l.id) ? " is-visited" : "") +
+      '">' +
+      (esVisitado(l.id) ? "✓ Visitado" : "+ Marcar como visitado") +
+      "</button>" +
+      "</div>" +
+      '<div class="detail__body">' +
+      '<p class="detail__desc">' + escapeHtml(l.descripcion) + "</p>" +
+      '<div class="detail__facts">' +
+      facts
+        .map(
+          (f) =>
+            '<div class="fact"><div class="fact__label">' +
+            f[0] +
+            '</div><div class="fact__value">' +
+            escapeHtml(String(f[1])) +
+            "</div></div>"
+        )
+        .join("") +
+      "</div>" +
+      '<div class="section-title">📅 ¿Cuándo se puede?</div>' +
+      '<div class="meses">' + mesesHtml + "</div>" +
+      mesesLeyenda +
+      (ev.mejor_epoca
+        ? '<div class="meses-nota">Mejor época: ' + escapeHtml(ev.mejor_epoca) +
+          (hayDisp ? " · disponibilidad estimada (temporada media incluida)" : "") + "</div>"
+        : "") +
+      (actividades
+        ? '<div class="section-title">🎒 Actividades</div><div class="trail__meta">' +
+          actividades +
+          "</div>"
+        : "") +
+      (senderos
+        ? '<div class="section-title">🥾 Senderos (' +
+          l.senderos.length +
+          ")</div>" +
+          senderos
+        : "") +
+      (pueblos
+        ? '<div class="section-title">🏘️ Pueblos de acceso y tours</div>' + pueblos
+        : "") +
+      (l.sitio_web
+        ? '<a class="detail__link" href="' +
+          escapeAttr(l.sitio_web) +
+          '" target="_blank" rel="noopener">Más información en CONAF →</a>'
+        : "") +
+      "</div>";
+
+    const detail = document.getElementById("detail");
+    detail.hidden = false;
+    detail.scrollTop = 0;
+
+    const vt = document.getElementById("visitToggle");
+    if (vt) {
+      vt.addEventListener("click", () => {
+        toggleVisitado(l.id);
+        const on = esVisitado(l.id);
+        vt.classList.toggle("is-visited", on);
+        vt.textContent = on ? "✓ Visitado" : "+ Marcar como visitado";
+        refrescarTodo(); // actualiza tarjetas, marcadores y progreso
+      });
+    }
+
+    render(); // refresca "active" en la lista
+  }
+
+  function cerrarDetalle() {
+    document.getElementById("detail").hidden = true;
+    state.seleccionado = null;
+    render();
+  }
+
+  /* ---------- Utilidades ---------- */
+  function normaliza(str) {
+    return String(str)
+      .toLowerCase()
+      .normalize("NFD")
+      .replace(/[̀-ͯ]/g, ""); // quita tildes/diacríticos
+  }
+
+  function difClase(dif) {
+    const d = (dif || "").toLowerCase();
+    if (d.startsWith("baja")) return "tag--dif-baja";
+    if (d.startsWith("alta")) return "tag--dif-alta";
+    return "tag--dif-media";
+  }
+
+  function formatNum(n) {
+    return n.toLocaleString("es-CL");
+  }
+
+  function shade(hex) {
+    // oscurece ligeramente un color hex para el degradado
+    const c = hex.replace("#", "");
+    const num = parseInt(c, 16);
+    let r = (num >> 16) - 25;
+    let g = ((num >> 8) & 0x00ff) - 25;
+    let b = (num & 0x0000ff) - 25;
+    r = Math.max(0, r); g = Math.max(0, g); b = Math.max(0, b);
+    return "rgb(" + r + "," + g + "," + b + ")";
+  }
+
+  function escapeHtml(str) {
+    return String(str)
+      .replace(/&/g, "&amp;")
+      .replace(/</g, "&lt;")
+      .replace(/>/g, "&gt;")
+      .replace(/"/g, "&quot;");
+  }
+  function escapeAttr(str) {
+    return escapeHtml(str).replace(/'/g, "&#39;");
+  }
+})();
+
+</script>
+</body>
+</html>

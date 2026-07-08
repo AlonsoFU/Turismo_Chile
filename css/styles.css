@@ -82,12 +82,99 @@ html, body {
 .chip[aria-pressed="true"] { border-color: currentColor; font-weight: 600; }
 .chip[aria-pressed="false"] { opacity: 0.5; }
 
+.controls__when {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 12px;
+  font-size: 0.8rem;
+  color: var(--texto-suave);
+}
+.controls__when label { white-space: nowrap; }
+.controls__select {
+  flex: 1;
+  padding: 7px 8px;
+  border: 1px solid var(--borde);
+  border-radius: 8px;
+  font-size: 0.85rem;
+  background: #fff;
+  cursor: pointer;
+}
+.controls__select:focus { outline: none; border-color: var(--verde); }
+
 .stats {
   display: flex;
   gap: 8px;
   padding: 8px 16px 4px;
   font-size: 0.75rem;
   color: var(--texto-suave);
+}
+
+/* ---------- Progreso (pasaporte) ---------- */
+.progress {
+  padding: 4px 16px 8px;
+}
+.progress__head {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  font-size: 0.8rem;
+  margin-bottom: 6px;
+}
+.progress__title { font-weight: 600; }
+.progress__count { color: var(--texto-suave); }
+.progress__reset {
+  background: none;
+  border: none;
+  color: var(--texto-suave);
+  font-size: 0.7rem;
+  cursor: pointer;
+  text-decoration: underline;
+  padding: 0;
+}
+.progress__bar {
+  height: 8px;
+  border-radius: 999px;
+  background: var(--borde);
+  overflow: hidden;
+}
+.progress__fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--verde), var(--teal));
+  border-radius: 999px;
+  transition: width 0.3s ease;
+}
+.progress__types {
+  display: flex;
+  gap: 10px;
+  margin-top: 8px;
+  font-size: 0.72rem;
+  color: var(--texto-suave);
+  flex-wrap: wrap;
+}
+
+/* Filtro de estado (todos / pendientes / visitados) */
+.estado-filter {
+  display: flex;
+  gap: 6px;
+  padding: 4px 16px 8px;
+}
+.estado-chip {
+  flex: 1;
+  border: 1px solid var(--borde);
+  background: #fff;
+  border-radius: 8px;
+  padding: 6px 4px;
+  font-size: 0.74rem;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  color: var(--texto-suave);
+}
+.estado-chip[aria-pressed="true"] {
+  background: var(--verde);
+  border-color: var(--verde);
+  color: #fff;
+  font-weight: 600;
 }
 
 /* ---------- Lista ---------- */
@@ -109,7 +196,34 @@ html, body {
 }
 .place-card:hover { box-shadow: var(--sombra); transform: translateY(-1px); }
 .place-card.active { background: #f0f7f1; border-color: var(--verde); }
-.place-card__name { font-weight: 600; font-size: 0.92rem; margin: 0 0 4px; }
+.place-card.visitado { background: #f3faf4; }
+.place-card__top { display: flex; align-items: flex-start; gap: 8px; }
+.place-card__name { font-weight: 600; font-size: 0.92rem; margin: 0 0 4px; flex: 1; }
+.place-card.visitado .place-card__name { color: var(--verde-osc); }
+
+/* Botón check en la tarjeta */
+.visit-btn {
+  flex-shrink: 0;
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  border: 2px solid var(--borde);
+  background: #fff;
+  color: transparent;
+  font-size: 0.8rem;
+  line-height: 1;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.15s ease;
+}
+.visit-btn:hover { border-color: var(--verde); color: #cfe8d4; }
+.visit-btn.on {
+  background: var(--verde);
+  border-color: var(--verde);
+  color: #fff;
+}
 .place-card__meta { font-size: 0.76rem; color: var(--texto-suave); display: flex; justify-content: space-between; gap: 8px; }
 .place-card__badge {
   font-size: 0.68rem;
@@ -150,15 +264,174 @@ html, body {
   box-shadow: var(--sombra);
 }
 
-/* Marcadores */
-.marker-pin {
-  width: 22px;
-  height: 22px;
-  border-radius: 50% 50% 50% 0;
-  transform: rotate(-45deg);
-  border: 2px solid #fff;
-  box-shadow: 0 1px 4px rgba(0,0,0,0.4);
+/* ---------- MiniMap (mapa propio) ---------- */
+.minimap-tiles,
+.minimap-markers {
+  position: absolute;
+  top: 0;
+  left: 0;
+  will-change: transform;
 }
+.minimap-markers { pointer-events: none; }
+.minimap-tile {
+  position: absolute;
+  width: 256px;
+  height: 256px;
+  user-select: none;
+}
+.minimap-marker {
+  position: absolute;
+  width: 28px;
+  height: 28px;
+  margin-left: -14px;
+  margin-top: -14px;
+  pointer-events: auto;
+  cursor: pointer;
+}
+.minimap-popup {
+  position: absolute;
+  transform: translate(-50%, -100%);
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.25);
+  padding: 8px 10px;
+  min-width: 150px;
+  max-width: 220px;
+  z-index: 500;
+  pointer-events: auto;
+}
+.minimap-popup::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: -6px;
+  transform: translateX(-50%);
+  border: 6px solid transparent;
+  border-top-color: #fff;
+  border-bottom: 0;
+}
+.minimap-zoom {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  z-index: 600;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+.minimap-zoom button {
+  width: 32px;
+  height: 32px;
+  border: 1px solid var(--borde);
+  background: #fff;
+  font-size: 1.1rem;
+  line-height: 1;
+  cursor: pointer;
+  border-radius: 6px;
+  box-shadow: var(--sombra);
+}
+.minimap-zoom button:hover { background: #f0f0f0; }
+.minimap-attr {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  background: rgba(255, 255, 255, 0.75);
+  font-size: 10px;
+  padding: 1px 5px;
+  z-index: 600;
+  border-top-left-radius: 4px;
+}
+.minimap-attr a { color: #0066cc; }
+
+/* Marcadores: insignia redonda con emoji y borde del color del tipo */
+.marker-badge {
+  position: relative;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: #fff;
+  border: 3px solid #999;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.45);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 15px;
+  line-height: 1;
+}
+.marker-badge.visitado {
+  box-shadow: 0 0 0 3px #ffd54a, 0 1px 4px rgba(0, 0, 0, 0.45);
+}
+.marker-check {
+  position: absolute;
+  top: -6px;
+  right: -6px;
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  background: var(--verde);
+  color: #fff;
+  font-size: 10px;
+  font-weight: bold;
+  line-height: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1.5px solid #fff;
+}
+
+/* Leyenda */
+.legend-toggle {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  z-index: 600;
+  background: #fff;
+  border: 1px solid var(--borde);
+  border-radius: 8px;
+  padding: 6px 10px;
+  font-size: 0.8rem;
+  cursor: pointer;
+  box-shadow: var(--sombra);
+}
+.legend {
+  position: absolute;
+  bottom: 12px;
+  left: 12px;
+  z-index: 600;
+  background: #fff;
+  border: 1px solid var(--borde);
+  border-radius: 10px;
+  padding: 10px 12px;
+  box-shadow: var(--sombra);
+  width: 250px;
+  max-width: 70%;
+  max-height: 62%;
+  overflow-y: auto;
+  font-size: 0.75rem;
+}
+.legend__title { font-weight: 700; margin-bottom: 2px; }
+.legend__sub {
+  font-weight: 600;
+  color: var(--texto-suave);
+  margin: 9px 0 4px;
+  font-size: 0.68rem;
+  text-transform: uppercase;
+  letter-spacing: 0.4px;
+}
+.legend__grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3px 8px;
+}
+.legend__grid--tipos { grid-template-columns: 1fr; }
+.legend__item { display: flex; align-items: center; gap: 5px; }
+.legend__dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+.legend__ico { width: 18px; text-align: center; flex-shrink: 0; }
 
 /* ---------- Detalle ---------- */
 .detail {
@@ -200,6 +473,25 @@ html, body {
 .detail__title { margin: 6px 0 4px; font-size: 1.4rem; line-height: 1.2; }
 .detail__region { font-size: 0.82rem; opacity: 0.92; }
 
+.visit-toggle {
+  margin-top: 14px;
+  background: rgba(255, 255, 255, 0.18);
+  border: 1.5px solid rgba(255, 255, 255, 0.7);
+  color: #fff;
+  padding: 8px 16px;
+  border-radius: 999px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+.visit-toggle:hover { background: rgba(255, 255, 255, 0.3); }
+.visit-toggle.is-visited {
+  background: #fff;
+  color: var(--verde-osc);
+  border-color: #fff;
+}
+
 .detail__body { padding: 18px 22px 40px; }
 .detail__desc { font-size: 0.9rem; line-height: 1.55; color: var(--texto); }
 
@@ -225,6 +517,53 @@ html, body {
   display: flex;
   align-items: center;
   gap: 8px;
+}
+
+/* Temporada: barra de 12 meses */
+.meses {
+  display: flex;
+  gap: 3px;
+}
+.mes {
+  flex: 1;
+  text-align: center;
+  font-size: 0.66rem;
+  font-weight: 600;
+  padding: 6px 0;
+  border-radius: 5px;
+  background: var(--bg);
+  color: #b0b8c1;
+}
+.mes.on {
+  background: linear-gradient(135deg, var(--verde), var(--teal));
+  color: #fff;
+}
+.mes.avail {
+  background: #cdeccf;
+  color: #3a6b3f;
+}
+.meses-leyenda {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  flex-wrap: wrap;
+  font-size: 0.68rem;
+  color: var(--texto-suave);
+  margin-top: 6px;
+}
+.mes-sw {
+  display: inline-block;
+  width: 12px;
+  height: 12px;
+  border-radius: 3px;
+  vertical-align: middle;
+}
+.mes-sw.on { background: linear-gradient(135deg, var(--verde), var(--teal)); }
+.mes-sw.avail { background: #cdeccf; }
+.meses-nota {
+  font-size: 0.76rem;
+  color: var(--texto-suave);
+  margin-top: 6px;
 }
 
 /* Senderos */
