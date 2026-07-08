@@ -211,6 +211,12 @@
         "</div>";
     });
     html += "</div>";
+    // Colores de la barra de temporada (en la ficha de cada lugar)
+    html += '<div class="legend__sub">Temporada (barra de meses)</div><div class="legend__grid">';
+    html += '<div class="legend__item"><span class="mes-sw on"></span> Mejor época</div>';
+    html += '<div class="legend__item"><span class="mes-sw avail"></span> También se puede</div>';
+    html += "</div>";
+
     // solo mostrar íconos de aventura si hay actividades cargadas
     if (state.lugares.some((l) => l.tipo === "actividad")) {
       html += '<div class="legend__sub">Íconos de aventura</div><div class="legend__grid">';

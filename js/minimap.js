@@ -55,7 +55,7 @@
 
     var attr = document.createElement("div");
     attr.className = "minimap-attr";
-    attr.innerHTML = '© <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener">OpenStreetMap</a>';
+    attr.innerHTML = '© <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener">OpenStreetMap</a> · <a href="https://carto.com/attributions" target="_blank" rel="noopener">CARTO</a>';
 
     var zc = document.createElement("div");
     zc.className = "minimap-zoom";
@@ -225,11 +225,15 @@
         var wtx = ((tx % ws) + ws) % ws;
         var img = document.createElement("img");
         img.className = "minimap-tile";
-        img.src = "https://tile.openstreetmap.org/" + this.zoom + "/" + wtx + "/" + ty + ".png";
+        // CARTO Voyager: basemap CDN pensado para este uso (evita bloqueos 403
+        // que a veces aplica el servidor de OpenStreetMap desde archivos locales).
+        img.src = "https://basemaps.cartocdn.com/rastertiles/voyager/" + this.zoom + "/" + wtx + "/" + ty + ".png";
         img.style.left = (tx * TILE - o.x) + "px";
         img.style.top = (ty * TILE - o.y) + "px";
         img.draggable = false;
         img.alt = "";
+        // Si un tile falla (sin conexión o bloqueado), se oculta y queda gris.
+        img.onerror = function () { this.style.visibility = "hidden"; };
         this.tiles.appendChild(img);
       }
     }
